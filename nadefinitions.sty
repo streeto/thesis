@@ -1,0 +1,152 @@
+% ** Natalia@woodstock - 27/Jan/2006
+% ** Some useful TeX definitions for my Master's dissertation.
+%
+% ** Andre@UFSC - 2011
+% ** Stripped down version
+
+\ProvidesPackage{nadefinitions}
+\usepackage{xspace}
+\usepackage{color}
+
+% ********************* Andre's Definitions ************************
+\def\starlight{\textsc{starlight}\xspace}      %smallcaps Starlight%
+\def\starlightUV{\textsc{starlight+UV}\xspace} %smallcaps Starlight+UV%
+\def\STARLIGHT{\textit{STARLIGHT}\xspace}                %Starlight%
+\def\STARLIGHTUV{\textit{STARLIGHT+UV}\xspace}        %Starlight+UV%
+\def\SDSS{\textit{SDSS}\xspace}           %Sloan Digital Sky Survey%
+\def\galex{\textit{GALEX}\xspace}
+\def\citneed{\textsuperscript{\bf \textcolor{red}{[citation needed]}}\xspace}
+\def\fixme{\textsuperscript{\bf \textcolor{red}{[FIXME]}}\xspace}
+\def\TODO{\textcolor{red}{\bf [TODO]}\xspace}
+\def\Halpha{\ifmmode \mathrm{H}\alpha \else H$\alpha$\xspace \fi}
+\def\WHa{\ifmmode W_{\mathrm{H}\alpha} \else $W_{\mathrm{H}\alpha}$\xspace \fi}
+\def\Hbeta{\ifmmode \mathrm{H}\beta \else H$\beta$\xspace \fi}
+\def\NII{[N\thinspace\textsc{ii}] $\lambda 6584$\xspace} 
+\def\nII{\ifmmode [\mathrm{N\,\textsc{ii}}] \else [N\thinspace\textsc{ii}]\xspace \fi}
+\def\WnII{W_{\mathrm{[N\,\textsc{ii}]}}}
+\def\OIII{[O\thinspace\textsc{iii}] $\lambda 5007$\xspace}
+\def\oIII{\ifmmode [\mathrm{O\,\textsc{iii}}] \else [O\thinspace{\sc iii}]\xspace \fi}
+%*******************************************************************
+
+
+% I guess these are Cid's definitions. I have found them in Luis'
+% masters thesis. Some of them are rather useful.
+% ********************* CID'S DEFINITIONS **************************
+
+\def\ojo{\fbox{\bf !$\odot$j$\odot$!}}      %Olho! Needs Correction%
+
+%*******************************************************************
+
+% Journals - from AASTex
+% Natalia@UFSC - 16/Nov/2005
+\def\aj{AJ}%
+          % Astronomical Journal
+\def\actaa{Acta Astron.}%
+          % Acta Astronomica
+\def\araa{ARA\&A}%
+          % Annual Review of Astron and Astrophys
+\def\apj{ApJ}%
+          % Astrophysical Journal
+\def\apjl{ApJ}%
+          % Astrophysical Journal, Letters
+\def\apjs{ApJS}%
+          % Astrophysical Journal, Supplement
+\def\ao{Appl.~Opt.}%
+          % Applied Optics
+\def\apss{Ap\&SS}%
+          % Astrophysics and Space Science
+\def\aap{A\&A}%
+          % Astronomy and Astrophysics
+\def\aapr{A\&A~Rev.}%
+          % Astronomy and Astrophysics Reviews
+\def\aaps{A\&AS}%
+          % Astronomy and Astrophysics, Supplement
+\def\azh{AZh}%
+          % Astronomicheskii Zhurnal
+\def\baas{BAAS}%
+          % Bulletin of the AAS
+\def\caa{Chinese Astron. Astrophys.}%
+          % Chinese Astronomy and Astrophysics
+\def\cjaa{Chinese J. Astron. Astrophys.}%
+          % Chinese Journal of Astronomy and Astrophysics
+\def\icarus{Icarus}%
+          % Icarus
+\def\jcap{J. Cosmology Astropart. Phys.}%
+          % Journal of Cosmology and Astroparticle Physics
+\def\jrasc{JRASC}%
+          % Journal of the RAS of Canada
+\def\memras{MmRAS}%
+          % Memoirs of the RAS
+\def\mnras{MNRAS}%
+          % Monthly Notices of the RAS
+\def\na{New A}%
+          % New Astronomy
+\def\nar{New A Rev.}%
+          % New Astronomy Review
+\def\pra{Phys.~Rev.~A}%
+          % Physical Review A: General Physics
+\def\prb{Phys.~Rev.~B}%
+          % Physical Review B: Solid State
+\def\prc{Phys.~Rev.~C}%
+          % Physical Review C
+\def\prd{Phys.~Rev.~D}%
+          % Physical Review D
+\def\pre{Phys.~Rev.~E}%
+          % Physical Review E
+\def\prl{Phys.~Rev.~Lett.}%
+          % Physical Review Letters
+\def\pasa{PASA}%
+          % Publications of the Astron. Soc. of Australia
+\def\pasp{PASP}%
+          % Publications of the ASP
+\def\pasj{PASJ}%
+          % Publications of the ASJ
+\def\qjras{QJRAS}%
+          % Quarterly Journal of the RAS
+\def\rmxaa{Rev. Mexicana Astron. Astrofis.}%
+          % Revista Mexicana de Astronomia y Astrofisica
+\def\skytel{S\&T}%
+          % Sky and Telescope
+\def\solphys{Sol.~Phys.}%
+          % Solar Physics
+\def\sovast{Soviet~Ast.}%
+          % Soviet Astronomy
+\def\ssr{Space~Sci.~Rev.}%
+          % Space Science Reviews
+\def\zap{ZAp}%
+          % Zeitschrift fuer Astrophysik
+\def\nat{Nature}%
+          % Nature
+\def\iaucirc{IAU~Circ.}%
+          % IAU Cirulars
+\def\aplett{Astrophys.~Lett.}%
+          % Astrophysics Letters and Communications
+\def\apspr{Astrophys.~Space~Phys.~Res.}%
+          % Astrophysics Space Physics Research
+\def\bain{Bull.~Astron.~Inst.~Netherlands}%
+          % Bulletin Astronomical Institute of the Netherlands
+\def\fcp{Fund.~Cosmic~Phys.}%
+          % Fundamental Cosmic Physics
+\def\gca{Geochim.~Cosmochim.~Acta}%
+          % Geochimica Cosmochimica Acta
+\def\grl{Geophys.~Res.~Lett.}%
+          % Geophysics Research Letters
+\def\jcp{J.~Chem.~Phys.}%
+          % Journal of Chemical Physics
+\def\jgr{J.~Geophys.~Res.}%
+          % Journal of Geophysical Research
+\def\jqsrt{J.~Quant.~Spec.~Radiat.~Transf.}%
+          % Journal of Quantitiative Spectroscopy and Radiative Trasfer
+\def\memsai{Mem.~Soc.~Astron.~Italiana}%
+          % Mem. Societa Astronomica Italiana
+\def\nphysa{Nucl.~Phys.~A}%
+          % Nuclear Physics A
+\def\physrep{Phys.~Rep.}%
+          % Physics Reports
+\def\physscr{Phys.~Scr}%
+          % Physica Scripta
+\def\planss{Planet.~Space~Sci.}%
+          % Planetary Space Science
+\def\procspie{Proc.~SPIE}%
+          % Proceedings of the SPIE
+
