@@ -5,312 +5,510 @@
 
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%
 %                                                               %
-%                          Capítulo 3                           %
+%                          Capítulo 2                           %
 %                                                               %
 %:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%
 
 %***************************************************************%
 %                                                               %
-%                        Decomposicao                           %
+%                            PyCASSO                            %
 %                                                               %
 %***************************************************************%
 
-\chapter{Síntese de população estelar nas componentes morfológicas de galáxias}
-\label{sec:Decomp}
+\chapter{PyCASSO}
+\label{sec:pycasso}
 
+A fim de agilizar o desenvolvimento de ferramentas de manipulação de cubos de
+dados do CALIFA. Este ``kit de ferramentas'' foi chamado de PyCASSO (Python
+CALIFA \starlight Synthesis Organizer). PyCASSO foi desenvolvido em Pyton e é, a
+grosso modo, composto de três partes.
 
-%***************************************************************%
-%                                                               %
-%                    Decomposicao bojo-disco                    %
-%                                                               %
-%***************************************************************%
+Conversor de tabelas. Com ele se pode converter a saída do \starlight (arquivos
+ASCII para cada pixel de cada galáxia) para cubos de dados nos formatos FITS e
+HDF5, de forma a otimizar o acesso aos dados. Uma galáxia leva tipicamente 2
+minutos para ser carregada em memória usando arquivos texto. Este tempo se reduz
+para menos de um segundo usando arquivo FITS. Há outra otimização para acessar
+dados de várias galáxias simultaneamente, utilizando o formato HDF5. Neste caso
+a carga dos dados em disco para a memória é ``preguiçosa'', quer dizer, é feita
+somente quando os dados são efetivamente acessados.
 
-\section{Decomposição morfológica}
-\label{sec:Decomp:decomp}
- 
- % FIXME:
-Uma forma de classificar as galáxias é pela sua morfologia. A mais conhecida é a
-sequência de Hubble, onde galáxias são classificadas como elípticas ou
-esferoidais, espirais, lenticulares ou de disco, e irregulares.
-Neste trabalho trata-se apenas de galáxias com disco e esferoidais. Galáxias
-esferoidais seguem em geral um perfil de Sérsic, conforme a equação
-\begin{equation*}
-I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{a}{r_e} \right)^{\sfrac{1}{n}}
-- 1 \right] \right\}.
-\end{equation*}
-Já galáxias de tipo disco são bem modeladas por um perfil exponencial, dado por
-\begin{equation*}
-I(r) = I_0 \exp \left(- r / h \right).
-\end{equation*}
+Camada de entrada e saída. Os arquivos FITS e HDF5 foram montados de forma a
+serem facilmente acessados em qualquer ambiente. Ainda assim, há uma camada de
+abstração de armazenamento, onde as várias matrizes e cubos são acessadas com
+nomes próprios (por exemplo, \texttt{popx},que designa a fração de luz
+distribuída pelas populações estelares), de forma a ser possível programar
+ferramentas de análise sem precisar se preocupar com as características de cada
+formato de armazenamento.
 
-Uma galáxia pode ser bem descrita como a soma de um disco exponencial e um bojo
-com perfil de Sérsic. Através de um algoritmo de ajuste de funções, pode-se
-determinar, dado o perfil de brilho de uma galáxia, qual combinação de valores
-para os parâmetros livres (neste caso, $I_e$, $r_e$, $n$, $I_0$ e $h$) melhor
-reproduz o perfil de brilho da galáxia. A figura \ref{fig:decompJohnston} mostra
-um exemplo de ajuste de bojo e disco em um perfil de brilho.
-Adicionalmente, pode-se fazer o ajuste diretamente na imagem, em duas dimensões,
-assumindo que bojo e disco têm, por exemplo, um formato elíptico, e ajustando
-também os parâmetros destas elipses.
+Camada de análise. Como foi mencionado na Seção \ref{sec:Intro:Sintese}, o
+resultado da síntese consiste em cubos indexados por zona. Os dados ficam
+armazenados no disco desta forma. Porém, na grande maioria das vezes se está
+interessado na informação espacialmente resolvida. Esta camada implementa uma rotina de
+conversão da notação de zonas para $(x, y)$. Boa parte das propriedades da
+síntese, como luminosidade, massa, atenuação por poeira, e idade estelar, já
+estão implementadas. Estes cubos espacialmente resolvidos são calculados
+dinamicamente, quer dizer, não ocupam memória do sistema até que sejam
+acessados. Existem outras rotinas para calcular geometria, perfis radiais e
+azimutais, e raio de escala. Outras rotinas podem ser adicionadas
+facilmente\footnote{Há um estudo de PCA (análise de componentes principais)
+sendo desenvolvido por outro estudante na UFSC, por exemplo.}.
 
-\begin{figure}
-	\includegraphics{figuras/johnston-decomp}
-	\caption[Decomposição morfológica em uma dimensão] {Decomposição morfológica
-	em uma dimensão. A linha preta mostra o perfil de brilho da galáxia NGC
-	1375 em $5195\,\AA$. Em azul um perfil exponencial e em vermelho um
-	perfil de De Vaucouleurs (Sérsic com $n=4$), que somados são o melhor
-	ajuste, em verde. Retirado de \citet{Johnston2012}.}
-	\label{fig:decompJohnston}
-\end{figure}
-
-Existem diversas ferramentas para fazer este ajuste de parâmetros. Vale citar,
-por exemplo, GALFIT3 \citep{Peng2010}, BUDDA \citep{DeSouza2004}, GIM2D
-\citep{Simard2002}, GASP2D \citep{MendezAbreu2008} e
-Imfit\footnote{\url{http://www.mpe.mpg.de/~erwin/code/imfit/index.html}} por
-Peter Erwin. Para o trabalho atual, o programa escolhido foi o Imfit, em grande
-parte por ser de código livre, e também por estar escrito em C++, permitindo
-trabalhar facilmente em Python. Como a versão original é um programa executado
-em linha de comando, não é muito prático utilizá-la em seu formato original. Foi
-feita uma versão ligeiramente
-modificada\footnote{\url{https://github.com/streeto/Imfit}} do Imfit, em forma
-de biblioteca compartilhada, para ser acessada por um programa escrito em
-Python.
+Este software está sendo utilizado pelo grupo de populações estelares da
+colaboração do CALIFA, do qual o autor faz parte. No total são aproximadamente
+10 pessoas utilizando este software. Foram publicados 4 artigos que utilizam
+extensivamente PyCASSO, apresentados na Seção \ref{sec:pycasso:art}, e 2 que
+utilizaram algum dado resultante de forma indireta \citep{Husemann2013,
+IglesiasParamo2013}.
 
 
 %***************************************************************%
 %                                                               %
-%               Decomposição: decomposicao espectral            %
+%                     PyCASSO - Ferramenta                      %
 %                                                               %
 %***************************************************************%
 
-\section{Decomposição espectral}
+\section{A ferramenta de manipulação de cubos de dados PyCASSO}
+\label{sec:pycasso:Pycasso}
 
-O artigo por \citet{Johnston2012} serviu como fonte de inspiração para este
-trabalho. Nele, os autores obtém um espectro de fenda de galáxias lenticulares
-(S0), tendo assim um perfil de brilho da galáxias para cada comprimento de onda.
-Ajustando um perfil de Sérsic e um exponencial a cada um dos perfis (Figura
-\ref{fig:decompJohnston}), eles obtém os espectros separados de cada um dos
-componentes morfológicos (Figura \ref{fig:spectraJohnston}). 
+PyCASSO é uma biblioteca desenvolvida em Python. Porém uma biblioteca não é nada
+sem uma boa documentação. Aqui se apresenta de forma breve das capacidades do
+PyCASSO. A documentação completa se encontra no Apêndice \ref{apendice:manual}.
+
+O trabalho com a variedade e quantidade de dados gerados pela síntese espectral
+de IFS tem em geral um caráter fortemente exploratório. Frequentemente não se
+sabe exatamente o que se está buscando, e o trabalho do programador/cientista
+consiste em desenhar gráficos, realizar cálculos, determinar operações ou
+filtros nos dados com base nestes gráficos e cálculos, desenhar novamente, e
+assim sucessivamente. Assim se escolheu a linguagem Python, que possui
+ferramentas adequadas à programação exploratória\footnote{Além de estar se
+tornando uma espécie de {\em lingua franca} na Astrofísica computacional.}, como
+o \texttt{IPython}\footnote{\url{http://ipython.org/}} e o
+\texttt{matplotlib}\footnote{\url{http://matplotlib.org/}}. Foi feito um esforço
+para que o acesso aos dados de cada galáxia fosse feito de forma simples e
+direta, um exemplo de código pode ser visto na Figura \ref{fig:dataAccess}.
 
 \begin{figure}
-	\includegraphics{figuras/johnston-spectra}
-	\caption[Espectros das componentes morfológicas] {Espectros unidimensionais de
-	disco e bojo de NGC 1375. Retirado de \citet{Johnston2012}.}
-	\label{fig:spectraJohnston}
+\begin{python}
+# Carregar arquivo FITS com os dados.
+from pycasso import fitsQ3DataCube
+K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
+
+# Acessar a idade media ponderada pela luminosidade.
+at = K.at_flux__z
+
+# Calcular a idade media da galaxia.
+at_total = (at * K.Lobn__z).sum() / K.Lobn__z.sum()
+print 'Idade media da galaxia: %.2f' % at_total
+\end{python}
+	\caption[Exemplo de programa utilizando PyCASSO]
+	{Exemplo de acesso aos dados. Todas as propriedades estão disponíveis
+	diretamente pelo nome, inclusive utilizando a função auto-completar da maioria
+	dos ambientes de desenvolvimento Python.}
+	\label{fig:dataAccess}
 \end{figure}
 
-O mesmo princípio foi então aplicado aos cubos de dados de IFS do CALIFA.
-Diferente de do método de \citeauthor{Johnston2012}, foram ajustadas imagens a
-cada comprimento de onda, utilizando um programa baseado na versão modificada do
-Imfit, conforme a Seção \ref{sec:Decomp:decomp}. A decomposição é realizada
-sobre os espectros sintéticos, provenientes de uma síntese realizada
-anteriormente, sobre os dados originais. A motivação para isto é bastante
-simples: evitar efeitos de linhas de emissão.
-Estas seriam outra fonte de incerteza no ajuste morfológico, dado que em geral
-estão relacionadas a regiões de formação estelar e núcleos ativos, que não
-necessariamente seguem o mesmo perfil que o bojo ou o disco. Como este trabalho
-é experimental, estas complicações foram deixadas de lado, neste momento.
-
-Os resultados apresentados aqui devem ser tomados com cuidado. O ajuste é feito
-sem fazer hipótese alguma sobre como os parâmetros morfológicos variam a cada
-comprimento de onda. O projeto MegaMorph \citep{Haussler2013} está fazendo
-essencialmente a mesma coisa: o ajuste morfológico dependente de comprimento de
-onda de imagens de galáxia. A diferença é que no caso do MegaMorph utiliza-se
-imagens de fotometria de banda larga do SDSS, e eles ajustam a variação dos
-parâmetros morfológicos através de um polinômio \citep[Figura
-\ref{fig:propertiesVika}]{Vika2013}. Aí se pode ver que em grande escala (em
-comprimento de onda), há galáxias com um comportamento linear (ou até
-razoavelmente constante) em $r_e$, porém outras apresentam variações mais
-complexas. Este problema deve ser estudado mais a fundo futuramente neste
-trabalho.
+Para algumas operações, como o cálculo da idade estelar média feito na Figura
+\ref{fig:dataAccess}, pode-se utilizar apenas o resultado para as zonas. Neste
+caso, a idade estelar média é calculada usando a expressão $\langle \log t
+\rangle^{gal}_L = \sum_z \langle \log t \rangle_{L,z} L_z / \sum_z L_z$, onde
+$L_z$ é a luminosidade de cada zona e $\langle \log t \rangle_{L,z}$ é a idade
+estelar média de cada zona. Entretanto, para tirar vantagem das informações
+espaciais, é preciso converter as propriedades da notação de zona para imagem.
+Por exemplo, o programa na Figura \ref{fig:programaMapaIdade} calcula a idade
+estelar média espacialmente resolvida\footnote{O mapa de idade já está
+previamente calculado, disponível através da propriedade
+\texttt{at\_flux\_\_yx}. Esta conversão é feita explicitamente aqui para
+ilustrar como a conversão pode ser feita para qualquer propriedade.}, e em
+seguida desenha um gráfico da imagem gerada (Figura \ref{fig:mapaIdade}).
 
 \begin{figure}
-	\includegraphics{figuras/vika-properties}
-	\caption[Ajuste morfológico de bandas fotométricas] {Ajuste
-	morfológico de 11 galáxias, utilizando as bandas fotométricas do
-	SDSS. Os gráficos mostram o raio efetivo ($r_e$ neste trabalho) ajustado
-	livremente a cada banda (painéis superiores), e com uma dependência linear em
-	comprimento de onda (painéis inferiores). À esquerda estão os ajustes com as
-	imagens originais, as colunas seguintes são para imagens com {\em redshift}
-	artificiais. Retirado de \citet{Vika2013}.}
-	\label{fig:propertiesVika}
-\end{figure}
+\begin{python}
+# Carregar arquivo FITS com os dados.
+from pycasso import fitsQ3DataCube
+K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
 
-Para determinar se o método de decomposição funciona (ou melhor, se ele falha
-mesmo para o caso mais básico), foi desenhado um exercício bastante simples.
-Dado um conjunto de parâmetros morfológicos arbitrários, foi montado um cubo de
-espectros de uma galáxia sintética composta de um bojo velho (utilizando uma SSP
-de $12\,Gyr$) e um disco jovem (utilizando uma SSP de $3\,Gyr$). Os espectros de
-base para o bojo e o disco podem ser vistos na Figura \ref{fig:testSpectra}.
-Após gerar os cubos de dados de espectros, foi adicionado um ruído gaussiano de
-$10\%$. Executando a decomposição neste cubo de dados simulado, deveria-se
-encontrar valores para os parâmetros próximos aos escolhidos no início. A Figura
-\ref{fig:testParameters} mostra a comparação dos parâmetros obtidos com os
-iniciais. Os valores ajustados (linhas sólidas) estão de acordo com o valor
-inicial, levando em conta o erro injetado nos espectros. É necessário repetir
-este teste com configurações mais complexas, a fim de determinar as limitações
-do método.
+# Converter zonas para imagem.
+at_image = K.zoneToYX(K.at_flux__z, extensive=False)
 
-
-\begin{figure}
-	\includegraphics[width=0.7\columnwidth]{figuras/test-spectra}
-	\caption[Espectros de base para o teste de decomposição] {Espectros de base
-	para o teste de decomposição.}
-	\label{fig:testSpectra}
-\end{figure}
-
-
-\begin{figure}
-	\includegraphics[width=1.0\columnwidth]{figuras/test-parameters}
-	\caption[Parâmetros obtidos com o teste de decomposição] {Parâmetros obtidos
-	com o teste de decomposição. Em tracejado são os parâmetros originais, em
-	linhas sólidas os ajustes. Os parâmetros do bojo estão em vermelho e os do
-	disco em azul. O índice de Sérsic ($n$) foi mantido constante e igual a $4$.}
-	\label{fig:testParameters}
-\end{figure}
-
-A discussão a seguir refere-se à decomposição feita sobre os cubos de dados da
-galáxia UGC 10695 (Figura \ref{fig:decompTarget}). A decomposição foi feita
-utilizando a seguinte configuração:
-
-\begin{figure}
-	\includegraphics[width=0.3\columnwidth]{figuras/K0846}
-	\caption[Montagem RGB da galáxia UGC 10695, do SDSS] {Montagem RGB da galáxia 
-	UGC 10695, do SDSS.}
-	\label{fig:decompTarget}
-\end{figure}
-
-\begin{itemize}
-
-	\item Todos os pixels originais, sem agrupar em zonas de Voronoi.
-
-	\item Espectros sintéticos provenientes de uma síntese executada anteriormente.
-
-	\item Ajuste de todos os parâmetros livres: $I_e$, $r_e$, $n$, $I_0$, $h$ e a
-	geometria da elipse\footnote{A geometria da elipse é definida pelo ângulo de
-	posição ({\em P.A.}) e a elipticidade ($1 - b/a$).}.
-
-	\item Convolução com uma PSF\footnote{{\em Point Spread Function}, a
-	distribuição que representa a forma que uma fonte pontual aparece na imagem.}
-	gaussiana de largura a meia altura de $2,4\,"$, medida numa estrela presente no
-	campo observado.
-
-\end{itemize}
-
-Na Figura \ref{fig:decompParams} pode-se ver os parâmetros obtidos no ajuste
-morfológico. Em comprimentos de onda menores que $4000\,\AA$ o ajuste sai um
-pouco ruidoso, provavelmente devido à má calibração dos espectros do CALIFA
-nesta região. Nas outras regiões os parâmetros tendem a variar suavemente,
-embora haja variações locais próximas às linhas de absorção. Em especial, o
-ângulo de posição do bojo e do disco, e o centro dos dois modelos, são
-praticamente constantes.
-
-A Figura \ref{fig:decompImages} permite uma visualização bidimensional dos
-modelos em $5635\,\AA$, e uma comparação com a imagem original neste comprimento
-de onda. O resíduo é mostrado no painel inferior direito. Ali se observa efeitos
-de borda próximo às regiões externas mascaradas, além de um artefato no núcleo,
-provavelmente devido à forma da PSF. Outra forma de visualizar a qualidade do
-ajuste é através do perfil radial. A Figura \ref{fig:decompRadprof} mostra o
-perfil radial em intervalos de aproximadamente $100\,\AA$. Ali se vê que o disco
-e o bojo estão bem modelados, e que o ajuste é muito bom (o modelo é marcado com
-uma linha preta pontilhada, e a sua maior parte fica sob a linha preta sólida, o
-perfil original).
-
-Os espectros obtidos são geralmente bem comportados. Um exemplo, a $5"$ do
-núcleo, pode ser visto no painel superior da Figura \ref{fig:decompSpectra}.
-O espectro de resíduo apresenta poucos artefatos. Nos painéis inferiores estão
-os parâmetros de intensidade ($I_e$ e $I_0$) e de escala ($r_e$ e $h$), para
-comparação.
-
-\begin{figure}
-	\includegraphics{figuras/decomp-fit-parameters}
-	\caption[Parâmetros morfológicos] {Parâmetros morfológicos obtidos no ajuste
-	de UGC 10695. Nos painéis à esquerda estão os parâmetros para o disco. Nos
-	painéis ao centro, e no painel superior à direita, estãos os parâmetros do
-	bojo. Ainda na coluna da direita há os painéis da posição do centro dos
-	modelos e o $\chi^2$ do ajuste.}
-	\label{fig:decompParams}
+# Desenhar o mapa.
+import matplotlib.pyplot as plt
+plt.imshow(at_image)
+plt.colorbar()
+\end{python}
+	\caption[Programa para desenhar o mapa da idade estelar média] {Programa
+	para desenhar o mapa de idade estelar média ponderada pela luminosidade.}
+	\label{fig:programaMapaIdade}
 \end{figure}
 
 \begin{figure}
-	\includegraphics{figuras/decomp-model-images}
-	\caption[Visualização 2-D da decomposição morfológica] {Visualização 2-D da
-	decomposição morfológica. Nos painéis superiores os modelos de bojo e disco em
-	$5635\,\AA$. No painel inferior à esquerda, a imagem original. No painel
-	inferior à direita, o resíduo do ajuste, normalizado pela imagem original.}
-	\label{fig:decompImages}
+	\includegraphics{figuras/mapa-idade}
+	\caption[Mapa da idade estelar média da galáxia IC 5376] {Mapa de idade estelar
+	média ponderada pela luminosidade da galáxia IC 5376, desenhado pelo programa
+	da Figura \ref{fig:programaMapaIdade}.}
+	\label{fig:mapaIdade}
+\end{figure}
+
+Enquanto um mapa é uma forma muito boa de visualizar informações em duas
+dimensões, há vezes em que uma visualização resumida é mais adequada. Galáxias
+em geral têm simetria aproximadamente axial, logo poder medir perfil radial das
+propriedades das galáxias é fundamental para estudá-las. Com PyCASSO, o cálculo
+do perfil radial é bastante simples, como pode ser visto no programa na Figura
+\ref{fig:programaRadprofIdade}, que calcula o perfil radial da idade estelar
+média. O resultado está na Figura \ref{fig:radprofIdade}.
+
+\begin{figure}
+\begin{python}
+# Carregar arquivo FITS com os dados.
+from pycasso import fitsQ3DataCube
+K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
+
+# Converter zonas para imagem.
+at_image = K.zoneToYX(K.at_flux__z, extensive=False)
+
+# Calcular o perfil radial.
+bins = np.arange(0, 26, 1)
+bin_center = (bins[1:] + bins[:-1]) / 2.0
+at_rad = K.radialProfile(at_image, bins, rad_scale=1.0)
+
+# Desenhar o perfil radial.
+import matplotlib.pyplot as plt
+plt.plot(bin_center, at_rad)
+\end{python}
+	\caption[Programa para desenhar o perfil radial da idade estelar] {Programa
+	para desenhar o perfil radial da idade estelar média ponderada pela
+	luminosidade.}
+	\label{fig:programaRadprofIdade}
 \end{figure}
 
 \begin{figure}
-	\includegraphics{figuras/decomp-radial-profile}
-	\caption[Perfis radias da decomposição em função do comprimento de onda]
-	{Perfis radias da decomposição em função do comprimento de onda.}
-	\label{fig:decompRadprof}
+	\includegraphics{figuras/radprof-idade}
+	\caption[Perfil radial da idade estelar média da galáxia IC 5376] {Perfil
+	radial da idade estelar média ponderada pela luminosidade da galáxia IC
+	5376, desenhado pelo programa da Figura \ref{fig:programaRadprofIdade}.}
+	\label{fig:radprofIdade}
 \end{figure}
+
+Esta é só uma pequena demonstração das ferramentas existentes no PyCASSO. Também
+é possível trabalhar com espectros, calcular perfis azimutais, lidar com pixels
+mascarados, entre outras coisas. Tudo isto está descrito em detalhes no manual
+do programa (Apêndice \ref{apendice:manual}).
+
+
+%***************************************************************%
+%                                                               %
+%                      PyCASSO - Artigos                        %
+%                                                               %
+%***************************************************************%
+
+\section{Artigos publicados}
+\label{sec:pycasso:art}
+
+Nesta seção discute-se os artigos onde se utilizou PyCASSO, e o autor teve uma
+colaboração importante. Além destes artigos, \citet{Husemann2013}, no artigo
+apresentando o primeiro {\em data release}, utiliza as massas estelares
+determinadas pelo \starlight e disponibilizadas pelo PyCASSO.
+
+
+%***************************************************************%
+%                                                               %
+%       PyCASSO - Resolving galaxies in Space and Time I        %
+%                                                               %
+%***************************************************************%
+
+\subsection{Artigo: {\em Resolving galaxies in time and space. I. Applying
+STARLIGHT to CALIFA datacubes}}
+\label{sec:pycasso:art:Resolving1}
+
+Este artigo por \citet{CidFernandes2013a} descreve todo o processo de síntese
+espectral dos cubos de dados do CALIFA, mencionados no Capítulo \ref{sec:intro},
+e serve como uma demonstração da capacidade do PyCASSO. O artigo está
+reproduzido na íntegra no Apêndice \ref{apendice:PaperResolving1}. O
+preprocessamento dos cubos de espectros é feito através do programa QBICK,
+desenvolvido por Rubén Garcia Benito especialmente para o CALIFA, mas é
+genérico o bastante para ser usado em outros cubos de dados. Após explicar em
+detalhes todos os passos envolvidos desde o preprocessamento, passando pela
+descrição do \starlight até a importação dos dados pelo PyCASSO, o artigo
+apresenta um caso de estudo com a galáxia NGC 2916.
 
 \begin{figure}
-	\includegraphics{figuras/decomp-model-quality}
-	\caption[Espectro decomposto a $5"$ do núcleo] {Espectro decomposto a $5"$ do
-	núcleo.}
-	\label{fig:decompSpectra}
+	\includegraphics{figuras/L-M-AV-K0277}
+	\caption[Propriedades físicas espacialmente resolvidas para a galáxia NGC
+	2916] {Propriedades físicas espacialmente resolvidas para a galáxia NGC 2916. (a)
+	Luminosidade em $5635\,\AA$ por unidade de área. (b) Atenuação por poeira na
+	banda $V$. (c) Luminosidade em $5635\,\AA$ por unidade de área, corrigido de
+	extinção. (d) Desidade superficial de massa estelar. Retirado de
+	\cite[figura 4]{CidFernandes2013a}, Apêndice \ref{apendice:PaperResolving1}.}
+	\label{fig:LMAVMap}
 \end{figure}
 
-Os cubos espectrais resultantes para bojo e disco foram passados pelo \starlight
-como se fossem galáxias separadas, resultando em dois cubos de síntese extras
-para a galáxia UGC 10695. O perfil radial de algumas propriedades físicas são
-mostradas na Figura \ref{fig:decompSynRadprof}. O perfil de densidade
-superficial de massa estelar é semelhante ao perfil de luminosidade, porém com
-um bojo mais acentuado. Isto sugere um bojo velho (com maior razão
-massa/luminosidade) e massivo. Como o bojo domina em luz e massa nas regiões
-centrais, também é de se esperar que as propriedades pesadas por massa e luz
-(idade e metalicidade) da galáxia original sejam mais próximas do valor do bojo
-nesta região. O mesmo ocorre nas regiões externas, onde o disco domina, as
-propriedades da galáxia refletem os valores do disco. Ou seja, o resultado é
-consistente.
-A interpretação do perfil radial de $A_V$ requer um pouco mais de cuidado. Em
-geral se esperaria que o disco contivesse mais poeira do que o bojo.
-Entretanto, uma inspeção visual na Figura \ref{fig:decompTarget} mostra
-estruturas como anéis concêntricos, o que pode indicar que a galáxia está
-sofrendo ou sofreu interação (a pequena galáxia a nordeste na imagem pode ser o
-culpado). Neste caso é possível que a poeira não esteja distribuída como
-normalmente se espera, mas isto é apenas especulação.
-
-O histórico de formação estelar é mostrado na Figura \ref{fig:decompSynSfh}.
-Aqui se vê um bojo (painel central) sendo formado por um surto de formação
-estelar antigo e concentrado, com um episódio de formação estelar recente. Isto
-é consistente com um cenário de interação. O disco se constrói de forma mais ou
-menos uniforme até menos de $10^9$ anos atrás, porem não apresenta formação
-estelar recente significativa na mesma época que o bojo.
 
 \begin{figure}
-	\includegraphics{figuras/decomp-at-aZ-AV-mu}
-	\caption[Perfil radial das propriedades do bojo, disco, e total] {Perfil
-	radial das propriedades físicas do bojo (vermelho), disco (azul), e original
-	(preto). (cima, esquerda) Idade estelar média ponderada pela luminosidade.
-	(baixo, esquerda) Metalicidade estelar média ponderada pela massa estelar.
-	(cima, direita) Atenuação por poeira, na banda $V$. (baixo, direita) Desidade
-	superficial de massa estelar. O Bojo vai somente até $12"$, que corresponde a
-	$3\,R_{50}$.}
-	\label{fig:decompSynRadprof}
+	\includegraphics{figuras/at-aZ-K0277}
+	\caption[Idade estelar e metalidade espacialmente resolvidas para a
+	galáxia NGC 2916] {Idade e metalicidade estelar média, espacialmente
+	resolvidas, para a galáxia NGC 2916. (a) Idade estelar média pesada pela
+	luminosidade. (b) metalicidade estelar média pesada pela luminosidade.
+	(c) Idade estelar média pesada pela massa. (d) metalicidade estelar
+	média pesada pela massa. Retirado de
+	\cite[figura 6]{CidFernandes2013a}, Apêndice \ref{apendice:PaperResolving1}.}
+	\label{fig:ataZMap}
 \end{figure}
+
+% TODO: corrigir largura
+\begin{figure}
+	\includegraphics[width=1.0\columnwidth]{figuras/L-M-SFR-K0277}
+	\caption[Diagramas $R \times t$ para luz, massa e SFR] {Diagramas $R \times t$
+	para luz, massa e taxa de formação estelar (SFR). (a) Luminosidade em
+	$5635\,\AA$ por unidade de área.  (b) Massa transformada em estrelas por
+	unidade de área. (c) Taxa de formação estelar por unidade de área. A linha
+	sólida representa o gráfico colapsado na direção vertical, apenas para ilustrar
+	a variação temporal das quantidades mapeadas. Retirado de
+	\cite[figura 12]{CidFernandes2013a}, Apêndice \ref{apendice:PaperResolving1}.}
+	\label{fig:LMSFR2D}
+\end{figure}
+
+As Figuras \ref{fig:LMAVMap} e \ref{fig:ataZMap} mostram mapas de propriedades
+físicas obtidas pela síntese espectral. Propriedades como a massa (Figura
+\ref{fig:LMAVMap}d) e luminosidade (Figuras \ref{fig:LMAVMap}a e
+\ref{fig:LMAVMap}c) são quantidades extensivas, e são proporcionais à escala. Já
+a atenuação por poeira (Figura \ref{fig:LMAVMap}b), idade e metalicidade estelar
+são quantidades intensivas, independentes de escala. Na prática isto significa
+que as quantidades extensivas podem ser divididas entre os pixels que compõem
+uma zona, enquanto as intensivas são uma propriedade comum à todos os pixels
+desta zona. Esta diferença pode ser notada nas zonas mais externas dos mapas,
+onde aparecem platôs na quantidades intensivas. As quantidades extensivas passam
+por um processo apelidado de ``dezonificação''\fixme, descrito na Seção
+\ref{sec:pycasso:Pycasso}.
+
+Um dos desafios de se trabalhar com cubos multidimensionais é como visualizar
+esta informação. Uma alternativa é comprimir determinadas dimensões. Para
+ilustrar esta capacidade do PyCASSO, a Figura \ref{fig:LMSFR2D} mostra diagramas
+de luz, massa e taxa de formação estelar (SFR) em função do tempo, onde as
+dimensões $x$ e $y$ foram transformadas em distância radial. Diagramas como
+este, junto com perfis 1-D radiais e temporais ajudam a visualizar e interpretar
+o resultado da síntese espectral, oferecendo novas ferramentas para estudar a
+estrutura e evolução de galáxias.
+
+
+%***************************************************************%
+%                                                               %
+%       PyCASSO - Resolving galaxies in Space and Time II       %
+%                                                               %
+%***************************************************************%
+
+\subsection{Artigo: {\em Resolving galaxies in time and space: II: Uncertainties
+in the spectral synthesis of datacubes}}
+\label{sec:pycasso:art:Resolving2}
+
+Uma crítica bastante comum aos métodos de ajuste é que eles não provêm a
+incerteza associada aos valores ajustados. A forma mais simples de determinar
+esta incerteza é refazer o ajuste várias vezes, perturbando as medidas
+reproduzindo de forma realista os erros. Este artigo por
+\citet{CidFernandes2013b} investiga a incerteza nos ajustes feitos no artigo
+discutido na seção anterior. O artigo está reproduzido na íntegra no Apêndice
+\ref{apendice:PaperResolving2}.
+
+Quando se injeta erros aleatórios, obtém-se incertezas de $\sim
+0.08\,\mathrm{dex}$ em idades e metalicidades pesadas pela luminosidade, e de
+$\sim 0.15\,\mathrm{dex}$ quando pesadas pela massa. A massa estelar teve uma
+incerteza de $\sim 0.08\,\mathrm{dex}$, e $A_V$ de $\sim 0.06\,\mathrm{mag}$.
+Injetando erros sistemáticos em cor\footnote{Adicionando componentes lineares em
+comprimento de onda, a fim de emular uma má calibração de fluxo.} os erros são
+similares, exceto para $A_V$, que recebe um desvio sistemático de
+$+0.05\,\mathrm{mag}$ e um erro de $\sim 0.16\,\mathrm{mag}$.
 
 \begin{figure}
-	\includegraphics{figuras/decomp-sfh}
-	\caption[Histórico de formação estelar do bojo, disco, e total] {Histórico de
-	formação estelar da galáxia original (cima), bojo (meio) e disco (baixo). Os
-	gráficos mostram quanta massa por unidade de área foi transformada em estrelas,
-	em cada {\em bin} de raio e idade. O Bojo vai somente até $12"$, que
-	corresponde a $3\,R_{50}$.}
-	\label{fig:decompSynSfh}
+	\includegraphics[width=1.0\columnwidth]{figuras/resolving2}
+	\caption[Incerteza nos perfis radiais] {Incerteza nos perfis radiais de
+	algumas propriedades. (a) Luminosidade superficial a $5635\,\AA$, corrigida de
+	extinção. (b) Densidade superficial de massa. (c) Atenuação na banda $V$. (d)
+	Taxa de formação estelar (últimos $140\, \mathrm{Myr}$) por unidade de área.
+	(e) Idade estelar média ponderada pela luminosidade. (f) Idade estelar média
+	ponderada pela massa. (g) Metalicidade estelar média ponderada pela
+	luminosidade. (h) Metalicidade estelar média ponderada pela massa. As
+	linhas em preto marcam a solução original. Em faixas azuis e vermelhas, as
+	distribuições das realizações com ruído aleatório, e sistemático em cor,
+	respectivamente. A diferença entre as simulações e o original está desenhada
+	abaixo de cada painel, com o zero marcado pela linha tracejada. Retirado de
+	\cite[figura 4]{CidFernandes2013b}, Apêndice \ref{apendice:PaperResolving2}.}
+	\label{fig:incertRad}
 \end{figure}
 
-Através da decomposição morfológica realizada neste trabalho, foram obtidos
-cubos de síntese espectral para o bojo e o disco de uma galáxia. As propriedades
-físicas destas componentes são a grosso modo compatíveis com o que se espera de
-um bojo e um disco. É preciso levar em conta, entretanto, que estes são resultados
-preliminares. Testes similares aos apresentados anteriormente, com simulações de
-galáxias com histórico de formação estelar mais realistas são fundamentais para
-determinar a confiabilidade do método.
+Embora haja uma incerteza considerável analisando-se as propriedades da galáxia
+pixel a pixel, os perfis radiais em geral são bastante robustos. Propriedades
+diretas como a luminosidade, massa, idade e metalicidade estelar, quando vistas
+em perfil radial (Figura \ref{fig:incertRad}) mantém o mesmo formato com pouca
+dispersão, exceto nas regiões mais afastadas do núcleo, onde há poucas zonas. Na
+verdade, qualquer forma de média espacial que envolva pixels (ou zonas)
+suficientes deverá levar a uma diminuição na incerteza.
+
+% FIXME: corrigir largura da figura
+\begin{figure}
+	\includegraphics[width=1.0\columnwidth]{figuras/resolving2-base}
+	\caption[Comparação dos ajustes com bases de SSP diferentes]
+	{Comparação de propriedades obtidas com o ajuste utilizando as bases
+	GM (eixo vertical) CB (eixo horizontal). Os painéis superiores mostram um
+	histograma 2-D com contornos para propriedades de cada pixel de 107 galáxias do
+	CALIFA. Da esquerda para a direita: idade estelar ponderada pela luminosidade,
+	metalicidade estelar ponderada pela massa, atenuação na banda $V$, massa
+	estelar inicial. Os painéis inferiores mostram a distribuição das mesmas
+	propriedades, porém calculadas para o espectro integradas das galáxias.
+	Retirado de \cite[figura 9]{CidFernandes2013b}, Apêndice
+	\ref{apendice:PaperResolving2}.}
+	\label{fig:incertRad-base}
+\end{figure}
+
+O artigo também explora os efeitos da escolha da base de SSPs nos resultados do
+ajuste. Em geral, bases diferentes levam a resultados consistentes.
+Pode-se ver na Figura \ref{fig:incertRad-base} que a idade estelar
+média ponderada pela luminosidade, a atenuação e a massa estelar inicial
+têm uma concordância muito boa entre as bases. As metalicidades médias mostram
+uma correlação, mas com uma dispersão muito grande, certamente devido a
+diferenças nas trajetórias evolucionárias dos modelos, poucos valores
+de metalicidade na base, e diferenças na metalicidade máxima da base. A
+incerteza nestas propriedades mencionadas acima é cerca de $2$ vezes maior do
+que as calculadas adicionando ruído aleatório. Claramente a escolha de uma base
+adequada é de grande importância para a análise.
 
 
-%% End of this chapter
+%***************************************************************%
+%                                                               %
+%                 PyCASSO - Inside-out growth                   %
+%                                                               %
+%***************************************************************%
+
+\subsection{Artigo: {\em The Evolution of Galaxies Resolved in Space and Time: A
+View of Inside-out Growth from the CALIFA Survey}}
+\label{sec:pycasso:art:InsideOut}
+
+Em \citet{Perez2013} se estuda o crescimento de dentro para fora de $105$
+galáxias do CALIFA. O estudo se baseia na síntese espectral com o \starlight, e
+segue exatamente a mesma prescrição de \citet{CidFernandes2013a}, descrita na
+Seção \ref{sec:pycasso:art:Resolving1}. O artigo está reproduzido na íntegra no
+Apêndice \ref{apendice:InsideOut}.
+
+Galáxias vêm em todos os tamanhos. Para determinar o crescimento, as distâncias
+são normalizadas em utilizando o raio onde a luminosidade cumulativa (em
+$5635\,\AA$) alcança $50\%$ da luminosidade total da galáxia, denominado
+$R_{50}$. As galáxias da amostra são separadas em {\em bins} com $15$ galáxias
+cada, segundo a sua massa. O crescimento em massa em função do tempo é calculado
+para cada pixel de cada galáxia e somado em cada {\em bin} de massa.
+
+\begin{figure}
+	\includegraphics{figuras/inside-out}
+	\caption[Crescimento da massa estelar de galáxias de dentro para fora]
+	{Crescimento de massa estelar de dentro para fora. As $105$ galáxias foram
+	separadas em grupos de 15, em massa, formando os {\em bins} do eixo vertical.
+	Os painéis mostram o crescimento da massa em escala de cinza, normalizado, em
+	função do tempo e da massa das galáxias. O contorno em preto marca $80\%$. Da
+	direita para a esquerda se vê as regiões em raio $r < 0,1\,R_{50}$, $0,1 < r
+	\leq 0,5\,R_{50}$, $0,5 < r \leq 1\,R_{50}$ e $r > 1\,R_{50}$. Para
+	facilitar a visualização da forma da variação temporal, as linhas azuis, verdes
+	e vermelhas em cada painel mostram um corte horizontal nos {\em bins} inferior,
+	intermediário e superior, com escala de $0$ a $1$. Retirado de \cite[figura
+	9]{Perez2013}, Apêndice \ref{apendice:InsideOut}.}
+	\label{fig:insideOut}
+\end{figure}
+
+A Figura \ref{fig:insideOut} ilustra o crescimento de massa em anéis crescentes
+em raio ($0,1\,R_{50}$, $0,5\,R_{50}$, $1\,R_{50}$ e $>1\,R_{50}$.). Em cada
+painel, o tempo passa da direita para a esquerda, e a massa estelar,
+normalizada, cresce desde zero (direita, em preto) até $1$ (esquerda, em
+branco). Se vê claramente que galáxias menos massivas, na parte inferior dos
+{\em bins}, têm um crescimento gradual mais ou menos constante em todos os
+raios. As galáxias mais massivas, a parte superior dos {\em bins}, apresentam um
+crescimento muito rápido nas regiões centrais, enquanto as regiões externas
+crescem mais gradualmente. As linhas azul, verde e vermelha, em cada painel,
+representam cortes horizontais no {\em bin} de mais baixa massa, no
+intermediário e no de mais alta massa, respectivamente, para facilitar a
+visualização. A mudança de regime ocorre em $\log M\star = 10,83$, ou seja, uma
+massa de $\sim 7\times10^{10}\,M_\odot$. O autor cita vários estudos que indicam
+esta faixa como uma ``massa especial'', onde a taxa de formação estelar alcança
+valores altos muito rapidamente. De qualquer forma, esta é uma evidência
+observacional de algo que já se suspeita há muito tempo:
+que as galáxias massivas se formaram de dentro para fora.
+
+
+%***************************************************************%
+%                                                               %
+%                 PyCASSO - Radial structures                   %
+%                                                               %
+%***************************************************************%
+
+\subsection{Artigo: {\em The star formation history of CALIFA galaxies: Radial
+structures}}
+\label{sec:pycasso:art:RadStruct}
+
+O artigo por \citet{GonzalezDelgado2013} faz um estudo detalhado da estrutura
+radial de diversas propriedades de $107$ galáxias do CALIFA. O artigo está
+reproduzido na íntegra no Apêndice \ref{apendice:RadStruct}.
+Um dos resultados mais importantes é que a densidade superficial de massa
+estelar e idade estelar média ponderada por luminosidade, medidas a $1\,R_{50}$,
+são representativos das médias da galáxia como um todo. A Figura
+\ref{fig:radStruct1} mostra a correlação entre os valores em três raios
+distintos e o global para a idade estelar média ponderada pela luminosidade
+(esquerda) e a densidade superficial de massa estelar (centro). Valores a
+$1\,R_{50}$, marcado como HLR ({\em Half Light Radius}) nas figuras, coincidem
+em geral com a média global da galáxia.
+Ainda na mesma figura pode-se ver a correlação entre a densidade superficial de
+massa estelar média da galáxia e a massa estelar total da galáxia. Este
+resultado está de acordo com \citet{Kauffmann2003}, usando a amostra do SDSS.
+
+\begin{figure}
+	\includegraphics[width=1.0\columnwidth]{figuras/radstruct-01}
+	\caption[Correlação entre idade, desidade superficial e massa estelar total]
+	{(esquerda) Correlação entre a idade estelar média ponderada pela luminosidade
+	em $1\,R_{50}$ (círculos cinza), $0,1\,R_{50}$ (cruzes azuis), $2\,R_{50}$
+	(cruzes vermelhas) e a média da galáxia. Pontos em preto marcam galáxias
+	esferoidais, com $C \geq 2,8$. (centro) O mesmo gráfico para a densidade
+	superficial de massa estelar. (direita) Correlação entre a densidade
+	superficial de massa média da galáxia e a massa estelar total da galáxia. As
+	linhas tracejadas mostram o ajuste linear total (preto), apenas discos (azul),
+	e apenas para esferoidais (vermelho).  Retirado de \cite[figura
+	6]{GonzalezDelgado2013}, Apêndice \ref{apendice:RadStruct}.}
+	\label{fig:radStruct1}
+\end{figure}
+
+O raio contendo metade da massa estelar (HMR, {\em Half Mass Radius}) é em média
+20\% menor que $R_{50}$ (HLR). A razão entre HMR e HLR tem correlação com a
+massa total da galáxia e o tipo morfológico. Na Figura \ref{fig:radStruct2}
+pode-se ver que a relação HMR/HLR diminui com a massa estelar para galáxias com
+massa menor que $10^{11}\,M_\odot$, enquanto permanece constante para galáxias
+mais massivas. Um comportamento similar ocorre com o tipo morfológico:
+em galáxias com disco a relação HMR/HLR diminui com a massa, e em galáxias
+esferoidais a relação é aproximadamente constante.
+
+\begin{figure}
+	\includegraphics{figuras/radstruct-02}
+	\caption[Relação entre $a^M_{50}/a^L_{50}$ e a massa estelar total]
+	{Relação entre $a^M_{50}/a^L_{50}$ e a massa estelar total. A cor dos
+	pontos reflete a idade estelar média ponderada pela luminosidade, em $0,5\,a^L_{50}$.
+	Galáxias com índice de concentração $C \geq 2,8$ estão marcadas com uma cruz. A
+	linha azul mostra o ajuste linear para galáxias com massa estelar Retirado de
+	\cite[figura 10]{GonzalezDelgado2013}, Apêndice
+	\ref{apendice:RadStruct}.}
+	\label{fig:radStruct2}
+\end{figure}
+
+Para galáxias esferoidais, o gradiente de idade depende mais da massa estelar
+total da galáxia do que da densidade superficial de massa estelar, que, conforme
+o painel inferior esquerdo da Figura \ref{fig:radStruct3}, é aproximadamente
+constante. A massa total da galáxia é a propriedade mais fundamental para
+galáxias esferoidais, enquanto a densidade superficial de massa é mais
+importante para as galáxias com disco.
+
+
+\begin{figure}
+	\includegraphics[width=0.8\columnwidth]{figuras/radstruct-03}
+	\caption[Perfis radiais para vários {\em bins} de massa estelar.]
+	{Perfis radiais da densidade superficial de massa estelar (esquerda) e idade
+	estelar média ponderada pela luminosidade (direita), para {\em bins} de
+	massa estelar contendo 15 galáxias cada. (cima) Todas as galáxias. Os {\em
+	bins} em massa estão codificados em cores. (meio) Galáxias dominadas por
+	disco. (baixo) Galáxias esferoidais ($C \geq 2,8$). Retirado de \cite[figura
+	13]{GonzalezDelgado2013}, Apêndice \ref{apendice:RadStruct}.}
+	\label{fig:radStruct3}
+\end{figure}
+
+
+% End of this chapter
