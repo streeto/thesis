@@ -15,7 +15,7 @@
 %                                                               %
 %***************************************************************%
 
-\chapter{IFS + CALIFA}
+\chapter{Síntese de populações estelares em espectroscopia de campo integral}
 \label{sec:ifs}
 
 %***************************************************************%
@@ -24,8 +24,264 @@
 %                                                               %
 %***************************************************************%
 
-\section{Section 1}
+\section{O {\em survey} CALIFA}
 
-TODO.
+O {\em Centro Astronómico Hispano Alemán} (CAHA) se localiza na {\em Sierra de
+los Filabres}, na Comunidade Autônoma de Andaluzia, Espanha. Ele é operado pelo
+{\em Max-Planck-Institut für Astronomie} (MPIA), em Heidelberg, Alemanha, e pelo
+{\em Instituto de Astrofísica de Andalucía} (IAA/CSIC), em Granada, Espanha. O
+{\em survey} CALIFA foi agraciado com 210 noites pelo Comitê Executivo do Calar
+Alto, espalhadas por 6 semestres, iniciando em junho de 2010. O instrumento
+utilizado foi a Unidade de Campo Integral PPAK\footnote{\TODO PPAK footnote}
+\citep{Kelz2006}, do Espectrógrafo PMAS\footnote{\TODO PMAS footnote}
+\citep{Roth2005, Roth2010}, no telescópio de $3,5\,\mathrm{m}$ do CAHA.
+
+A intenção do {\em survey} é caracterizar a população local de galáxias, que
+pode ser resumida nos seguintes aspectos científicos principais
+\citep{Sanchez2012}:
+\begin{itemize}
+  \item Amostra cobrindo uma fração substancial da função de luminosidade.
+  \item Amostra grande o suficiente para obter conclusões com uma estatística
+  significativa para todas as classes de galáxias do survey.
+  \item Caracterização das galáxias sobre toda a sua extensão, evitando bias de
+  abertura.
+  \item Medição de mecanismos de ionização do gás: formação estelar, choques,
+  AGN.
+  \item Medição de abundâncias de gases de oxigênio e nitrogênio.
+  \item Medição de de propriedades de populações estelares: idades, razões
+  massa-luminosidade, metalicidades e (de forma limitada) padrões de
+  abundâncias.
+  \item Medição de cinemática galática em gás es estrelas, campos de velocidade
+  para todas as galáxias e dispersão de velocidades para as mais massivas.
+\end{itemize}
+A arquitetura do {\em survey} foi então desenhada levando em conta os
+requerimentos acima, junto com as limitações instrumentais e de tempo
+disponível. Ela está descrita nas seções a seguir.
+
+\subsection{Instrumentação}
+\label{sec:ifs:instrumentacao}
+
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
+	\caption[Esquema do instrumento PMAS/PPAK.]
+	{\TODO: Esquema do instrumento PMAS/PPAK, de \citet{Kelz2006}.}
+	\label{fig:PPAK}
+\end{figure}
+
+O PMAS/PPAK é atualmente\fixme(checar isso) o instrumento deste tipo com o maior
+tamanho de campo, $>1\,\mathrm{arcmin}^2$. Ele consiste em um maço de 331 fibras
+ópticas cobrindo o campo de observação, direcionado a um espectrógrafo de fenda
+longa que espalha a luz sobre um detector CCD\footnote{\TODO footnote CCD}. A
+Figura \ref{fig:PPAK} ilustra a montagem esquemática do instrumento.
+Desta forma, de cada fibra se obtém um espectro. Através de um programa de
+computador, os espectros podem ser reorganizados de modo a formar um cubo de
+dados, onde há duas dimensões espaciais e uma dimensão espectral. Todavia,
+pode-se notar na Figura \ref{fig:PPAK} que as fibras não cobrem totalmente o
+campo de observação. Na verdade, apenas em torno de 60\% da luz proveniente do
+campo cai dentro das fibras. O restante se perde nos espaços entre elas. Para
+mitigar este problema, observa-se o campo várias vezes, deslocando o telescópio
+uma fração de {em spaxel} em diversas direções, e reconstruindo o cubo de dados
+utilizando uma técnica é chamada {\em dithering}.
+
+A estratégia inicial do {\em survey} foi observar todos os objetos utilizando
+duas configurações diferentes e complementares do instrumento. A primeira,
+utilizando a grade de difração V500, com resolução $\Delta \lambda / \lambda
+\approx 850$ em $\lambda = 5000\,\angstrom$ e uma largura a meia altura
+$\mathrm{FWHM} \approx 6\,\angstrom$, cobre a maior faixa espectral possível,
+tal que as linhas \OII e \SII sejam observadas para todos os objetos da amostra.
+A segunda, utilizando a grade de difração V1200, com resolução $\Delta \lambda /
+\lambda \approx 1650$ em $\lambda = 4500\,\angstrom$ e uma largura a meia altura
+$\mathrm{FWHM} \approx 2,7\,\angstrom$, cobrindo a faixa azul do espectro,
+incluindo a descontinuidade de Balmer ($\approx 4000$--$4400\,\angstrom$),
+\Hdelta, \Hgamma e \OIII4363. Estas duas configurações são chamadas daqui em
+diante de V500 e V1200 respectivamente. \TODO Vignetting, COMBO.
+
+\subsection{Amostra}
+
+A amostra obtida pelo CALIFA deve satisfazer os requerimentos científicos
+descritos anteriormente, levando em conta as limitações técnicas e
+instrumentais. Assim, uma amostra foi inicialmente selecionada a partir do
+catálogo DR7 do \SDSS \citep{Abazajian2009}, garantindo a disponibilidade de
+imagens de boa qualidade em bandas múltiplas bandas espectrais, e em muitos
+casos, espectros nucleares. Sobre esta amostra inicial foram feitos cortes
+referentes ao tamanho aparente e o {\em redshift} da galáxia. O tamanho aparente
+da galáxia deve ser compatível com o instrumento, escolheu-se limitar a amostra
+em diâmetro isofotal\fixme(o que é $D_{25}?$), tal que $45" < D_{25} < 80"$ na
+banda $r$ do \SDSS. O {\em redshift} deve ser $0,005 < z < 0,03$. O resultado é
+uma amostra de 939 galáxias, denominada {\em amostra mãe}, descrita e estudada
+em detalhes por \citet{Walcher2014}. O conteúdo da amostra, junto com tabelas
+auxiliares, está disponível no {\em website} do
+CALIFA\footnote{\url{http://www.caha.es/CALIFA/}}. A amostra final observada
+deve conter aproximadamente $2/3$ da amostra mãe, em torno de 600 galáxias, a
+serem selecionadas conforme a visibilidade, num padrão quase aleatório.
+
+\TODO falar da Figura \ref{fig:CALIFASample}.
+
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
+	\caption[Caracterização da amostra do CALIFA.]
+	{\TODO: Caracterização da amostra do CALIFA. CMD e mapa do céu de
+	\citet{Sanchez2012}.}
+	\label{fig:CALIFASample}
+\end{figure}
+
+\subsection{{\em Data Releases}}
+
+A primeira liberação pública de dados (em inglês, {\em data release}),
+denominado DR1 \citep{Husemann2013}, ocorreu em outubro de 2013\fixme. Foram
+escolhidas 100 galáxias nas duas configurações, V500 e V1200, que passaram por
+um controle de qualidade do {\em survey}, num total de 200 cubos de dados. As
+características da amostra do DR1 reproduzem bem as da amostra mãe, dentro do
+que é esperado estatisticamente para uma amostra menor. Massas derivadas da
+síntese de populações estelares foram usadas para caracterizar a amostra do DR1,
+como pode ser visto no painel superior da Figura \ref{fig:DRMass}.
+
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
+	\caption[Distribuição de massa das galáxias (CALIFA DR1 e DR2).]
+	{\TODO: Distribuição de massa das galáxias no DR1 e no DR2 do CALIFA.
+	Reproduzido dos artigos de apresentação do DR1 \citep[figura 6]{Husemann2013}
+	e DR2 \citep[figura 7]{GarciaBenito2015}.}
+	\label{fig:DRMass}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
+	\caption[Caracterização da PSF do CALIFA DR2.]
+	{\TODO: Caracterização da PSF do CALIFA DR2.
+	Reproduzido do artigos de apresentação do DR2 \citep[figura
+	13]{GarciaBenito2015}.}
+	\label{fig:DR2PSF}
+\end{figure}
+
+O {\em data release} seguinte, DR2 \citep{GarciaBenito2015}, dobra a quantidade
+de cubos de dados, com 200 galáxias nas duas configurações. Todos os cubos de
+dados do DR2 foram reduzidos com uma versão aprimorada do {\em pipeline}\fixme,
+apresentando melhor calibração espectrofotométrica\fixme, registro de imagem e
+resolução espacial. Da mesma forma que para o DR1, a massa das galáxias
+derivadas de síntese de populações estelares foi utilizada para caracterizar a
+amostra do DR2 (painel inferior da Figura \ref{fig:DRMass}). A
+PSF\footnote{\TODO PSF footnote} típica dos cubos de dados (Figura
+\ref{fig:DR2PSF}) do {\em survey} foi determinada utilizando as mesmas técnicas
+de ajuste de imagem apresentadas no Capítulo \ref{sec:Decomp}. Mais detalhes
+sobre a medição da PSF no Capítulo \ref{sec:psf}.
+
+\TODO Encerramento do survey, data release final.
+
+\section{Síntese de população estelar}
+
+\subsection{QBICK}
+
+O programa, desenvolvido por Rubén García Benito para fazer o mascaramento e
+tesselagem dos cubos de dados descrito a seguir, foi chamado de QBICK. Para mais
+detalhes sobre o processo completo, ver o artigo por \citet{CidFernandes2013a},
+disponível no Apêndice \ref{apendice:PaperResolving1}.
+
+É preciso preparar os espectros para passarem pelo \starlight. Isto envolve
+principalmente remover medidas não confiáveis, além de deixar todos os espectros
+e cubos de dados num formato comum, para executar o \starlight em modo {\em
+pipeline}. Antes de tudo, todos os {\em spaxels} que contêm luz não proveniente
+da galáxia, como estrelas de campo ou galáxias de fundo, foram mascarados.
+Também foram mascarados artefatos da observação e regioes de baixo sinal-ruído.
+Este é um procedimento quase artesanal, e necessita de um bom par de vistas
+humanas bem treinadas. Para um {\em survey} do porte do CALIFA, com cerca de 600
+galáxias, isto ainda é factível. Após o mascaramento espacial, foram mascaradas
+as linhas espectrais causadas pela atmosfera terrestre. Os espectros foram em
+seguida postos no referencial de repouso utilizando o {\em redshift} obtido pela
+{\em pipeline}, medido nos $5"$ centrais da galáxia. Foi escolhida uma janela
+espectral de $5590$ a $5680\,\angstrom$ para fazer a medida do sinal-ruído dos
+espectros. Espectros com sinal-ruído baixo, em geral nas regiões menos
+brilhantes da galáxia, podem gerar resultados espúrios no \starlight. Estes
+espectros foram combinados de modo a obter um melhor sinal-ruído utilizando uma
+técnica conhecida como de tesselagem de Voronoi. Foi escolhido um sinal-ruído de
+20 como alvo para o agrupamento dos spaxels. O código utilizado para a
+tesselagem de Voronoi foi implementado por \citet{Cappellari2003} e modificado
+para levar em conta erros correlacionados.
+
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
+	\caption[Exemplo de saída do QBICK.]
+	{\TODO: Exemplo de saída do QBICK.}
+	\label{fig:QBICK}
+\end{figure}
+
+\subsection{\starlight}
+
+O \starlight é um código de síntese espectral desenvolvido por
+\citet{CidFernandes2005}. Nele, o espectro observado de uma galáxia é modelado
+como uma combinação linear de espectros de uma base, um modelo de atenuação por
+poeira, e efeitos conemáticos ({\em redshift} e dispersão gaussiana de
+velocidades). Esta base em geral é composta de uma biblioteca de populações
+estelares simples (SSP\footnote{Uma SSP consiste num conjunto de estrelas
+formadas ao mesmo tempo com a mesma metalicidade.}), formando uma grade de
+idades e metalicidades. O \starlight busca neste espaço de parâmetros (que pode
+ser imenso, com quase 300 dimensões no caso do presente estudo) qual conjunto de
+frações de luz, atenuação e cinemática que melhor ajustam o espectro observado,
+que toma a forma
+\begin{equation*}
+F^{\mathrm{modelo}}_\lambda = \sum_{j=1}^{N_\star} x_j F^\star_\lambda(t_j,Z_j)
+g_\lambda(A_{V,j}).
+\end{equation*}
+Nesta equação, $F^{\mathrm{modelo}}_\lambda$ é o fluxo em cada comprimento de
+onda. Os $N_\star$ espectros de base $F^\star_\lambda(t_j, Z_j)$, com $t_j$ e
+$Z_j$ representando respectivamente a idade e a metalicidade do elemento de
+base, são somados com pesos $x_i$. O conjunto $\{x_j, i=1,2,\ldots,N_\star\}$
+é chamado {\em vetor de população} ($\vec{x}$)para a galáxia considerada. O
+termo $g_\lambda$ corrige o espectro pelo efeito de atenuação interestelar, que
+pode ser por exemplo do tipo \citep[CCM]{Cardelli1989} ou \citep[CAL]{Calzetti1994}.
+O melhor ajuste é escolhido minimizando a equação
+\begin{equation*}
+\chi^2 = \sum_\lambda \left[(F^{\mathrm{observado}}_\lambda -
+F^{\mathrm{modelo}}_\lambda) w_\lambda\right]^2
+\end{equation*}
+onde $w_\lambda^{-1}$\fixme(variância?) é o erro associado ao espectro
+observado.
+Os espectros da base provêm de modelos de síntese evolutiva de populações
+estelares. A maior parte dos resultados publicados do \starlight usa os modelos
+de \citet[BC03]{Bruzual2003}, do quais foram extraídas SSPs cobrindo uma ampla
+gama de idades e metalicidades. São ao todo 150 SSP diferentes (25 idades e 6
+metalicidades) utilizadas na base. A base utlizada neste trabalho foi a
+GRANADA\fixme (referência), com 280 SSP diferentes (X idades e Y
+metalicidades)\fixme. A Figura \ref{fig:StarlightSpectrumSample} mostra o ajuste
+feito para uma galáxia do \SDSS utilizando a base BC03 com atenuação CCM.
+
+\begin{figure}
+	\includegraphics[width=1.0\textwidth]{figuras/starlight-fit.pdf}
+	\caption[Exemplos de ajuste de espectro com o \starlight.]
+	{Exemplos de ajuste de espectros de galáxias com o \starlight
+	\citep{Asari2007}. À esquerda, espectros observados (preto), espectros
+	modelados (vermelho), com regiões mascaradas em magenta. No meio, a fração da
+	luz associada à cada uma das 25 idades das SSPs usadas na síntese, com a curva
+	representando a versão suavizada do histórico de formação estelar. À direita,
+	imagens do \SDSS correspondentes às galáxias.}
+	\label{fig:StarlightSpectrumSample}
+\end{figure}
+
+A aplicação imediata do resultado do \starlight é a remoção do contínuo estelar
+para medir com maior precisão as linhas de emissão provenientes do gás, não
+incluídas no modelo. É possível também estudar o vetor de população $\vec{x}$,
+que representa a fração de luz proveniente de cada população estelar da base. De
+forma alternativa, pode-se utilizar o vetor de fração de massa $\vec{\mu}$, que
+se relaciona ao $\vec{x}$ através da relação massa--luminosidade de cada
+elemento da base. Individualmente os componentes $x_j$ e $\mu_j$ dos vetores não
+são confiáveis, pois há muita degenerescência nos elementos da base\fixme
+(referência?). Porém, a informação contida nos vetores pode ser condensada,
+gerando medidas físicas galáxia, como a taxa de formação estelar, a idade
+estelar média e a metalicidade estelar média, os dois últimos ponderados por
+luminosidade ($\vec{x}$) ou massa ($\vec{\mu}$), por exemplo. Estas medidas são
+muito mais robustas, como foi demonstrado por \citet{CidFernandes2013b}.
+
+Esta técnica foi aplicada a 926246 espectros de galáxias do \SDSS. As
+propriedades físicas resultantes do \starlight, junto com as medidas de linhas
+de emissão, foram disponibilizados como um banco de dados no {\em website}
+\url{http://www.starlight.ufsc.br/}\fixme(referência?). Este banco de dados já
+foi utilizado por dezenas de pesquisadores em todo o mundo, resultando em vários
+artigos \citep[para citar alguns]{Bian2006, Liang2007, Peeples2009,
+Lara-Lopez2009, Lara-Lopez2010} e teses \citep{Mateus2006, Gomes2009,
+Asari2010}\fixme(atualizar).
+
+\TODO Aplicação nos espectros provenientes do QBICK. Base GRANADA.
+Máscara de linhas de emissão. Reconstruir os cubos: gancho pro próximo capítulo.
 
 % End of this chapter
+

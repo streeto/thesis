@@ -49,7 +49,8 @@ Area survey\footnote{\url{http://www.caha.es/CALIFA/}}}) está utilizando o
 instrumento PMAS/PPAK do observatório Calar Alto para obter IFS de $600$
 galáxias \citep{Sanchez2012}.
 Destas, $100$ já estão disponíveis no primeiro {\em Data Release}
-\citep[DR1]{Husemann2013}, afirmando o caráter de legado deste survey.
+\citep[DR1]{Husemann2013}, afirmando o caráter de legado deste
+survey.\fixme(atualizar pro DR2)
 
 Quando completado, o CALIFA terá obtido da ordem de $10^6$ espectros, quase o
 mesmo que o SDSS. Porém, este não será apenas mais um survey espectroscópico. A
@@ -58,6 +59,17 @@ representativa do universo local ($0.005 < z < 0.03$, limitada em diâmetro
 angular) cobrindo a distribuição de galáxias no diagrama cor--magnitude da nuvem
 azul à sequência vermelha, amostrando galáxias todos os tipos morfológicos
 (espirais, elípticas, irregulares e até mesmo alguns sistemas em interação).
+
+\TODO Comparar califa com outros surveuy que vem. (Manga, sami).
+
+Comparado a outros {\em surveys} já realizados, como o Altas3D
+\citep{Cappellari2011} ou o {\em Disk Mass Survey} (DMS) \citep{Bershady2010}, o
+CALIFA cobre uma faixa muito maior de tipos morfológicos e massas. Outros {\em
+surveys} que estão em andamento são o SAMI \citep{Croom2012, Bryant2015} e o
+MaNGA \citep{Bundy2015}. Estes também buscam obter uma amostra grande de
+galáxias, até maior do que a do CALIFA. Entretanto, a vantagem do CALIFA está na
+cobertura e amostragem espacial, observando uma maior porção de cada galáxia com
+mais riqueza de detalhes.
 
 
 %***************************************************************%
@@ -76,16 +88,14 @@ planos com comprimento de onda constante são imagens, enquanto ``fatias''
 definidas por um par $(x, y)$ constante são espectros. Pode-se tratar estes
 espectros individualmente, embora na verdade, nos cubos do CALIFA os pixels
 vizinhos estão correlacionados devido ao {\em seeing} do céu e ao processo de
-observação. Há a queda na relação sinal/ruído (S/N) nas regiões mais
-afastadas do núcleo da galáxia, onde o brilho superficial é muito menor.
+observação. Há a queda na relação sinal/ruído (S/N) nas regiões mais afastadas
+do núcleo da galáxia, onde o brilho superficial é muito menor.
 Algumas galáxias possuem outros objetos ``intrusos'' que precisam ser
 mascarados. Linhas telúricas\footnote{Linhas de absorção causadas pela
 atmosfera.} também precisam ser mascaradas. Assim, em geral, é necessário um
 preprocessamento visando manter um S/N mínimo e garantir um espectro livre de
-contaminação. Para mais detalhes sobre o preprocessamento utilizado neste
-trabalho, ler a seção 3 do Apêndice \ref{apendice:PaperResolving1}.
-
-% \TODO: o que nós fazemos?
+contaminação. Os detalhes sobre o preprocessamento utilizado neste trabalho
+estão descritos na seção 3 do Apêndice \ref{apendice:PaperResolving1}.
 
 Um aspecto importante do preprocessamento utilizado é que o cubo de dados é
 dividido em zonas de Voronoi, onde regiões com baixo S/N são combinadas formando
@@ -119,9 +129,13 @@ converter estes arquivos para um formato mais adequado.
 
 \section{O nascimento do PyCASSO}
 
-Todo o descrito anteriormente forma o alicerce deste presente trabalho. Da
-necessidade de manipular os resultados da síntese dos cubos de dados das
-galáxias do CALIFA, nasceu o software PyCASSO.
+Todo o descrito anteriormente forma o alicerce deste presente trabalho. Porém,
+dada a grande quantidade de dados espalhados em diversos formatos, a análise dos
+resultados da síntese de populações estelares para uma determinada galáxia pode
+se tornar um tanto burocrática\fixme (achar um termo melhor).
+Trabalhar com todas as galáxias do {\em survey} fica virtualmente impossível
+desta forma. Assim, da necessidade de manipular os resultados da síntese dos
+cubos de dados das galáxias do CALIFA, nasceu o software PyCASSO.
 
 PyCASSO ({\em Python CALIFA \starlight Synthesis Organizer}) é um software
 desenvolvido em Python com o objetivo de gerenciar os dados produzidos pelo
@@ -137,6 +151,8 @@ utilizam intensivamente.
 %***************************************************************%
 
 \section{Decomposição morfológica de galáxias}
+
+\TODO detalhar mais aqui.
 
 Como aplicação científica do PyCASSO, o Capítulo \ref{sec:Decomp} trata da
 síntese espectral das componentes morfológicas\footnote{As componentes

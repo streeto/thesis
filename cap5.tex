@@ -103,13 +103,15 @@ O mesmo princípio foi então aplicado aos cubos de dados de IFS do CALIFA.
 Diferente de do método de \citeauthor{Johnston2012}, foram ajustadas imagens a
 cada comprimento de onda, utilizando um programa baseado na versão modificada do
 Imfit, conforme a Seção \ref{sec:Decomp:decomp}. A decomposição é realizada
-sobre os espectros sintéticos, provenientes de uma síntese realizada
+sobre os espectros sintéticos\fixme, provenientes de uma síntese realizada
 anteriormente, sobre os dados originais. A motivação para isto é bastante
 simples: evitar efeitos de linhas de emissão.
 Estas seriam outra fonte de incerteza no ajuste morfológico, dado que em geral
 estão relacionadas a regiões de formação estelar e núcleos ativos, que não
 necessariamente seguem o mesmo perfil que o bojo ou o disco. Como este trabalho
 é experimental, estas complicações foram deixadas de lado, neste momento.
+
+\TODO: Explicar melhor o método de decomposição.
 
 Os resultados apresentados aqui devem ser tomados com cuidado. O ajuste é feito
 sem fazer hipótese alguma sobre como os parâmetros morfológicos variam a cada
@@ -135,6 +137,11 @@ trabalho.
 	artificiais. Retirado de \citet{Vika2013}.}
 	\label{fig:propertiesVika}
 \end{figure}
+
+\subsection{Testes}
+
+\TODO: Atualizar teste de decomposição. Mencionar os efeitos da PSF, discutidos
+no próximo capítulo.
 
 Para determinar se o método de decomposição funciona (ou melhor, se ele falha
 mesmo para o caso mais básico), foi desenhado um exercício bastante simples.
@@ -168,6 +175,21 @@ do método.
 	disco em azul. O índice de Sérsic ($n$) foi mantido constante e igual a $4$.}
 	\label{fig:testParameters}
 \end{figure}
+
+\subsection{Seleção da amostra}
+
+\TODO: Amostra selecionada usando como critério: Candidata a S0 (descrever a
+tabela de morfologia do CALIFA) e baixa inclinação (b/a > 0.6).
+
+\TODO: Limpando a amostra. Ajustes iterativos de uma banda espectral, e inspeção
+visual (primeira limpeza). Ajuste completo, e segunda inspeção visual.
+
+\TODO: Criar tabela da amostra. Marcar quais foram vetadas em qual passo, e
+escrever o motivo -- dust lane, bad fit, etc.
+
+\section{Resultado}
+
+\TODO: Refazer todo o que vem a seguir.
 
 A discussão a seguir refere-se à decomposição feita sobre os cubos de dados da
 galáxia UGC 10695 (Figura \ref{fig:decompTarget}). A decomposição foi feita
@@ -254,63 +276,6 @@ comparação.
 	núcleo.}
 	\label{fig:decompSpectra}
 \end{figure}
-
-Os cubos espectrais resultantes para bojo e disco foram passados pelo \starlight
-como se fossem galáxias separadas, resultando em dois cubos de síntese extras
-para a galáxia UGC 10695. O perfil radial de algumas propriedades físicas são
-mostradas na Figura \ref{fig:decompSynRadprof}. O perfil de densidade
-superficial de massa estelar é semelhante ao perfil de luminosidade, porém com
-um bojo mais acentuado. Isto sugere um bojo velho (com maior razão
-massa/luminosidade) e massivo. Como o bojo domina em luz e massa nas regiões
-centrais, também é de se esperar que as propriedades pesadas por massa e luz
-(idade e metalicidade) da galáxia original sejam mais próximas do valor do bojo
-nesta região. O mesmo ocorre nas regiões externas, onde o disco domina, as
-propriedades da galáxia refletem os valores do disco. Ou seja, o resultado é
-consistente.
-A interpretação do perfil radial de $A_V$ requer um pouco mais de cuidado. Em
-geral se esperaria que o disco contivesse mais poeira do que o bojo.
-Entretanto, uma inspeção visual na Figura \ref{fig:decompTarget} mostra
-estruturas como anéis concêntricos, o que pode indicar que a galáxia está
-sofrendo ou sofreu interação (a pequena galáxia a nordeste na imagem pode ser o
-culpado). Neste caso é possível que a poeira não esteja distribuída como
-normalmente se espera, mas isto é apenas especulação.
-
-O histórico de formação estelar é mostrado na Figura \ref{fig:decompSynSfh}.
-Aqui se vê um bojo (painel central) sendo formado por um surto de formação
-estelar antigo e concentrado, com um episódio de formação estelar recente. Isto
-é consistente com um cenário de interação. O disco se constrói de forma mais ou
-menos uniforme até menos de $10^9$ anos atrás, porem não apresenta formação
-estelar recente significativa na mesma época que o bojo.
-
-\begin{figure}
-	\includegraphics{figuras/decomp-at-aZ-AV-mu}
-	\caption[Perfil radial das propriedades do bojo, disco, e total] {Perfil
-	radial das propriedades físicas do bojo (vermelho), disco (azul), e original
-	(preto). (cima, esquerda) Idade estelar média ponderada pela luminosidade.
-	(baixo, esquerda) Metalicidade estelar média ponderada pela massa estelar.
-	(cima, direita) Atenuação por poeira, na banda $V$. (baixo, direita) Desidade
-	superficial de massa estelar. O Bojo vai somente até $12"$, que corresponde a
-	$3\,R_{50}$.}
-	\label{fig:decompSynRadprof}
-\end{figure}
-
-\begin{figure}
-	\includegraphics{figuras/decomp-sfh}
-	\caption[Histórico de formação estelar do bojo, disco, e total] {Histórico de
-	formação estelar da galáxia original (cima), bojo (meio) e disco (baixo). Os
-	gráficos mostram quanta massa por unidade de área foi transformada em estrelas,
-	em cada {\em bin} de raio e idade. O Bojo vai somente até $12"$, que
-	corresponde a $3\,R_{50}$.}
-	\label{fig:decompSynSfh}
-\end{figure}
-
-Através da decomposição morfológica realizada neste trabalho, foram obtidos
-cubos de síntese espectral para o bojo e o disco de uma galáxia. As propriedades
-físicas destas componentes são a grosso modo compatíveis com o que se espera de
-um bojo e um disco. É preciso levar em conta, entretanto, que estes são resultados
-preliminares. Testes similares aos apresentados anteriormente, com simulações de
-galáxias com histórico de formação estelar mais realistas são fundamentais para
-determinar a confiabilidade do método.
 
 
 %% End of this chapter
