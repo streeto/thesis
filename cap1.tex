@@ -112,10 +112,7 @@ resultado é um vetor de frações de luz e massa destas SSPs, que podem ser
 facilmente convertidos a uma SFH conforme a prescrição de \cite{Asari2007}.
 O programa utilizado é o \starlight, desenvolvido por \cite{CidFernandes2005}.
 
-Considerando cada zona como uma galáxia distinta\footnote{O que é razoável, já
-que cada pixel corresponde em geral a uma distância de centenas de parsecs,
-comportando facilmente vários aglomerados e regiões de formação estelar.},
-alimentamos todos os espectros das zonas ao \starlight, obtendo o resultado da
+Passamos todos os espectros das zonas pelo \starlight, obtendo o resultado da
 síntese como um arquivo de síntese separado para cada zona. Entretanto, para
 visualizar ou mesmo tentar entender estes resultados, é preciso organizar e
 converter estes arquivos para um formato mais adequado.
@@ -132,16 +129,18 @@ converter estes arquivos para um formato mais adequado.
 Todo o descrito anteriormente forma o alicerce deste presente trabalho. Porém,
 dada a grande quantidade de dados espalhados em diversos formatos, a análise dos
 resultados da síntese de populações estelares para uma determinada galáxia pode
-se tornar um tanto burocrática\fixme (achar um termo melhor).
-Trabalhar com todas as galáxias do {\em survey} fica virtualmente impossível
-desta forma. Assim, da necessidade de manipular os resultados da síntese dos
-cubos de dados das galáxias do CALIFA, nasceu o software PyCASSO.
+se tornar um grande e complexo quebra-cabeças computacional. Trabalhar com todas
+as galáxias do {\em survey} fica virtualmente impossível desta forma. Assim, da
+necessidade de manipular os resultados da síntese dos cubos de dados das
+galáxias do CALIFA, nasceu o software PyCASSO.
 
 PyCASSO ({\em Python CALIFA \starlight Synthesis Organizer}) é um software
-desenvolvido em Python com o objetivo de gerenciar os dados produzidos pelo
-\starlight com base nos dados do CALIFA. O Capítulo \ref{sec:pycasso} apresenta
-a documentação do PyCASSO, e em seguida discute os artigos publicados que o
-utilizam intensivamente.
+desenvolvido em Python com o objetivo de organizar gerenciar os dados produzidos
+pelo \starlight com base nos dados do CALIFA. O survey CALIFA é apresentado no
+Capítulo \ref{sec:ifs}, que também discute os softwares QBICK e \starlight,
+ferramentas básicas em nossa análise doe cubos de dados. O Capítulo
+\ref{sec:pycasso} apresenta a documentação do PyCASSO, e em seguida discute os
+artigos publicados que o utilizam intensivamente.
 
 
 %***************************************************************%
@@ -152,7 +151,9 @@ utilizam intensivamente.
 
 \section{Decomposição morfológica de galáxias}
 
-\TODO detalhar mais aqui.
+\TODO detalhar mais aqui. Em algum ligar do blablabla que falta aqui tens que
+dizer: O Capitulo \ref{sec:morph} apresenta um beabá sobre morfologiia e
+isso-e-aquilo-mais.
 
 Como aplicação científica do PyCASSO, o Capítulo \ref{sec:Decomp} trata da
 síntese espectral das componentes morfológicas\footnote{As componentes

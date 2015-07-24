@@ -31,8 +31,9 @@ los Filabres}, na Comunidade Autônoma de Andaluzia, Espanha. Ele é operado pel
 {\em Max-Planck-Institut für Astronomie} (MPIA), em Heidelberg, Alemanha, e pelo
 {\em Instituto de Astrofísica de Andalucía} (IAA/CSIC), em Granada, Espanha. O
 {\em survey} CALIFA foi agraciado com 210 noites pelo Comitê Executivo do Calar
-Alto, espalhadas por 6 semestres, iniciando em junho de 2010. O instrumento
-utilizado foi a Unidade de Campo Integral PPAK\footnote{\TODO PPAK footnote}
+Alto, espalhadas por 6 semestres, iniciando em junho de 2010 (na prática, as
+observações se estenderam até o final de 2014). O instrumento utilizado foi a
+Unidade de Campo Integral PPAK\footnote{\TODO PPAK footnote}
 \citep{Kelz2006}, do Espectrógrafo PMAS\footnote{\TODO PMAS footnote}
 \citep{Roth2005, Roth2010}, no telescópio de $3,5\,\mathrm{m}$ do CAHA.
 
@@ -47,11 +48,12 @@ pode ser resumida nos seguintes aspectos científicos principais
   abertura.
   \item Medição de mecanismos de ionização do gás: formação estelar, choques,
   AGN.
-  \item Medição de abundâncias de gases de oxigênio e nitrogênio.
-  \item Medição de de propriedades de populações estelares: idades, razões
+  \item Medição de abundâncias de oxigênio e nitrogênio no gás ionizado (regiões
+  \HII).
+  \item Medição de propriedades de populações estelares: idades, razões
   massa-luminosidade, metalicidades e (de forma limitada) padrões de
   abundâncias.
-  \item Medição de cinemática galática em gás es estrelas, campos de velocidade
+  \item Medição de cinemática galática em gás em estrelas, campos de velocidade
   para todas as galáxias e dispersão de velocidades para as mais massivas.
 \end{itemize}
 A arquitetura do {\em survey} foi então desenhada levando em conta os
@@ -68,7 +70,7 @@ disponível. Ela está descrita nas seções a seguir.
 	\label{fig:PPAK}
 \end{figure}
 
-O PMAS/PPAK é atualmente\fixme(checar isso) o instrumento deste tipo com o maior
+À época do início do CALIFA, o PPAK/PMAS era o instrumento de sua classe com o
 tamanho de campo, $>1\,\mathrm{arcmin}^2$. Ele consiste em um maço de 331 fibras
 ópticas cobrindo o campo de observação, direcionado a um espectrógrafo de fenda
 longa que espalha a luz sobre um detector CCD\footnote{\TODO footnote CCD}. A
@@ -106,11 +108,12 @@ imagens de boa qualidade em bandas múltiplas bandas espectrais, e em muitos
 casos, espectros nucleares. Sobre esta amostra inicial foram feitos cortes
 referentes ao tamanho aparente e o {\em redshift} da galáxia. O tamanho aparente
 da galáxia deve ser compatível com o instrumento, escolheu-se limitar a amostra
-em diâmetro isofotal\fixme(o que é $D_{25}?$), tal que $45" < D_{25} < 80"$ na
-banda $r$ do \SDSS. O {\em redshift} deve ser $0,005 < z < 0,03$. O resultado é
-uma amostra de 939 galáxias, denominada {\em amostra mãe}, descrita e estudada
-em detalhes por \citet{Walcher2014}. O conteúdo da amostra, junto com tabelas
-auxiliares, está disponível no {\em website} do
+em diâmetro da isofota de brilho superficial
+$25\,\mathrm{mag}/\mathrm{arcsec}^2$ ($D_{25}$), tal que $45\," < D_{25} <
+80\,"$ na banda $r$ do \SDSS. O {\em redshift} deve ser $0,005 < z < 0,03$. O
+resultado é uma amostra de 939 galáxias, denominada {\em amostra mãe}, descrita
+e estudada em detalhes por \citet{Walcher2014}. O conteúdo da amostra, junto com
+tabelas auxiliares, está disponível no {\em website} do
 CALIFA\footnote{\url{http://www.caha.es/CALIFA/}}. A amostra final observada
 deve conter aproximadamente $2/3$ da amostra mãe, em torno de 600 galáxias, a
 serem selecionadas conforme a visibilidade, num padrão quase aleatório.
@@ -226,7 +229,7 @@ Nesta equação, $F^{\mathrm{modelo}}_\lambda$ é o fluxo em cada comprimento de
 onda. Os $N_\star$ espectros de base $F^\star_\lambda(t_j, Z_j)$, com $t_j$ e
 $Z_j$ representando respectivamente a idade e a metalicidade do elemento de
 base, são somados com pesos $x_i$. O conjunto $\{x_j, i=1,2,\ldots,N_\star\}$
-é chamado {\em vetor de população} ($\vec{x}$)para a galáxia considerada. O
+é chamado vetor de população ($\vec{x}$) da a galáxia considerada. O
 termo $g_\lambda$ corrige o espectro pelo efeito de atenuação interestelar, que
 pode ser por exemplo do tipo \citep[CCM]{Cardelli1989} ou \citep[CAL]{Calzetti1994}.
 O melhor ajuste é escolhido minimizando a equação
@@ -234,16 +237,16 @@ O melhor ajuste é escolhido minimizando a equação
 \chi^2 = \sum_\lambda \left[(F^{\mathrm{observado}}_\lambda -
 F^{\mathrm{modelo}}_\lambda) w_\lambda\right]^2
 \end{equation*}
-onde $w_\lambda^{-1}$\fixme(variância?) é o erro associado ao espectro
-observado.
-Os espectros da base provêm de modelos de síntese evolutiva de populações
-estelares. A maior parte dos resultados publicados do \starlight usa os modelos
-de \citet[BC03]{Bruzual2003}, do quais foram extraídas SSPs cobrindo uma ampla
-gama de idades e metalicidades. São ao todo 150 SSP diferentes (25 idades e 6
-metalicidades) utilizadas na base. A base utlizada neste trabalho foi a
-GRANADA\fixme (referência), com 280 SSP diferentes (X idades e Y
-metalicidades)\fixme. A Figura \ref{fig:StarlightSpectrumSample} mostra o ajuste
-feito para uma galáxia do \SDSS utilizando a base BC03 com atenuação CCM.
+onde o peso $w_\lambda$ é definido como o inverso do erro em
+$F_\lambda^{observado}$. Os espectros da base provêm de modelos de síntese
+evolutiva de populações estelares. A maior parte dos resultados publicados do
+\starlight usa os modelos de \citet[BC03]{Bruzual2003}, do quais foram extraídas
+SSPs cobrindo uma ampla gama de idades e metalicidades. São ao todo 150 SSP
+diferentes (25 idades e 6 metalicidades) utilizadas na base. A base utlizada
+neste trabalho foi a GRANADA\fixme (referência), com 280 SSP diferentes (X
+idades e Y metalicidades)\fixme. A Figura \ref{fig:StarlightSpectrumSample}
+mostra o ajuste feito para uma galáxia do \SDSS utilizando a base BC03 com
+atenuação CCM.
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{figuras/starlight-fit.pdf}
