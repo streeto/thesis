@@ -18,6 +18,22 @@
 \chapter{Síntese de população estelar nas componentes morfológicas de galáxias}
 \label{sec:Decomp}
 
+%***************************************************************%
+%                                                               %
+%                      Seleção da amostra                       %
+%                                                               %
+%***************************************************************%
+
+\section{Seleção da amostra}
+
+\TODO: Amostra selecionada usando como critério: Candidata a S0 (descrever a
+tabela de morfologia do CALIFA) e baixa inclinação (b/a > 0.6).
+
+\TODO: Limpando a amostra. Ajustes iterativos de uma banda espectral, e inspeção
+visual (primeira limpeza). Ajuste completo, e segunda inspeção visual.
+
+\TODO: Criar tabela da amostra. Marcar quais foram vetadas em qual passo, e
+escrever o motivo -- dust lane, bad fit, etc.
 
 %***************************************************************%
 %                                                               %
@@ -28,12 +44,10 @@
 \section{Decomposição morfológica}
 \label{sec:Decomp:decomp}
  
- % FIXME:
-Uma forma de classificar as galáxias é pela sua morfologia. A mais conhecida é a
-sequência de Hubble, onde galáxias são classificadas como elípticas ou
-esferoidais, espirais, lenticulares ou de disco, e irregulares.
-Neste trabalho trata-se apenas de galáxias com disco e esferoidais. Galáxias
-esferoidais seguem em geral um perfil de Sérsic, conforme a equação
+
+\TODO Revisar esta seção. Neste trabalho trata-se apenas de galáxias com disco e
+esferoidais.
+Galáxias esferoidais seguem em geral um perfil de Sérsic, conforme a equação
 \begin{equation*}
 I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{a}{r_e} \right)^{\sfrac{1}{n}}
 - 1 \right] \right\}.
@@ -47,34 +61,7 @@ Uma galáxia pode ser bem descrita como a soma de um disco exponencial e um bojo
 com perfil de Sérsic. Através de um algoritmo de ajuste de funções, pode-se
 determinar, dado o perfil de brilho de uma galáxia, qual combinação de valores
 para os parâmetros livres (neste caso, $I_e$, $r_e$, $n$, $I_0$ e $h$) melhor
-reproduz o perfil de brilho da galáxia. A figura \ref{fig:decompJohnston} mostra
-um exemplo de ajuste de bojo e disco em um perfil de brilho.
-Adicionalmente, pode-se fazer o ajuste diretamente na imagem, em duas dimensões,
-assumindo que bojo e disco têm, por exemplo, um formato elíptico, e ajustando
-também os parâmetros destas elipses.
-
-\begin{figure}
-	\includegraphics{figuras/johnston-decomp}
-	\caption[Decomposição morfológica em uma dimensão] {Decomposição morfológica
-	em uma dimensão. A linha preta mostra o perfil de brilho da galáxia NGC
-	1375 em $5195\,\AA$. Em azul um perfil exponencial e em vermelho um
-	perfil de De Vaucouleurs (Sérsic com $n=4$), que somados são o melhor
-	ajuste, em verde. Retirado de \citet{Johnston2012}.}
-	\label{fig:decompJohnston}
-\end{figure}
-
-Existem diversas ferramentas para fazer este ajuste de parâmetros. Vale citar,
-por exemplo, GALFIT3 \citep{Peng2010}, BUDDA \citep{DeSouza2004}, GIM2D
-\citep{Simard2002}, GASP2D \citep{MendezAbreu2008} e
-Imfit\footnote{\url{http://www.mpe.mpg.de/~erwin/code/imfit/index.html}} por
-Peter Erwin. Para o trabalho atual, o programa escolhido foi o Imfit, em grande
-parte por ser de código livre, e também por estar escrito em C++, permitindo
-trabalhar facilmente em Python. Como a versão original é um programa executado
-em linha de comando, não é muito prático utilizá-la em seu formato original. Foi
-feita uma versão ligeiramente
-modificada\footnote{\url{https://github.com/streeto/Imfit}} do Imfit, em forma
-de biblioteca compartilhada, para ser acessada por um programa escrito em
-Python.
+reproduz o perfil de brilho da galáxia.
 
 
 %***************************************************************%
@@ -84,20 +71,6 @@ Python.
 %***************************************************************%
 
 \section{Decomposição espectral}
-
-O artigo por \citet{Johnston2012} serviu como fonte de inspiração para este
-trabalho. Nele, os autores obtém um espectro de fenda de galáxias lenticulares
-(S0), tendo assim um perfil de brilho da galáxias para cada comprimento de onda.
-Ajustando um perfil de Sérsic e um exponencial a cada um dos perfis (Figura
-\ref{fig:decompJohnston}), eles obtém os espectros separados de cada um dos
-componentes morfológicos (Figura \ref{fig:spectraJohnston}). 
-
-\begin{figure}
-	\includegraphics{figuras/johnston-spectra}
-	\caption[Espectros das componentes morfológicas] {Espectros unidimensionais de
-	disco e bojo de NGC 1375. Retirado de \citet{Johnston2012}.}
-	\label{fig:spectraJohnston}
-\end{figure}
 
 O mesmo princípio foi então aplicado aos cubos de dados de IFS do CALIFA.
 Diferente de do método de \citeauthor{Johnston2012}, foram ajustadas imagens a
@@ -115,28 +88,8 @@ necessariamente seguem o mesmo perfil que o bojo ou o disco. Como este trabalho
 
 Os resultados apresentados aqui devem ser tomados com cuidado. O ajuste é feito
 sem fazer hipótese alguma sobre como os parâmetros morfológicos variam a cada
-comprimento de onda. O projeto MegaMorph \citep{Haussler2013} está fazendo
-essencialmente a mesma coisa: o ajuste morfológico dependente de comprimento de
-onda de imagens de galáxia. A diferença é que no caso do MegaMorph utiliza-se
-imagens de fotometria de banda larga do SDSS, e eles ajustam a variação dos
-parâmetros morfológicos através de um polinômio \citep[Figura
-\ref{fig:propertiesVika}]{Vika2013}. Aí se pode ver que em grande escala (em
-comprimento de onda), há galáxias com um comportamento linear (ou até
-razoavelmente constante) em $r_e$, porém outras apresentam variações mais
-complexas. Este problema deve ser estudado mais a fundo futuramente neste
-trabalho.
+comprimento de onda.
 
-\begin{figure}
-	\includegraphics{figuras/vika-properties}
-	\caption[Ajuste morfológico de bandas fotométricas] {Ajuste
-	morfológico de 11 galáxias, utilizando as bandas fotométricas do
-	SDSS. Os gráficos mostram o raio efetivo ($r_e$ neste trabalho) ajustado
-	livremente a cada banda (painéis superiores), e com uma dependência linear em
-	comprimento de onda (painéis inferiores). À esquerda estão os ajustes com as
-	imagens originais, as colunas seguintes são para imagens com {\em redshift}
-	artificiais. Retirado de \citet{Vika2013}.}
-	\label{fig:propertiesVika}
-\end{figure}
 
 \subsection{Testes}
 
@@ -175,17 +128,6 @@ do método.
 	disco em azul. O índice de Sérsic ($n$) foi mantido constante e igual a $4$.}
 	\label{fig:testParameters}
 \end{figure}
-
-\subsection{Seleção da amostra}
-
-\TODO: Amostra selecionada usando como critério: Candidata a S0 (descrever a
-tabela de morfologia do CALIFA) e baixa inclinação (b/a > 0.6).
-
-\TODO: Limpando a amostra. Ajustes iterativos de uma banda espectral, e inspeção
-visual (primeira limpeza). Ajuste completo, e segunda inspeção visual.
-
-\TODO: Criar tabela da amostra. Marcar quais foram vetadas em qual passo, e
-escrever o motivo -- dust lane, bad fit, etc.
 
 \section{Resultado}
 
@@ -233,10 +175,10 @@ de onda. O resíduo é mostrado no painel inferior direito. Ali se observa efeit
 de borda próximo às regiões externas mascaradas, além de um artefato no núcleo,
 provavelmente devido à forma da PSF. Outra forma de visualizar a qualidade do
 ajuste é através do perfil radial. A Figura \ref{fig:decompRadprof} mostra o
-perfil radial em intervalos de aproximadamente $100\,\AA$. Ali se vê que o disco
-e o bojo estão bem modelados, e que o ajuste é muito bom (o modelo é marcado com
-uma linha preta pontilhada, e a sua maior parte fica sob a linha preta sólida, o
-perfil original).
+perfil radial em intervalos de aproximadamente $100\,\angstrom$. Ali se vê que o
+disco e o bojo estão bem modelados, e que o ajuste é muito bom (o modelo é
+marcado com uma linha preta pontilhada, e a sua maior parte fica sob a linha
+preta sólida, o perfil original).
 
 Os espectros obtidos são geralmente bem comportados. Um exemplo, a $5"$ do
 núcleo, pode ser visto no painel superior da Figura \ref{fig:decompSpectra}.
@@ -258,7 +200,7 @@ comparação.
 	\includegraphics{figuras/decomp-model-images}
 	\caption[Visualização 2-D da decomposição morfológica] {Visualização 2-D da
 	decomposição morfológica. Nos painéis superiores os modelos de bojo e disco em
-	$5635\,\AA$. No painel inferior à esquerda, a imagem original. No painel
+	$5635\,\angstrom$. No painel inferior à esquerda, a imagem original. No painel
 	inferior à direita, o resíduo do ajuste, normalizado pela imagem original.}
 	\label{fig:decompImages}
 \end{figure}
