@@ -36,7 +36,7 @@ $$
 Para determinar as caraterísticas da PSF, idealmente é preciso observar um
 objeto pontual brilhante, em várias regiões do campo de observação, e com as
 mesmas condições atmosféricas que as observações. Raramente estas condições são
-preenchidas, mesmo para fotometria CCD, que possuem campos muito largos. Assim,
+preenchidas, mesmo para fotometria CCD, que possuem campos muito grandes. Assim,
 conhecer a PSF em instrumentos IFU não é uma tarefa trivial. Ainda há o fato de
 que as imagens são reconstruídas através de técnicas de {\em dithering} (ver
 Seção \ref{sec:ifs:instrumentacao}), e dependendo o algoritmo utilizado, a PSF
@@ -49,22 +49,21 @@ decomposição morfológica do que um estudo aprofundado sobre o tema.
 Para o CALIFA, observar campos estelares para caracterizar a PSF significaria a
 redução no número de galáxias na amostra final do {\em survey}. Dadas as
 restrições de tempo de telescópio e de significância estatística da amostra,
-além do fato de a PSF não ser fundamental para os casos científicos alvo do
-{\em survey}, estas observações não foram realizadas. Porém, sendo um {\em
-survey} espectroscópico, o CALIFA necessita de observações de ``velas padrão''
-para calibrar o fluxo das galáxias. Foram observadas 45 estrelas de
-campo\footnote{o que é estrela de campo?} para este fim. Estas estrelas foram
-obsevadas no centro no campo de observação do instrumento, com um tempo de
-exposição muito menor do que o das galáxias (XX vs YY\fixme). Esta amostra foi
-denominada ``estrelas de calibração''. Alternativamente, pode-se procurar
-estrelas de campo que apareçam na frente das galáxias do {\em survey}.
+além do fato de a PSF não ser fundamental para os casos científicos alvo do {\em
+survey}, estas observações não foram realizadas. Porém, sendo um {\em survey}
+espectroscópico, o CALIFA necessita de observações de ``velas padrão'' para
+calibrar o fluxo das galáxias. Foram observadas 45 estrelas para este fim. Estas
+estrelas foram obsevadas no centro no campo de observação do instrumento, com um
+tempo de exposição muito menor do que o das galáxias (XX vs YY\fixme). Esta
+amostra foi denominada ``estrelas de calibração''. Alternativamente, pode-se
+procurar estrelas de campo que apareçam na frente das galáxias do {\em survey}.
 Neste caso a vantagem é que as estrelas têm o mesmo tempo de exposição das
 galáxias, e são observadas nas mesmas condições atmosféricas. Porém, não há
-estrelas de campo em todos os cubos. também, elas em geral são, por construção
+estrelas de campo em todos os cubos. Também, elas em geral são, por construção
 do {\em survey}, fracas e se localizam na periferia do campo de observação.
-Esta amostra foi denominada ``estrelas de campo''. A seguir são descritas
-duas tentativas de caracterizar a PSF do CALIFA, utilizando ambas as
-amostras de estrelas.
+Esta amostra foi denominada ``estrelas de campo''. A seguir são descritas duas
+tentativas de caracterizar a PSF do CALIFA, utilizando ambas as amostras de
+estrelas.
 
 \begin{figure}
 	\includegraphics{figuras/PSFMoffatBeta4_exemplo}
@@ -72,11 +71,12 @@ amostras de estrelas.
 	{Exemplo de ajuste de PSF para a estrela de calibração Feige67, observada em
 	16/06/2012, com a cofiguração V500. O modelo ajustado foi um perfil de
 	Moffat elipsoidal com $\beta=4$. Nos painéis superiores estão imagens do fluxo
-	observado numa caixa de $400\,\angstrom$ centrada em $4949\,\angstrom$, modelo
-	ajustado e o resíduo do ajuste. No painel inferior mostra-se o perfil de brilho
-	radial médio: observado (linha sólida, onde as barras de erro são $1\,\sigma$
-	da média), modelo (linha tracejada, e a linha traço-ponto marca a largura a
-	meia altura $\mathrm{FWHM}=2,963\,"$) e resíduo (linha pontilhada).}
+	observado numa caixa de $400\,\angstrom$ centrada em $4949\,\angstrom$,
+	do modelo ajustado e do resíduo do ajuste. No painel inferior mostra-se o
+	perfil de brilho radial médio: observado (linha sólida, onde as barras de erro
+	são $1\,\sigma$ da média), modelo (linha tracejada, e a linha traço-ponto marca
+	a largura a meia altura $\mathrm{FWHM}=2,963\,"$) e resíduo (linha
+	pontilhada).}
 	\label{fig:PSFExemplo}
 \end{figure}
 
@@ -97,23 +97,23 @@ faixa próxima a $5000\,\angstrom$.
 	{PSF do CALIFA modelada como um perfil de Moffat com $\beta=4$, utilizando 45
 	estrelas de calibração. {\em Acima}: FWHM da PSF em função do comprimento de
 	onda (caixas de $400\,\angstrom$). As linhas tracejadas indicam a distribuição
-	em $1\ \sigma$. {\em Abaixo}: Distribuição da FWHM da PSF, pesada pela {\em
-	likelihood} do modelo em todos os comprimento de onda de todas as estrelas, com
-	$\mathrm{FWHM}=2,888\," \pm 0,332$.}
+	em $1\ \sigma$. {\em Abaixo}: Histograma da FWHM da PSF, ponderado pela
+	verossimilhança do modelo em todos os comprimento de onda de todas as estrelas,
+	com $\mathrm{FWHM}=2,888\," \pm 0,332$.}
 	\label{fig:PSFCalib}
 \end{figure}
 
 Este procedimento foi realizado para as 45 estrelas de calibração, e o resultado
-pode ser visto na Figura\ref{fig:PSFCalib}. Praticamente não há dependência da
+pode ser visto na Figura \ref{fig:PSFCalib}. Praticamente não há dependência da
 PSF com o comprimento de onda, como se pode verificar no painel superior da
 figura. Na mesma figura, no painel inferior, mostra-se um histograma ponderado
-pela {\em likelihood}\footnote{likelihood footnote} de todos os ajustes (todas
+pela verossimilhança ($\operatorname{e}^{-\chi^2/2}$) de todos os ajustes (todas
 as estrelas em todas as caixas de comprimento de onda). Desta distribuição
 obtém-se uma largura a meia altura\footnote{\TODO: FWHM footnte} média de
 $\mathrm{FWHM}=2,888\," \pm 0,332$. A elipticidade média encontrada é de
-$\epsilon=0,097 \pm 0,065$. A incerteza nos dois casos representa o desvio
-padrão ($1\,\sigma$) da média ponderada. O mesmo vale para todas asincertezas
-obtidas no resto desta seção.
+$\epsilon=0,097 \pm 0,065$, ou seja, praticamente circular. A incerteza nos dois
+casos representa o desvio padrão ($1\,\sigma$) da média ponderada. O mesmo vale
+para todas as incertezas obtidas no resto desta seção.
 
 \begin{figure}
 	\includegraphics{figuras/PSFMoffatBeta4_field}
@@ -121,9 +121,9 @@ obtidas no resto desta seção.
 	{PSF do CALIFA modelada como um perfil de Moffat com $\beta=4$, utilizando 9
 	estrelas de campo, na frente das galáxias observadas. {\em Acima}: FWHM da PSF
 	em função do comprimento de onda (caixas de $400\,\angstrom$). As linhas
-	tracejadas indicam a distribuição em $1\ \sigma$. {\em Abaixo}: Distribuição da
-	FWHM da PSF, pesada pela {\em likelihood} do modelo em todos os comprimentos de
-	onda de todas as estrelas, com $\mathrm{FWHM}=2,564\," \pm 0,354$.}
+	tracejadas indicam a distribuição em $1\ \sigma$. {\em Abaixo}: Histograma da
+	FWHM da PSF, ponderada pela verossimilhança do modelo em todos os comprimentos
+	de onda de todas as estrelas, com $\mathrm{FWHM}=2,564\," \pm 0,354$.}
 	\label{fig:PSFField}
 \end{figure}
 
@@ -131,7 +131,7 @@ O mesmo procedimento foi realizado para 9 estrelas de campo, presentes nos cubos
 de galáxias do {\em survey} e normalmente mascarados por não serem de interesse
 no estudo do espectro das galáxias. Foram escolhidas galáxias com simetria axial
 (elípticas e S0), com uma estrela razoavelmente brilhante na frente.
-Dado um cube de ua galáxia, recortou-se 7 {\em spaxels} ao redor da estrela,
+Dado um cubo de uma galáxia, recortou-se 7 {\em spaxels} ao redor da estrela,
 gerando dois cubos: um da galáxia, com a estrela mascarada, e outro da estrela.
 Neste ponto o cubo da estrela ainda está contaminado pela luz da galáxia. Então,
 considerando que a galáxia tem simetria axial, calculou-se um perfil de brilho
