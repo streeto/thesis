@@ -112,29 +112,23 @@ para citar algumas sub-componentes mais comuns.
 
 
 \subsection{Bojos e discos}
+\label{sec:morph:comp:bd}
 
-Do ponto de vista fotométrico, medindo o perfil de brilho superficial, galáxias
+Do ponto de vista fotométrico (medindo o perfil de brilho superficial), galáxias
 lenticulares (S0) e espirais tipo jovem (Sa-Sb) podem ser bem descritas como uma
 combinação de duas componentes: um bojo e um disco. Neste modelo, o disco é
-razoavelmente fino, enquanto o bojo é quase esférico (embora haja casos em que
-ele seja um elipsóide triaxial), ambos observados projetados no plano do céu.
+delgado enquanto o bojo é quase esférico (embora haja casos em que ele seja um
+elipsóide triaxial), ambos observados projetados no plano do céu.
 
 Levando em consideração apenas o perfil de brilho superficial, esta separação
-pode parecer arbitrária. Afinal, pode-se inventar alguma lei empírica onde uma
+pode parecer arbitrária. Afinal, pode-se inventar algum modelo empírico onde uma
 só componente descreva as imagens observadas tão bem quanto a soma de um bojo e
 um disco. Porém, há outras observações que suportam a separação nestas duas
 componentes. \TODO Referências! Provavelmente alguma coisa a ver com cinemática
-(rotação e dispersão) e populações estelares.
-
-\begin{figure}
-	\includegraphics[width=0.5\textwidth]{figuras/test}
-	\caption[Leis empíricas de perfil de brilho.]
-	{\TODO Leis empíricas de perfil de brilho.}
-	\label{fig:MorphLaws}
-\end{figure}
+(rotação e dispersão), cores e populações estelares.
 
 \citet{King1966} descreve um modelo derivado para aglomerados globulares,
-assumindo velocidades estelares isotérmicos e isotrópicas. Muito embora este
+assumindo velocidades estelares isotérmicas e isotrópicas. Muito embora este
 modelo tenha motivações físicas, não possui uma forma funcional simples. Leis
 como as de Hubble-Reynolds \citep[equação 2.55]{Binney2011} e
 \citet{deVaucouleurs1948, deVaucouleurs1977}, mesmo sendo puramente empíricas,
@@ -142,13 +136,13 @@ descrevem bem bojos de galáxias. Suas formas funcionais são:
 \begin{equation*}
 I(r) &= \frac{I_0}{\left[1 + \left(\sfrac{r}{r_H}\right)^2\right]}
 &\text{(Hubble-Reynolds)} \\
-I(r) &= I_e \exp \left\{-7,67 \left[\left(\frac{r}{r_e}\right)^2 -
+I(r) &= I_e \exp \left\{-7,67 \left[\left(\frac{r}{r_e}\right)^{1/4} -
 1\right]\right\} &\text{(de Vaucouleurs)}
 \end{equation*}
 
 Os termos $r_e$ e $r_H$ são os parâmetros de escala radial, $I_0$ é o
-brilho para $r=0$ na lei de Hubble-Reynolds e $I_e$ é o brilho para $r=r_e$ na
-lei de de Vaucouleurs. Estas formas funcionais se ajustam bem à maioria dos
+brilho para $r\!=\!0$ na lei de Hubble-Reynolds e $I_e$ é o brilho para $r=r_e$
+na lei de de Vaucouleurs. Estas formas funcionais se ajustam bem à maioria dos
 bojos e galáxias elípticas. Para sistemas que não são esféricos, deve-se ainda
 introduzir uma elipticidade e uma orientação. Adicionalmente, a elipticidade e a
 orientação podem variar com o raio.
@@ -158,36 +152,53 @@ Discos, por outro lado, são facilmente modelados como um perfil exponencial
 \begin{equation*}
 I(r) = I_0 \exp\left(\frac{r}{h}\right),
 \end{equation*}
-com $h$ sendo o parâmetro de escala radial, e $I_0$ o brilho em $r=0$. \TODO
+com $h$ sendo o parâmetro de escala radial, e $I_0$ o brilho em $r\!=\!0$. \TODO
 Por que o disco é exponencial? Referências!
+
+\begin{figure}
+	\includegraphics{figuras/morphModels}
+	\caption[Perfis empíricos de Sérsic.]
+	{Perfis empíricos de Sérsic. O índice $n$ controla a concentração do perfil.
+	Com $n\!=\!1$ obtém-se um perfil exponencial (azul), e com $n\!=\!4$ um perfil
+	de de Vaucoulerus (vermelho). Outros valores de $n$ são mostrados em
+	linhas descontínuas.}
+	\label{fig:MorphLaws}
+\end{figure}
 
 \citet{Sersic1963} mostra que os perfis de de Vaucouleurs e exponencial podem
 ser tomados como casos particulares da equação
 \begin{equation*}
-I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{a}{r_e} \right)^{\sfrac{1}{n}}
+I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{a}{r_e} \right)^{1/n}
 - 1 \right] \right\},
 \end{equation*}
 que ficou conhecida como ``lei de Sérsic''. Aqui, o parâmetro $n$ é o índice de
 concentração, também chamado de ``índice de Sérsic'', que pode variar
-continuamente. Com $n=1$ obtém-se uma lei exponencial, e com $n=4$ a lei de de
-Vaucouleurs. A maioria dos bojos e galáxias elípticas podem ter seus perfis
-de brilho ajustados com índices de Sérsic na faixa de $1 < n < 10$. O parâmetro
-$b_n$ está definido em função de $n$, ver a seção 6.1.5 de \citet{Erwin2015}.
+continuamente. A Figura \ref{fig:MorphLaws} mostra alguns exemplos. Com
+$n\!=\!1$ obtém-se uma lei exponencial (linha azul), e com $n\!=\!4$ a lei de de
+Vaucouleurs (linha vermelha). A maioria dos bojos de espriais e galáxias
+elípticas podem ter seus perfis de brilho ajustados com índices de Sérsic na
+faixa de $1 < n < 10$. Valores maiores de $n$ mudam muito pouco a forma da
+curva. O parâmetro $b_n$ está definido em função de $n$, ver a seção 6.1.5 de
+\citet{Erwin2015}.
 
-\TODO Caveat emptor: cuidado ao interpretar demais leis empíricas!
+É preciso ter em mente que estas leis são empíricas, e dependem do bom senso de
+escolher o perfil (ou conjunto de perfis) certo para a galáxia em questão.
+Tentar ajustar um modelo inapropriado a uma galáxia pode levar a conclusões
+equivocadas, embora o ajuste possa parecer bem sucedido.
 
 
 \subsection{Dependência dos modelos com o comprimento de onda}
 \label{sec:morph:comp:depLambda}
 
-\TODO Mais referências e blablabla antes!
-
-\citet{Kelvin2012} utilizou imagens de galáxias do projeto GAMA
-\citep{Driver2009} em 9 bandas espectrais, do óptico \citep[bandas $ugriz$ do
-DR7]{Abazajian2009} ao infravermelho \citep[bandas $YJHK$ do
-UKIDSS]{Lawrence2007}, para ajustar perfis de Sérsic a $>160\,000$ galáxias,
-encontrando gradientes leves no índice de Sérsic em função do comprimento de
-onda.
+Tudo o que se discutiu sobre classificação de galáxias quanto a sua forma, até
+agora, levou em conta imagens feitas no banda óptica do espectro. Basta olhar
+umas poucas galáxias em infravermelho ou ultravioleta para verificar que a forma
+de uma galáxia pode mudar dramaticamente dependendo do comprimento de onda em
+que se observa. Bojos normalmente desaparecem em ultravioleta por possuírem
+poucas estrelas jovens. Já em infravermelho, os bojos tendem a dominar, e discos
+podem ter uma forma bastante diferente por conta da menor profundidade óptica
+das estruturas de poeira. Claramente há uma dependência da morfologia das
+galáxias com o comprimento de onda\fixme(referências!).
 
 \begin{figure}
 	\includegraphics{figuras/vika-properties}
@@ -201,38 +212,69 @@ onda.
 	\label{fig:propertiesVika}
 \end{figure}
 
-\TODO O projeto MegaMorph \citep{Haussler2013} está fazendo o ajuste morfológico
-dependente de comprimento de onda de imagens de galáxia. A diferença é que no
-caso do MegaMorph utiliza-se imagens de fotometria de banda larga do SDSS, e
-eles ajustam a variação dos parâmetros morfológicos através de um polinômio
-\citep[Figura \ref{fig:propertiesVika}]{Vika2013}. Aí se pode ver que em grande
-escala (em comprimento de onda), há galáxias com um comportamento linear (ou até
-razoavelmente constante) em $r_e$, porém outras apresentam variações mais
-complexas. Este problema deve ser estudado mais a fundo futuramente neste
-trabalho.
+\citet{Kelvin2012} utilizou imagens de galáxias do projeto GAMA
+\citep{Driver2009} em 9 bandas espectrais, do óptico \citep[bandas $ugriz$ do
+DR7]{Abazajian2009} ao infravermelho \citep[bandas $YJHK$ do
+UKIDSS]{Lawrence2007}, para ajustar perfis de Sérsic a $>\!160.000$ galáxias,
+encontrando gradientes leves no índice de Sérsic em função do comprimento de
+onda. Os ajustes para cada comprimento de onda foram feitos individualmente. O
+projeto MegaMorph \citep{Haussler2013} faz o mesmo de uma forma um pouco mais
+refinada. Utilizando as bandas fotométricas do SDSS, eles ajustam a variação dos
+parâmetros morfológicos através de um polinômio \citep[Figura
+\ref{fig:propertiesVika}]{Vika2013}. Todos os comprimentos de onda são ajustados
+de uma vez. Aí se pode ver que em grande escala (em comprimento de onda), há
+galáxias com um comportamento linear (ou até razoavelmente constante) em $r_e$.
+Nestes casos, utilizar um modelo linear em função do comprimento de onda,
+segundo os autores, melhora a qualidade do ajuste.
 
-\TODO: O que pode causar a variação?
-
-População estelar \citep{LaBarbera2009}.
-
-Poeira em discos \citep{Mollenhoff2006}.
+Além de efeitos causados pelo método de ajuste, como má escolha do modelo,
+mudança no sinal-ruído nas várias bandas espectrais, ou mínimos locais, parece haver
+motivos reais para levar a sério a variação dos parâmetros morfológicos.
+Populações estelares diferentes emitem mais intensamente em comprimentos de onda
+distintos, com populações mais jovens dominando em comprimentos de onda menores.
+Isto parece causar um leve gradiente no índice de Sérsic em galáxias de tipo
+jovem \citep{LaBarbera2009}. Poeira parece afetar a medida do tamanho e forma de
+discos \citep{Mollenhoff2006}. O conteúdo e a distribuição de poeira e pode
+variar significativamente de galáxia a galáxia, dificultando uma conclusão
+global sobre o seu efeito nos parâmetros morfológicos.
 
 \begin{figure}
 	\includegraphics{figuras/johnston-spectra}
-	\caption[Espectros das componentes morfológicas] {Espectros unidimensionais de
-	disco e bojo de NGC 1375. Retirado de \citet{Johnston2012}.}
+	\caption[Espectros das componentes morfológicas.] {Espectros unidimensionais de
+	bojo (acima) e disco (abaixo) de NGC 1375. É possível reconhecer a
+	linha espectral \Hbeta e o tripleto de magnésio, em absorção. Retirado de
+	\citet{Johnston2012}.}
 	\label{fig:spectraJohnston}
 \end{figure}
 
-\citet{Johnston2012} obtiveram um espectro de fenda de galáxias lenticulares
-(S0), tendo assim um perfil de brilho da galáxias para cada comprimento de onda.
-Ajustando um perfil de Sérsic e um exponencial a cada um dos perfis, eles obtém
-os espectros separados de cada um dos componentes morfológicos (Figura
-\ref{fig:spectraJohnston}). \TODO Que conclusões chegam?
+\begin{figure}
+	\includegraphics{figuras/johnston-pop}
+	\caption[Idade e metalicidade de bojos e discos de galáxias S0.] {Idade (eixo
+	vertical) e metalicidade (eixo horizontal) estelares de bojos (marcadores
+	redondos) e discos (marcadores retangulares) de uma amostra de galáxias S0
+	observadas com espectrógrafo de fenda longa. As linhas pontilhadas ligam
+	componentes de uma mesma galáxia. Retirado de \citet{Johnston2012}.}
+	\label{fig:populationJohnston}
+\end{figure}
+
+\citet{Johnston2012} obtiveram espectros de fenda longa de galáxias lenticulares
+(S0), gerando assim perfis de brilho das galáxias para cada comprimento de onda.
+Ajustando um perfil de de Vaucouleurs e um exponencial ao perfil de brilho de
+cada uma das galáxias (em ambos os lados), eles obtém os espectros separados de
+cada um dos seus dois componentes morfológicos, como mostrado na Figura
+\ref{fig:spectraJohnston}. Com os espectros, pode-se tentar entender o que
+compõe o bojo e o disco destes galáxias. Os autores estimam a idade e a
+mtelicidade estelar das componentes utilizando a intensidade da linha \Hbeta e
+do tripleto de magnésio, comparando com uma grade de modelos sintéticos de
+populações estelares. A conclusão que chegam é que os bojos são sistematicamente
+mais jovens e mais metálicos do que os discos (Figura
+\ref{fig:populationJohnston}). Inspirado neste estudo, o Capítulo
+\ref{sec:Decomp} descreve a decomposição de espectros de galáxias em espectros
+de bojos e discos, mas utilizando cubos de dados do CALIFA.
 
 
 \subsection{Ajuste de modelos}
-
+\label{sec:morph:comp:ajuste}
 
 Utiliza-se geralmente algoritmos de minimização para encontrar os modelos que
 melhor ajustam o perfil de brilho de uma galáxia. A abordagem usual é baseada no
@@ -261,20 +303,20 @@ como se aborda o problema.
 \end{figure}
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figuras/test}
+	\includegraphics[width=1.0\textwidth]{figuras/galfit-decomp}
 	\caption[Ajuste morfológico em duas dimensões] {\TODO Ajuste morfológico
-	em duas dimensões, utilizando modelos de bojo e disco. Pegar alguma figura do
-	GALFIT3 \citep{Peng2010}.}
+	em duas dimensões, feito de alguma forma com GALFIT \citep{Peng2002}. Procurar
+	uma figura melhor.}
 	\label{fig:decompGalfit}
 \end{figure}
 
-A figura \ref{fig:decompJohnston} mostra um exemplo de ajuste de bojo e disco em
+A Figura \ref{fig:decompJohnston} mostra um exemplo de ajuste de bojo e disco em
 um perfil de brilho unidimensional. Pode-se fazer o ajuste diretamente na
 imagem, em duas dimensões (Figura \ref{fig:decompGalfit}), utilizando modelos
 com perfis elipsoidais. Independente da escolha do modelo, há um aspecto
 importante do ajuste da morfologia que foi negligenciado até agora: efeitos
 instrumentais e atmosféricos. Estes efeitos são representados pela figura da
-PSF, tratados em detalhes no Capítulo \ref{sec:psf}. A grosso modo, levar em
+PSF, tratada em detalhes no Capítulo \ref{sec:psf}. A grosso modo, levar em
 conta a PSF significa considerar que a luz que atinge determinada posição no
 detector não é proveniente apenas de uma região pontual no céu, e sim de uma
 região extensa que depende dos instrumentos e da tubulência atmosférica.
@@ -295,42 +337,39 @@ considerável do bojo.\fixme(Referência!)
 Em duas dimensões o mais adequado é adotar a PSF como parte do problema. Uma boa
 caracterização da PSF é crucial para se obter resultados satisfatórios no
 ajuste. Mas, trabalhar com a PSF traz um custo computacional enorme, agora é
-preciso efetuar um cálculo de convolução\footnote{O custo computacional de fazer
-convolução da imagem com uma PSF pode ser aliviado utilizando uma transformada
-de Fourier, valendo-se da propriedade $\mathcal{F}\left\{f \mathbin{*} g\right\}
-= \mathcal{F}\left\{f\right\} \cdot \mathcal{F}\left\{g\right\}$. Ainda assim é
-preciso calcular uma transformada inversa (quer dizer, uma integral) para cada
-modelo avaliado.} cada vez que se avalia os modelos para um determinado conjunto
-de parâmetros. O problema de minimização neste caso torna-se não-linear.
+preciso efetuar um cálculo de convolução (ver Seção \ref{sec:psf:teoria}) cada
+vez que se avalia os modelos para um determinado conjunto de parâmetros. O
+problema de minimização, que já é de natureza não-linear para modelos de
+componentes de galáxia, tona-se ainda mais complicado.
 
 Diversos algoritmos foram desenvolvidos para tratar do problema de minimização
-não-linear. O método Levenberg-Marquardt \citep[L-M]{Levenberg1944,
-Marquardt1963}, com sua busca através do gradiente no espaço de parâmetros, tem
-a vantagem de ser muito rápido. Mas, sua própria natureza de gradiente faz com
-que seja necessário um bom ``chute inicial'', além permitir a possibilidade de
-ficar preso em mínimos locais. Pode-se reduzir a chance de ser pêgo em mínimos
-locais utilizando algoritmos mais complexos, como o Nelder-Mead {\em simplex}
-\citep[N-M]{Nelder1965}. A desvantagem é que conforme se vai aumentando a
-complexidade do algoritmo, o tempo necessário para encontrar o mínimo tende a
-aumentar drasticamente. De qualquer forma, tanto o L-M quanto o N-M sofrem de um
-problema comum: é preciso especificar um valor inicial, e o algoritmo segue um
-ou mais caminhos até encontrar o mínimo. O algoritmo de Metropolis
-\citep{Metropolis1953, Saha1994} adota uma abordagem Bayesiana, e o problema de
-minimização se torna análogo a um problema de mecânica estatística, onde se vai
-baixando a temperatura até encontrar o estado de menor energia. São necessários
-apenas os limites do espaço de parâmetros, uma grande vantagem em casos onde não
-se sabe de antemão o modelo aproximado. Novamente troca-se velocidade por
-robustez, este algoritmo é significativamente mais lento do que L-M e N-M. {\em
-Differential Evolution} \citep[DE]{Storn1997} aborda o problema de forma
-completamente distinta. Nele, a busca através do espaço de parâmetros é feita
-com uma população de modelos. Os modelos sofrem ``mutações'' e ``recombinações''
-em cada iteração, e somente os modelos que se saem melhor são mantidos.
-Algoritmos desta natureza são chamados genéticos. Como o algoritmo de
-Metropolis, apenas são necessários os limites do espaço de parâmetros. Outra
-vantagem é que é muito mais improvável que este algoritmo fique preso num mínimo
-local do que o L-M, o N-M ou mesmo o de Metropolis. Tudo isto cobra um grande
-preço: ele é o algoritmo mais lento considerado aqui, cerca de duas ordens
-de magnitude mais lento do que o L-M.
+não-linear. O método Levenberg-Marquardt \citep[daqui em diante
+L-M]{Levenberg1944, Marquardt1963}, com sua busca através do gradiente no espaço
+de parâmetros, tem a vantagem de ser muito rápido. Mas, sua própria natureza de
+gradiente faz com que seja necessário um bom ``chute inicial'', com a
+possibilidade de ficar preso em mínimos locais. Pode-se reduzir a chance de ser
+pêgo em mínimos locais utilizando algoritmos mais complexos, como o Nelder-Mead
+{\em simplex} \citep[daqui em diante N-M]{Nelder1965}. A desvantagem é que
+conforme se vai aumentando a complexidade do algoritmo, o tempo necessário para
+encontrar o mínimo tende a crescer drasticamente. De qualquer modo, tanto o L-M
+quanto o N-M sofrem de um problema comum: é preciso especificar um valor
+inicial, e o algoritmo segue um ou mais caminhos até encontrar o mínimo. O
+algoritmo de Metropolis \citep{Metropolis1953, Saha1994} adota uma abordagem
+Bayesiana, e o problema de minimização se torna análogo a um problema de
+mecânica estatística, onde se vai baixando a temperatura até encontrar o estado
+de menor energia. São necessários apenas os limites do espaço de parâmetros, uma
+grande vantagem em casos onde não se sabe de antemão o modelo aproximado.
+Novamente troca-se velocidade por robustez, este algoritmo é significativamente
+mais lento do que L-M e N-M. {\em Differential Evolution} \citep[daqui em diante
+DE]{Storn1997} aborda o problema de forma completamente distinta. Nele, a busca
+através do espaço de parâmetros é feita com uma população de modelos. Os modelos
+sofrem ``mutações'' e ``recombinações'' em cada iteração, e somente os modelos
+que se saem melhor são mantidos. Algoritmos desta natureza são chamados
+genéticos. Como o algoritmo de Metropolis, apenas são necessários os limites do
+espaço de parâmetros. Outra vantagem é que é muito mais improvável que este
+algoritmo fique preso num mínimo local do que o L-M, o N-M ou mesmo o de
+Metropolis. Tudo isto cobra um grande preço: ele é o algoritmo mais lento
+considerado aqui, cerca de duas ordens de magnitude mais lento do que o L-M.
 
 Existem diversas ferramentas utilizadas em astrofísica que implementam algum
 destes algoritmos para fazer o ajuste de modelos em imagens. Vale citar, por
@@ -340,10 +379,10 @@ utilizando o algoritmo de Metropolis, e
 IMFIT\footnote{\url{http://www.mpe.mpg.de/~erwin/code/imfit/index.html}}
 \citet{Erwin2015}, que utiliza L-M, N-M ou DE. O programa escolhido para o
 presente trabalho foi o IMFIT, em grande parte por ter seu código livre, e
-também por estar escrito em C++, permitindo trabalhar facilmente em Python.
-Como a versão original é um programa executado em linha de comando, não é muito
-prático utilizá-la em seu formato original para implementar as tarefas deste
-trabalho.
+também por ter sido desenvolvido tendo em mente a facilidade de modificação.
+Entretanto, como a versão original foi feita em forma de um programa executado
+em linha de comando, não é muito prático utilizá-la em seu formato original para
+implementar as tarefas deste trabalho.
 
 Foi feita uma versão modificada do IMFIT em forma de biblioteca dinâmica, com um
 envelope de código para ser acessado em Python. Esta biblioteca foi chamada
