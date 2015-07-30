@@ -206,7 +206,9 @@ do programa (Apêndice \ref{apendice:manual}).
 Nesta seção discute-se os artigos onde se utilizou PyCASSO, e o autor teve uma
 colaboração importante. Além destes artigos, \citet{Husemann2013}, no artigo
 apresentando o primeiro {\em data release}, utiliza as massas estelares
-determinadas pelo \starlight e disponibilizadas pelo PyCASSO.
+determinadas pelo \starlight e disponibilizadas pelo PyCASSO
+\TODO: Figuras \ref{fig:DRMass} e \ref{fig:DR2PSF}. \TODO:
+DR2, Letter da Rosa, outro paper da Rosa.
 
 
 %***************************************************************%
@@ -219,25 +221,25 @@ determinadas pelo \starlight e disponibilizadas pelo PyCASSO.
 STARLIGHT to CALIFA datacubes}}
 \label{sec:pycasso:art:Resolving1}
 
-Este artigo por \citet{CidFernandes2013a} descreve todo o processo de síntese
+Este artigo por \citet{CidFernandes2013} descreve todo o processo de síntese
 espectral dos cubos de dados do CALIFA, mencionados no Capítulo \ref{sec:intro},
 e serve como uma demonstração da capacidade do PyCASSO. O artigo está
 reproduzido na íntegra no Apêndice \ref{apendice:PaperResolving1}. O
 preprocessamento dos cubos de espectros é feito através do programa QBICK,
-desenvolvido por Rubén Garcia Benito especialmente para o CALIFA, mas é
-genérico o bastante para ser usado em outros cubos de dados. Após explicar em
-detalhes todos os passos envolvidos desde o preprocessamento, passando pela
-descrição do \starlight até a importação dos dados pelo PyCASSO, o artigo
-apresenta um caso de estudo com a galáxia NGC 2916.
+desenvolvido por Rubén Garcia Benito especialmente para o CALIFA, mas é genérico
+o bastante para ser usado em outros cubos de dados. Após explicar em detalhes
+todos os passos envolvidos desde o preprocessamento, passando pela descrição do
+\starlight até a importação dos dados pelo PyCASSO, o artigo apresenta um caso
+de estudo com a galáxia NGC 2916.
 
 \begin{figure}
 	\includegraphics{figuras/L-M-AV-K0277}
 	\caption[Propriedades físicas espacialmente resolvidas para a galáxia NGC
 	2916] {Propriedades físicas espacialmente resolvidas para a galáxia NGC 2916. (a)
-	Luminosidade em $5635\,\AA$ por unidade de área. (b) Atenuação por poeira na
-	banda $V$. (c) Luminosidade em $5635\,\AA$ por unidade de área, corrigido de
-	extinção. (d) Desidade superficial de massa estelar. Retirado de
-	\cite[figura 4]{CidFernandes2013a}, Apêndice \ref{apendice:PaperResolving1}.}
+	Luminosidade em $5635\,\angstrom$ por unidade de área. (b) Atenuação por
+	poeira na banda $V$. (c) Luminosidade em $5635\,\angstrom$ por unidade de área,
+	corrigido de extinção. (d) Desidade superficial de massa estelar. Retirado de
+	\cite[figura 4]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
 	\label{fig:LMAVMap}
 \end{figure}
 
@@ -250,7 +252,7 @@ apresenta um caso de estudo com a galáxia NGC 2916.
 	luminosidade. (b) metalicidade estelar média pesada pela luminosidade.
 	(c) Idade estelar média pesada pela massa. (d) metalicidade estelar
 	média pesada pela massa. Retirado de
-	\cite[figura 6]{CidFernandes2013a}, Apêndice \ref{apendice:PaperResolving1}.}
+	\cite[figura 6]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
 	\label{fig:ataZMap}
 \end{figure}
 
@@ -259,11 +261,11 @@ apresenta um caso de estudo com a galáxia NGC 2916.
 	\includegraphics[width=1.0\columnwidth]{figuras/L-M-SFR-K0277}
 	\caption[Diagramas $R \times t$ para luz, massa e SFR] {Diagramas $R \times t$
 	para luz, massa e taxa de formação estelar (SFR). (a) Luminosidade em
-	$5635\,\AA$ por unidade de área.  (b) Massa transformada em estrelas por
+	$5635\,\angstrom$ por unidade de área.  (b) Massa transformada em estrelas por
 	unidade de área. (c) Taxa de formação estelar por unidade de área. A linha
 	sólida representa o gráfico colapsado na direção vertical, apenas para ilustrar
 	a variação temporal das quantidades mapeadas. Retirado de
-	\cite[figura 12]{CidFernandes2013a}, Apêndice \ref{apendice:PaperResolving1}.}
+	\cite[figura 12]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
 	\label{fig:LMSFR2D}
 \end{figure}
 
@@ -304,7 +306,7 @@ Uma crítica bastante comum aos métodos de ajuste é que eles não provêm a
 incerteza associada aos valores ajustados. A forma mais simples de determinar
 esta incerteza é refazer o ajuste várias vezes, perturbando as medidas
 reproduzindo de forma realista os erros. Este artigo por
-\citet{CidFernandes2013b} investiga a incerteza nos ajustes feitos no artigo
+\citet{CidFernandes2014} investiga a incerteza nos ajustes feitos no artigo
 discutido na seção anterior. O artigo está reproduzido na íntegra no Apêndice
 \ref{apendice:PaperResolving2}.
 
@@ -320,17 +322,17 @@ $+0.05\,\mathrm{mag}$ e um erro de $\sim 0.16\,\mathrm{mag}$.
 \begin{figure}
 	\includegraphics[width=1.0\columnwidth]{figuras/resolving2}
 	\caption[Incerteza nos perfis radiais] {Incerteza nos perfis radiais de
-	algumas propriedades. (a) Luminosidade superficial a $5635\,\AA$, corrigida de
-	extinção. (b) Densidade superficial de massa. (c) Atenuação na banda $V$. (d)
-	Taxa de formação estelar (últimos $140\, \mathrm{Myr}$) por unidade de área.
-	(e) Idade estelar média ponderada pela luminosidade. (f) Idade estelar média
-	ponderada pela massa. (g) Metalicidade estelar média ponderada pela
-	luminosidade. (h) Metalicidade estelar média ponderada pela massa. As
+	algumas propriedades. (a) Luminosidade superficial a $5635\,\angstrom$,
+	corrigida de extinção. (b) Densidade superficial de massa. (c) Atenuação na
+	banda $V$. (d) Taxa de formação estelar (últimos $140\, \mathrm{Ma}$) por
+	unidade de área. (e) Idade estelar média ponderada pela luminosidade. (f) Idade
+	estelar média ponderada pela massa. (g) Metalicidade estelar média ponderada
+	pela luminosidade. (h) Metalicidade estelar média ponderada pela massa. As
 	linhas em preto marcam a solução original. Em faixas azuis e vermelhas, as
 	distribuições das realizações com ruído aleatório, e sistemático em cor,
 	respectivamente. A diferença entre as simulações e o original está desenhada
 	abaixo de cada painel, com o zero marcado pela linha tracejada. Retirado de
-	\cite[figura 4]{CidFernandes2013b}, Apêndice \ref{apendice:PaperResolving2}.}
+	\cite[figura 4]{CidFernandes2014}, Apêndice \ref{apendice:PaperResolving2}.}
 	\label{fig:incertRad}
 \end{figure}
 
@@ -353,7 +355,7 @@ suficientes deverá levar a uma diminuição na incerteza.
 	metalicidade estelar ponderada pela massa, atenuação na banda $V$, massa
 	estelar inicial. Os painéis inferiores mostram a distribuição das mesmas
 	propriedades, porém calculadas para o espectro integradas das galáxias.
-	Retirado de \cite[figura 9]{CidFernandes2013b}, Apêndice
+	Retirado de \cite[figura 9]{CidFernandes2014}, Apêndice
 	\ref{apendice:PaperResolving2}.}
 	\label{fig:incertRad-base}
 \end{figure}
@@ -383,13 +385,13 @@ View of Inside-out Growth from the CALIFA Survey}}
 
 Em \citet{Perez2013} se estuda o crescimento de dentro para fora de $105$
 galáxias do CALIFA. O estudo se baseia na síntese espectral com o \starlight, e
-segue exatamente a mesma prescrição de \citet{CidFernandes2013a}, descrita na
+segue exatamente a mesma prescrição de \citet{CidFernandes2014}, descrita na
 Seção \ref{sec:pycasso:art:Resolving1}. O artigo está reproduzido na íntegra no
 Apêndice \ref{apendice:InsideOut}.
 
 Galáxias vêm em todos os tamanhos. Para determinar o crescimento, as distâncias
 são normalizadas em utilizando o raio onde a luminosidade cumulativa (em
-$5635\,\AA$) alcança $50\%$ da luminosidade total da galáxia, denominado
+$5635\,\angstrom$) alcança $50\%$ da luminosidade total da galáxia, denominado
 $R_{50}$. As galáxias da amostra são separadas em {\em bins} com $15$ galáxias
 cada, segundo a sua massa. O crescimento em massa em função do tempo é calculado
 para cada pixel de cada galáxia e somado em cada {\em bin} de massa.
@@ -439,7 +441,7 @@ que as galáxias massivas se formaram de dentro para fora.
 structures}}
 \label{sec:pycasso:art:RadStruct}
 
-O artigo por \citet{GonzalezDelgado2013} faz um estudo detalhado da estrutura
+O artigo por \citet{GonzalezDelgado2014a} faz um estudo detalhado da estrutura
 radial de diversas propriedades de $107$ galáxias do CALIFA. O artigo está
 reproduzido na íntegra no Apêndice \ref{apendice:RadStruct}.
 Um dos resultados mais importantes é que a densidade superficial de massa
@@ -465,7 +467,7 @@ resultado está de acordo com \citet{Kauffmann2003}, usando a amostra do SDSS.
 	superficial de massa média da galáxia e a massa estelar total da galáxia. As
 	linhas tracejadas mostram o ajuste linear total (preto), apenas discos (azul),
 	e apenas para esferoidais (vermelho).  Retirado de \cite[figura
-	6]{GonzalezDelgado2013}, Apêndice \ref{apendice:RadStruct}.}
+	6]{GonzalezDelgado2014a}, Apêndice \ref{apendice:RadStruct}.}
 	\label{fig:radStruct1}
 \end{figure}
 
@@ -485,7 +487,7 @@ esferoidais a relação é aproximadamente constante.
 	pontos reflete a idade estelar média ponderada pela luminosidade, em $0,5\,a^L_{50}$.
 	Galáxias com índice de concentração $C \geq 2,8$ estão marcadas com uma cruz. A
 	linha azul mostra o ajuste linear para galáxias com massa estelar Retirado de
-	\cite[figura 10]{GonzalezDelgado2013}, Apêndice
+	\cite[figura 10]{GonzalezDelgado2014a}, Apêndice
 	\ref{apendice:RadStruct}.}
 	\label{fig:radStruct2}
 \end{figure}
@@ -506,7 +508,7 @@ importante para as galáxias com disco.
 	massa estelar contendo 15 galáxias cada. (cima) Todas as galáxias. Os {\em
 	bins} em massa estão codificados em cores. (meio) Galáxias dominadas por
 	disco. (baixo) Galáxias esferoidais ($C \geq 2,8$). Retirado de \cite[figura
-	13]{GonzalezDelgado2013}, Apêndice \ref{apendice:RadStruct}.}
+	13]{GonzalezDelgado2014a}, Apêndice \ref{apendice:RadStruct}.}
 	\label{fig:radStruct3}
 \end{figure}
 

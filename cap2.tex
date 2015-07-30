@@ -96,7 +96,7 @@ A segunda, utilizando a grade de difração V1200, com resolução $\Delta \lamb
 $\mathrm{FWHM} \approx 2,7\,\angstrom$, cobrindo a faixa azul do espectro,
 incluindo a descontinuidade de Balmer ($\approx 4000$--$4400\,\angstrom$),
 \Hdelta, \Hgamma e \OIII4363. Estas duas configurações são chamadas daqui em
-diante de V500 e V1200 respectivamente. \TODO Vignetting, COMBO.
+diante de V500 e V1200 respectivamente.
 
 \subsection{Amostra}
 
@@ -109,11 +109,11 @@ casos, espectros nucleares. Sobre esta amostra inicial foram feitos cortes
 referentes ao tamanho aparente e o {\em redshift} da galáxia. O tamanho aparente
 da galáxia deve ser compatível com o instrumento, escolheu-se limitar a amostra
 em diâmetro da isofota de brilho superficial
-$25\,\mathrm{mag}/\mathrm{arcsec}^2$ ($D_{25}$), tal que $45\," < D_{25} <
-80\,"$ na banda $r$ do \SDSS. O {\em redshift} deve ser $0,005 < z < 0,03$. O
-resultado é uma amostra de 939 galáxias, denominada {\em amostra mãe}, descrita
-e estudada em detalhes por \citet{Walcher2014}. O conteúdo da amostra, junto com
-tabelas auxiliares, está disponível no {\em website} do
+$25\,\mathrm{mag}/\mathrm{arcsec}^2$ ($D_{25}$), tal que $45\,\arcs < D_{25} <
+80\,\arcs$ na banda $r$ do \SDSS. O {\em redshift} deve ser $0,005 < z < 0,03$.
+O resultado é uma amostra de 939 galáxias, denominada {\em amostra mãe},
+descrita e estudada em detalhes por \citet{Walcher2014}. O conteúdo da amostra,
+junto com tabelas auxiliares, está disponível no {\em website} do
 CALIFA\footnote{\url{http://www.caha.es/CALIFA/}}. A amostra final observada
 deve conter aproximadamente $2/3$ da amostra mãe, em torno de 600 galáxias, a
 serem selecionadas conforme a visibilidade, num padrão quase aleatório.
@@ -177,7 +177,7 @@ sobre a medição da PSF no Capítulo \ref{sec:psf}.
 
 O programa, desenvolvido por Rubén García Benito para fazer o mascaramento e
 tesselagem dos cubos de dados descrito a seguir, foi chamado de QBICK. Para mais
-detalhes sobre o processo completo, ver o artigo por \citet{CidFernandes2013a},
+detalhes sobre o processo completo, ver o artigo por \citet{CidFernandes2013},
 disponível no Apêndice \ref{apendice:PaperResolving1}.
 
 É preciso preparar os espectros para passarem pelo \starlight. Isto envolve
@@ -191,15 +191,15 @@ humanas bem treinadas. Para um {\em survey} do porte do CALIFA, com cerca de 600
 galáxias, isto ainda é factível. Após o mascaramento espacial, foram mascaradas
 as linhas espectrais causadas pela atmosfera terrestre. Os espectros foram em
 seguida postos no referencial de repouso utilizando o {\em redshift} obtido pela
-{\em pipeline}, medido nos $5"$ centrais da galáxia. Foi escolhida uma janela
-espectral de $5590$ a $5680\,\angstrom$ para fazer a medida do sinal-ruído dos
-espectros. Espectros com sinal-ruído baixo, em geral nas regiões menos
-brilhantes da galáxia, podem gerar resultados espúrios no \starlight. Estes
-espectros foram combinados de modo a obter um melhor sinal-ruído utilizando uma
-técnica conhecida como de tesselagem de Voronoi. Foi escolhido um sinal-ruído de
-20 como alvo para o agrupamento dos spaxels. O código utilizado para a
-tesselagem de Voronoi foi implementado por \citet{Cappellari2003} e modificado
-para levar em conta erros correlacionados.
+{\em pipeline}, medido nos $5\,\arcs$ centrais da galáxia. Foi escolhida uma
+janela espectral de $5590$ a $5680\,\angstrom$ para fazer a medida do
+sinal-ruído dos espectros. Espectros com sinal-ruído baixo, em geral nas regiões
+menos brilhantes da galáxia, podem gerar resultados espúrios no \starlight.
+Estes espectros foram combinados de modo a obter um melhor sinal-ruído
+utilizando uma técnica conhecida como de tesselagem de Voronoi. Foi escolhido um
+sinal-ruído de 20 como alvo para o agrupamento dos spaxels. O código utilizado
+para a tesselagem de Voronoi foi implementado por \citet{Cappellari2003} e
+modificado para levar em conta erros correlacionados.
 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
@@ -214,42 +214,61 @@ O \starlight é um código de síntese espectral desenvolvido por
 \citet{CidFernandes2005}. Nele, o espectro observado de uma galáxia é modelado
 como uma combinação linear de espectros de uma base, um modelo de atenuação por
 poeira, e efeitos conemáticos ({\em redshift} e dispersão gaussiana de
-velocidades). Esta base em geral é composta de uma biblioteca de populações
-estelares simples (SSP\footnote{Uma SSP consiste num conjunto de estrelas
-formadas ao mesmo tempo com a mesma metalicidade.}), formando uma grade de
-idades e metalicidades. O \starlight busca neste espaço de parâmetros (que pode
-ser imenso, com quase 300 dimensões no caso do presente estudo) qual conjunto de
-frações de luz, atenuação e cinemática que melhor ajustam o espectro observado,
-que toma a forma
+velocidades). Esta base é composta por uma grade de populações estelares simples
+(SSP), onde cada SSP consiste em um conjunto de estrelas formadas ao mesmo tempo
+com a mesma metalicidade, com espectros proveniente de alguma biblioteca de
+modelos. O \starlight busca neste espaço de parâmetros (que pode ser imenso, com
+quase 300 dimensões no caso do presente estudo) qual conjunto de frações de luz,
+atenuação e cinemática que melhor ajustam o espectro observado, que toma a forma
 \begin{equation*}
-F^{\mathrm{modelo}}_\lambda = \sum_{j=1}^{N_\star} x_j F^\star_\lambda(t_j,Z_j)
-g_\lambda(A_{V,j}).
-\end{equation*}
+F^{\mathrm{modelo}}_\lambda = \sum_{j=1}^{N_\star} F^\star_\lambda(t_j,Z_j)
+10^{ -0,4 A_\lambda}  \otimes G(v_\star,\sigma_\star)
+\end{equation*}	
 Nesta equação, $F^{\mathrm{modelo}}_\lambda$ é o fluxo em cada comprimento de
-onda. Os $N_\star$ espectros de base $F^\star_\lambda(t_j, Z_j)$, com $t_j$ e
-$Z_j$ representando respectivamente a idade e a metalicidade do elemento de
-base, são somados com pesos $x_i$. O conjunto $\{x_j, i=1,2,\ldots,N_\star\}$
-é chamado vetor de população ($\vec{x}$) da a galáxia considerada. O
-termo $g_\lambda$ corrige o espectro pelo efeito de atenuação interestelar, que
-pode ser por exemplo do tipo \citep[CCM]{Cardelli1989} ou \citep[CAL]{Calzetti1994}.
+onda. O termo $10^{ -0.4 A_\lambda}$ corrige o espectro pelo efeito de atenuação
+interestelar, que pode ser por exemplo do tipo CCM \citep*{Cardelli1989} ou
+CAL \citep{Calzetti1994}. $G(v_\star,\sigma_\star)$ denota uma função
+gaussiana (centrada em $v_\star$ e com dispersão $\sigma\star$) utilizada para
+modelar os efeitos da cinemática estelar. Na prática a equação acima é
+implementada após um procedimento de normalização a um comprimento de onda de
+referência $\lambda_N$:
+\begin{equation*}
+F^{\mathrm{modelo}}_\lambda = F_{\lambda_N} 
+\sum_{j=1}^{N_\star} x_j b^\star_\lambda(t_j,Z_j)
+10^{ -0,4 (A_\lambda - A_{\lambda_N}) } \otimes G(v_\star,\sigma_\star)
+\end{equation*}
+onde $b^\star_\lambda(t_j,Z_j) \equiv  F^\star_\lambda(t_j,Z_j) /
+F^\star_{\lambda_N}(t_j,Z_j)$ denota o espectro  do elemento $j$ da base
+normalizado a seu valor em $\lambda_N$. A dada elemento $j$ corresponde uma
+idade  $t_j$ e uma metalicidade $Z_j$, e a importância de cada elemento na soma
+total é dada pelo peso $x_j$. O conjunto $\{x_j, i=1,2,\ldots,N_\star\}$ é
+chamado vetor de população ($\vec{x}$) da galáxia considerada.
 O melhor ajuste é escolhido minimizando a equação
 \begin{equation*}
 \chi^2 = \sum_\lambda \left[(F^{\mathrm{observado}}_\lambda -
 F^{\mathrm{modelo}}_\lambda) w_\lambda\right]^2
 \end{equation*}
 onde o peso $w_\lambda$ é definido como o inverso do erro em
-$F_\lambda^{observado}$. Os espectros da base provêm de modelos de síntese
-evolutiva de populações estelares. A maior parte dos resultados publicados do
-\starlight usa os modelos de \citet[BC03]{Bruzual2003}, do quais foram extraídas
-SSPs cobrindo uma ampla gama de idades e metalicidades. São ao todo 150 SSP
-diferentes (25 idades e 6 metalicidades) utilizadas na base. A base utlizada
-neste trabalho foi a GRANADA\fixme (referência), com 280 SSP diferentes (X
-idades e Y metalicidades)\fixme. A Figura \ref{fig:StarlightSpectrumSample}
-mostra o ajuste feito para uma galáxia do \SDSS utilizando a base BC03 com
-atenuação CCM.
+$F_\lambda^{observado}$. 
+
+Os espectros da base provêm de modelos de síntese evolutiva de populações
+estelares. A maior parte dos resultados publicados do \starlight usa os modelos
+de \citet[BC03]{Bruzual2003}. Em particular, em seus estudos de galáxias do SDSS
+o grupo da UFSC normalmente usa uma base composta de 150 SSPs cobrindo 25 idades
+(entre $10^6$ e $1,8 \times 10^{10}$ anos) e 6 metalicidades (entre $1/200$ e
+$2,5\,Z_\odot$; vide Mateus et al 2006). A Figura
+\ref{fig:StarlightSpectrumSample} mostra o ajuste feito para uma galáxia do
+\SDSS utilizando esta base. A extinção é modelada com uma lei de avermelhamento
+de CCM. Neste trabalho usamos modelos mais atualizados de espectros de SSPs,
+extraídos dos modelos de Granada \citep[para idades até
+$63\,\mathrm{Ma}$]{GonzalezDelgado2005} e os do projeto MILES
+\citep{Vazdekis2010}. No total esta nova base contém 235 elementos cobrindo
+idades de  $0,001$ a $14\,\mathrm{Ga}$, e $\log Z/Z_\odot$ de $-2.3$ a
+$+0.33$\fixme(usar mesma notação que a BC03).
+Para mais detalhes ver \citet{GonzalezDelgado2014b, GonzalezDelgado2014a}.
 
 \begin{figure}
-	\includegraphics[width=1.0\textwidth]{figuras/starlight-fit.pdf}
+	\includegraphics[width=1.0\textwidth]{figuras/starlight-fit}
 	\caption[Exemplos de ajuste de espectro com o \starlight.]
 	{Exemplos de ajuste de espectros de galáxias com o \starlight
 	\citep{Asari2007}. À esquerda, espectros observados (preto), espectros
@@ -267,24 +286,34 @@ que representa a fração de luz proveniente de cada população estelar da base
 forma alternativa, pode-se utilizar o vetor de fração de massa $\vec{\mu}$, que
 se relaciona ao $\vec{x}$ através da relação massa--luminosidade de cada
 elemento da base. Individualmente os componentes $x_j$ e $\mu_j$ dos vetores não
-são confiáveis, pois há muita degenerescência nos elementos da base\fixme
-(referência?). Porém, a informação contida nos vetores pode ser condensada,
-gerando medidas físicas galáxia, como a taxa de formação estelar, a idade
-estelar média e a metalicidade estelar média, os dois últimos ponderados por
-luminosidade ($\vec{x}$) ou massa ($\vec{\mu}$), por exemplo. Estas medidas são
-muito mais robustas, como foi demonstrado por \citet{CidFernandes2013b}.
+são confiáveis, pois há muita degenerescência nos elementos da base
+\citep{CidFernandes2005}. Porém, a informação contida nos vetores pode ser
+condensada, gerando medidas físicas galáxia, como a taxa de formação estelar, a
+idade estelar média e a metalicidade estelar média, os dois últimos ponderados
+por luminosidade ($\vec{x}$) ou massa ($\vec{\mu}$), por exemplo. Estas medidas
+são muito mais robustas, como  demonstrado por \citet{CidFernandes2014}.
 
-Esta técnica foi aplicada a 926246 espectros de galáxias do \SDSS. As
-propriedades físicas resultantes do \starlight, junto com as medidas de linhas
-de emissão, foram disponibilizados como um banco de dados no {\em website}
-\url{http://www.starlight.ufsc.br/}\fixme(referência?). Este banco de dados já
-foi utilizado por dezenas de pesquisadores em todo o mundo, resultando em vários
-artigos \citep[para citar alguns]{Bian2006, Liang2007, Peeples2009,
-Lara-Lopez2009, Lara-Lopez2010} e teses \citep{Mateus2006, Gomes2009,
-Asari2010}\fixme(atualizar).
+Esta técnica foi utilizada em diversos artigos. Em particular a colaboração
+SEAGal ({\em Semi Empirical Analysis of Galaxies}), liderada pela UFSC, aplicou
+o \starlight a todos  926246 espectros de galáxias do DR7 do \SDSS. As
+propriedades físicas derivadas desta análise de populações estelares, junto com
+as medidas de linhas de emissão, foram disponibilizadas como um banco de dados
+no {\em website} \url{http://www.starlight.ufsc.br/}.
 
-\TODO Aplicação nos espectros provenientes do QBICK. Base GRANADA.
-Máscara de linhas de emissão. Reconstruir os cubos: gancho pro próximo capítulo.
+Os resultados foram utilizados em estudos varrendo desde a história de formação
+estelar de galáxias \citep{Asari2007} a efeitos ambientais \citep{Mateus2007} e
+a origem de linhas de emissão de galáxias ``aposentadas'' \citep{Stasinska2008,
+CidFernandes2011}. Além desses, pesquisadores em todo o mundo produziram artigos
+independentes \citep[para citar alguns]{Bian2006, Liang2007, Peeples2009,
+Lara-Lopez2009, Lara-Lopez2010} baseados nesse banco de dados.
+
+Em todos esses estudos, cada galáxia é representada por apenas um espectro. A
+extensão desse tipo de estudo a dados IFS parece trivial, e em certa medida o é
+se considerarmos o espectro de cada zona (ou {\em spaxel}) como o espectro de
+uma galáxia inteira. No entanto, para tirar máximo proveito da informação sobre
+populações estelares e sua distribuição espacial é necessária uma ferramenta que
+organize os resultados do \starlight para um dado cubo de dados. Dessa
+necessidade nasceu a plataforma PyCASSO, assunto do próximo capítulo.
 
 % End of this chapter
 

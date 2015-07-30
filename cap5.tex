@@ -78,11 +78,11 @@ utilizar transformadas de Fourier para simplificar este cálculo e transformá-l
 num algoritmo que escala com $\mathcal{O}(n \log n)$. Se $I$ é a imagem original
 e $I^\mathrm{PSF}$ a imagem da PSF, a imagem final $I^\ast$ é dada por
 \begin{equation*}
-I^\ast = I \mathbin{*} I^\mathrm{PSF}.
+I^\ast = I \otimes I^\mathrm{PSF}.
 \end{equation*}
 Aplicando a transformada de Fourier,
 \begin{equation*}
-\mathcal{F}\{I^\ast\} &= \mathcal{F}\{I \mathbin{*}
+\mathcal{F}\{I^\ast\} &= \mathcal{F}\{I \otimes
 I^\mathrm{PSF}\} \\
 &= \mathcal{F}\{I\} \cdot \mathcal{F}\{I^\mathrm{PSF}\},
 \end{equation*}
@@ -147,7 +147,7 @@ seguir.
 	do modelo ajustado e do resíduo do ajuste. No painel inferior mostra-se o
 	perfil de brilho radial médio: observado (linha sólida, onde as barras de erro
 	são $1\,\sigma$ da média), modelo (linha tracejada, e a linha traço-ponto marca
-	a largura a meia altura $\mathrm{FWHM}=2,963\,"$) e resíduo (linha
+	a largura a meia altura $\mathrm{FWHM}=2,963\,\arcs$) e resíduo (linha
 	pontilhada).}
 	\label{fig:PSFExemplo}
 \end{figure}
@@ -172,7 +172,7 @@ faixa espectral próxima a $5000\,\angstrom$.
 	onda (caixas de $400\,\angstrom$). As linhas tracejadas indicam a distribuição
 	em $1\ \sigma$. {\em Abaixo}: Histograma da FWHM da PSF, ponderado pela
 	verossimilhança do modelo em todos os comprimento de onda de todas as estrelas,
-	com $\mathrm{FWHM}=2,888 \pm 0,332\,"$.}
+	com $\mathrm{FWHM}=2,888 \pm 0,332\,\arcs$.}
 	\label{fig:PSFCalib}
 \end{figure}
 
@@ -183,10 +183,10 @@ figura. Na mesma figura, no painel inferior, mostra-se um histograma ponderado
 pela verossimilhança ($\operatorname{e}^{-\chi^2/2}$) de todos os ajustes (todas
 as estrelas em todas as caixas de comprimento de onda). Desta distribuição
 obtém-se uma largura a meia altura média de $\mathrm{FWHM} = 2,888 \pm
-0,332\,"$. A elipticidade ($\epsilon = 1 - b/a$) média encontrada é de $\epsilon
-= 0,097 \pm 0,065$, ou seja, a PSF é praticamente circular. A incerteza nos dois
-casos representa o desvio padrão ($1\,\sigma$) da média ponderada. O mesmo vale
-para todas as incertezas obtidas no resto desta seção.
+0,332\,\arcs$. A elipticidade ($\epsilon = 1 - b/a$) média encontrada é de
+$\epsilon = 0,097 \pm 0,065$, ou seja, a PSF é praticamente circular. A
+incerteza nos dois casos representa o desvio padrão ($1\,\sigma$) da média
+ponderada. O mesmo vale para todas as incertezas obtidas no resto desta seção.
 
 \begin{figure}
 	\includegraphics{figuras/PSFMoffatBeta4_field}
@@ -196,7 +196,7 @@ para todas as incertezas obtidas no resto desta seção.
 	em função do comprimento de onda (caixas de $400\,\angstrom$). As linhas
 	tracejadas indicam a distribuição em $1\ \sigma$. {\em Abaixo}: Histograma da
 	FWHM da PSF, ponderada pela verossimilhança do modelo em todos os comprimentos
-	de onda de todas as estrelas, com $\mathrm{FWHM}=2,564 \pm 0,354\,"$.}
+	de onda de todas as estrelas, com $\mathrm{FWHM}=2,564 \pm 0,354\,\arcs$.}
 	\label{fig:PSFField}
 \end{figure}
 
@@ -217,7 +217,7 @@ Subtraindo o cubo de fundo do cubo da estrela, obteve-se um cubo com apenas a
 luz proveniente da estrela. Este cubo foi então analisado da mesma forma que os
 cubos de estrelas de calibração, com os resultados mostrados na Figura
 \ref{fig:PSFField}. Da mesma forma, não há dependência da FWHM da PSF com o
-comprimento de onda, com $\mathrm{FWHM}=2,564 \pm 0,354\,"$ e elipticidade
+comprimento de onda, com $\mathrm{FWHM}=2,564 \pm 0,354\,\arcs$ e elipticidade
 $\epsilon=0,093 \pm 0,059$.
 
 Há uma diferença considerável no valor obtido para a FWHM da PSF nos dois casos,
@@ -225,8 +225,8 @@ embora eles estejam a cerca de $1\,\sigma$ de separação. Isto poderia indicar
 uma diferença sistemática entre a PSF das estrelas de calibração e a PSF das
 estrelas de campo. Todavia, observando atentamente o histograma de FWHM das
 estrelas de campo (painel inferior da Figura \ref{fig:PSFField}), pode-se notar
-que a distribuição possui um excesso próximo a $2,8\,"$. Isso parece indicar que
-a FWHM da PSF das estrelas de campo é em geral maior do que o estimado pela
+que a distribuição possui um excesso próximo a $2,8\,\arcs$. Isso parece indicar
+que a FWHM da PSF das estrelas de campo é em geral maior do que o estimado pela
 média ponderada, já que a distribuição se desvia de uma gaussiana. Isto, aliado
 ao fato de que o tamanho da amostra de estrelas de calibração (45) é maior do
 que o das estrelas de campo (9), fez com que se escolhesse a medida da primeira
@@ -239,18 +239,19 @@ incerteza. Levar a elipticidade em conta seria adicionar uma complexidade
 desnecessária (e possivelmente artificial) ao modelo de PSF.
 
 Assim, a PSF adotada neste trabalho é um perfil de Moffat com simetria axial,
-$\beta\!=\!4$ e $\mathrm{FWHM}=2,9 \pm 0,3\,"$. Este foi o mesmo procedimento
-para fazer a caracterização da PSF publicada no DR2 do CALIFA
+$\beta\!=\!4$ e $\mathrm{FWHM}=2,9 \pm 0,3\,\arcs$. Este foi o mesmo
+procedimento para fazer a caracterização da PSF publicada no DR2 do CALIFA
 \citep{GarciaBenito2015}, mas com uma diferença. Naquele caso, modelou-se tanto
-FWHM quanto $\beta$, obtendo-se $\mathrm{FWHM}=2,39 \pm 0,26\,"$ e $\beta=1,73
-\pm 0,11$. A diferença está basicamente em qual região da PSF se está
-interessado. Por uma questão geométrica, há mais {\em pixels} longe do centro do
-perfil, o que acaba causando mais peso destas regiões periféricas no modelo
-escolhido pelo ajuste (ver as barras de erro cada vez menores com a distância,
-na Figura \ref{fig:PSFExemplo}, que são a grosso modo inversamente proporcionais
-ao peso). Porém, na maioria destes {\em pixels} periféricos o fluxo proveniente
-da estrela já está submerso no ruído, achatando o perfil (isto é, diminuindo
-$\beta$). O ajuste resultante é então pior nas regiões centrais, com peso menor.
+FWHM quanto $\beta$, obtendo-se $\mathrm{FWHM}=2,39 \pm 0,26\,\arcs$ e
+$\beta=1,73 \pm 0,11$. A diferença está basicamente em qual região da PSF se
+está interessado. Por uma questão geométrica, há mais {\em pixels} longe do
+centro do perfil, o que acaba causando mais peso destas regiões periféricas no
+modelo escolhido pelo ajuste (ver as barras de erro cada vez menores com a
+distância, na Figura \ref{fig:PSFExemplo}, que são a grosso modo inversamente
+proporcionais ao peso). Porém, na maioria destes {\em pixels} periféricos o
+fluxo proveniente da estrela já está submerso no ruído, achatando o perfil (isto
+é, diminuindo $\beta$). O ajuste resultante é então pior nas regiões centrais,
+com peso menor.
 No caso do ajuste morfológico de uma galáxia, isto pode causar problemas na
 determinação dos parâmetros do bojo. Assim, optou-se por refazer a análise ds
 PSF para esta tese com $\beta$ fixo.
