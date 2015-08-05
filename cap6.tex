@@ -18,24 +18,23 @@
 \chapter{Testes da decomposição morfológica espectral}
 \label{sec:test}
 
-O processo de fazer a decomposição morfológica em cubos de dados espectrais de
-galáxias, tal que se toma imagens de fatias em comprimento de onda, é chamado
-daqui em diante de decomposição morfológica espectral. Este processo resulta
-numa sequência de modelos em função do comprimento de onda. Avaliando os modelos
-como imagens, é póssível montar cubos de dados espectrais para as componentes do
-modelo. Ou seja, com um modelo bojo e disco, a decomposição de um cubo de dados
-de uma galáxia gera dois cubos, um para o bojo e outro para o disco.
+A decomposição morfológica espectral, aplicada ao cubo de dados de uma galáxia,
+resulta numa sequência de modelos morfológicos em função do comprimento de onda.
+Avaliando os modelos como imagens, é póssível montar cubos de dados espectrais
+para as componentes do modelo. Ou seja, com um modelo bojo e disco, a
+decomposição de um cubo de dados de uma galáxia gera dois cubos, um para o bojo
+e outro para o disco.
 
 De posse destes cubos de dados espectrais das componentes, pode-se começar a
-ponderar o significado de um {\em spaxel} deste cubo. Instintivamente, espera-se
+ponderar o significado de um de seus {\em spaxels}. Intuitivamente, espera-se
 que ele se pareça a um {\em spaxel} da galáxia original. Mas, nada garante que
 ele deva ser parecido com espectro algum, afinal o cubo espectral da componente
-morfológica é resultado de um processo computacional bastante complexo.
-Também, como se comentou na Seção \ref{sec:morph:comp:bd}, é preciso ter cuidado
-ao interpretar o resultado de um ajuste de modelo empírico.
-Isto é ainda mais importante em casos onde se faz este ajuste de forma
-automatizada, sem inspecionar cada imagem e seus modelos de forma individual,
-como é o caso da decomposição morfológica espectral.
+morfológica é resultado de um processo computacional bastante complexo, que leva
+em conta apenas informações espaciais. Também, como se comentou na Seção
+\ref{sec:morph:comp:bd}, é preciso ter cuidado ao interpretar o resultado de um
+ajuste de modelo empírico. Isto é ainda mais importante em casos onde se faz
+este ajuste de forma automatizada, sem inspecionar cada imagem e seus modelos de
+forma individual, como é o caso da decomposição morfológica espectral.
 
 O próximo Capítulo trata da decomposição morfológica espectral de cubos de dados
 do CALIFA. A fim de determinar se o método funciona, foi construído um modelo de
@@ -53,17 +52,19 @@ resultado apresentado a seguir.
 Não é objetivo deste exercício modelar uma galáxia realista. Os parâmetros foram
 escolhidos apenas para que o modelo que se assemelhe a uma galáxia real, sem
 qualquer necessidade de ser fisicamente possível tal galáxia existir. O modelo
-utilizado foi um bojo com uma lei de Sérsic e um disco com uma lei exponencial
-(ver Seção \ref{sec:morph:comp:bd}), cada componente com um perfil elipsoidal
-distinto dado por uma elipsidade ($\epsilon = 1 - b/a$, onde $a$ e $b$ são os
-semieixos maior e menor) e um ângulo de posição (P.A.) medido em sentido
-anti-horário a partir do eixo horizontal. Os parâmetros, do modelo são os
-seguintes:
+utilizado foi um bojo com uma lei de de Vaucouleurs (Sérsic com $n=4$) e um
+disco com uma lei exponencial (ver Seção \ref{sec:morph:comp:bd}), cada
+componente com um perfil elipsoidal distinto dado por uma elipsidade ($\epsilon
+= 1 - b/a$, onde $a$ e $b$ são os semieixos maior e menor) e um ângulo de
+posição (P.A.) medido em sentido anti-horário a partir do eixo horizontal. Os
+parâmetros do modelo original não listados na Tabela
+\ref{tab:testeModeloOriginal}.
 
-\begin{tabular}{ l  r | l  r }
+\begin{table}
+\begin{tabular}{ l  c | l  c }
   \hline
-  \multicolumn{4}{c}{Modelo original} \\
-  \multicolumn{2}{c}{Bojo} & \multicolumn{2}{c}{Disco} \\
+  \multicolumn{4}{c}{\textbf{Modelo original}} \\
+  \multicolumn{2}{c}{\textbf{Bojo}} & \multicolumn{2}{c}{\textbf{Disco}} \\
   \hline
   $I_e$ & $2,0$ & $I_0$ & $1.0$ \\
   $r_e$ & $5,0\,\arcs$ & $h$ & $15.0\,\arcs$ \\
@@ -72,6 +73,10 @@ seguintes:
   $\epsilon$ & $0,1$ & $\epsilon$ & $0,1$ \\
   \hline
 \end{tabular}
+\caption[Modelo morfológico original da galáxia sintética]
+{Parâmetros do modelo morfológico original da galáxia sintética.}
+\label{tab:testeModeloOriginal}
+\end{table}
 
 \begin{figure}
 	\includegraphics{figuras/simulation_initmodel}
@@ -91,12 +96,12 @@ $5635\,\angstrom$.
 \begin{figure}
 	\includegraphics{figuras/simulation_popmodel}
 	\caption[Modelos de populações estelares da galáxia sintética.]
-	{Modelos de populações estelares das componentes bojo (em vemelho)
+	{Populações estelares das componentes bojo (em vemelho)
 	e disco (em azul) da galáxia sintética. No painel superior, a dependência
 	espacial do tempo de escala do decaimento, $\tau$, da SFR do bojo. No painel
 	central taxas de formação estelar (SFR), modelados como $\Psi(t) = A \exp
-	(t/\tau)$. A SFR do disco é constante, com $\tau\to\infty$. Abaixo, os
-	espectros resultantes, utilizando a base de Granada.}
+	(-t/\tau)$. A SFR do disco é constante, com $\tau\to\infty$. Abaixo, os
+	espectros resultantes, utilizando a base Granada--MILES.}
 	\label{fig:testPopmodel}
 \end{figure}
 
@@ -114,10 +119,10 @@ suficientemente diferentes uma da outra. O modelo de populações é mostrado na
 Figura \ref{fig:testPopmodel}.
 
 Escolheu-se modelar o SFH do bojo como um surto de decaimento exponencial de
-formação estelar, com a taxa de formação estelar em função do tempo (SFR)
-sintética dada por $\Psi(t) = A \exp (t/\tau)$, normalizada de tal forma que
-$\int \Psi(t)\,\mathrm{d}t = 1\,\mathrm{M}_\odot$. O SFH do disco consiste numa
-SFR constante. A escala de tempo de decaimento $\tau$ tem a sua dependência
+formação estelar, com a taxa de formação estelar em função do tempo (SFR) dada
+por $\Psi(t) = A \exp (-t/\tau)$, normalizada de tal forma que $\int
+\Psi(t)\,\mathrm{d}t = 1\,\mathrm{M}_\odot$. O SFH do disco consiste numa SFR
+constante. A escala de tempo de decaimento $\tau$ tem a sua dependência
 espacial, no bojo, dada pela lei linear $\tau = \tau_0 + \alpha r$, onde
 $\tau_0$ é o seu valor no núcleo da galáxia e $\alpha$ o seu gradiente. Foram
 escolhidos $\tau_0 = 2\,\mathrm{Ga}$ e $\alpha = 0,2\,\mathrm{Ga} / \arcs$, com
@@ -168,40 +173,55 @@ Capítulo \ref{sec:Decomp}, sendo descrito apenas superficialmente nesta seção
 	{Modelo morfológico ajustado à galáxia sintética em $5635\,\angstrom$
 	utilizando o algoritmo DE. A imagem de resíduo é a diferença entre
 	observado e modelo, nos painéis superiores. O perfil radial de brilho, no
-	painel inferior, pode ser comparado com o da Figura \ref{fig:testInitmodel}.
-	Este modelo foi usado como valor inicial na decomposição morfológica
-	espectral.}
+	painel inferior, não está convoluído com a PSF, mas pode ser comparado com o
+	perfil da Figura \ref{fig:testInitmodel}.
+	Os parâmetros do modelo ajustados são muito próximos aos do original, as
+	diferenças nesta figura devem-se em sua maior parte à ausência de PSF. Este
+	modelo foi usado como chute inicial na decomposição morfológica espectral.}
 	\label{fig:testFitmodel}
 \end{figure}
+
+% TODO Rever residuo da figura acima. Dimensões espaciais?
 
 Como o objetivo é fazer a decomposição $\lambda$-a-$\lambda$, o algoritmo
 escolhido foi o de LM (Seção \ref{sec:morph:comp:ajuste}). Ele pode ser
 extremamente rápido, mas requer um bom modelo inicial. Então, o primeiro passo
 na decomposição é encontrar um modelo com valores aproximado das propriedades
-das componentes. Neste caso, pode-se utilizar um algorimo mais complexo, como o
+das componentes. Para tanto, pode-se utilizar um algorimo mais complexo, como o
 DE, que requer apenas uma faixa de valores para os parâmetros do modelo.
-A decomposição foi feita com a mesma PSF utilizada para criar o cubo,
-$\mathrm{FWHM} = 2,9\,\arcs$. Na Seção \ref{sec:test:psf} discute-se o que
-acontece quando se utiliza uma PSF diferente da ideal.
+O procedimento de ajuste inicial é descrito em detalhes é descrito na Seção
+\ref{sec:Decomp:initmodel}. A decomposição foi feita com a mesma PSF utilizada
+para criar o cubo, $\mathrm{FWHM} = 2,9\,\arcs$. Na Seção \ref{sec:test:psf}
+discute-se o que acontece quando se utiliza uma PSF diferente da ideal.
 
 A Figura \ref{fig:testFitmodel} mostra o modelo ajustado inicial. O ajuste
 foi feito numa faixa de $90\,\angstrom$ ao redor de $5635\,\angstrom$ (a
 mesma utilizada para normalizar os espectros antes de rodar o \starlight).
 O ajuste foi suficientemente bom, próximo ao modelo original (comparar com a
-Figura \ref{fig:testInitmodel}). Os parâmetros do modelo são os seguintes: 
+Figura \ref{fig:testInitmodel}). Os parâmetros do modelo inicial ajustado estão
+listados na Tabela \ref{tab:testeModeloInicial}.
 
-\begin{tabular}{ l  r | l  r }
+\begin{table}
+\begin{tabular}{ l c c l c c }
   \hline
-  \multicolumn{4}{c}{Ajuste inicial} \\
-  \multicolumn{2}{c}{Bojo} & \multicolumn{2}{c}{Disco} \\
+  \multicolumn{6}{c}{\textbf{Modelo inicial}} \\
+  & \multicolumn{2}{c}{\textbf{Bojo}} & & \multicolumn{2}{c}{\textbf{Disco}} \\
+  & \textbf{Ajuste} & \textbf{Original} & & \textbf{Ajuste} & \textbf{Original} \\
   \hline
-  $I_e$ & $3,0$ & $I_0$ & $1,2$ \\
-  $r_e$ & $3,9\,\arcs$ & $h$ & $14,3\,\arcs$ \\
-  $n$ & $3,4$ & & \\
-  $\mathrm{P.A.}$ & $60,3^\circ$ & $\mathrm{P.A.}$ & $46,5^\circ$ \\
-  $\epsilon$ & $0,1$ & $\epsilon$ & $0,1$ \\
+  $I_e$ & $3,0$ & $2$ & $I_0$ & $1,2$ & $1$ \\
+  $r_e$ & $3,9\,\arcs$ & $5\,\arcs$ & $h$ & $14,3\,\arcs$ & $15\,\arcs$\\
+  $n$ & $3,4$ & $4$ & & & \\
+  $\mathrm{P.A.}$ & $60,3^\circ$ & $60^\circ$ & $\mathrm{P.A.}$ & $46,5^\circ$ &
+  $45^\circ$ \\
+  $\epsilon$ & $0,1$ & $0,1$ & $\epsilon$ & $0,1$ & $0,1$ \\
   \hline
 \end{tabular}
+\caption[Modelo inicial ajustado à galáxia sintética]
+{Parâmetros do modelo inicial ajustado à galáxia sintética, utilizando o
+algoritmo DE.}
+\label{tab:testeModeloInicial}
+\end{table}
+
 
 Este ajuste não precisa ser perfeito, ele será refinado no primeiro passo do
 ajuste espectral. Espera-se que os  parâmetros mofológicos variem com o
@@ -217,11 +237,11 @@ $\lambda$-a-$\lambda$ do cubo de dados espectral da galáxia sintética.
 	\includegraphics{figuras/simulation_fitparams}
 	\caption[Parâmetos morfológicos da galáxia sintética.]
 	{Parâmetos morfológicos da galáxia sintética, em função do comprimento de
-	onda. Pontos vermelhos indicam o ajuste feito em caixas de $200\,\angstrom$, e
-	as linhas indicam o ajuste feito $\lambda$-a-$\lambda$. Linhas pontilhadas,
-	que praticamente não aparecem por trás dos ajustes, são os parâmetros
-	originais. Os painéis à esquerda são referentes ao bojo, e os à direita ao
-	disco. Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$.
+	onda. Pontos vermelhos: ajuste feito em caixas de $200\,\angstrom$. Linhas
+	pretas: ajuste feito $\lambda$-a-$\lambda$. Linhas pontilhadas, que
+	praticamente não aparecem por trás dos ajustes, são os parâmetros originais em
+	$5635\,\angstrom$. Os painéis à esquerda são referentes ao bojo, e os à direita
+	ao disco. Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$.
 	}
 	\label{fig:testFitParams}
 \end{figure}
@@ -236,20 +256,29 @@ pouco na região abaixo de $4000\,\angstrom$, o que pode indicar uma dependênci
 destes valores com as características da população estelar do bojo. O ajuste do
 disco, por outro lado, é praticamente constante em comprimento de onda.
 os parâmetros morfológicos médios, ponderados pela verossimilhança do ajuste,
-são:
+são listados na Tabela \ref{tab:testeModeloAjuste}.
 
-\begin{tabular}{ l  r | l  r }
+\begin{table}
+\begin{tabular}{ l c c l c c }
   \hline
-  \multicolumn{4}{c}{Ajuste espectral médio} \\
-  \multicolumn{2}{c}{Bojo} & \multicolumn{2}{c}{Disco} \\
+  \multicolumn{6}{c}{\textbf{Média espectral dos modelos}} \\
+  & \multicolumn{2}{c}{\textbf{Bojo}} & & \multicolumn{2}{c}{\textbf{Disco}} \\
+  & \textbf{Ajuste} & \textbf{Original} & & \textbf{Ajuste} & \textbf{Original} \\
   \hline
-  $r_e$ & $5,498 \pm 0.876\,\arcs$ & $h$ & $14,974 \pm 0,268\,\arcs$ \\
-  $n$ & $4,206 \pm 0,389$ & & \\
-  $\mathrm{P.A.}$ & $60,384 \pm 2,438^\circ$ & $\mathrm{P.A.}$ & $44,467 \pm
-  2,452^\circ$ \\
-  $\epsilon$ & $0,102 \pm 0,009$ & $\epsilon$ & $0,100 \pm 0,008$ \\
+  $r_e$ & $5,498 \pm 0.876\,\arcs$ & $5\,\arcs$ & $h$ & $14,974 \pm
+  0,268\,\arcs$ & $15\,\arcs$ \\
+  $n$ & $4,206 \pm 0,389$ & $4$ & & & \\
+  $\mathrm{P.A.}$ & $60,384 \pm 2,438^\circ$ & $60^\circ$ & $\mathrm{P.A.}$ &
+  $44,467 \pm 2,452^\circ$ & $45^\circ$ \\
+  $\epsilon$ & $0,102 \pm 0,009$ & $0,1$ & $\epsilon$ & $0,100 \pm 0,008$ &
+  $0,1$ \\
   \hline
 \end{tabular}
+\caption[Ajuste morfológico espectral -- média dos parâmetros]
+{Média espectral dos parâmetros morfológicos ajustados à galáxia sintética,
+ponderada pela verossimilhança dos ajustes.}
+\label{tab:testeModeloAjuste}
+\end{table}
 
 Estes valores não necessariamente precisam ser iguais aos do modelo original.
 Aquele foi usado para definir o modelo em $5635\,\angstrom$, e se a média
@@ -296,16 +325,22 @@ originais, é preciso quantificar a qualidade do ajuste. Calculando a média da
 razão entre o ajuste e o original, obtém-se para o bojo um valor de $1,0021 \pm
 0,0297$. Ou seja, o ajuste tem um desvio médio de menos de $1\%$, e um desvio
 padrão da média de $3\%$. Para o disco a razão média é $0,9857 \pm 0.0466$, isto
-é, um desvio médio de $1,5\%$, e um desvio padrão da média de $4,5\%$. O que
-causa estes desvios? Deve-se explorar melhor a razão ajuste--original, para
-determinar se existe algum efeito sistemático. A Figura \ref{fig:testFitError}
-mostra a razão média em anéis de raio constante, para que seja possível fazer
-uma imagem em duas dimensões. O ajuste do bojo, mostrado às esquerda, tem um
-desvio menor no centro, e vai aumentando conforme se afasta do núcleo. O ajuste
-do disco, à direita, parece não ter desvios espaciais significativos. Não há
-também um gradiente espectral apreciável, isto é, uma cor, nas duas componentes.
-Entretanto, ambas mostram o surgimento de ``linhas espectrais artificiais'', que
-parecem estar anti-correlacionadas, conforme foi visto nos espectros integrados.
+é, um desvio médio de $1,5\%$, e um desvio padrão da média de $4,5\%$. A ordem
+de magnitude destes desvios não é nenhuma surpresa, levando em conta que foram
+adicionados $5\%$ de ruído gaussiano aos dados. Mesmo assim, deve-se explorar
+melhor a razão ajuste--original, para determinar se existe algum efeito
+sistemático nestes desvios. A Figura \ref{fig:testFitError} mostra a razão média
+em anéis de raio constante, para que seja possível fazer uma imagem em duas
+dimensões. O ajuste do bojo, mostrado no painel superior, tem um desvio menor no
+centro, e vai aumentando conforme se afasta do núcleo. Isto é esperado, já que o
+brilho superficial do bojo cai muito rapidamente com o raio. O ajuste do disco,
+no painel inferior, parece não ter desvios espaciais significativos.
+Não há também um gradiente espectral apreciável, isto é, uma cor, nas duas
+componentes. Entretanto, ambas mostram o surgimento de ``linhas espectrais
+artificiais'', que parecem estar anti-correlacionadas, conforme foi visto nos
+espectros integrados.
+
+% TODO inset com zoom na figura dos espectros integrados.
 
 Em linhas gerais, o resutado do teste é promissor. Idealmente, é necessário
 testar todas as configurações possíveis de morfologia, para mapear em quais
@@ -337,23 +372,26 @@ a PSF segue um perfil de Moffat com $\beta=4$ e $\mathrm{FWHM} = 2,9 \pm
 0,3\,\arcs$. Os testes da Seção anterior foram feitos utilizando esta PSF, tanto
 nos dados originais quanto no ajuste morfológico. Mas, dado que a FWHM da PSF
 tem uma certa distribuição de valores, é justo levantar a questão: o que
-acontece quando a PSF original e a utilizada na decomposição são diferentes?
+acontece quando a PSF original e a utilizada na decomposição são diferentes? Em
+outras palavras, como se comporta a decomposixao morfo-espectral quando nao
+temos um conhecimento perfeito da PSF?
 
 Para tentar compreender o efeito de uma PSF inadequada aos dados na
 decomposição, o teste foi refeito, porém com a galáxia original sintética
 convoluída com PSFs de $\mathrm{FWHM} = 2,6\,\arcs$ e $\mathrm{FWHM} =
 3,3\,\arcs$. Com isto tem-se valores próximos aos limites dados pela incerteza
 na medida da PSF do CALIFA. A mesma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ foi
-utilizada na decomposião morfológica. No caso da galáxia sintética com a PSF de
-$2,6\,\arcs$, o ajuste está sobreestimando o valor da FWHM real, enquanto no
-caso da galáxia com $3,3\,\arcs$ a FWHM é subestimada.
+utilizada na decomposição morfológica espectral. No caso da galáxia sintética
+com a PSF de $2,6\,\arcs$, o ajuste está sobreestimando o valor da FWHM real,
+enquanto no caso da galáxia com $3,3\,\arcs$ a FWHM é subestimada.
 
 \begin{figure}
 	\includegraphics{figuras/simulation_fitparams_psf26}
 	\caption[Parâmetos morfológicos (teste com PSF $\mathrm{FWHM} = 2,6\,\arcs$).]
 	{Parâmetos morfológicos da galáxia sintética, em função do comprimento de
-	onda. Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,6\,\arcs$. Ver
-	legenda da Figura \ref{fig:testFitParams}.}
+	onda. Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ sobre
+	dados com $\mathrm{FWHM} = 2,6\,\arcs$. Ver legenda da Figura
+	\ref{fig:testFitParams}.}
 	\label{fig:testFitParams26}
 \end{figure}
 
@@ -361,8 +399,9 @@ caso da galáxia com $3,3\,\arcs$ a FWHM é subestimada.
 	\includegraphics{figuras/simulation_fitparams_psf33}
 	\caption[Parâmetos morfológicos (teste com PSF $\mathrm{FWHM} = 3,3\,\arcs$).]
 	{Parâmetos morfológicos da galáxia sintética, em função do comprimento de
-	onda. Ajuste feito com uma PSF de $\mathrm{FWHM} = 3,3\,\arcs$. Ver
-	legenda da Figura \ref{fig:testFitParams}.}
+	onda. Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ sobre
+	dados com $\mathrm{FWHM} = 3,3\,\arcs$. Ver legenda da Figura
+	\ref{fig:testFitParams}.}
 	\label{fig:testFitParams33}
 \end{figure}
 
@@ -371,44 +410,45 @@ parâmetros morfológicos obtidos para os dois casos. Pode-se ver que os
 parâmetros obtidos para o disco são muito próximos dos parâmetros do teste
 anterior. Não é de se estranhar, o disco é muito suave, não tem estruturas na
 escala de tamanho da PSF. O bojo, por outro lado, é muito afetado pela má
-escolha da PSF. Sobreestimar a FWHM da PSF ($2,6\,\arcs$) faz os valores de
-$r_e$ e $n$ aumentarem muito, para cerca de $13\,\arcs$ e $7$, respectivamente.
-Também aumenta a dispersão nos dois parâmetros, provavelmente causado por
-degenerescência no ajuste. Com a FWHM subestimada ($3,3\,\arcs$), os valores
-destes parâmetros diminui, com $r_e \sim 4\,\arcs$ e $n \sim 2,5$. O disco muda
-pouco, como no outro caso. Os parâmetros médios das duas decomposições são:
+escolha da PSF. {\em Sobreestimar} a FWHM da PSF ($2,9\,\arcs > 2,6\,\arcs$) faz
+os valores de $r_e$ e $n$ aumentarem muito, para cerca de $13\,\arcs$ e $7$,
+respectivamente. Também aumenta a dispersão nos dois parâmetros, provavelmente
+causado por degenerescência no ajuste. Com a FWHM {\em subestimada} ($2,9\,\arcs
+< 3,3\,\arcs$), os valores destes parâmetros diminui, com $r_e \sim 4\,\arcs$ e
+$n \sim 2,5$. O disco muda pouco, como no outro caso. Os parâmetros médios das
+duas decomposições são listados na Tabela \ref{tab:testeAjustePSF}.
 
-\begin{tabular}{ l  r | l  r }
+\begin{table}
+\begin{tabular}{ l c c  l c c }
   \hline
-  \multicolumn{4}{c}{Ajuste (PSF $\mathrm{FWHM} = 2,6\,\arcs$)} \\
-  \multicolumn{2}{c}{Bojo} & \multicolumn{2}{c}{Disco} \\
+  \multicolumn{6}{c}{\textbf{Média espectral dos modelos (PSF diferente)}} \\
+  & \multicolumn{2}{c}{\textbf{Bojo}} & & \multicolumn{2}{c}{\textbf{Disco}} \\
+  & $\mathrm{FWHM} = 2,6\,\arcs$ & $\mathrm{FWHM} = 3,3\,\arcs$ & &
+  $\mathrm{FWHM} = 2,6\,\arcs$ & $\mathrm{FWHM} = 3,3\,\arcs$ \\
   \hline
-  $r_e$ & $13,639 \pm 5.217\,\arcs$ & $h$ & $14,398 \pm 0.377\,\arcs$ \\
-  $n$ & $7,380 \pm 1,247$ & & \\
-  $\mathrm{P.A.}$ & $60,687 \pm 2,624^\circ$ & $\mathrm{P.A.}$ & $40,222
-  \pm 3.596^\circ$ \\
-  $\epsilon$ & $0,111 \pm 0,011$ & $\epsilon$ & $0,101 \pm 0,012$ \\
-  \hline
-\end{tabular}
-
-\begin{tabular}{ l  r | l  r }
-  \hline
-  \multicolumn{4}{c}{Ajuste (PSF $\mathrm{FWHM} = 3,3\,\arcs$)} \\
-  \multicolumn{2}{c}{Bojo} & \multicolumn{2}{c}{Disco} \\
-  \hline
-  $r_e$ & $3,826 \pm 0,206\,\arcs$ & $h$ & $14,466 \pm 0,271\,\arcs$ \\
-  $n$ & $2,509 \pm 0,133$ & & \\
-  $\mathrm{P.A.}$ & $60,535 \pm 2,563^\circ$ & $\mathrm{P.A.}$ & $47.354 +/-
+  $r_e$ & $13,639 \pm 5.217\,\arcs$ & $3,826 \pm 0,206\,\arcs$ & $h$ & $14,398
+  \pm 0.377\,\arcs$ & $14,466 \pm 0,271\,\arcs$ \\
+  $n$ & $7,380 \pm 1,247$ & $2,509 \pm 0,133$ & & & \\
+  $\mathrm{P.A.}$ & $60,687 \pm 2,624^\circ$ & $60,535 \pm
+  2,563^\circ$ & $\mathrm{P.A.}$ & $40,222 \pm 3.596^\circ$ & $47.354 \pm
   1.694^\circ$ \\
-  $\epsilon$ & $0,092 \pm 0,008$ & $\epsilon$ & $0,099 \pm 0,005$ \\
+  $\epsilon$ & $0,111 \pm 0,011$ & $0,092 \pm 0,008$ & $\epsilon$ & $0,101 \pm
+  0,012$ & $0,099 \pm 0,005$ \\
   \hline
 \end{tabular}
+\caption[Parâmetros do ajuste morfológico espectral com PSF diferente]
+{Média espectral dos parâmetros morfológicos ajustados à galáxia sintética,
+ponderada pela verossimilhança dos ajustes, com a PSF do ajuste ($\mathrm{FWHM}
+= 2,9\,\arcs$) diferente da PSF dos dados.}
+\label{tab:testeAjustePSF}
+\end{table}
 
 \begin{figure}
 	\includegraphics{figuras/simulation_spectra_psf26}
 	\caption[Espectros ajustados (teste com PSF $\mathrm{FWHM} = 2,6\,\arcs$).]
 	{Espectros ajustados à galáxia sintética. Ajuste feito com uma PSF de
-	$\mathrm{FWHM} = 2,6\,\arcs$. Ver legenda da Figura \ref{fig:testFitSpectra}.}
+	$\mathrm{FWHM} = 2,9\,\arcs$ sobre dados com $\mathrm{FWHM} = 2,6\,\arcs$. Ver
+	legenda da Figura \ref{fig:testFitSpectra}.}
 	\label{fig:testFitSpectra26}
 \end{figure}
 
@@ -416,12 +456,12 @@ pouco, como no outro caso. Os parâmetros médios das duas decomposições são:
 	\includegraphics{figuras/simulation_spectra_psf33}
 	\caption[Espectros ajustados (teste com PSF $\mathrm{FWHM} = 3,3\,\arcs$).]
 	{Espectros ajustados à galáxia sintética. Ajuste feito com uma PSF de
-	$\mathrm{FWHM} = 3,3\,\arcs$. Ver legenda da Figura \ref{fig:testFitSpectra}.}
-	\label{fig:testFitSpectra33}
+	$\mathrm{FWHM} = 2,9\,\arcs$ sobre dados com $\mathrm{FWHM} = 3,3\,\arcs$. Ver
+	legenda da Figura \ref{fig:testFitSpectra}.} \label{fig:testFitSpectra33}
 \end{figure}
 
 A dispersão nos parâmetros do bojo, no caso sobreestimado, parece um problema em
-potecial. Mas, percebe-se que a dispersão nas parâmetros não se reflete tanto
+potecial. Percebe-se, porém, que a dispersão nos parâmetros não se reflete tanto
 nos espectros, como mostra a Figura \ref{fig:testFitSpectra26}. Os espectros são
 parecidos com os originais, com diferenças sistemáticas e um ``ruído'' maior do
 que o ajuste com a PSF correta. No caso subestimado, os espectros parecem melhor
@@ -432,7 +472,8 @@ sistemáticas.
 	\includegraphics{figuras/simulation_error_psf26}
 	\caption[Razão ajuste--original (teste com PSF $\mathrm{FWHM} = 2,6\,\arcs$).]
 	{Razão ajuste--original média dos espectros ajustados à galáxia sintética.
-	Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,6\,\arcs$. Ver legenda da Figura
+	Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ sobre
+	dados com $\mathrm{FWHM} = 2,6\,\arcs$. Ver legenda da Figura
 	\ref{fig:testFitError}.}
 	\label{fig:testFitError26}
 \end{figure}
@@ -441,7 +482,8 @@ sistemáticas.
 	\includegraphics{figuras/simulation_error_psf33}
 	\caption[Razão ajuste--original (teste com PSF $\mathrm{FWHM} = 3,3\,\arcs$).]
 	{Razão ajuste--original média dos espectros ajustados à galáxia sintética.
-	Ajuste feito com uma PSF de $\mathrm{FWHM} = 3,3\,\arcs$. Ver legenda da Figura
+	Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ sobre
+	dados com $\mathrm{FWHM} = 3,3\,\arcs$. Ver legenda da Figura
 	\ref{fig:testFitError}.}
 	\label{fig:testFitError33}
 \end{figure}
@@ -452,9 +494,9 @@ afasta do centro, enquanto o disco apresenta um gradiente espectral, ficando
 mais azul, quando se sobreestima a FWHM. As ``linhas espectrais artificiais''
 neste caso são bem pronunciadas. A razão média para o bojo é de $1,0627 \pm
 0,0645$, e para o disco de $0,7721 \pm 0,0823$. Quando se subestima a FWHM
-(Figura \ref{fig:testFitError33}), o espectro ajustado do bojo é menor e do que
-o original, e diminui com o raio. O Disco não parece ter gradiente radial, e em
-ambos os casos, não há um gradiente espectral perceptível, com ``linhas
+(Figura \ref{fig:testFitError33}), o espectro ajustado do bojo é mais fraco e do
+que o original, e diminui com o raio. O disco não parece ter gradiente radial, e
+em ambos os casos, não há um gradiente espectral perceptível, com ``linhas
 espectrais artificiais'' menos intensas do que no outro caso. A razão média
 neste caso é $0,9355 \pm 0,0532$ para o bojo e $1,1297 \pm 0.0413$ para o disco.
 
@@ -463,8 +505,8 @@ real (superestimando), é impossível criar um modelo com um bojo tão concentra
 quanto o observado. O que acontece então é que o algoritmo chega nos modelos
 mais próximos, que não representam exatamente a galáxia. O mesmo não ocorre
 quando se utiliza uma FWHM menor. Neste caso, basta fazer um bojo menos
-concentrado ($r_e$ e/ou $n$ menor). Pelo teste, este caso é mais estável, isto é
-possui menos degenerescência.
+concentrado ($r_e$ e/ou $n$ menor). Pelo teste, este caso é mais estável, isto
+é, possui menos degenerescência.
 
 Assim, pode-se ficar tentado a utilizar a PSF com FWHM menor na decomposição
 morfológica espectral das as galáxias do CALIFA, a fim de evitar os caso onde a
