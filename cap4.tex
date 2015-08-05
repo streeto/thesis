@@ -304,9 +304,8 @@ como se aborda o problema.
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{figuras/galfit-decomp}
-	\caption[Ajuste morfológico em duas dimensões] {\TODO Ajuste morfológico
-	em duas dimensões, feito de alguma forma com GALFIT \citep{Peng2002}. Procurar
-	uma figura melhor.}
+	\caption[Ajuste morfológico em duas dimensões] {Ajuste morfológico
+	em duas dimensões, feito com o programa GALFIT. Retirado de \citep{Peng2002}.}
 	\label{fig:decompGalfit}
 \end{figure}
 
@@ -386,16 +385,17 @@ Entretanto, como a versão original foi feita em forma de um programa executado
 em linha de comando, não é muito prático utilizá-la em seu formato original para
 implementar as tarefas deste trabalho.
 
-Foi feita uma versão modificada do IMFIT em forma de biblioteca dinâmica, com um
-envelope de código\fixme para ser acessado em Python. Esta biblioteca foi
-chamada python-imfit\footnote{\url{https://github.com/streeto/python-imfit}}, e
-expõe\fixme praticamente toda a funcionalidade do IMFIT, utilizando {\em arrays}
-numéricos do Python. Esta biblioteca é bastante genérica, e pode ser utilizada
-para qualquer aplicação de ajuste de imagem. Contudo, o mais importante é que a
-manipulação de modelos e o ajuste para múltiplas imagens deixa de ser um
-exercício tedioso de organização de {\em shell scripts}\fixme, passando a ser um
-programa de computador propriamente dito, com toda a maquinaria do Python a sua
-disposição. O programa resultante, que faz a decomposição em bojo e disco em um
-cubo de dados do CALIFA, é apresentado no Capítulo \ref{sec:Decomp}.
+Foi feita uma versão modificada do IMFIT em forma de biblioteca dinâmica. Em
+seguida foi feito um código {\em wrapper}, em Python, que acessa todas as
+funções do IMFIT. Esta biblioteca, junto com o código {\em wrapper}. foi chamada
+python-imfit\footnote{\url{https://github.com/streeto/python-imfit}}. Com ela
+pode-se fazer tudo que o IMFIT permite, mas e {\em arrays} numéricos do Python.
+Esta biblioteca é bastante genérica, e pode ser utilizada para qualquer
+aplicação de ajuste de imagem. Contudo, o mais importante é que a manipulação de
+modelos e o ajuste para múltiplas imagens deixa de ser um exercício tedioso de
+organização de {\em shell scripts}, passando a ser um programa de computador
+propriamente dito, com toda a maquinaria do Python a sua disposição.
+O programa resultante, que faz a decomposição em bojo e disco em um cubo de
+dados do CALIFA, é apresentado no Capítulo \ref{sec:Decomp}.
 
 % End of this chapter

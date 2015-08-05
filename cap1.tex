@@ -47,10 +47,10 @@ dados, obtém-se espectros espacialmente resolvidos com uma boa resolução
 espectral e espacial. O survey CALIFA ({\em Calar Alto Legacy Integral Field
 Area survey\footnote{\url{http://www.caha.es/CALIFA/}}}) está utilizando o
 instrumento PMAS/PPAK do observatório Calar Alto para obter IFS de $600$
-galáxias \citep{Sanchez2012}.
-Destas, $100$ já estão disponíveis no primeiro {\em Data Release}
-\citep[DR1]{Husemann2013}, afirmando o caráter de legado deste
-survey.\fixme(atualizar comentário sobre data releases)
+galáxias \citep{Sanchez2012}. Destas, $100$ foram disponibilizadas no
+primeiro {\em Data Release} \citep[DR1]{Husemann2013}, e $200$ no primeiro
+segundo \citep{GarciaBenito2015}, afirmando o caráter de legado
+deste survey.
 
 Quando completado, o CALIFA terá obtido da ordem de $10^6$ espectros, quase o
 mesmo que o SDSS. Porém, este não será apenas mais um survey espectroscópico. A
@@ -62,9 +62,13 @@ azul à sequência vermelha, amostrando galáxias todos os tipos morfológicos
 
 \begin{figure}
 	\includegraphics{figuras/surveysIFS}
-	\caption[Comparação entre {\em surveys} espectroscópicos de campo integral.]
-	{\TODO: Comparação entre {\em surveys} espectroscópicos de campo integral.
-	Retirado de \citet{Sanchez2014}.}
+	\caption[Comparação entre {\em surveys} espectroscópicos de campo integral]
+	{Comparação entre {\em surveys} espectroscópicos de campo integral em execução
+	atualmente. A figura superior à esquerda mostra um recorte de $90 \times
+	90\,\arcs$ de NGC 5947, extraída do SDSS. Ao redor, como esta galáxia seria
+	observada pelos {\em surveys} ATLAS3D, MaNGA, SAMI e CALIFA. Abaixo a faixa de
+	comprimento de onda coberta por cada {\em survey}. Retirado de
+	\citet{Sanchez2014}.}
 	\label{fig:surveysIFS}
 \end{figure}
 
@@ -75,8 +79,8 @@ surveys} que estão em andamento são o SAMI \citep{Croom2012, Bryant2015} e o
 MaNGA \citep{Bundy2015}. Estes também buscam obter uma amostra grande de
 galáxias, até maior do que a do CALIFA. Entretanto, a vantagem do CALIFA está na
 cobertura e amostragem espacial, observando uma maior porção de cada galáxia com
-mais riqueza de detalhes. \TODO Falar da Figura \ref{fig:surveysIFS}, pegar
-alguma coisa de \citet{Sanchez2014}.
+mais riqueza de detalhes. A Figura \ref{fig:surveysIFS}, mostra uma comparação
+simplificada do tamanho do campo e cobertuta espectral destes {\em surveys}.
 
 %***************************************************************%
 %                                                               %
@@ -96,7 +100,7 @@ espectros individualmente, embora na verdade, nos cubos do CALIFA os pixels
 vizinhos estão correlacionados devido ao {\em seeing} do céu e ao processo de
 observação. Há a queda na relação sinal/ruído (S/N) nas regiões mais afastadas
 do núcleo da galáxia, onde o brilho superficial é muito menor.
-Algumas galáxias possuem outros objetos ``intrusos'' que precisam ser
+Algumas galáxias possuem outros objetos ``intrometidos'' que precisam ser
 mascarados. Linhas telúricas\footnote{Linhas de absorção causadas pela
 atmosfera.} também precisam ser mascaradas. Assim, em geral, é necessário um
 preprocessamento visando manter um S/N mínimo e garantir um espectro livre de
@@ -157,20 +161,49 @@ artigos publicados que o utilizam intensivamente.
 
 \section{Decomposição morfológica de galáxias}
 
-\TODO detalhar mais aqui, ainda não tá legal. O Capitulo \ref{sec:morph}
-apresenta um beabá sobre morfologia.
+Utilizando PyCASSO para trabalhar com cubos do CALIFA, buscou-se um problema
+onde se pudesse utilizar a natureza multidimensional dos dados. Com o \starlight
+se obtém informações sobre a história das populações estelares, ou seja,
+transforma-se comprimento de onda em tempo. Porém, isto é feito de forma
+individual, para cada {\em spaxel}. Adicionando uma análise na distribuição de
+brilho da galáxia, pode-se tentar decompor o seu espectro em componentes
+morfológicas, e em seguida estudar a história de suas populações estelares.
 
-\TODO Caracterização ds PSF no Capítulo \ref{sec:psf}. Explicar a importância
-de fazer isso pro survey.
+O processo de fazer a decomposição morfológica em cubos de dados espectrais de
+galáxias, tal que se toma imagens de fatias em comprimento de onda
+($\lambda$-a-$\lambda$), é chamado neste trabalho de decomposição morfológica
+espectral. Dele resulta um conjunto de modelos morfológicos, que podem ser
+manejados de forma a obter cubos de dados espectrais das componentes
+morfológicas. O modelo morfológico de interesse aqui consiste em um bojo e um
+disco. O Capitulo \ref{sec:morph} apresenta um breve histórico de morfologia.
 
-Como aplicação científica do PyCASSO, o Capítulo \ref{sec:pop} trata da síntese
-espectral das componentes morfológicas (bojo e disco) de uma galáxia, obtidas no
-conforme foi descrito no Capítulo \ref{sec:Decomp}. Estas componentes são
-armazenadas em cubos de dados, e são tratados exatamente da mesma forma que
-uma galáxia. Seus espectros são passados pelo \starlight, resultando em cubos
-de síntese espectral. Os dados da síntese das componentes foram comparados com a
-síntese da galáxia original, utilizando o programa PyCASSO. \TODO O que
-resultou?
+A decomposição morfológica depende de uma boa caracterização da PSF ({\em Point
+Spread Function}). Como parte deste trabalho, a PSF do CALIFA foi determinada
+(Capítulo \ref{sec:psf}), com os resultados sendo aproveitados pela colabolação
+do CALIFA, e publicados em \citet{GarciaBenito2015}. Foram feitos testes do
+algoritmo de decomposição, descritos no Capítulo \ref{sec:test}, utilizando uma
+galáxia sintética. Estes testes não foram exaustivos, apenas indicam que a
+decomposição pode funcionar. Os testes incluem populações estelares compostas,
+variáveis com a posição no modelo. Outro teste importante, no mesmo capítulo,
+foi o efeito de usar uma PSF mal dimensionada na decomposição, com largura
+diferente da PSF do cubo de dados.
+
+O Capítulo \ref{sec:Decomp} descreve em detalhes o algoritmo de decomposição
+morfológica espectral. O pré processamento dos dados inclui regularizar a
+cinemática da galáxia, combinar espectros em imagens, calcular erros
+correlacionados, entre outras coisas. O ajuste das imagens ao modelo bojo--disco
+é feito utilizando o programa IMFIT \citep{Erwin2015}, descrito na seção
+\ref{sec:morph:comp:ajuste}. Foi escolhida uma amostra galáxias, que
+potencialmente podem ser decompostas em bojos e discos, para aplicar a
+decomposição, resultando num conjunto de cubos espectrais de componentes bojo e
+disco de cada galáxia desta amostra.
+
+Os cubos destas componentes são tratados exatamente da mesma forma que uma
+galáxia ao serem passados pelo \starlight. Utilizando PyCASSO, os
+resultados da síntese espectral foram analisados e comparados com a síntese da
+galáxia original.
+
+\TODO O que resultou?
 
 
 % End of this chapter

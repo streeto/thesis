@@ -33,9 +33,10 @@ los Filabres}, na Comunidade Autônoma de Andaluzia, Espanha. Ele é operado pel
 {\em survey} CALIFA foi agraciado com 210 noites pelo Comitê Executivo do Calar
 Alto, espalhadas por 6 semestres, iniciando em junho de 2010 (na prática, as
 observações se estenderam até o final de 2014). O instrumento utilizado foi a
-Unidade de Campo Integral PPAK\footnote{\TODO PPAK footnote}
-\citep{Kelz2006}, do Espectrógrafo PMAS\footnote{\TODO PMAS footnote}
-\citep{Roth2005, Roth2010}, no telescópio de $3,5\,\mathrm{m}$ do CAHA.
+Unidade de Campo Integral PPAK\footnote{{\em PMAS fiber PAcK}.}
+\citep{Kelz2006}, do Espectrógrafo PMAS\footnote{{\em Potsdam Multi-Aperture
+Spectrophotometer.}} \citep{Roth2005, Roth2010}, no telescópio de
+$3,5\,\mathrm{m}$ do CAHA.
 
 A intenção do {\em survey} é caracterizar a população local de galáxias, que
 pode ser resumida nos seguintes aspectos científicos principais
@@ -64,26 +65,30 @@ disponível. Ela está descrita nas seções a seguir.
 \label{sec:ifs:instrumentacao}
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
-	\caption[Esquema do instrumento PMAS/PPAK.]
-	{\TODO: Esquema do instrumento PMAS/PPAK, de \citet{Kelz2006}.}
+	\includegraphics[width=0.5\textwidth]{figuras/PPAK}
+	\caption[Distribuição das fibras no instrumento PMAS/PPAK]
+	{Distribuição espacial das fibras e dimensões do IFU do instrumento PMAS/PPAK.
+	Círculos brancos representam fibras ativas, e círculos pretos fibras
+	espaçadoras. Os 6 conjuntos de fibras ao redor do IFU são utilizados
+	para medir o céu. O tamanho físico é de $4\,\mathrm{mm}$ e a largura
+	do campo é mair que $1\,\arcs$. Retirado de	\citet{Kelz2006}.}
 	\label{fig:PPAK}
 \end{figure}
 
 À época do início do CALIFA, o PPAK/PMAS era o instrumento de sua classe com o
 tamanho de campo, $>1\,\mathrm{arcmin}^2$. Ele consiste em um maço de 331 fibras
 ópticas cobrindo o campo de observação, direcionado a um espectrógrafo de fenda
-longa que espalha a luz sobre um detector CCD\footnote{\TODO footnote CCD}. A
-Figura \ref{fig:PPAK} ilustra a montagem esquemática do instrumento.
-Desta forma, de cada fibra se obtém um espectro. Através de um programa de
-computador, os espectros podem ser reorganizados de modo a formar um cubo de
-dados, onde há duas dimensões espaciais e uma dimensão espectral. Todavia,
-pode-se notar na Figura \ref{fig:PPAK} que as fibras não cobrem totalmente o
-campo de observação. Na verdade, apenas em torno de 60\% da luz proveniente do
-campo cai dentro das fibras. O restante se perde nos espaços entre elas. Para
-mitigar este problema, observa-se o campo várias vezes, deslocando o telescópio
-uma fração de {em spaxel} em diversas direções, e reconstruindo o cubo de dados
-utilizando uma técnica é chamada {\em dithering}.
+longa que espalha a luz sobre um detector CCD\footnote{{\em Charge Coupled
+Device}.}. A Figura \ref{fig:PPAK} ilustra a montagem esquemática do
+instrumento. Desta forma, de cada fibra se obtém um espectro. Através de um
+programa de computador, os espectros podem ser reorganizados de modo a formar um
+cubo de dados, onde há duas dimensões espaciais e uma dimensão espectral.
+Todavia, pode-se notar na Figura \ref{fig:PPAK} que as fibras não cobrem
+totalmente o campo de observação. Na verdade, apenas em torno de 60\% da luz
+proveniente do campo cai dentro das fibras. O restante se perde nos espaços
+entre elas. Para mitigar este problema, observa-se o campo várias vezes,
+deslocando o telescópio uma fração de {em spaxel} em diversas direções, e
+reconstruindo o cubo de dados utilizando uma técnica é chamada {\em dithering}.
 
 A estratégia inicial do {\em survey} foi observar todos os objetos utilizando
 duas configurações diferentes e complementares do instrumento. A primeira,
@@ -116,60 +121,72 @@ descrita e estudada em detalhes por \citet{Walcher2014}. O conteúdo da amostra,
 junto com tabelas auxiliares, está disponível no {\em website} do
 CALIFA\footnote{\url{http://www.caha.es/CALIFA/}}. A amostra final observada
 deve conter aproximadamente $2/3$ da amostra mãe, em torno de 600 galáxias, a
-serem selecionadas conforme a visibilidade, num padrão quase aleatório.
-
-\TODO falar da Figura \ref{fig:CALIFASample}.
+serem selecionadas conforme a visibilidade, num padrão quase aleatório. A Figura
+\ref{fig:CALIFASample} mostra a distribuição de magnitude aparente na banda $r$
+contra o {\em redshift} da amostra mãe. O diagrama cor--magnitude pode ser visto
+na Figura \ref{fig:CALIFACMD}.
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
-	\caption[Caracterização da amostra do CALIFA.]
-	{\TODO: Caracterização da amostra do CALIFA. CMD e mapa do céu de
-	\citet{Sanchez2012}.}
+	\includegraphics[width=0.7\textwidth]{figuras/CALIFASample}
+	\caption[Distribuição de magnitude $r$ contra {\em redshift} da amostra mãe
+	do CALIFA] {Distribuição de magnitude aparente na banda $r$ contra o {\em
+	redshift} da amostra mãe do CALIFA. Retirado de \citet{Sanchez2012}.}
 	\label{fig:CALIFASample}
 \end{figure}
 
+\begin{figure}
+	\includegraphics[width=0.7\textwidth]{figuras/CALIFACMD}
+	\caption[Diagrama cor--magnitude da amostra mãe do CALIFA]
+	{[Painel superior: diagrama cor--magnitude ($u-z$ contra $M_z$) da amostra mãe
+	do CALIFA. Os círculos coloridos indicam galáxias publicadas no DR2 (ver Seção
+	\ref{sec:ifs:dr}), com a cor indicando o tipo morfológico. Painel inferior:
+	fração das galáxias publicadas no DR2 com respeito à amostra mãe. Retirado de
+	\citet{GarciaBenito2015}.}
+	\label{fig:CALIFACMD}
+\end{figure}
+
 \subsection{{\em Data Releases}}
+\label{sec:ifs:dr}
 
 A primeira liberação pública de dados (em inglês, {\em data release}),
-denominado DR1 \citep{Husemann2013}, ocorreu em outubro de 2013\fixme. Foram
+denominado DR1 \citep{Husemann2013}, ocorreu em outubro de 2013. Foram
 escolhidas 100 galáxias nas duas configurações, V500 e V1200, que passaram por
 um controle de qualidade do {\em survey}, num total de 200 cubos de dados. As
 características da amostra do DR1 reproduzem bem as da amostra mãe, dentro do
-que é esperado estatisticamente para uma amostra menor. Massas derivadas da
-síntese de populações estelares foram usadas para caracterizar a amostra do DR1,
-como pode ser visto no painel superior da Figura \ref{fig:DRMass}.
+que é esperado estatisticamente para uma amostra menor.
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
-	\caption[Distribuição de massa das galáxias (CALIFA DR1 e DR2).]
-	{\TODO: Distribuição de massa das galáxias no DR1 e no DR2 do CALIFA.
-	Reproduzido dos artigos de apresentação do DR1 \citep[figura 6]{Husemann2013}
-	e DR2 \citep[figura 7]{GarciaBenito2015}.}
+	\includegraphics[width=0.5\textwidth]{figuras/CALIFAMass}
+	\caption[Distribuição de massa das galáxias no  DR2 do CALIFA.]
+	{Distribuição de massa estelar das galáxias no DR2 do CALIFA. As massas
+	foram determinadas através de síntese espectral de populações estelares com o
+	\starlight. Retirado de \citet{GarciaBenito2015}.}
 	\label{fig:DRMass}
 \end{figure}
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
+	\includegraphics[width=0.8\textwidth]{figuras/DR2PSF}
 	\caption[Caracterização da PSF do CALIFA DR2.]
-	{\TODO: Caracterização da PSF do CALIFA DR2.
-	Reproduzido do artigos de apresentação do DR2 \citep[figura
-	13]{GarciaBenito2015}.}
+	{Caracterização da PSF do CALIFA DR2. À esquerda, distribuição da largura a
+	meia altura ($\mathrm{FWHM}$), e à direita, de $\beta$ de um perfil de Moffat.
+	Ver mais detalhes na Seção \ref{sec:psf:medida}. Retirado de
+	\citet{GarciaBenito2015}.}
 	\label{fig:DR2PSF}
 \end{figure}
 
 O {\em data release} seguinte, DR2 \citep{GarciaBenito2015}, dobra a quantidade
 de cubos de dados, com 200 galáxias nas duas configurações. Todos os cubos de
-dados do DR2 foram reduzidos com uma versão aprimorada do {\em pipeline}\fixme,
-apresentando melhor calibração espectrofotométrica\fixme, registro de imagem e
-resolução espacial. Da mesma forma que para o DR1, a massa das galáxias
-derivadas de síntese de populações estelares foi utilizada para caracterizar a
-amostra do DR2 (painel inferior da Figura \ref{fig:DRMass}). A
-PSF\footnote{\TODO PSF footnote} típica dos cubos de dados (Figura
+dados do DR2 foram reduzidos com uma versão aprimorada do {\em pipeline} de
+redução de dados, apresentando melhor calibração espectrofotométrica, registro
+de imagem e resolução espacial. A massa das galáxias obtitas através de síntese
+espectral de populações estelares foi utilizada para caracterizar a amostra do
+DR1 e do DR2 (painel inferior da Figura \ref{fig:DRMass}).
+A PSF ({\em Point Spread Function}) típica dos cubos de dados (Figura
 \ref{fig:DR2PSF}) do {\em survey} foi determinada utilizando as mesmas técnicas
 de ajuste de imagem apresentadas no Capítulo \ref{sec:Decomp}. Mais detalhes
-sobre a medição da PSF no Capítulo \ref{sec:psf}.
+sobre a medição da PSF no Capítulo \ref{sec:psf}. Um {\em data release} final
+está programado para o final de 2015.
 
-\TODO Encerramento do survey, data release final.
 
 %***************************************************************%
 %                                                               %
@@ -179,6 +196,7 @@ sobre a medição da PSF no Capítulo \ref{sec:psf}.
 \section{Síntese de população estelar}
 
 \subsection{QBICK}
+\label{sec:ifs:qbick}
 
 O programa, desenvolvido por Rubén García Benito para fazer o mascaramento e
 tesselagem dos cubos de dados descrito a seguir, foi chamado de QBICK. Para mais
@@ -204,12 +222,18 @@ Estes espectros foram combinados de modo a obter um melhor sinal-ruído
 utilizando uma técnica conhecida como de tesselagem de Voronoi. Foi escolhido um
 sinal-ruído de 20 como alvo para o agrupamento dos spaxels. O código utilizado
 para a tesselagem de Voronoi foi implementado por \citet{Cappellari2003} e
-modificado para levar em conta erros correlacionados.
+modificado para levar em conta erros correlacionados. Um exemplo de aplicação do
+QBICK é mostrado na Figura \ref{fig:QBICK}.
 
 \begin{figure}
-	\includegraphics[width=0.5\textwidth]{figuras/test.pdf}
-	\caption[Exemplo de saída do QBICK.]
-	{\TODO: Exemplo de saída do QBICK.}
+	\includegraphics[width=0.8\textwidth]{figuras/zones-K0277}
+	\caption[Exemplo processamento com QBICK, galáxia K0277]
+	{Exemplo processamento com QBICK, galáxia NGC 2916 (CALIFA K0277). (a) Imagem
+	do SDSS na banda $r$. (b) Imagem do CALIFA em $5635\,\angstrom$ com máscara
+	espacial. (c) Mapa de sinal--ruído em $5635\,\angstrom$. (d) Sinal--ruído após
+	a segmentação em zonas de Voronoi. (e) Número de {\em spaxels} em cada zona.
+	(f) Percentual de pixels ruins na faixa de $3800$--$6850\,\angstrom$. Retirado
+	de \citet{CidFernandes2013}.}
 	\label{fig:QBICK}
 \end{figure}
 
@@ -261,8 +285,8 @@ Os espectros da base provêm de modelos de síntese evolutiva de populações
 estelares. A maior parte dos resultados publicados do \starlight usa os modelos
 de \citet[BC03]{Bruzual2003}. Em particular, em seus estudos de galáxias do SDSS
 o grupo da UFSC normalmente usa uma base composta de 150 SSPs cobrindo 25 idades
-(entre $10^6$ e $1,8 \times 10^{10}$ anos) e 6 metalicidades (entre $1/200$ e
-$2,5\,Z_\odot$; vide Mateus et al 2006). A Figura
+(entre $0,001$ e $18\,\mathrm{Ga}$ anos) e 6 metalicidades ($\log Z/Z_\odot$
+entre $-2,3$ e $+0,4$; vide \citet{Mateus2006}). A Figura
 \ref{fig:StarlightSpectrumSample} mostra o ajuste feito para uma galáxia do
 \SDSS utilizando esta base. A extinção é modelada com uma lei de avermelhamento
 de CCM. Neste trabalho usamos modelos mais atualizados de espectros de SSPs,
