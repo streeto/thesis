@@ -103,12 +103,12 @@ inspeção visual, com natureza evidentemente qualitativa. Levando tal forma de
 classificação a um extremo, como o projeto {\em GalaxyZoo} \citep{Lintott2008,
 Willett2013}, chega-se a conclusões estatísticas, mas ainda não se obtém medidas
 quantitativas de objetos individuais. Para descrever mais precisamente a
-estrutura de uma galáxia, normalmente é necessário decompô-la em sub-estruturas.
-Estas sub-estruturas são em geral modeladas como funções analíticas, as quais
+estrutura de uma galáxia, normalmente é necessário decompô-la em subestruturas.
+Estas subestruturas são em geral modeladas como funções analíticas, as quais
 permitem derivar medidas quantitativas. De forma simplificada, podemos
 considerar que galáxias são compostas de duas componentes principais: bojo e
 disco. Os próprios discos podem conter barras, braços espirais, anéis e halos,
-para citar algumas sub-componentes mais comuns.
+para citar algumas subcomponentes mais comuns.
 
 
 \subsection{Bojos e discos}
@@ -118,7 +118,7 @@ Do ponto de vista fotométrico (medindo o perfil de brilho superficial), galáxi
 lenticulares (S0) e espirais {\em early type} (Sa-Sb) podem ser bem descritas
 como uma combinação de duas componentes: um bojo e um disco. Neste modelo, o
 disco é delgado enquanto o bojo é quase esférico (embora haja casos em que ele
-seja um elipsóide triaxial), ambos observados projetados no plano do céu.
+seja um elipsoide triaxial), ambos observados projetados no plano do céu.
 
 Levando em consideração apenas o perfil de brilho superficial, a separação em
 componentes baseado no aspecto visual parecer arbitrária. Afinal, pode-se
@@ -175,7 +175,7 @@ que ficou conhecida como ``lei de Sérsic''. Aqui, o parâmetro $n$ é o índice
 concentração, também chamado de ``índice de Sérsic'', que pode variar
 continuamente. A Figura \ref{fig:MorphLaws} mostra alguns exemplos. Com
 $n\!=\!1$ obtém-se uma lei exponencial (linha azul), e com $n\!=\!4$ a lei de de
-Vaucouleurs (linha vermelha). A maioria dos bojos de espriais e galáxias
+Vaucouleurs (linha vermelha). A maioria dos bojos de espirais e galáxias
 elípticas podem ter seus perfis de brilho ajustados com índices de Sérsic na
 faixa de $1 < n < 10$. Valores maiores de $n$ mudam muito pouco a forma da
 curva. O parâmetro $b_n$ está definido em função de $n$, ver a seção 6.1.5 de
@@ -228,8 +228,8 @@ Nestes casos, utilizar um modelo linear em função do comprimento de onda,
 segundo os autores, melhora a qualidade do ajuste.
 
 Além de efeitos causados pelo método de ajuste, como má escolha do modelo,
-mudança no sinal-ruído nas várias bandas espectrais, ou mínimos locais, parece haver
-motivos reais para levar a sério a variação dos parâmetros morfológicos.
+mudança no sinal--ruído nas várias bandas espectrais, ou mínimos locais, parece
+haver motivos reais para levar a sério a variação dos parâmetros morfológicos.
 Populações estelares diferentes emitem mais intensamente em comprimentos de onda
 distintos, com populações mais jovens dominando em comprimentos de onda menores.
 Isto parece causar um leve gradiente no índice de Sérsic em galáxias {\em early
@@ -264,7 +264,7 @@ cada uma das galáxias (em ambos os lados), eles obtém os espectros separados d
 cada um dos seus dois componentes morfológicos, como mostrado na Figura
 \ref{fig:spectraJohnston}. Com os espectros, pode-se tentar entender que
 populações estelares compõe o bojo e o disco destes galáxias. Os autores estimam
-a idade e a mtelicidade estelar das componentes utilizando a intensidade da
+a idade e a metalicidade estelar das componentes utilizando a intensidade da
 linha \Hbeta e do tripleto de magnésio, comparando com uma grade de modelos
 sintéticos de populações estelares. A conclusão que chegam é que os bojos são
 sistematicamente mais jovens e mais metálicos do que os discos (Figura
@@ -280,7 +280,7 @@ Utiliza-se geralmente algoritmos de minimização para encontrar os modelos que
 melhor ajustam o perfil de brilho de uma galáxia. A abordagem usual é baseada no
 princípio de máxima verossimilhança ($\mathcal{L}$). Se a estatística das
 medidas é gaussiana (que é aproximadamente verdade na maioria das imagens
-astronômicas relevantes ao ajuste de modelos), o logarítmo da verossimilhança se
+astronômicas relevantes ao ajuste de modelos), o logaritmo da verossimilhança se
 assemelha à familiar soma de $\chi^2$\citep[seção 4.1.2]{Erwin2015}. Isto
 significa que o problema passa a ser a minimização da equação
 \begin{equation*}
@@ -318,9 +318,9 @@ instrumentais e atmosféricos. Estes efeitos são representados pela figura da P
 ({\em Point Spread Function}), tratada em detalhes no Capítulo \ref{sec:psf}. A
 grosso modo, levar em conta a PSF significa considerar que a luz que atinge
 determinada posição no detector não é proveniente apenas de uma região pontual
-no céu, e sim de uma região extensa que depende dos instrumentos e da tubulência
-atmosférica. Efetivamente, objetos pontuais tornam-se ``borrões'' na imagem
-observada.
+no céu, e sim de uma região extensa que depende dos instrumentos e da
+turbulência atmosférica. Efetivamente, objetos pontuais tornam-se ``borrões'' na
+imagem observada.
 
 Pode-se evitar tocar neste ponto quando se faz o ajuste em uma dimensão.
 Se as dimensões da PSF forem muito menores do que as da galáxia, e esta tiver
@@ -339,11 +339,13 @@ caracterização da PSF é crucial para se obter resultados satisfatórios no
 ajuste. Mas, trabalhar com a PSF traz um custo computacional enorme, uma vez que
 é preciso efetuar um cálculo de convolução (ver Seção \ref{sec:psf:teoria}) cada
 vez que se avalia o modelo para um determinado conjunto de parâmetros. O
-problema de minimização, que já é de natureza não-linear para modelos de
+problema de minimização, que já é de natureza não linear para modelos de
 componentes de galáxia, tona-se ainda mais complicado.
 
+% FIXME: Comentário sobre algoritmo de Metropolis.
+
 Diversos algoritmos foram desenvolvidos para tratar do problema de minimização
-não-linear. O método Levenberg-Marquardt \citep[daqui em diante
+não linear. O método Levenberg-Marquardt \citep[daqui em diante
 L-M]{Levenberg1944, Marquardt1963}, com sua busca através do gradiente no espaço
 de parâmetros, tem a vantagem de ser muito rápido. Mas, sua própria natureza de
 gradiente faz com que seja necessário um bom ``chute inicial'', com a
@@ -356,7 +358,7 @@ quanto o N-M sofrem de um problema comum: é preciso especificar um valor
 inicial, e o algoritmo segue um ou mais caminhos até encontrar o mínimo. O
 algoritmo de Metropolis \citep{Metropolis1953, Saha1994} adota uma abordagem
 Bayesiana, e o problema de minimização se torna análogo a um problema de
-mecânica estatística\fixme, onde se vai baixando a temperatura até encontrar o
+mecânica estatística, onde se vai baixando a temperatura até encontrar o
 estado de menor energia. São necessários apenas os limites do espaço de
 parâmetros, uma grande vantagem em casos onde não se sabe de antemão o modelo
 aproximado. Novamente troca-se velocidade por robustez, este algoritmo é

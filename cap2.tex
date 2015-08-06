@@ -44,7 +44,7 @@ pode ser resumida nos seguintes aspectos científicos principais
 \begin{itemize}
   \item Amostra cobrindo uma fração substancial da função de luminosidade.
   \item Amostra grande o suficiente para obter conclusões com uma estatística
-  significativa para todas as classes de galáxias do survey.
+  significativa para todas as classes de galáxias do {\em survey}.
   \item Caracterização das galáxias sobre toda a sua extensão, evitando bias de
   abertura.
   \item Medição de mecanismos de ionização do gás: formação estelar, choques,
@@ -178,7 +178,7 @@ O {\em data release} seguinte, DR2 \citep{GarciaBenito2015}, dobra a quantidade
 de cubos de dados, com 200 galáxias nas duas configurações. Todos os cubos de
 dados do DR2 foram reduzidos com uma versão aprimorada do {\em pipeline} de
 redução de dados, apresentando melhor calibração espectrofotométrica, registro
-de imagem e resolução espacial. A massa das galáxias obtitas através de síntese
+de imagem e resolução espacial. A massa das galáxias obtidas através de síntese
 espectral de populações estelares foi utilizada para caracterizar a amostra do
 DR1 e do DR2 (painel inferior da Figura \ref{fig:DRMass}).
 A PSF ({\em Point Spread Function}) típica dos cubos de dados (Figura
@@ -199,7 +199,7 @@ está programado para o final de 2015.
 \label{sec:ifs:qbick}
 
 O programa, desenvolvido por Rubén García Benito para fazer o mascaramento e
-tesselagem dos cubos de dados descrito a seguir, foi chamado de QBICK. Para mais
+tesselação dos cubos de dados descrito a seguir, foi chamado de QBICK. Para mais
 detalhes sobre o processo completo, ver o artigo por \citet{CidFernandes2013},
 disponível no Apêndice \ref{apendice:PaperResolving1}.
 
@@ -208,7 +208,7 @@ principalmente remover medidas não confiáveis, além de deixar todos os espect
 e cubos de dados num formato comum, para executar o \starlight em modo {\em
 pipeline}. Antes de tudo, todos os {\em spaxels} que contêm luz não proveniente
 da galáxia, como estrelas de campo ou galáxias de fundo, foram mascarados.
-Também foram mascarados artefatos da observação e regioes de baixo sinal-ruído.
+Também foram mascarados artefatos da observação e regiões de baixo sinal--ruído.
 Este é um procedimento quase artesanal, e necessita de um bom par de vistas
 humanas bem treinadas. Para um {\em survey} do porte do CALIFA, com cerca de 600
 galáxias, isto ainda é factível. Após o mascaramento espacial, foram mascaradas
@@ -216,14 +216,14 @@ as linhas espectrais causadas pela atmosfera terrestre. Os espectros foram em
 seguida postos no referencial de repouso utilizando o {\em redshift} obtido pela
 {\em pipeline}, medido nos $5\,\arcs$ centrais da galáxia. Foi escolhida uma
 janela espectral de $5590$ a $5680\,\angstrom$ para fazer a medida do
-sinal-ruído dos espectros. Espectros com sinal-ruído baixo, em geral nas regiões
-menos brilhantes da galáxia, podem gerar resultados espúrios no \starlight.
-Estes espectros foram combinados de modo a obter um melhor sinal-ruído
-utilizando uma técnica conhecida como de tesselagem de Voronoi. Foi escolhido um
-sinal-ruído de 20 como alvo para o agrupamento dos spaxels. O código utilizado
-para a tesselagem de Voronoi foi implementado por \citet{Cappellari2003} e
-modificado para levar em conta erros correlacionados. Um exemplo de aplicação do
-QBICK é mostrado na Figura \ref{fig:QBICK}.
+sinal--ruído dos espectros. Espectros com sinal-ruído baixo, em geral nas
+regiões menos brilhantes da galáxia, podem gerar resultados espúrios no
+\starlight. Estes espectros foram combinados de modo a obter um melhor
+sinal--ruído utilizando uma técnica conhecida como de tesselação de Voronoi. Foi
+escolhido um sinal--ruído de 20 como alvo para o agrupamento dos spaxels. O
+código utilizado para a tesselação de Voronoi foi implementado por
+\citet{Cappellari2003} e modificado para levar em conta erros correlacionados.
+Um exemplo de aplicação do QBICK é mostrado na Figura \ref{fig:QBICK}.
 
 \begin{figure}
 	\includegraphics[width=0.8\textwidth]{figuras/zones-K0277}
@@ -232,8 +232,8 @@ QBICK é mostrado na Figura \ref{fig:QBICK}.
 	do SDSS na banda $r$. (b) Imagem do CALIFA em $5635\,\angstrom$ com máscara
 	espacial. (c) Mapa de sinal--ruído em $5635\,\angstrom$. (d) Sinal--ruído após
 	a segmentação em zonas de Voronoi. (e) Número de {\em spaxels} em cada zona.
-	(f) Percentual de pixels ruins na faixa de $3800$--$6850\,\angstrom$. Retirado
-	de \citet{CidFernandes2013}.}
+	(f) Percentual de {\em pixels} ruins na faixa de $3800$--$6850\,\angstrom$.
+	Retirado de \citet{CidFernandes2013}.}
 	\label{fig:QBICK}
 \end{figure}
 
@@ -243,7 +243,7 @@ QBICK é mostrado na Figura \ref{fig:QBICK}.
 O \starlight é um código de síntese espectral desenvolvido por
 \citet{CidFernandes2005}. Nele, o espectro observado de uma galáxia é modelado
 como uma combinação linear de espectros de uma base, um modelo de atenuação por
-poeira, e efeitos conemáticos ({\em redshift} e dispersão gaussiana de
+poeira, e efeitos cinemáticos ({\em redshift} e dispersão gaussiana de
 velocidades). Esta base é composta por uma grade de populações estelares simples
 (SSP), onde cada SSP consiste em um conjunto de estrelas formadas ao mesmo tempo
 com a mesma metalicidade, com espectros proveniente de alguma biblioteca de
@@ -293,8 +293,7 @@ de CCM. Neste trabalho usamos modelos mais atualizados de espectros de SSPs,
 extraídos dos modelos de Granada \citep[para idades até
 $63\,\mathrm{Ma}$]{GonzalezDelgado2005} e os do projeto MILES
 \citep{Vazdekis2010}. No total esta nova base contém 235 elementos cobrindo
-idades de  $0,001$ a $14\,\mathrm{Ga}$, e $\log Z/Z_\odot$ de $-2.3$ a
-$+0.33$\fixme(usar mesma notação que a BC03).
+idades de  $0,001$ a $14\,\mathrm{Ga}$, e $\log Z/Z_\odot$ de $-2.3$ a $+0.33$.
 Para mais detalhes ver \citet{GonzalezDelgado2014b, GonzalezDelgado2014a}.
 
 \begin{figure}

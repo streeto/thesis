@@ -40,7 +40,7 @@ I(r) = I_0 \exp\left(\frac{r}{h}\right).
 \end{equation*}
 
 Diferente do método de \citeauthor{Johnston2012}, os perfis do bojo e do disco
-são tratados em duas dimensões como elipsóides, cada qual com uma elipticidade
+são tratados em duas dimensões como elipsoides, cada qual com uma elipticidade
 ($\epsilon$) e um ângulo de posição (P.A.) independentes. O ângulo de posição é
 medido em sentido anti-horário a partir do eixo horizontal positivo. Estes
 modelos são ajustados a imagens em cada comprimento de onda, utilizando o
@@ -81,7 +81,7 @@ Para que a decomposição morfológica espectral faça sentido, é preciso ter
 certeza que, em uma imagem em uma dada janela espectral, se esteja observando os
 mesmos processos físicos em todos os {\em spaxel}. Por exemplo, não se pode ter
 um {\em spaxel} que contenha fluxo proveniente do fundo de uma linha de
-absorção, enquanto outro {\em spaxel} contém fluxo do conínuo adjacente.
+absorção, enquanto outro {\em spaxel} contém fluxo do contínuo adjacente.
 Chega-se então num problema cíclico. É preciso saber as características das
 componentes morfológicas para que se conheça a cinemática de cada uma delas.
 Porém, sem compensar os efeitos da cinemática, não se pode fazer a decomposição
@@ -151,7 +151,7 @@ $\mathrm{FWHM}=6\,\angstrom$. Porém, a amostragem é feita em caixas de
 $2\,\angstrom$. Isto que dizer que fluxos estão correlacionados, logo deveria-se
 trabalhar com a matriz de covariância, ao invés de um espectro de erros (ou
 incerteza). Entretanto, somente o espectro de erros está disponível nos cubos de
-dados do CALIFA (e na marioria dos espectros astonômicos). Note que o mesmo
+dados do CALIFA (e na maioria dos espectros astronômicos). Note que o mesmo
 raciocínio de propagação de erros se aplica à correção de cinemática descrita
 anteriormente, com a gaussiana da dispersão de velocidades fazendo o papel de um
 peso na soma dos espectros.
@@ -304,7 +304,7 @@ visualmente por 5 voluntários, utilizando imagens do SDSS nas bandas $r$ e $i$
 Os três primeiros itens formam uma sequência numérica segundo a classificação de
 Hubble, de 0 a 18. As 5 classificações independentes foram combinadas,
 calculando a média (descartando valores atípicos, distante mais de 4 classes da
-média). Os valores máximos e mínimos, para dar uma idéia da incerteza, são
+média). Os valores máximos e mínimos, para dar uma ideia da incerteza, são
 calculados utilizando todas as 5 classificações. Foi feita uma filtragem na
 lista de galáxias observadas, baseada na tabela de classificação morfológica.
 Dada a natureza subjetiva da classificação visual, optou-se por utilizar as
@@ -376,6 +376,7 @@ final deste trabalho (listada na Tabela \ref{tab:DecompSampleFinal}) consiste em
 %                                                               %
 %***************************************************************%
 \section{Aplicação da decomposição na amostra final}
+\label{sec:Decomp:decomp}
 
 A decomposição morfológica espectral foi realizada nas 9 galáxias da amostra
 final. Figuras mostrando o resultado da decomposição de todas as galáxias podem
@@ -461,7 +462,7 @@ dos parâmetros pode ser precipitado.
 
 Os espectros de galáxias, por outro lado, são melhor compreendidos. Mesmo as
 menores características dos espectros, como linhas fracas de absorção, podem ser
-razoavemente bem explicadas com modelos de populações estelares. Então, se um
+razoavelmente bem explicadas com modelos de populações estelares. Então, se um
 espectro de bojo ou disco tiver o aspecto de um espectro de galáxia, pode-se
 começar a levar o resultado da decomposição a sério. A Figura
 \ref{fig:decompSpectra} mostra os espectros dos modelos (bojo em vermelho e
@@ -483,6 +484,7 @@ forma tal que se cancelam no resíduo.
 %                                                               %
 %***************************************************************%
 \section{Síntese espectral de populações estelares}
+\label{sec:Decomp:sintese}
 
 A síntese espectral de populações estelares, utilizando \starlight foi aplicada
 às componentes morfológicas e ao espectro original de todas as galáxias da
@@ -572,7 +574,7 @@ As duas galáxias, neste gráfico, têm um comportamento similar.
 Ambas têm um bojo mais velho e de metalicidade mais baixa, e um disco mais jovem
 e de metalicidade mais alta, com relação idade e metalicidade do espectro
 observado. Também é interessante notar que os pontos para uma mesma galáxia
-estñao alinhados. Isto pode acontecer devido à degenerescência entre idade e
+estão alinhados. Isto pode acontecer devido à degenerescência entre idade e
 metalicidade, comumente vista em sínteses de população estelar.
 
 \begin{figure}
@@ -583,7 +585,7 @@ metalicidade, comumente vista em sínteses de população estelar.
 	\label{fig:populationJohnston2}
 \end{figure}
 
-É interesante comparar a Figura \ref{fig:decompSintese} com o resultado de
+É interessante comparar a Figura \ref{fig:decompSintese} com o resultado de
 \citet{Johnston2012}, reproduzido na Figura \ref{fig:populationJohnston2}.
 Os resultados obtidos aqui, embora não tenham significância estatística, são
 contrários ao resultado de \citeauthor{Johnston2012}, que obtêm, para galáxias
@@ -594,7 +596,7 @@ populações estelares.
 
 Além disso, eles trabalham com perfis unidimensionais (espectros de fenda
 longa), enquanto análise feita aqui é toda em 2-d (imagens). Por fim, não é
-óbvio que as galáxias de nossa amostra sejam comparaveis à da amostra de
+óbvio que as galáxias de nossa amostra sejam comparáveis à da amostra de
 \citeauthor{Johnston2012}. De fato, apesar de ambas amostras selecionarem
 galáxias S0, as galáxias de \citeauthor{Johnston2012} parecem ser menos massivas
 que as nossas. Enquanto K0858 tem magnitude absoluta na banda $B$ de $M_B = -21$

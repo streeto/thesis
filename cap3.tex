@@ -19,9 +19,9 @@
 \label{sec:pycasso}
 
 A fim de agilizar o desenvolvimento de ferramentas de manipulação de cubos de
-dados do CALIFA. Este ``kit de ferramentas'' foi chamado de PyCASSO (Python
-CALIFA \starlight Synthesis Organizer). PyCASSO foi desenvolvido em Pyton e é, a
-grosso modo, composto de três partes.
+dados do CALIFA. Este ``kit de ferramentas'' foi chamado de PyCASSO ({\em Python
+CALIFA} \starlight {\em Synthesis Organizer}). PyCASSO foi desenvolvido em Pyton
+e é, a grosso modo, composto de três partes.
 
 Conversor de tabelas. Com ele se pode converter a saída do \starlight (arquivos
 ASCII para cada pixel de cada galáxia) para cubos de dados nos formatos FITS e
@@ -56,7 +56,7 @@ sendo desenvolvido por outro estudante na UFSC, por exemplo.}.
 Este software está sendo utilizado pelo grupo de populações estelares da
 colaboração do CALIFA, do qual o autor faz parte. No total são aproximadamente
 10 pessoas utilizando este software. Foram publicados 4 artigos que utilizam
-extensivamente PyCASSO, e mais algun que sutilizaram algum dado resultante de
+extensivamente PyCASSO, e mais alguns que utilizaram algum dado resultante de
 forma indireta, apresentados na Seção \ref{sec:pycasso:art}.
 
 
@@ -101,7 +101,7 @@ print 'Idade media da galaxia: %.2f' % at_total
 \end{python}
 	\caption[Exemplo de programa utilizando PyCASSO]
 	{Exemplo de acesso aos dados. Todas as propriedades estão disponíveis
-	diretamente pelo nome, inclusive utilizando a função auto-completar da maioria
+	diretamente pelo nome, inclusive utilizando a função autocompletar da maioria
 	dos ambientes de desenvolvimento Python.}
 	\label{fig:dataAccess}
 \end{figure}
@@ -188,9 +188,9 @@ plt.plot(bin_center, at_rad)
 \end{figure}
 
 Esta é só uma pequena demonstração das ferramentas existentes no PyCASSO. Também
-é possível trabalhar com espectros, calcular perfis azimutais, lidar com pixels
-mascarados, entre outras coisas. Tudo isto está descrito em detalhes no manual
-do programa (Apêndice \ref{apendice:manual}).
+é possível trabalhar com espectros, calcular perfis azimutais, lidar com {\em
+pixels} mascarados, entre outras coisas. Tudo isto está descrito em detalhes no
+manual do programa (Apêndice \ref{apendice:manual}).
 
 
 %***************************************************************%
@@ -213,7 +213,7 @@ neste trabalho na Seção \ref{sec:psf:medida}.
 
 \citet{GonzalezDelgado2014b} explora a relação massa--metalicidade estelar em
 300 galáxias do CALIFA, utilizando PyCASSO. Em \citep{GonzalezDelgado2015} se
-utiliza, além de PyCASSO, a decoposição bojo--disco (ver Seção
+utiliza, além de PyCASSO, a decomposição bojo--disco (ver Seção
 \ref{sec:morph:comp:bd}) em uma amostra de galáxias, realizada pelo autor desta
 tese, adaptando técnicas discutidas no Capítulo \ref{sec:Decomp}.
 
@@ -233,7 +233,7 @@ espectral dos cubos de dados do CALIFA, mencionados no Capítulo \ref{sec:intro}
 e serve como uma demonstração da capacidade do PyCASSO. O artigo está
 reproduzido na íntegra no Apêndice \ref{apendice:PaperResolving1}. O
 preprocessamento dos cubos de espectros é feito através do programa QBICK,
-desenvolvido por Rubén Garcia Benito especialmente para o CALIFA, mas é genérico
+desenvolvido por Rubén García Benito especialmente para o CALIFA, mas é genérico
 o bastante para ser usado em outros cubos de dados. Após explicar em detalhes
 todos os passos envolvidos desde o preprocessamento, passando pela descrição do
 \starlight até a importação dos dados pelo PyCASSO, o artigo apresenta um caso
@@ -245,7 +245,7 @@ de estudo com a galáxia NGC 2916.
 	2916] {Propriedades físicas espacialmente resolvidas para a galáxia NGC 2916. (a)
 	Luminosidade em $5635\,\angstrom$ por unidade de área. (b) Atenuação por
 	poeira na banda $V$. (c) Luminosidade em $5635\,\angstrom$ por unidade de área,
-	corrigido de extinção. (d) Desidade superficial de massa estelar. Retirado de
+	corrigido de extinção. (d) Densidade superficial de massa estelar. Retirado de
 	\cite[figura 4]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
 	\label{fig:LMAVMap}
 \end{figure}
@@ -282,12 +282,12 @@ físicas obtidas pela síntese espectral. Propriedades como a massa (Figura
 \ref{fig:LMAVMap}c) são quantidades extensivas, e são proporcionais à escala. Já
 a atenuação por poeira (Figura \ref{fig:LMAVMap}b), idade e metalicidade estelar
 são quantidades intensivas, independentes de escala. Na prática isto significa
-que as quantidades extensivas podem ser divididas entre os pixels que compõem
-uma zona, enquanto as intensivas são uma propriedade comum à todos os pixels
-desta zona. Esta diferença pode ser notada nas zonas mais externas dos mapas,
-onde aparecem platôs na quantidades intensivas. As quantidades extensivas passam
-por um processo apelidado de ``dezonificação'', descrito na Seção
-\ref{sec:pycasso:Pycasso}.
+que as quantidades extensivas podem ser divididas entre os {\em pixels} que
+compõem uma zona, enquanto as intensivas são uma propriedade comum à todos os
+{\em pixels} desta zona. Esta diferença pode ser notada nas zonas mais externas
+dos mapas, onde aparecem platôs na quantidades intensivas. As quantidades
+extensivas passam por um processo apelidado de ``dezonificação'', descrito na
+Seção \ref{sec:pycasso:Pycasso}.
 
 Um dos desafios de se trabalhar com cubos multidimensionais é como visualizar
 esta informação. Uma alternativa é comprimir determinadas dimensões. Para
@@ -348,7 +348,7 @@ pixel a pixel, os perfis radiais em geral são bastante robustos. Propriedades
 diretas como a luminosidade, massa, idade e metalicidade estelar, quando vistas
 em perfil radial (Figura \ref{fig:incertRad}) mantém o mesmo formato com pouca
 dispersão, exceto nas regiões mais afastadas do núcleo, onde há poucas zonas. Na
-verdade, qualquer forma de média espacial que envolva pixels (ou zonas)
+verdade, qualquer forma de média espacial que envolva {\em pixels} (ou zonas)
 suficientes deverá levar a uma diminuição na incerteza.
 
 % FIXME: corrigir largura da figura
@@ -399,21 +399,21 @@ Apêndice \ref{apendice:InsideOut}.
 Galáxias vêm em todos os tamanhos. Para determinar o crescimento, as distâncias
 são normalizadas em utilizando o raio onde a luminosidade cumulativa (em
 $5635\,\angstrom$) alcança $50\%$ da luminosidade total da galáxia, denominado
-$R_{50}$. As galáxias da amostra são separadas em {\em bins} com $15$ galáxias
-cada, segundo a sua massa. O crescimento em massa em função do tempo é calculado
-para cada pixel de cada galáxia e somado em cada {\em bin} de massa.
+$R_{50}$. As galáxias da amostra são separadas em caixas com $15$ galáxias cada,
+segundo a sua massa. O crescimento em massa em função do tempo é calculado para
+cada pixel de cada galáxia e somado em cada caixa de massa.
 
 \begin{figure}
 	\includegraphics{figuras/inside-out}
 	\caption[Crescimento da massa estelar de galáxias de dentro para fora]
 	{Crescimento de massa estelar de dentro para fora. As $105$ galáxias foram
-	separadas em grupos de 15, em massa, formando os {\em bins} do eixo vertical.
+	separadas em grupos de 15, em massa, formando as caixas do eixo vertical.
 	Os painéis mostram o crescimento da massa em escala de cinza, normalizado, em
 	função do tempo e da massa das galáxias. O contorno em preto marca $80\%$. Da
 	direita para a esquerda se vê as regiões em raio $r < 0,1\,R_{50}$, $0,1 < r
 	\leq 0,5\,R_{50}$, $0,5 < r \leq 1\,R_{50}$ e $r > 1\,R_{50}$. Para
 	facilitar a visualização da forma da variação temporal, as linhas azuis, verdes
-	e vermelhas em cada painel mostram um corte horizontal nos {\em bins} inferior,
+	e vermelhas em cada painel mostram um corte horizontal nas caixas inferior,
 	intermediário e superior, com escala de $0$ a $1$. Retirado de \cite[figura
 	9]{Perez2013}, Apêndice \ref{apendice:InsideOut}.}
 	\label{fig:insideOut}
@@ -423,12 +423,12 @@ A Figura \ref{fig:insideOut} ilustra o crescimento de massa em anéis crescentes
 em raio ($0,1\,R_{50}$, $0,5\,R_{50}$, $1\,R_{50}$ e $>1\,R_{50}$.). Em cada
 painel, o tempo passa da direita para a esquerda, e a massa estelar,
 normalizada, cresce desde zero (direita, em preto) até $1$ (esquerda, em
-branco). Se vê claramente que galáxias menos massivas, na parte inferior dos
-{\em bins}, têm um crescimento gradual mais ou menos constante em todos os
-raios. As galáxias mais massivas, a parte superior dos {\em bins}, apresentam um
+branco). Se vê claramente que galáxias menos massivas, na parte inferior das
+caixas, têm um crescimento gradual mais ou menos constante em todos os
+raios. As galáxias mais massivas, a parte superior das caixas, apresentam um
 crescimento muito rápido nas regiões centrais, enquanto as regiões externas
 crescem mais gradualmente. As linhas azul, verde e vermelha, em cada painel,
-representam cortes horizontais no {\em bin} de mais baixa massa, no
+representam cortes horizontais na caixa de mais baixa massa, no
 intermediário e no de mais alta massa, respectivamente, para facilitar a
 visualização. A mudança de regime ocorre em $\log M\star = 10,83$, ou seja, uma
 massa de $\sim 7\times10^{10}\,M_\odot$. O autor cita vários estudos que indicam
@@ -509,12 +509,12 @@ importante para as galáxias com disco.
 
 \begin{figure}
 	\includegraphics[width=0.8\columnwidth]{figuras/radstruct-03}
-	\caption[Perfis radiais para vários {\em bins} de massa estelar.]
+	\caption[Perfis radiais para várias caixas de massa estelar.]
 	{Perfis radiais da densidade superficial de massa estelar (esquerda) e idade
-	estelar média ponderada pela luminosidade (direita), para {\em bins} de
-	massa estelar contendo 15 galáxias cada. (cima) Todas as galáxias. Os {\em
-	bins} em massa estão codificados em cores. (meio) Galáxias dominadas por
-	disco. (baixo) Galáxias esferoidais ($C \geq 2,8$). Retirado de \cite[figura
+	estelar média ponderada pela luminosidade (direita), para caixas de
+	massa estelar contendo 15 galáxias cada. (cima) Todas as galáxias. As caixas em
+	massa estão codificados em cores. (meio) Galáxias dominadas por disco. (baixo)
+	Galáxias esferoidais ($C \geq 2,8$). Retirado de \cite[figura
 	13]{GonzalezDelgado2014a}, Apêndice \ref{apendice:RadStruct}.}
 	\label{fig:radStruct3}
 \end{figure}
