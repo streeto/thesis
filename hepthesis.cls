@@ -631,9 +631,9 @@
 	{\Large{\frontfont \@thesisauthor}\\}
 	    \vspace{.5 cm}
         {\Large{\frontfont Orientador:\\ \@supervisor}\\}
-	    \vspace{2.5 cm}
-%         {\Large{\frontfont Coorientador:\\ \@cosupervisor}\\}
-% 	    \vspace{1.2 cm}
+	    \vspace{.5 cm}
+        {\Large{\frontfont Coorientadora:\\ \@cosupervisor}\\}
+	    \vspace{1.2 cm}
 	    \raisebox{0pt}[10pt][10pt]%
 		     {\textbullet\ \textbullet\ \textbullet\hspace{3cm}}\\
 	    \vspace{1.0cm}
