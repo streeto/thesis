@@ -19,11 +19,14 @@
 \label{sec:pycasso}
 
 A fim de agilizar o desenvolvimento de ferramentas de manipulação de cubos de
-dados do CALIFA. Este ``kit de ferramentas'' foi chamado de PyCASSO ({\em Python
-CALIFA} \starlight {\em Synthesis Organizer}). PyCASSO foi desenvolvido em Pyton
-e é, a grosso modo, composto de três partes.
+dados do CALIFA, alguns programas de computador foram desenvolvidos. Este ``kit
+de ferramentas'' foi chamado de PyCASSO ({\em Python CALIFA} \starlight\ {\em
+Synthesis Organizer}). PyCASSO foi desenvolvido em Pyton e é, a grosso modo,
+composto de três partes.
 
-Conversor de tabelas. Com ele se pode converter a saída do \starlight (arquivos
+\begin{enumerate}
+
+\item Conversor de tabelas. Com ele se converte a saída do \starlight (arquivos
 ASCII para cada pixel de cada galáxia) para cubos de dados nos formatos FITS e
 HDF5, de forma a otimizar o acesso aos dados. Uma galáxia leva tipicamente 2
 minutos para ser carregada em memória usando arquivos texto. Este tempo se reduz
@@ -32,30 +35,32 @@ dados de várias galáxias simultaneamente, utilizando o formato HDF5. Neste cas
 a carga dos dados em disco para a memória é ``preguiçosa'', quer dizer, é feita
 somente quando os dados são efetivamente acessados.
 
-Camada de entrada e saída. Os arquivos FITS e HDF5 foram montados de forma a
-serem facilmente acessados em qualquer ambiente. Ainda assim, há uma camada de
+\item Camada de entrada e saída. Os arquivos FITS e HDF5 foram montados de forma
+a serem facilmente acessados em qualquer ambiente. Ainda assim, há uma camada de
 abstração de armazenamento, onde as várias matrizes e cubos são acessadas com
-nomes próprios (por exemplo, \texttt{popx},que designa a fração de luz
+nomes próprios (por exemplo, \texttt{popx}, que designa a fração de luz
 distribuída pelas populações estelares), de forma a ser possível programar
 ferramentas de análise sem precisar se preocupar com as características de cada
 formato de armazenamento.
 
-Camada de análise. Como foi mencionado na Seção \ref{sec:Intro:Sintese}, o
+\item Camada de análise. Como foi mencionado na Seção \ref{sec:Intro:Sintese}, o
 resultado da síntese consiste em cubos indexados por zona. Os dados ficam
 armazenados no disco desta forma. Porém, na grande maioria das vezes se está
-interessado na informação espacialmente resolvida. Esta camada implementa uma rotina de
-conversão da notação de zonas para $(x, y)$. Boa parte das propriedades da
-síntese, como luminosidade, massa, atenuação por poeira, e idade estelar, já
-estão implementadas. Estes cubos espacialmente resolvidos são calculados
-dinamicamente, quer dizer, não ocupam memória do sistema até que sejam
-acessados. Existem outras rotinas para calcular geometria, perfis radiais e
-azimutais, e raio de escala. Outras rotinas podem ser adicionadas
+interessado na informação espacialmente resolvida. Esta camada implementa uma
+rotina de conversão da notação de zonas para $(x, y)$. Boa parte das
+propriedades da síntese, como luminosidade, massa, atenuação por poeira, e idade
+estelar, já estão implementadas. Estes cubos espacialmente resolvidos são
+calculados dinamicamente, quer dizer, não ocupam memória do sistema até que
+sejam acessados. Existem outras rotinas para calcular geometria, perfis radiais
+e azimutais, e raio de escala. Outras rotinas podem ser adicionadas
 facilmente\footnote{Há um estudo de PCA (análise de componentes principais)
 sendo desenvolvido por outro estudante na UFSC, por exemplo.}.
 
+\end{enumerate}
+
 Este software está sendo utilizado pelo grupo de populações estelares da
 colaboração do CALIFA, do qual o autor faz parte. No total são aproximadamente
-10 pessoas utilizando este software. Foram publicados 4 artigos que utilizam
+10 pessoas utilizando este software. Foram publicados 6 artigos que utilizam
 extensivamente PyCASSO, e mais alguns que utilizaram algum dado resultante de
 forma indireta, apresentados na Seção \ref{sec:pycasso:art}.
 
@@ -74,7 +79,7 @@ sem uma boa documentação. Aqui se apresenta de forma breve das capacidades do
 PyCASSO. A documentação completa se encontra no Apêndice \ref{apendice:manual}.
 
 O trabalho com a variedade e quantidade de dados gerados pela síntese espectral
-de IFS tem em geral um caráter fortemente exploratório. Frequentemente não se
+em 3-d tem em geral um caráter fortemente exploratório. Frequentemente não se
 sabe exatamente o que se está buscando, e o trabalho do programador/cientista
 consiste em desenhar gráficos, realizar cálculos, determinar operações ou
 filtros nos dados com base nestes gráficos e cálculos, desenhar novamente, e
@@ -84,7 +89,7 @@ tornando uma espécie de {\em lingua franca} na Astrofísica computacional.}, co
 o \texttt{IPython}\footnote{\url{http://ipython.org/}} e o
 \texttt{matplotlib}\footnote{\url{http://matplotlib.org/}}. Foi feito um esforço
 para que o acesso aos dados de cada galáxia fosse feito de forma simples e
-direta, um exemplo de código pode ser visto na Figura \ref{fig:dataAccess}.
+direta. Um exemplo de código pode ser visto na Figura \ref{fig:dataAccess}.
 
 \begin{figure}
 \begin{python}
@@ -150,10 +155,10 @@ plt.colorbar()
 Enquanto um mapa é uma forma muito boa de visualizar informações em duas
 dimensões, há vezes em que uma visualização resumida é mais adequada. Galáxias
 em geral têm simetria aproximadamente axial, logo poder medir perfil radial das
-propriedades das galáxias é fundamental para estudá-las. Com PyCASSO, o cálculo
-do perfil radial é bastante simples, como pode ser visto no programa na Figura
-\ref{fig:programaRadprofIdade}, que calcula o perfil radial da idade estelar
-média. O resultado está na Figura \ref{fig:radprofIdade}.
+propriedades das galáxias é fundamental para estudá-las. Com o PyCASSO, o
+cálculo do perfil radial é bastante simples, como pode ser visto no programa na
+Figura \ref{fig:programaRadprofIdade}, que calcula o perfil radial da idade
+estelar média. O resultado está na Figura \ref{fig:radprofIdade}.
 
 \begin{figure}
 \begin{python}
@@ -212,8 +217,8 @@ inclui a medição da PSF do CALIFA (ver Figura \ref{fig:DR2PSF}), apresentado
 neste trabalho na Seção \ref{sec:psf:medida}.
 
 \citet{GonzalezDelgado2014b} explora a relação massa--metalicidade estelar em
-300 galáxias do CALIFA, utilizando PyCASSO. Em \citep{GonzalezDelgado2015} se
-utiliza, além de PyCASSO, a decomposição bojo--disco (ver Seção
+300 galáxias do CALIFA, utilizando PyCASSO. Em \citet{GonzalezDelgado2015} se
+utiliza, além do PyCASSO, a decomposição bojo--disco (ver Seção
 \ref{sec:morph:comp:bd}) em uma amostra de galáxias, realizada pelo autor desta
 tese, adaptando técnicas discutidas no Capítulo \ref{sec:Decomp}.
 
@@ -286,8 +291,10 @@ que as quantidades extensivas podem ser divididas entre os {\em pixels} que
 compõem uma zona, enquanto as intensivas são uma propriedade comum à todos os
 {\em pixels} desta zona. Esta diferença pode ser notada nas zonas mais externas
 dos mapas, onde aparecem platôs na quantidades intensivas. As quantidades
-extensivas passam por um processo apelidado de ``dezonificação'', descrito na
-Seção \ref{sec:pycasso:Pycasso}.
+extensivas passam por um processo apelidado de ``dezonificação'', onde uma
+medida referente a uma zona é dividida entre os {\em pixels} com base em um
+peso, normalmente dado pelo fluxo na janela de normalização. Isto faz com que as
+imagens não tenham um aspecto segmentado, com patamares nas zonas periféricas.
 
 Um dos desafios de se trabalhar com cubos multidimensionais é como visualizar
 esta informação. Uma alternativa é comprimir determinadas dimensões. Para
@@ -313,7 +320,7 @@ Uma crítica bastante comum aos métodos de ajuste é que eles não provêm a
 incerteza associada aos valores ajustados. A forma mais simples de determinar
 esta incerteza é refazer o ajuste várias vezes, perturbando as medidas
 reproduzindo de forma realista os erros. Este artigo por
-\citet{CidFernandes2014} investiga a incerteza nos ajustes feitos no artigo
+\citet{CidFernandes2013} investiga a incerteza nos ajustes feitos no artigo
 discutido na seção anterior. O artigo está reproduzido na íntegra no Apêndice
 \ref{apendice:PaperResolving2}.
 
@@ -397,11 +404,12 @@ Seção \ref{sec:pycasso:art:Resolving1}. O artigo está reproduzido na íntegra
 Apêndice \ref{apendice:InsideOut}.
 
 Galáxias vêm em todos os tamanhos. Para determinar o crescimento, as distâncias
-são normalizadas em utilizando o raio onde a luminosidade cumulativa (em
+são normalizadas utilizando o raio onde a luminosidade cumulativa (em
 $5635\,\angstrom$) alcança $50\%$ da luminosidade total da galáxia, denominado
-$R_{50}$. As galáxias da amostra são separadas em caixas com $15$ galáxias cada,
-segundo a sua massa. O crescimento em massa em função do tempo é calculado para
-cada pixel de cada galáxia e somado em cada caixa de massa.
+$R_{50}$ (ou HLR, {\em Half Light Radius}). As galáxias da amostra são separadas
+em caixas com $15$ galáxias cada, segundo a sua massa. O crescimento em massa em
+função do tempo é calculado para cada pixel de cada galáxia e somado em cada
+caixa de massa.
 
 \begin{figure}
 	\includegraphics{figuras/inside-out}
@@ -424,18 +432,18 @@ em raio ($0,1\,R_{50}$, $0,5\,R_{50}$, $1\,R_{50}$ e $>1\,R_{50}$.). Em cada
 painel, o tempo passa da direita para a esquerda, e a massa estelar,
 normalizada, cresce desde zero (direita, em preto) até $1$ (esquerda, em
 branco). Se vê claramente que galáxias menos massivas, na parte inferior das
-caixas, têm um crescimento gradual mais ou menos constante em todos os
-raios. As galáxias mais massivas, a parte superior das caixas, apresentam um
+figuras, têm um crescimento gradual mais ou menos constante em todos os raios.
+As galáxias mais massivas, na parte superior das figuras, apresentam um
 crescimento muito rápido nas regiões centrais, enquanto as regiões externas
 crescem mais gradualmente. As linhas azul, verde e vermelha, em cada painel,
-representam cortes horizontais na caixa de mais baixa massa, no
-intermediário e no de mais alta massa, respectivamente, para facilitar a
-visualização. A mudança de regime ocorre em $\log M\star = 10,83$, ou seja, uma
-massa de $\sim 7\times10^{10}\,M_\odot$. O autor cita vários estudos que indicam
-esta faixa como uma ``massa especial'', onde a taxa de formação estelar alcança
-valores altos muito rapidamente. De qualquer forma, esta é uma evidência
-observacional de algo que já se suspeita há muito tempo:
-que as galáxias massivas se formaram de dentro para fora.
+representam cortes horizontais na caixa de mais baixa massa, no intermediário e
+no de mais alta massa, respectivamente, para facilitar a visualização. A mudança
+de regime ocorre em $\log M_\star = 10,83$, ou seja, uma massa de $\sim
+7\times10^{10}\,M_\odot$. Vários estudos indicam esta faixa como uma ``massa
+especial'', onde a taxa de formação estelar alcança valores altos muito
+rapidamente. De qualquer forma, esta é uma evidência observacional de algo que
+já se suspeita há muito tempo: que as galáxias massivas se formaram de dentro
+para fora.
 
 
 %***************************************************************%

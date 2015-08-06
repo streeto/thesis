@@ -66,9 +66,10 @@ em interação).
 	{Comparação entre {\em surveys} espectroscópicos de campo integral em execução
 	atualmente. A figura superior à esquerda mostra um recorte de $90 \times
 	90\,\arcs$ de NGC 5947, extraída do SDSS. Ao redor, como esta galáxia seria
-	observada pelos {\em surveys} ATLAS3D, MaNGA, SAMI e CALIFA. Abaixo a faixa de
-	comprimento de onda coberta por cada {\em survey}. Retirado de
-	\citet{Sanchez2014}.}
+	observada pelos {\em surveys} ATLAS3D, MaNGA, SAMI e CALIFA a diferentes {\em
+	redshifts} típicos de cada amostra. Abaixo a faixa de comprimento de onda
+	coberta por cada {\em survey} (CALIFA em verde e vermelho, ATLAS3D em azul,
+	SAMI em cinza, MaNGA em preto). Retirado de \citet{Sanchez2014}.}
 	\label{fig:surveysIFS}
 \end{figure}
 
@@ -77,7 +78,7 @@ Comparado a outros {\em surveys} já realizados, como o Altas3D
 CALIFA cobre uma faixa muito maior de tipos morfológicos e massas. Outros {\em
 surveys} que estão em andamento são o SAMI \citep{Croom2012, Bryant2015} e o
 MaNGA \citep{Bundy2015}. Estes também buscam obter uma amostra grande de
-galáxias, até maior do que a do CALIFA. Entretanto, a vantagem do CALIFA está na
+galáxias, bem maior do que a do CALIFA. Entretanto, a vantagem do CALIFA está na
 cobertura e amostragem espacial, observando uma maior porção de cada galáxia com
 mais riqueza de detalhes. A Figura \ref{fig:surveysIFS}, mostra uma comparação
 simplificada do tamanho do campo e cobertura espectral destes {\em surveys}.
@@ -91,14 +92,14 @@ simplificada do tamanho do campo e cobertura espectral destes {\em surveys}.
 \section{Síntese de população estelar espacialmente resolvida}
 \label{sec:Intro:Sintese}
 
-Os espectros espacialmente resolvidos do CALIFA podem ser descritos como um cubo
-de dados, com as duas primeiras dimensões sendo a posição $x$ e $y$ (ascensão
-reta e declinação) e a terceira sendo o comprimento de onda. Nestes cubos,
-planos com comprimento de onda constante são imagens, enquanto ``fatias''
-definidas por um par $(x, y)$ constante são espectros. Pode-se tratar estes
-espectros individualmente, embora na verdade, nos cubos do CALIFA os {\em
-spaxels} vizinhos estão correlacionados devido ao {\em seeing} do céu e ao
-processo de observação. Há a queda na relação sinal/ruído (S/N) nas regiões mais
+Espectros espacialmente resolvidos podem ser descritos como um cubo de dados,
+com as duas primeiras dimensões sendo a posição $x$ e $y$ (ascensão reta e
+declinação) e a terceira sendo o comprimento de onda. Nestes cubos, planos com
+comprimento de onda constante são imagens, enquanto colunas definidas por um par
+$(x, y)$ constante são espectros. Pode-se tratar estes espectros
+individualmente, embora na verdade nos cubos do CALIFA os {\em spaxels}
+vizinhos estão correlacionados devido ao {\em seeing} do céu e ao processo de
+observação e redução. Há a queda na relação sinal/ruído (S/N) nas regiões mais
 afastadas do núcleo da galáxia, onde o brilho superficial é muito menor.
 Algumas galáxias possuem outros objetos ``intrometidos'' que precisam ser
 mascarados. Linhas telúricas\footnote{Linhas de absorção causadas pela
@@ -115,7 +116,8 @@ constante são espectros. Com isso, os espectros, e as máscaras e erros que os
 acompanham, estão prontos para serem usados pelo próximo passo.
 
 A síntese de população estelar consiste em obter a história de formação estelar
-(SFH) de uma galáxia utilizando modelos de população estelar simples (SSP).
+(SFH\footnote{\em Star Formation History.}) de uma galáxia utilizando modelos de
+população estelar simples (SSP\footnote{\em Simple Stellar Population.}).
 Ajusta-se o espectro de uma galáxia como a soma de espectros de SSPs com idades
 e composições químicas distintas (levando em conta a atenuação por poeira). O
 resultado é um vetor de frações de luz e massa destas SSPs, que podem ser
@@ -148,9 +150,9 @@ PyCASSO ({\em Python CALIFA \starlight Synthesis Organizer}) é um software
 desenvolvido em Python com o objetivo de organizar gerenciar os dados produzidos
 pelo \starlight com base nos dados do CALIFA. O {\em survey} CALIFA é
 apresentado no Capítulo \ref{sec:ifs}, que também discute os softwares QBICK e
-\starlight, ferramentas básicas em nossa análise doe cubos de dados. O Capítulo
-\ref{sec:pycasso} apresenta a documentação do PyCASSO, e em seguida discute os
-artigos publicados que o utilizam intensivamente.
+\starlight, ferramentas básicas em nossa análise de cubos de dados. O Capítulo
+\ref{sec:pycasso} apresenta a documentação do PyCASSO, e em seguida discute
+alguns dos artigos publicados que o utilizam intensivamente.
 
 
 %***************************************************************%
@@ -182,11 +184,11 @@ Spread Function}). Como parte deste trabalho, a PSF do CALIFA foi determinada
 (Capítulo \ref{sec:psf}), com os resultados sendo aproveitados pela colaboração
 do CALIFA, e publicados em \citet{GarciaBenito2015}. Foram feitos testes do
 algoritmo de decomposição, descritos no Capítulo \ref{sec:test}, utilizando uma
-galáxia sintética. Estes testes não foram exaustivos, apenas indicam que a
+galáxia sintética. Estes testes não foram exaustivos, eles apenas indicam que a
 decomposição pode funcionar. Os testes incluem populações estelares compostas,
-variáveis com a posição no modelo. Outro teste importante, no mesmo capítulo,
-foi o efeito de usar uma PSF mal dimensionada na decomposição, com largura
-diferente da PSF do cubo de dados.
+variáveis com a posição no modelo. Outro teste importante, apresentado no mesmo
+capítulo, foi o efeito de usar uma PSF mal dimensionada na decomposição, com
+largura diferente da PSF do cubo de dados.
 
 O Capítulo \ref{sec:Decomp} descreve em detalhes o algoritmo de decomposição
 morfológica espectral. O pré processamento dos dados inclui regularizar a

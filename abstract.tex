@@ -11,12 +11,13 @@
 
 \begin{abstract}
 
-In this work we developed some tools to work with IFU spectra from the CALIFA
-survey. The spectra from the spaxels are preprocessed, an then analyzed using
-the software \starlight. One of the main tools discussed here, PyCASSO, written
-in Python, organizes the output from \starlight into datacubes of stellar
-population synthesis: It also allows for interactive exploratory programming,
-giving easy access to the data.
+In this work we developed some tools to work with Integral Field Spectroscopy
+(IFS) spectra from the CALIFA survey. The spectra from the spaxels are
+preprocessed, and then analyzed using the software \starlight. One of the main
+tools discussed here, PyCASSO, organizes the output from \starlight into
+datacubes of stellar population synthesis products. It also allows for
+interactive exploratory programming, giving easy access to the multi-dimensional
+data.
 
 Using these tools, we developed a method for recovering and analysing the
 stellar populations of the different morphological components of galaxies using
@@ -28,16 +29,16 @@ pixel. A good PSF measurement is critical to this process, so we perform a
 characterization of the PSF using the calibration stars from the survey. The
 morphological parameters ($r_e$, $n$, P.A. and $\epsilon$ for bulge, $h$, P.A.
 and $\epsilon$ for disk) in most cases depends linearly on the wavelength, in
-average, but their behavior, in each $\lambda$ are not yet fully unerstood.
+average, but their behavior in each $\lambda$ are not yet fully unerstood.
 Using the decomposed spectra from the 9 best decompositions from the sample we
 apply a stellar population synthesis using \starlight, in order to recover the
 stellar populations of bulge and disk. Only two of those galaxies produced good
-\starlight fits, K0592 and K0858. In both cases we recover an older and lower
-metallic bulge and an younger and more metallic disk (in comparison to the whole
-galaxy). The stellar synthesis produces more robust results using the integrated
-spectra. The spatially resolved spectra from bulge and disk seem to have
-artifacts that get interpreted as dust, among other things, thus leading to
-wrong results.
+\starlight fits, CALIFA 0592 (NGC 4874) and CALIFA 0858 (UGC 10905). In both
+cases we recover an older and lower metallic bulge and an younger and more
+metallic disk (in comparison to the whole galaxy). The stellar synthesis
+produces more robust results using the integrated spectra. The spatially
+resolved spectra from bulge and disk seem to have artifacts that get interpreted
+as dust, among other things, thus leading to wrong results.
 
 
 \end{abstract}

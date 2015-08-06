@@ -47,8 +47,8 @@ pode ser resumida nos seguintes aspectos científicos principais
   significativa para todas as classes de galáxias do {\em survey}.
   \item Caracterização das galáxias sobre toda a sua extensão, evitando bias de
   abertura.
-  \item Medição de mecanismos de ionização do gás: formação estelar, choques,
-  AGN.
+  \item Determinação de mecanismos de ionização do gás: formação estelar,
+  choques, AGN.
   \item Medição de abundâncias de oxigênio e nitrogênio no gás ionizado (regiões
   \HII).
   \item Medição de propriedades de populações estelares: idades, razões
@@ -75,33 +75,40 @@ disponível. Ela está descrita nas seções a seguir.
 	\label{fig:PPAK}
 \end{figure}
 
-À época do início do CALIFA, o PPAK/PMAS era o instrumento de sua classe com o
-tamanho de campo, $>1\,\mathrm{arcmin}^2$. Ele consiste em um maço de 331 fibras
-ópticas cobrindo o campo de observação, direcionado a um espectrógrafo de fenda
-longa que espalha a luz sobre um detector CCD\footnote{{\em Charge Coupled
-Device}.}. A Figura \ref{fig:PPAK} ilustra a montagem esquemática do
-instrumento. Desta forma, de cada fibra se obtém um espectro. Através de um
-programa de computador, os espectros podem ser reorganizados de modo a formar um
-cubo de dados, onde há duas dimensões espaciais e uma dimensão espectral.
+À época do início do CALIFA\footnote{Hoje em dia o MUSE
+(\url{https://www.eso.org/sci/facilities/develop/instruments/muse.html}) é o
+detentor do recorde.}, o PPAK/PMAS era o instrumento de sua classe com o tamanho
+de campo, $>1\,\mathrm{arcmin}^2$. Ele consiste em um maço de 331 fibras ópticas
+cobrindo o campo de observação, direcionado a um espectrógrafo de fenda longa
+que espalha a luz sobre um detector CCD\footnote{{\em Charge Coupled Device}.}.
+A Figura \ref{fig:PPAK} ilustra a montagem esquemática do instrumento. Desta
+forma, de cada fibra se obtém um espectro. Através de um programa de computador,
+os espectros podem ser reorganizados de modo a formar um cubo de dados, onde há
+duas dimensões espaciais e uma dimensão espectral.
 Todavia, pode-se notar na Figura \ref{fig:PPAK} que as fibras não cobrem
 totalmente o campo de observação. Na verdade, apenas em torno de 60\% da luz
 proveniente do campo cai dentro das fibras. O restante se perde nos espaços
-entre elas. Para mitigar este problema, observa-se o campo várias vezes,
-deslocando o telescópio uma fração de {em spaxel} em diversas direções, e
-reconstruindo o cubo de dados utilizando uma técnica é chamada {\em dithering}.
+entre elas. Para mitigar este problema, observa-se o mesmo campo 3 vezes,
+deslocando o telescópio uma fração de {em spaxel} em direções diferentes
+formando um triângulo, tal que as 3 exposições cobrem toda a àrea a ser
+observada. O cubo de dados é reconstruído utilizando uma técnica chamada {\em
+dithering}.
 
 A estratégia inicial do {\em survey} foi observar todos os objetos utilizando
 duas configurações diferentes e complementares do instrumento. A primeira,
-utilizando a grade de difração V500, com resolução $\Delta \lambda / \lambda
+utilizando a grade de difração V500, com resolução $\lambda / \Delta\lambda
 \approx 850$ em $\lambda = 5000\,\angstrom$ e uma largura a meia altura
 $\mathrm{FWHM} \approx 6\,\angstrom$, cobre a maior faixa espectral possível,
 tal que as linhas \OII e \SII sejam observadas para todos os objetos da amostra.
-A segunda, utilizando a grade de difração V1200, com resolução $\Delta \lambda /
-\lambda \approx 1650$ em $\lambda = 4500\,\angstrom$ e uma largura a meia altura
-$\mathrm{FWHM} \approx 2,7\,\angstrom$, cobrindo a faixa azul do espectro,
-incluindo a descontinuidade de Balmer ($\approx 4000$--$4400\,\angstrom$),
-\Hdelta, \Hgamma e \OIII4363. Estas duas configurações são chamadas daqui em
-diante de V500 e V1200 respectivamente.
+A segunda, utilizando a grade de difração V1200, com resolução $\lambda /
+\Delta\lambda \approx 1650$ em $\lambda = 4500\,\angstrom$ e uma largura a meia
+altura $\mathrm{FWHM} \approx 2,7\,\angstrom$, cobrindo a faixa azul do
+espectro, incluindo a descontinuidade de Balmer, \Hdelta, \Hgamma e \OIII4363.
+Estas duas configurações são chamadas daqui em diante de V500 e V1200
+respectivamente. A principal motivação para as observações com a V1200 é medir a
+cinemática estelar, explorando a maior resolução espectral dessa grade
+($\sigma_{\mathrm{instrumental}} \sim 78\, \mathrm{km}/\mathrm{s}$).
+
 
 \subsection{Amostra}
 
@@ -149,7 +156,7 @@ na Figura \ref{fig:CALIFACMD}.
 \label{sec:ifs:dr}
 
 A primeira liberação pública de dados (em inglês, {\em data release}),
-denominado DR1 \citep{Husemann2013}, ocorreu em outubro de 2013. Foram
+denominada DR1 \citep{Husemann2013}, ocorreu em outubro de 2013. Foram
 escolhidas 100 galáxias nas duas configurações, V500 e V1200, que passaram por
 um controle de qualidade do {\em survey}, num total de 200 cubos de dados. As
 características da amostra do DR1 reproduzem bem as da amostra mãe, dentro do
@@ -201,7 +208,7 @@ está programado para o final de 2015.
 O programa, desenvolvido por Rubén García Benito para fazer o mascaramento e
 tesselação dos cubos de dados descrito a seguir, foi chamado de QBICK. Para mais
 detalhes sobre o processo completo, ver o artigo por \citet{CidFernandes2013},
-disponível no Apêndice \ref{apendice:PaperResolving1}.
+reproduzido no Apêndice \ref{apendice:PaperResolving1}.
 
 É preciso preparar os espectros para passarem pelo \starlight. Isto envolve
 principalmente remover medidas não confiáveis, além de deixar todos os espectros
@@ -228,8 +235,8 @@ Um exemplo de aplicação do QBICK é mostrado na Figura \ref{fig:QBICK}.
 \begin{figure}
 	\includegraphics[width=0.8\textwidth]{figuras/zones-K0277}
 	\caption[Exemplo processamento com QBICK, galáxia K0277]
-	{Exemplo processamento com QBICK, galáxia NGC 2916 (CALIFA K0277). (a) Imagem
-	do SDSS na banda $r$. (b) Imagem do CALIFA em $5635\,\angstrom$ com máscara
+	{Exemplo processamento com QBICK, da galáxia NGC 2916 (CALIFA 0277). (a)
+	Imagem do SDSS na banda $r$. (b) Imagem do CALIFA em $5635\,\angstrom$ com máscara
 	espacial. (c) Mapa de sinal--ruído em $5635\,\angstrom$. (d) Sinal--ruído após
 	a segmentação em zonas de Voronoi. (e) Número de {\em spaxels} em cada zona.
 	(f) Percentual de {\em pixels} ruins na faixa de $3800$--$6850\,\angstrom$.
@@ -249,7 +256,7 @@ velocidades). Esta base é composta por uma grade de populações estelares simp
 com a mesma metalicidade, com espectros proveniente de alguma biblioteca de
 modelos. O \starlight busca neste espaço de parâmetros (que pode ser imenso, com
 quase 300 dimensões no caso do presente estudo) qual conjunto de frações de luz,
-atenuação e cinemática que melhor ajustam o espectro observado, que toma a forma
+atenuação e cinemática que melhor ajusta o espectro observado, que toma a forma
 \begin{equation*}
 F^{\mathrm{modelo}}_\lambda = \sum_{j=1}^{N_\star} F^\star_\lambda(t_j,Z_j)
 10^{ -0,4 A_\lambda}  \otimes G(v_\star,\sigma_\star)
@@ -263,7 +270,7 @@ modelar os efeitos da cinemática estelar. Na prática a equação acima é
 implementada após um procedimento de normalização a um comprimento de onda de
 referência $\lambda_N$:
 \begin{equation*}
-F^{\mathrm{modelo}}_\lambda = F_{\lambda_N} 
+F^{\mathrm{modelo}}_\lambda = F^{\mathrm{modelo}}_{\lambda_N} 
 \sum_{j=1}^{N_\star} x_j b^\star_\lambda(t_j,Z_j)
 10^{ -0,4 (A_\lambda - A_{\lambda_N}) } \otimes G(v_\star,\sigma_\star)
 \end{equation*}
@@ -273,7 +280,7 @@ normalizado a seu valor em $\lambda_N$. A dada elemento $j$ corresponde uma
 idade  $t_j$ e uma metalicidade $Z_j$, e a importância de cada elemento na soma
 total é dada pelo peso $x_j$. O conjunto $\{x_j, i=1,2,\ldots,N_\star\}$ é
 chamado vetor de população ($\vec{x}$) da galáxia considerada.
-O melhor ajuste é escolhido minimizando a equação
+O melhor ajuste é escolhido minimizando
 \begin{equation*}
 \chi^2 = \sum_\lambda \left[(F^{\mathrm{observado}}_\lambda -
 F^{\mathrm{modelo}}_\lambda) w_\lambda\right]^2
@@ -285,11 +292,11 @@ Os espectros da base provêm de modelos de síntese evolutiva de populações
 estelares. A maior parte dos resultados publicados do \starlight usa os modelos
 de \citet[BC03]{Bruzual2003}. Em particular, em seus estudos de galáxias do SDSS
 o grupo da UFSC normalmente usa uma base composta de 150 SSPs cobrindo 25 idades
-(entre $0,001$ e $18\,\mathrm{Ga}$ anos) e 6 metalicidades ($\log Z/Z_\odot$
-entre $-2,3$ e $+0,4$; vide \citet{Mateus2006}). A Figura
-\ref{fig:StarlightSpectrumSample} mostra o ajuste feito para uma galáxia do
-\SDSS utilizando esta base. A extinção é modelada com uma lei de avermelhamento
-de CCM. Neste trabalho usamos modelos mais atualizados de espectros de SSPs,
+(entre $0,001$ e $18\,\mathrm{Ga}$) e 6 metalicidades ($\log Z/Z_\odot$ entre
+$-2,3$ e $+0,4$; vide \citet{Mateus2006}). A Figura
+\ref{fig:StarlightSpectrumSample} mostra ajustes feito para 5 galáxias do \SDSS
+utilizando esta base. A extinção é modelada com uma lei de avermelhamento de
+CCM. Neste trabalho usamos modelos mais atualizados de espectros de SSPs,
 extraídos dos modelos de Granada \citep[para idades até
 $63\,\mathrm{Ma}$]{GonzalezDelgado2005} e os do projeto MILES
 \citep{Vazdekis2010}. No total esta nova base contém 235 elementos cobrindo
@@ -308,19 +315,22 @@ Para mais detalhes ver \citet{GonzalezDelgado2014b, GonzalezDelgado2014a}.
 	\label{fig:StarlightSpectrumSample}
 \end{figure}
 
-A aplicação imediata do resultado do \starlight é a remoção do contínuo estelar
-para medir com maior precisão as linhas de emissão provenientes do gás, não
-incluídas no modelo. É possível também estudar o vetor de população $\vec{x}$,
-que representa a fração de luz proveniente de cada população estelar da base. De
-forma alternativa, pode-se utilizar o vetor de fração de massa $\vec{\mu}$, que
-se relaciona ao $\vec{x}$ através da relação massa--luminosidade de cada
-elemento da base. Individualmente os componentes $x_j$ e $\mu_j$ dos vetores não
-são confiáveis, pois há muita degenerescência nos elementos da base
-\citep{CidFernandes2005}. Porém, a informação contida nos vetores pode ser
-condensada, gerando medidas físicas galáxia, como a taxa de formação estelar, a
-idade estelar média e a metalicidade estelar média, os dois últimos ponderados
-por luminosidade ($\vec{x}$) ou massa ($\vec{\mu}$), por exemplo. Estas medidas
-são muito mais robustas, como  demonstrado por \citet{CidFernandes2014}.
+A aplicação mais imediata do resultado do \starlight é a remoção do contínuo
+estelar para medir com maior precisão as linhas de emissão provenientes do gás,
+não incluídas no modelo. É possível também estudar o vetor de população
+$\vec{x}$, que representa a fração de luz proveniente de cada população estelar
+da base (como na coluna central de painéis da Figura
+\ref{fig:StarlightSpectrumSample}). De forma alternativa, pode-se utilizar o
+vetor de fração de massa $\vec{\mu}$, que se relaciona ao $\vec{x}$ através da
+relação massa--luminosidade de cada elemento da base. Individualmente os
+componentes $x_j$ e $\mu_j$ dos vetores não são confiáveis, pois há muita
+degenerescência nos elementos da base \citep{CidFernandes2005}. Porém, a
+informação contida nos vetores pode ser condensada, gerando medidas físicas como
+a taxa de formação estelar, a idade estelar média e a metalicidade estelar
+média, os dois últimos ponderados por luminosidade ($\vec{x}$) ou massa
+($\vec{\mu}$), por exemplo. Estas medidas são muito mais robustas, como
+demonstrado por \citet{CidFernandes2014}, reproduzido no Apêndice
+\ref{apendice:PaperResolving1}.
 
 Esta técnica foi utilizada em diversos artigos. Em particular a colaboração
 SEAGal ({\em Semi Empirical Analysis of Galaxies}), liderada pela UFSC, aplicou

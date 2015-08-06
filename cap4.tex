@@ -107,8 +107,8 @@ estrutura de uma galáxia, normalmente é necessário decompô-la em subestrutur
 Estas subestruturas são em geral modeladas como funções analíticas, as quais
 permitem derivar medidas quantitativas. De forma simplificada, podemos
 considerar que galáxias são compostas de duas componentes principais: bojo e
-disco. Os próprios discos podem conter barras, braços espirais, anéis e halos,
-para citar algumas subcomponentes mais comuns.
+disco. Os próprios discos podem conter barras, braços espirais e anéis, para
+citar algumas subcomponentes mais comuns.
 
 
 \subsection{Bojos e discos}
@@ -130,8 +130,8 @@ confiança no conjunto de componentes escolhido.
 
 \citet{King1966} descreve um modelo derivado para aglomerados globulares,
 assumindo velocidades estelares isotérmicas e isotrópicas. Muito embora este
-modelo tenha motivações físicas, não possui uma forma funcional simples. Leis
-como as de Hubble-Reynolds \citep[equação 2.55]{Binney2011} e
+modelo tenha motivações físicas, ele não possui uma forma funcional simples.
+Leis como as de Hubble-Reynolds \citep[equação 2.55]{Binney2011} e
 \citet{deVaucouleurs1948, deVaucouleurs1977}, mesmo sendo puramente empíricas,
 descrevem bem bojos de galáxias. Suas formas funcionais são:
 \begin{equation*}
@@ -151,7 +151,7 @@ orientação podem variar com o raio.
 Discos, por outro lado, são facilmente modelados como um perfil exponencial
 \citep{Freeman1970} dado por
 \begin{equation*}
-I(r) = I_0 \exp\left(\frac{r}{h}\right),
+I(r) = I_0 \exp\left(-\frac{r}{h}\right),
 \end{equation*}
 com $h$ sendo o parâmetro de escala radial, e $I_0$ o brilho em $r\!=\!0$.
 
@@ -168,7 +168,7 @@ com $h$ sendo o parâmetro de escala radial, e $I_0$ o brilho em $r\!=\!0$.
 \citet{Sersic1963} mostra que os perfis de de Vaucouleurs e exponencial podem
 ser tomados como casos particulares da equação
 \begin{equation*}
-I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{a}{r_e} \right)^{1/n}
+I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{r}{r_e} \right)^{1/n}
 - 1 \right] \right\},
 \end{equation*}
 que ficou conhecida como ``lei de Sérsic''. Aqui, o parâmetro $n$ é o índice de
@@ -178,7 +178,7 @@ $n\!=\!1$ obtém-se uma lei exponencial (linha azul), e com $n\!=\!4$ a lei de d
 Vaucouleurs (linha vermelha). A maioria dos bojos de espirais e galáxias
 elípticas podem ter seus perfis de brilho ajustados com índices de Sérsic na
 faixa de $1 < n < 10$. Valores maiores de $n$ mudam muito pouco a forma da
-curva. O parâmetro $b_n$ está definido em função de $n$, ver a seção 6.1.5 de
+curva. O termo $b_n$ está definido em função de $n$, ver a seção 6.1.5 de
 \citet{Erwin2015}.
 
 É preciso ter em mente que estas leis são empíricas, e dependem do bom senso de
@@ -220,21 +220,22 @@ encontrando gradientes leves no índice de Sérsic em função do comprimento de
 onda. Os ajustes para cada comprimento de onda foram feitos individualmente. O
 projeto MegaMorph \citep{Haussler2013} faz o mesmo de uma forma um pouco mais
 refinada. Utilizando as bandas fotométricas do SDSS, eles ajustam a variação dos
-parâmetros morfológicos através de um polinômio \citep[Figura
-\ref{fig:propertiesVika}]{Vika2013}. Todos os comprimentos de onda são ajustados
-de uma vez. Aí se pode ver que em grande escala (em comprimento de onda), há
-galáxias com um comportamento linear (ou até razoavelmente constante) em $r_e$.
-Nestes casos, utilizar um modelo linear em função do comprimento de onda,
-segundo os autores, melhora a qualidade do ajuste.
+parâmetros morfológicos com o comprimento de onda através de um polinômio
+\citep[Figura \ref{fig:propertiesVika}]{Vika2013}. Todos os comprimentos de onda
+são ajustados de uma vez. Aí se pode ver que em grande escala (em comprimento de
+onda), há galáxias com um comportamento linear (ou até razoavelmente constante)
+em $r_e$. Nestes casos, utilizar um modelo linear em função do comprimento de
+onda, segundo os autores, melhora a qualidade do ajuste.
 
 Além de efeitos causados pelo método de ajuste, como má escolha do modelo,
 mudança no sinal--ruído nas várias bandas espectrais, ou mínimos locais, parece
-haver motivos reais para levar a sério a variação dos parâmetros morfológicos.
-Populações estelares diferentes emitem mais intensamente em comprimentos de onda
-distintos, com populações mais jovens dominando em comprimentos de onda menores.
+haver motivos reais para levar a sério a variação dos parâmetros morfológicos
+com o comprimento de onda. Populações estelares diferentes emitem mais
+intensamente em comprimentos de onda distintos, com populações mais jovens
+dominando em comprimentos de onda menores.
 Isto parece causar um leve gradiente no índice de Sérsic em galáxias {\em early
-type} \citep{LaBarbera2009}. Poeira parece afetar a medida do tamanho
-e forma de discos \citep{Mollenhoff2006}. O conteúdo e a distribuição de poeira e pode
+type} \citep{LaBarbera2009}. Poeira parece afetar a medida do tamanho e forma de
+discos \citep{Mollenhoff2006}. O conteúdo e a distribuição de poeira e pode
 variar significativamente de galáxia a galáxia, dificultando uma conclusão
 global sobre o seu efeito nos parâmetros morfológicos.
 
@@ -258,19 +259,19 @@ global sobre o seu efeito nos parâmetros morfológicos.
 \end{figure}
 
 \citet{Johnston2012} obtiveram espectros de fenda longa de galáxias lenticulares
-(S0), gerando assim perfis de brilho das galáxias para cada comprimento de onda.
-Ajustando um perfil de de Vaucouleurs e um exponencial ao perfil de brilho de
-cada uma das galáxias (em ambos os lados), eles obtém os espectros separados de
-cada um dos seus dois componentes morfológicos, como mostrado na Figura
-\ref{fig:spectraJohnston}. Com os espectros, pode-se tentar entender que
-populações estelares compõe o bojo e o disco destes galáxias. Os autores estimam
-a idade e a metalicidade estelar das componentes utilizando a intensidade da
-linha \Hbeta e do tripleto de magnésio, comparando com uma grade de modelos
-sintéticos de populações estelares. A conclusão que chegam é que os bojos são
-sistematicamente mais jovens e mais metálicos do que os discos (Figura
-\ref{fig:populationJohnston}). Inspirado neste estudo, o Capítulo
-\ref{sec:Decomp} descreve a decomposição de espectros de galáxias em espectros
-de bojos e discos, mas utilizando cubos de dados do CALIFA.
+(S0), gerando assim perfis de brilho unidimensionais das galáxias para cada
+comprimento de onda. Ajustando um perfil de de Vaucouleurs e um exponencial ao
+perfil de brilho de cada uma das galáxias (em ambos os lados do núcleo), eles
+obtêm os espectros separados de cada um dos seus dois componentes morfológicos,
+como mostrado na Figura \ref{fig:spectraJohnston}. Com os espectros, pode-se
+tentar entender que populações estelares compõe o bojo e o disco destes
+galáxias. Os autores estimam a idade e a metalicidade estelar das componentes
+utilizando a intensidade da linha \Hbeta e do tripleto de magnésio, comparando
+com uma grade de modelos sintéticos de populações estelares. A conclusão que
+chegam é que os bojos são sistematicamente mais jovens e mais metálicos do que
+os discos (Figura \ref{fig:populationJohnston}). Inspirado neste estudo, o
+Capítulo \ref{sec:Decomp} descreve a decomposição de espectros de galáxias em
+espectros de bojos e discos, mas utilizando cubos de dados do CALIFA.
 
 
 \subsection{Ajuste de modelos}
@@ -281,7 +282,7 @@ melhor ajustam o perfil de brilho de uma galáxia. A abordagem usual é baseada 
 princípio de máxima verossimilhança ($\mathcal{L}$). Se a estatística das
 medidas é gaussiana (que é aproximadamente verdade na maioria das imagens
 astronômicas relevantes ao ajuste de modelos), o logaritmo da verossimilhança se
-assemelha à familiar soma de $\chi^2$\citep[seção 4.1.2]{Erwin2015}. Isto
+assemelha à familiar soma de $\chi^2$ \citep[seção 4.1.2]{Erwin2015}. Isto
 significa que o problema passa a ser a minimização da equação
 \begin{equation*}
 -2\ln\mathcal{L} = \chi^2 = \sum_i^N \frac{\left(d_i -
@@ -340,7 +341,7 @@ ajuste. Mas, trabalhar com a PSF traz um custo computacional enorme, uma vez que
 é preciso efetuar um cálculo de convolução (ver Seção \ref{sec:psf:teoria}) cada
 vez que se avalia o modelo para um determinado conjunto de parâmetros. O
 problema de minimização, que já é de natureza não linear para modelos de
-componentes de galáxia, tona-se ainda mais complicado.
+componentes de galáxia, torna-se ainda mais complicado.
 
 % FIXME: Comentário sobre algoritmo de Metropolis.
 
@@ -391,7 +392,7 @@ Foi feita uma versão modificada do IMFIT em forma de biblioteca dinâmica. Em
 seguida foi feito um código {\em wrapper}, em Python, que acessa todas as
 funções do IMFIT. Esta biblioteca, junto com o código {\em wrapper}. foi chamada
 python-imfit\footnote{\url{https://github.com/streeto/python-imfit}}. Com ela
-pode-se fazer tudo que o IMFIT permite, mas e {\em arrays} numéricos do Python.
+pode-se fazer tudo que o IMFIT permite, mas em {\em arrays} numéricos do Python.
 Esta biblioteca é bastante genérica, e pode ser utilizada para qualquer
 aplicação de ajuste de imagem. Contudo, o mais importante é que a manipulação de
 modelos e o ajuste para múltiplas imagens deixa de ser um exercício tedioso de
