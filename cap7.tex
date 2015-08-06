@@ -43,16 +43,14 @@ Diferente do método de \citeauthor{Johnston2012}, os perfis do bojo e do disco
 são tratados em duas dimensões como elipsóides, cada qual com uma elipticidade
 ($\epsilon$) e um ângulo de posição (P.A.) independentes. O ângulo de posição é
 medido em sentido anti-horário a partir do eixo horizontal positivo. Estes
-modelos são ajustadas a imagens em cada comprimento de onda, utilizando o
+modelos são ajustados a imagens em cada comprimento de onda, utilizando o
 programa IMFIT, conforme descrito na seção a seguir. A decomposição é realizada
-sobre os espectros observados. As linhas de emissão são mascaradas, se está
-interessado apenas na distribuição de populações estelares. A emissão de gás não
-necessariamente seguem um perfil como o bojo ou o disco, estando normalmente
-localizado em regiões \HII (de forma granular) e em núcleos ativos.
+sobre os espectros observados. As linhas de emissão são mascaradas, pois estamos
+interessados apenas na distribuição de populações estelares.
 O ajuste morfológico é feito deixando livres todos os parâmetros das equações
 acima ($I_e$, $r_e$, $n$, $I_0$, $h$) e a geometria de cada componente (P.A. e
-$\epsilon$), sem fazer hipótese alguma sobre como os parâmetros
-morfológicos variam a cada comprimento de onda.
+$\epsilon$), sem fazer hipótese alguma sobre como os parâmetros morfológicos
+variam a cada comprimento de onda.
 
 Conforme descrito na Seção \ref{sec:psf:medida}, convolui-se as imagens do
 modelo com uma PSF de perfil de Moffat com $\beta=4$ e
@@ -60,17 +58,18 @@ $\mathrm{FWHM}=2,9\,\arcs$. Possíveis efeitos causados por uma PSF mal
 dimensionada foram vistos na Seção \ref{sec:test:psf}.
 
 
-\subsection{A biblioteca python-imfit}
+% TODO: repensar esta seção
+%\subsection{A biblioteca python-imfit}
 
-\TODO vender o jabá - mini-tutorial do python-imfit?
+%\TODO vender o jabá - mini-tutorial do python-imfit?
 
 
 \subsection{Cinemática}
 \label{sec:Decomp:cinematica}
 
 Antes de começar a decomposição, é preciso refletir um pouco sobre a cinemática
-das estrelas da galáxia. As estrelas estão distribuídas em bojos e discos de
-maneiras distintas, e a cinemática em cada um dos casos é diferente.
+das estrelas da galáxia. As estrelas estão distribuídas em bojos e discos, e a
+cinemática em cada um dos casos é diferente.
 A estrutura plana dos discos é causada por um alto momento angular, com um campo
 de velocidades sistêmico projetado na linha de visada. Isto faz com que uma dada
 linha espectral tenha um {\em redshift} diferente, dependendo da sua posição no
@@ -94,17 +93,18 @@ uma velocidade sistêmica ($v_0$) e uma distribuição de velocidades gaussiana
 rotação e discos podem ter alguma dispersão de velocidades. A cinemática pode
 até ser diferente para cada cada população estelar em uma mesma componente.
 Entretanto, isto é uma boa primeira aproximação. A medida de $v_0$ e $v_d$ foi
-obtida utilizando \starlight, que ajusta a cinemática juntamente às populações
+obtida utilizando o \starlight, que ajusta a cinemática juntamente às populações
 estelares.
 
-Corrigir efeitos de $v_0$ é simples, basta aplicar um {\em redshift} de mesma
-velocidade, na direção oposta, tal que os espectros fiquem todos em {\em rest
-frame}. Já $v_d$ requer um pouco mais de consideração, pois não é possível
-``desalargar'' as linhas espectrais. O que se faz então é tentar deixar todos os
-{\em spaxels} com a mesma dispersão de velocidades, degradando a resolução do
-espectro. Se as dispersões são gaussianas, isto é obtido convoluindo (em espaço
-de velocidades) o fluxo cada {\em spaxel} com uma gaussiana de largura dada por
-um $v_{d,\ast}$ adequado, isto é
+Corrigir efeitos de $v_0$ é simples, basta aplicar um {\em redshift} (ou {\em
+blueshift}) de mesma velocidade, na direção oposta, tal que os espectros fiquem
+todos em {\em rest frame}. Já $v_d$ requer um pouco mais de consideração, pois
+não é possível ``desalargar'' as linhas espectrais. O que se faz então é tentar
+deixar todos os {\em spaxels} com a mesma dispersão de velocidades, degradando a
+resolução do espectro. Se a distribuição de velocidades na linha de visada segue
+uma distribuição gaussiana, isto é obtido convoluindo (em espaço de velocidades)
+o fluxo cada {\em spaxel} com uma gaussiana de largura dada por um $v_{d,\ast}$
+adequado, isto é
 \begin{equation*}
 F_{\lambda,\ast} = \frac{1}{v_{d,\ast}\sqrt{2\pi}}\int_{-\infty}^{+\infty}
 F_\lambda \left(\lambda^\prime = \frac{\lambda}{1 + v/c}\right) \exp \left[ -\frac{1}{2}
@@ -221,9 +221,9 @@ de fluxo e erro conforme visto na seção anterior. Esta imagem é utilizada par
 calcular o chute inicial nos parâmetros morfológicos, utilizando as seguintes
 heurísticas:
 \begin{enumerate}
-  \item Encontrar o raio que contém metade da luz ($\mathrm{HLR}$), onde
-  é o local mais provável para que a componente dominante deixe de ser o
-  bojo e passe a ser o disco \cite{GonzalezDelgado2015};
+  \item Encontrar o raio que contém metade da luz ($\mathrm{HLR}$), que é, em
+  primeira aproximação, o local mais provável para que a componente dominante
+  deixe de ser o bojo e passe a ser o disco \cite{GonzalezDelgado2015};
   \item Mascarar a região central ($r < \mathrm{HLR}$);
   \item Criar um modelo de disco de $h=1,5 \mathrm{HLR}$ utilizando DE;
   \item Ajustar o disco á imagem mascarada;
@@ -242,23 +242,23 @@ heurísticas:
 
 Este procedimento é computacionalmente intensivo, e o conjunto de heurísticas
 foi determinado de forma empírica. Ainda assim, ele falha em muitos casos,
-geralmente precisando ser modificado quando se adiciona galáxias à amostra. O
-tempo típico, em um computador atual, de ajuste do modelo inicial é de 10
-minutos. É possível fazer este ajuste de forma interativa, utilizando uma
-ferramenta gráfica, numa fração deste tempo. Com este objetivo foi desenvolvido
-o programa mostrado na Figura \ref{fig:modelFinder}. Com ele pode-se escolher
-modelos iniciais, limites, e fazer um ajuste de teste, tudo em tempo real. Como
-a amostra é pequena, um programa interativo ainda é uma abordagem viável.
+geralmente precisando ser modificado caso a caso. O tempo típico, em um
+computador atual, de ajuste do modelo inicial é de 10 minutos. É possível fazer
+este ajuste de forma interativa, utilizando uma ferramenta gráfica, numa fração
+deste tempo. Com este objetivo foi desenvolvido o programa mostrado na Figura
+\ref{fig:modelFinder}. Com ele pode-se escolher modelos iniciais, limites, e
+fazer um ajuste de teste, tudo em tempo real. Como a amostra é pequena, um
+programa interativo ainda é uma abordagem viável.
 
 Como visto na Seção \ref{sec:morph:comp:depLambda}, os parâmetros morfológicos
-podem depender do comprimento de onda. Logo, um único modelo inicial por não ser
-suficiente para escapar dos mínimos locais. Assim, utiliza-se imagens em caixas
-de $100\,\angstrom$, e espaçadas em intervalos também de $100\,\angstrom$, para
-fazer ajustes utilizando o algoritmo N-M. Obtém-se desta forma modelos iniciais
-para cada comprimento de onda. Os parâmetros destes modelos são, de forma
-independente, ajustados a polinômios. Em nenhum caso (da amostra final deste
-trabalho) houve necessidade de ajuste de um polinômio de ordem maior que 1, isto
-é uma reta.
+podem depender do comprimento de onda. Logo, um único modelo inicial pode não
+ser suficiente para escapar dos mínimos locais. Assim, utiliza-se imagens em
+caixas de $100\,\angstrom$, e espaçadas em intervalos também de
+$100\,\angstrom$, para fazer ajustes utilizando o algoritmo N-M. Obtém-se desta
+forma modelos iniciais para cada comprimento de onda. Os parâmetros destes
+modelos são, de forma independente, ajustados a polinômios em função de
+$\lambda$. Em nenhum caso (da amostra final deste trabalho) houve necessidade de
+ajuste de um polinômio de ordem maior que 1, isto é uma reta.
 
 O ajuste morfológico final se dá utilizando os chutes iniciais dados pelos
 polinômios dos parâmetros. As imagens são tomadas $\lambda$-a-$\lambda$, sem
@@ -399,7 +399,7 @@ A Figura \ref{fig:decompRadprof} permite uma visualização bidimensional, nos
 painéis superiores, do fluxo observado, modelo e resíduo em $5635\,\angstrom$.
 No resíduo se observa efeitos de borda próximo às regiões externas mascaradas,
 além de artefatos seguindo um padrão quase regular\footnote{O padrão hexagonal
-que aparece nas imagens (sobretudo nas de resíduo) está relacionada com a forma
+que aparece nas imagens (sobretudo nas de resíduo) está relacionado com a forma
 como os cubos são reconstruídos.}. Pode-se observar também uma estrutura que
 parece ser um braço espiral, em excesso (azul) no resíduo. Isto não é surpresa,
 dado que esta galáxia é classificada como S0a. Outra forma de visualizar a
@@ -419,13 +419,13 @@ partir da imagem observada.
 	\label{fig:decompParams}
 \end{figure}
 
-A dependência dos parâmetros morfológicos obtidos para K0858 são mostrados na
-Figura \ref{fig:decompParams}. As linhas pretas representam a decomposição
-final, feita $\lambda$-a-$\lambda$, e os pontos azuis a decomposição feita no
-primeiro passo da decomposição, em caixas de $100\,\angstrom$. Regiões
-espectrais mascaradas antes de iniciar a decomposição (onde pode haver emissão
-de gás) estão marcadas em cinza. Marcadas em rosa estão regiões espectrais onde
-a decomposição falhou.
+A dependência em $\lambda$ dos parâmetros morfológicos obtidos para K0858 é
+mostrada na Figura \ref{fig:decompParams}. As linhas pretas representam a
+decomposição final, feita $\lambda$-a-$\lambda$, e os pontos azuis a
+decomposição feita no primeiro passo da decomposição, em caixas de
+$100\,\angstrom$. Regiões espectrais mascaradas antes de iniciar a decomposição
+(onde pode haver emissão de gás) estão marcadas em cinza. Marcadas em rosa estão
+regiões espectrais onde a decomposição falhou.
 
 A primeira coisa que chama a atenção na Figura \ref{fig:decompParams} é a
 diferença entre as parâmetros morfológicos obtidos em caixas de $100\,\angstrom$
@@ -504,7 +504,7 @@ K0858.
 	\label{fig:decompSinteseSpec}
 \end{figure}
 
-A Figura \ref{fig:decompSinteseSpec} mostra ajuste do \starlight para os
+A Figura \ref{fig:decompSinteseSpec} mostra ajustes do \starlight para os
 espectros integrados observado, do bojo e do disco. As linhas mais claras
 mostram o melhor ajuste. No painel inferior, tem-se o resíduo do ajuste em
 relação ao espectro de entrada. O ajuste é bom em linhas gerais, embora seja
@@ -520,11 +520,11 @@ anti-correlacionados, devido à degenerescência do modelo.
 	representam as propriedades obtidas utilizando espectros espacialmente
 	resolvidos. As linhas tracejadas representam as propriedades obtidas utilizando
 	os espectros integrados. Em preto, espectro observado. Em vermelho, e azul, as
-	componentes bojo e disco.Acima, à esquerda: idade estelar média ponderada pela
+	componentes bojo e disco. Acima, à esquerda: idade estelar média ponderada pela
 	luminosidade. Acima, à direita: atenuação por poeira, na banda $V$. Abaixo, à
 	esquerda: metalicidade estelar média, ponderada pela massa. Abaixo, à direita:
 	densidade superficial de massa estelar. As frações de massa e luminosidade
-	entre as componentes e a total (obtida do espectro observado) é mostrada no
+	entre as componentes e a total (obtida do espectro observado) são indicadas no
 	painel inferior, à direita.}
 	\label{fig:decompSinteseRadprof}
 \end{figure}
@@ -575,9 +575,6 @@ observado. Também é interessante notar que os pontos para uma mesma galáxia
 estñao alinhados. Isto pode acontecer devido à degenerescência entre idade e
 metalicidade, comumente vista em sínteses de população estelar.
 
-% TODO K0592 é cD0 do aglomerado de Coma? Literatura diz que é $n=4$. Nñao sei
-% se vale a pena mencionar isso.
-
 \begin{figure}
 	\includegraphics[width=0.9\textwidth]{figuras/johnston-pop}
 	\caption[A mesma Figura que \ref{fig:populationJohnston}] {A mesma Figura que
@@ -588,13 +585,26 @@ metalicidade, comumente vista em sínteses de população estelar.
 
 É interesante comparar a Figura \ref{fig:decompSintese} com o resultado de
 \citet{Johnston2012}, reproduzido na Figura \ref{fig:populationJohnston2}.
-Os resultados obtidos aqui, embora não tenham significância estatística, vão de
-encontro ao resultado de \citeauthor{Johnston2012}, que obtêm, para galáxias S0,
-bojos mais jovens e mais metálicos que seus discos. A idade quanto a
+Os resultados obtidos aqui, embora não tenham significância estatística, são
+contrários ao resultado de \citeauthor{Johnston2012}, que obtêm, para galáxias
+S0, bojos mais jovens e mais metálicos que seus discos. Tanto a idade quanto a
 metalicidade que eles utilizam foram obtidos através do ajuste de duas linhas de
 absorção, enquanto neste trabalho o espectro inteiro foi utilizado no ajuste de
 populações estelares.
 
-\TODO e pra finalizar\ldots
+Além disso, eles trabalham com perfis unidimensionais (espectros de fenda
+longa), enquanto análise feita aqui é toda em 2-d (imagens). Por fim, não é
+óbvio que as galáxias de nossa amostra sejam comparaveis à da amostra de
+\citeauthor{Johnston2012}. De fato, apesar de ambas amostras selecionarem
+galáxias S0, as galáxias de \citeauthor{Johnston2012} parecem ser menos massivas
+que as nossas. Enquanto K0858 tem magnitude absoluta na banda $B$ de $M_B = -21$
+(K0592 tem medida somente na banda $V$, com $M_V = -23,6$), as de
+\citeauthor{Johnston2012} $M_B$ entre $-17$ e $-19$.
+
+Todas essas diferenças complicam a comparação dos resultados obtidos neste
+trabalho com aqueles do artigo que inspirou todo esse estudo. De qualquer modo,
+os experimentos aqui reportados mostram que a decomposição morfológica espectral
+é um problema bastante mais delicado do que se imaginava anteriormente.
+
 
 %% End of this chapter
