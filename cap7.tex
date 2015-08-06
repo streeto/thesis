@@ -55,8 +55,8 @@ variam a cada comprimento de onda.
 Conforme descrito na Seção \ref{sec:psf:medida}, convolui-se as imagens do
 modelo com uma PSF de perfil de Moffat com $\beta=4$ e
 $\mathrm{FWHM}=2,9\,\arcs$. Possíveis efeitos causados por uma PSF mal
-dimensionada foram vistos na Seção \ref{sec:test:psf}.
-
+dimensionada foram vistos na Seção \ref{sec:test:psf}. Esta é uma preocupação
+muito relevante no caso do CALIFA, pois em geral os bojos estão mal resolvidos.
 
 % TODO: repensar esta seção
 %\subsection{A biblioteca python-imfit}
@@ -470,13 +470,16 @@ disco em azul), no {\em spaxel} nuclear, a $r_e$ de distância do núcleo, e o
 espectro integrado dos modelos. O espectro observado é mostrado em preto, e o
 resíduo em magenta.
 
-Com uma análise visual, os espectros parecem galáticos. Pode-se observar que o
-resíduo apresenta um gradiente nos {\em spaxels}, e praticamente desaparece no
-espectro integrado. Este gradiente no resíduo indica que os modelos somados são
-mais vermelhos do que o espectro observado. Isto certamente irá afetar o
-resultado da síntese de populações estelares, analisada na seção a seguir. Os
-espectros integrados dos modelos, se tiverem tal gradiente de cor, devem ter uma
-forma tal que se cancelam no resíduo.
+Com uma análise visual, os espectros parecem galáticos. Nos piores casos os
+bojos parecem ter um ajuste pior do que os discos, e costumam ter dimensões
+comparáveis à largura da PSF. A má resolução dos bojos pode comprometer a
+decomposição, nestes casos. Pode-se observar que o resíduo geralmente apresenta
+um gradiente nos {\em spaxels}, e praticamente desaparece no espectro integrado.
+Este gradiente no resíduo indica que os modelos somados são mais vermelhos do
+que o espectro observado. Isto certamente irá afetar o resultado da síntese de
+populações estelares, analisada na seção a seguir. Os espectros integrados dos
+modelos, se tiverem tal gradiente de cor, devem ter uma forma tal que se
+cancelam no resíduo.
 
 %***************************************************************%
 %                                                               %
