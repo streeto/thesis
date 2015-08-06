@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Qualificacao de Doutorado / Dept Fisica, CFM, UFSC            %
-% Andre@UFSC - 2013                                             %
+% Andre@UFSC - 2015                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -19,71 +19,151 @@
 \chapter{Conclusões e perspectivas}
 \label{sec:conclusao}
 
-O survey CALIFA está produzindo cubos de dados de IFS de $600$ galáxias. Já
-foram publicados $100$ destes cubos no primeiro {\em data release}, e mais de
-$200$ foram observados, mas ainda estão em processo de controle de qualidade e
-embargo da colaboração. Através do programa \starlight, foram obtidos diversos
-parâmetros relacionado às populações estelares componentes de cada pixel,
-formando cubos de dados adicionais ao observados. Neste trabalho, foi
-desenvolvido um programa chamado PyCASSO para organizar e analisar estes cubos
-de dados. Este programa é utilizado por cerca de $10$ pessoas que estudam
-populações estelares na colaboração do CALIFA. Bastante atenção foi dada à
-documentação (\ref{sec:pycasso:Pycasso}), que pode ser vista no Apêndice
-\ref{apendice:manual}. Foram publicados $4$ artigos que se baseiam fortemente no
-uso de PyCASSO para análise e gráficos, resumidos na Seção \ref{sec:pycasso:art}
-e presentes como apêndices deste trabalho (Apêndices
+O {\em survey} CALIFA observou cerca de 600 galáxias, nas configurações V500 e
+V1200. Foram publicados cubos de 100 galáxias no primeiro {\em data release}, e
+de 200 galáxias no segundo. Os cubos das galáxias restantes ainda estão em
+processo de controle de qualidade e embargo da colaboração. Através do programa
+\starlight, foram obtidos diversos parâmetros relacionados às populações
+estelares componentes de cada {\em spaxel}, formando cubos de dados adicionais
+ao observados, com a as propriedades físicas espacialmente resolvidas obtidas a
+partir da saída do \starlight.
+
+Neste trabalho, foi desenvolvido um programa chamado PyCASSO para organizar e
+analisar estes cubos de dados. Este programa é utilizado por cerca de 10 pessoas
+que estudam populações estelares na colaboração do CALIFA. Bastante atenção foi
+dada à documentação (Seção \ref{sec:pycasso:Pycasso}, com o manual completo no
+Apêndice \ref{apendice:manual}). Foram publicados 4 artigos que se baseiam
+fortemente no uso de PyCASSO para análise e gráficos, resumidos na Seção
+\ref{sec:pycasso:art} e presentes como apêndices deste trabalho (Apêndices
 \ref{apendice:PaperResolving1}, \ref{apendice:PaperResolving2},
 \ref{apendice:InsideOut} e \ref{apendice:RadStruct}).
 
-PyCASSO já foi usado com sucesso com dados de outros surveys como o PINGS
+PyCASSO já foi usado com sucesso com dados de outros {\em surveys} como o PINGS
 \citep{RosalesOrtega2010}, um precursor do CALIFA, porém com até $10$ vezes mais
-espectros por galáxia. Outros surveys IFS certamente seguirão.
-MaNGA\footnote{\url{http://www.sdss3.org/future/manga.php}} está sendo planejado
-pela colaboração SDSS, e deverá obter IFS de $10000$ galáxias\footnote{Muito
-embora tenha um número muito maior de galáxias do que o CALIFA, sua cobertura
-espacial será menor. Assim, estes survey deverá ser complementar ao CALIFA.}.
-Testes com dados preliminares foram feitos com PyCASSO, requerendo apenas
-pequenas modificações nos arquivos para que funcionem normalmente. A tendência
-agora é que PyCASSO se torne um programa modular, onde o usuário cria uma
+espectros por galáxia. MaNGA \citep{Bundy2015} está em andamento, e deverá obter
+IFS de $10.000$ galáxias. Muito embora tenha um número muito maior de galáxias
+do que o CALIFA, sua cobertura espacial será menor. Assim, estes {\em survey}
+deverá ser complementar ao CALIFA. Testes com dados preliminares do MaNGA foram feitos
+com PyCASSO, requerendo apenas pequenas modificações para que funcionem
+normalmente.
+
+É importante que PyCASSO se torne um programa modular, onde o usuário cria uma
 descrição do arquivo de IFS de forma que o programa saiba como ler os dados.
+Recentemente o autor deste trabalho, junto com pesquisadores do Grupo de
+Astrofísica da UFSC, começou a colaborar com um novo {\em survey} chamado
+Diving3D. Este {\em survey}, descrito em \citet{Ricci2014}, vai obter IFS de
+quase 200 núcleos de galáxias utilizando o Telescópio Gemini. Os cubos de dados
+espectrais são de uma qualidade excepcional, e já iniciamos o a adaptação de
+ferramentas como o PyCASSO e o \starlight para trabalhar com esses dados. O
+objetivo, do ponto de vista ferramental, é que se crie uma {\em pipeline} onde
+dados como populações estelares, morfologia, etc, vão sendo adicionados de forma
+incremental aos cubos, mantendo uma interface comum para análise dos dados.
 
-Como seguimento ao programa de doutorado, começou-se a desenvolver uma técnica
-de síntese espectral aplicada às componentes morfológicas (bojo e disco) de
-galáxias. A decomposição morfológica do perfil de brilho em uma imagem de uma
-galáxia é um campo de estudo bem desenvolvido, com ferramentas bastante
-eficientes disponíveis na comunidade acadêmica (GALFIT, BUDDA e Imfit, por
-exemplo). A ideia aqui foi se valer destas ferramentas e realizar a decomposição
-para imagens em cada comprimento de onda dos cubos de espectro. Foram mostrados
-resultados preliminares da decomposição.
+Foi desenvolvida uma técnica de síntese espectral aplicada às componentes
+morfológicas (bojo e disco) de galáxias. A decomposição morfológica do perfil de
+brilho em uma imagem de uma galáxia é um campo de estudo bem desenvolvido, com
+ferramentas bastante eficientes disponíveis na comunidade acadêmica (GALFIT,
+BUDDA e IMFIT, por exemplo). A ideia aqui foi se valer destas ferramentas, junto
+com PyCASSO, e realizar a decomposição para imagens em cada comprimento de onda
+dos cubos de dados espectrais.
 
-O processo de decomposição ainda contém etapas manuais, e depende de uma boa
-escolha inicial nos parâmetros para não cair em mínimos locais. Isto pode ser
-resolvido utilizando outros algoritmos de minimização. Atualmente o algoritmo
-utilizado é o de Levenberg-Marquadt. Imfit disponibiliza outros dois algoritmos,
-menos sensíveis a mínimos locais, porém estes ainda ainda foram implementados no
-código em Python.
+Ao fazer a decomposição morfológica em janelas estreitas de comprimento de onda,
+os efeitos de cinemática precisaram ser levados em consideração. Em uma imagem
+de uma galáxia, em um determinado comprimento de onda, não se observa os mesmos
+processos físicos em todos os {\em pixels}. A luz de cada {\em pixel} é composta
+pela luz de diversas estrelas, cada uma com uma velocidade diferente em relação
+à linha de visada (e consequentemente um {\em redshift} ou {\em blueshift}
+diferente), com cada {\em pixel} contendo um conjunto distinto destas
+velocidades. Para mitigar este problema, a distribuição de velocidades de cada
+{\em spaxel} dos cubos de dados foi determinada, de forma aproximada, por uma
+velocidade sistêmica e uma dispersão de velocidades. Os {\em spaxels} foram
+colocados todos no {\em rest frame}, e com a mesma dispersão de velocidade (ver
+Seção \ref{sec:Decomp:cinematica} para detalhes). Isto fez com que a resolução
+fosse degradada, mas garante que se observa a luz da galáxia inteira de forma
+consistente.
 
-Também é preciso estudar a forma como os parâmetros morfológicos deveriam variar
-com o comprimento de onda. Do modo como o código está implementado, é possível
-aplicar um filtro para suavizar os parâmetros após o ajuste, e repeti-lo com
-alguns parâmetros fixos. Entretanto, não está claro quais parâmetros variam
-suavemente (nem o quão suave e qual forma geral deveriam ter) e quais se espera
-que mudem dramaticamente de um comprimento de onda a outro vizinho. Aqui
-provavelmente a cinemática das populações estelares tenha um papel importante,
-que poderá dar pistas sobre o comportamento das propriedades morfológicas.
+A PSF é uma peça chave neste quebra-cabeças morfológico. Sem uma boa medida da
+forma da PSF, a decomposição morfológica pode não funcionar, ou pior, gerar
+resultados equivocados. No Capítulo \ref{sec:psf}, foi descrito como  a PSF do
+CALIFA foi medida, um resultado que acabou sendo adotado pela colaboração,
+publicado no segundo {\em data release} \citep{GarciaBenito2015}. A PSF obtida
+segue um perfil de Moffat, com $\beta = 4$ e $\mathrm{FWHM}=2,9 \pm 0,3\,\arcs$.
+Com esta incerteza na estimativa da largura da PSF, testes foram feitos para
+determinar o efeito que um erro na PSF causa no resultado da decomposição
+morfológica, apresentados na Seção \ref{sec:test:psf}. Em via de regra, a
+decomposição dos espectros em componentes morfológicas, quando se utiliza a PSF
+errada, apresenta artefatos como gradientes de cores e linhas espectrais
+artificiais. Estes problemas parecem ser atenuados quando se utiliza os
+espectros integrados das componentes morfológicas.
 
-Um estudo que já pode ser feito com os resultados atuais é medir a densidade
-superficial de massa estelar do disco, que fica normalmente escondido atrás do
-bojo. O objetivo é verificar previsão de \citet{Freeman1970}, que diz que a
+No Capítulo \ref{sec:Decomp} foi escolhida, dentre as galáxias do CALIFA
+observadas com a configuração V500, uma amostra de 43 galáxias que foram
+classificadas com boa possibilidade de serem da classe S0 (listada no Apêndice
+\ref{apendice:amostra}). O objetivo era ter galáxias que pudessem ser bem
+ajustadas a um modelo bojo--disco. Destas 43, 19 tinham características que não
+permitiam o uso deste modelo, seja por faixas de poeira, uma das componentes
+muito fraca, ou problema nos dados, entre outras coisas. Outras 15 tiveram
+problema no ajuste do modelo inicial. Somente 9 galáxias tiveram um relativo
+sucesso na decomposição morfológica espectral. O resultado da decomposição para
+todas as 9 galáxias da amostra final é mostrado nas figuras do Apêndice
+\ref{apendice:Decomp}. A galáxia K0858, classificada como S0a, foi escolhida
+para uma análise mais detalhada, em parte pela sua decomposição morfológica ter
+sido muito boa, e em parte por ter um bom ajuste com o \starlight.
+
+Em K0858 verificou-se que há um gradiente espectral em alguns dos parâmetros
+morfológicos, que foram ajustados levando em conta apenas informações espaciais.
+Entretanto, não se pode descartar que estes gradientes, e outras características
+menores observadas na dependência dos parâmetros com o comprimento de onda, não
+sejam artefatos da forma como a decomposição foi feita. O teste com os erros na
+PSF deixaram isto bem claro, assim como os resíduos nos espectros (vide Figura
+\ref{fig:decompSpectra}). É preciso estudar a forma como os parâmetros
+morfológicos deveriam variar com o comprimento de onda. Compreender a forma como
+as populações estelares se distribuem nas componentes morfológicas de uma
+galáxia, e como estas populações se refletem nos espectro espacialmente
+resolvido da galáxia, é fundamental para poder fazer uma decomposição
+morfológica que leve em conta informações das regiões vizinhas no espectro.
+
+A síntese de populações estelares foi realizada com sucesso apenas em K0592
+(classificada como E0), e K0858. O ajuste dos espectros e as propriedades
+físicas, para todas as 9 galáxias da amostra, estão disponíveis no Apêndice
+\ref{apendice:Decomp}. Apenas K0592 e K0858 tiveram um resíduo no ajuste do
+\starlight pequeno o bastante para poderem ter as propriedades físicas obtidas
+para seus bojos e discos levadas a sério. A Figura \ref{fig:decompSintese}
+mostra idade e metalicidade estelar médias para as componentes das duas
+galáxias, calculados sobre os espectros integrados. Esta figura indica que os
+bojos apresentam populações mais velhas e menos metálicas, enquanto os discos
+apresentam populações mais jovens e mais metálicas, em relação ao espectro
+observado.
+
+Um estudo que poderia ser feito com os resultados da síntese de populações
+aplicados à decomposição morfológica espectral é medir a densidade superficial
+de massa estelar do disco, que fica normalmente ofuscado pelo bojo nas regiões
+centrais. O objetivo é verificar previsão de \citet{Freeman1970}, que diz que a
 densidade superficial de massa do núcleo dos discos de galáxias é sempre o
 mesmo, independente do tipo morfológico e do perfil de massa que a galáxia
-tenha. Quando o ajuste de bojo e disco estiverem dominados, o passo lógico
-seguinte é tentar aplicar o ajuste a galáxias espirais. Os braços espirais têm
-um papel importante na formação estelar, e com esta abordagem pode-se tentar
-obter o histórico de formação estelar nestas regiões. Também é necessário
-melhorar o ajuste para galáxias com um grande ângulo de inclinação. Com estas
-mudanças, vai ser possível aplicar o estudo a uma boa fração da amostra do
-CALIFA, e então avaliar estatisticamente a validade do método.
+tenha. Todavia, a síntese de populações espacialmente resolvida não é muito
+robusta da forma como é feita aqui, como visto na Figura
+\ref{fig:decompSinteseRadprof}. Entre as prováveis causas está a degenerescência
+no modelo bojo--disco, com 7 parâmetros livres. Deixar parâmetros como P.A. e
+$\epsilon$ fixos pode ajudar, mas isso requer testes.
 
+Muitos problemas podem ter sido causados pela forma como se trata a cinemática.
+Talvez seja preciso fazer testes com modelos dinâmicos simples de galáxias para
+verificar se a abordagem utilizada é mesmo adequada. Outra alternativa seria
+fazer a decomposição de forma iterativa. Depois de ter determinado as
+componentes morfológicas, utilizar este conhecimento para tentar medir a
+cinemática das duas componentes nos dados originais, e tentar fazer uma
+correção melhor, repetindo a decomposição. Não é óbvio, entretanto, que esta
+abordagem vá realmente convergir, ou mesmo se é factível computacionalmente.
+
+Mesmo com todos estes problemas em potencial, o passo lógico seguinte é tentar
+aplicar o ajuste a galáxias espirais. A própria K0858 apresenta um resíduo no
+ajuste morfológico que parece um braço espiral (ver Figura
+\ref{fig:decompImages:K0858}). Os braços espirais têm um papel importante na
+formação estelar, e com esta abordagem pode-se tentar obter o histórico de
+formação estelar nestas regiões. Também pode-se tentar utilizar um outro modelo
+morfológico para ajustar galáxias com um grande ângulo de inclinação. Com mais
+galáxias, seria possível aplicar o estudo a uma boa fração da amostra do CALIFA,
+e obter uma melhor estatística.
 
 % End of this chapter
