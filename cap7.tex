@@ -32,11 +32,11 @@ bojo e um disco. Conforme a Seção \ref{sec:morph:comp:bd}, o perfil de brilho 
 bojo é modelado como uma lei de Sérsic, e o perfil do disco como uma lei
 exponencial, conforme as equações
 \begin{equation*}
-I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{a}{r_e} \right)^{1/n}
+I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{r}{r_e} \right)^{1/n}
 - 1 \right] \right\},
 \end{equation*}
 \begin{equation*}
-I(r) = I_0 \exp\left(\frac{r}{h}\right).
+I(r) = I_0 \exp\left(- \frac{r}{h}\right).
 \end{equation*}
 
 Diferente do método de \citeauthor{Johnston2012}, os perfis do bojo e do disco
@@ -88,13 +88,13 @@ Porém, sem compensar os efeitos da cinemática, não se pode fazer a decomposi�
 de forma confiável.
 
 O que se faz aqui é obter uma medida aproximada da cinemática, medindo apenas
-uma velocidade sistêmica ($v_0$) e uma distribuição de velocidades gaussiana
-($v_d$) para cada {\em spaxel}. Isto não é o ideal, pois bojos podem ter alguma
-rotação e discos podem ter alguma dispersão de velocidades. A cinemática pode
-até ser diferente para cada cada população estelar em uma mesma componente.
-Entretanto, isto é uma boa primeira aproximação. A medida de $v_0$ e $v_d$ foi
-obtida utilizando o \starlight, que ajusta a cinemática juntamente às populações
-estelares.
+uma velocidade sistêmica ($v_0$) e uma distribuição ($v_d$) assumindo uma
+distribuição de velocidades gaussiana para cada {\em spaxel}. Isto não é o
+ideal, pois bojos podem ter alguma rotação e discos podem ter alguma dispersão
+de velocidades. A cinemática pode até ser diferente para cada cada população
+estelar em uma mesma componente. Entretanto, isto é uma boa primeira
+aproximação. A medida de $v_0$ e $v_d$ foi obtida utilizando o \starlight, que
+ajusta a cinemática juntamente às populações estelares.
 
 Corrigir efeitos de $v_0$ é simples, basta aplicar um {\em redshift} (ou {\em
 blueshift}) de mesma velocidade, na direção oposta, tal que os espectros fiquem
@@ -319,7 +319,7 @@ merger}.
 Adicionalmente, as galáxias precisam ter uma elipticidade máxima $\epsilon<0,5$,
 medida nas imagens do SDSS na banda $r$. Isto é necessário para evitar problemas
 na decomposição morfológica, pois o modelo bojo--disco não funciona bem em
-sistemas muito inclinados. A amostra inicial é listada no Tabela
+sistemas muito inclinados. A amostra inicial é listada na Tabela
 \ref{tab:DecompSample} (Anexo \ref{apendice:amostra}).
 
 O programa interativo de ajuste foi utilizado nas 43 galáxias da amostra.
@@ -440,7 +440,7 @@ decomposição final.
 Pode-se observar um gradiente espectral no comprimento de escala do disco ($h$).
 Já o raio efetivo do bojo ($r_e$) e o índice de Sérsic ($n$), não apresentam um
 gradiente apreciável. Todos os parâmetros parecem ter um salto em
-$4000\,\angstrom$. Entretanto, o ajuste falha em comprimentos de onda menores,
+$4000\,\angstrom$. O ajuste falha em comprimentos de onda menores,
 ficando difícil determinar se isto é um resultado espúrio. Na verdade, qualquer
 tentativa de interpretação, observando apenas a dependência dos parâmetros
 morfológicos com o comprimento de onda, deve ser feita com cuidado. É esperado
@@ -575,7 +575,7 @@ em azul) e para o espectro observado (em preto) de K0592 e K0858. A massa da
 galáxia (ou da componente morfológica) é representada pela área do círculo.
 As duas galáxias, neste gráfico, têm um comportamento similar.
 Ambas têm um bojo mais velho e de metalicidade mais baixa, e um disco mais jovem
-e de metalicidade mais alta, com relação idade e metalicidade do espectro
+e de metalicidade mais alta, com relação à idade e metalicidade do espectro
 observado. Também é interessante notar que os pontos para uma mesma galáxia
 estão alinhados. Isto pode acontecer devido à degenerescência entre idade e
 metalicidade, comumente vista em sínteses de população estelar.
