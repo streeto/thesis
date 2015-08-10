@@ -174,20 +174,16 @@ Capítulo \ref{sec:Decomp}, sendo descrito apenas superficialmente nesta seção
 	\caption[Modelo morfológico inicial do ajuste da galáxia sintética.]
 	{Modelo morfológico ajustado à galáxia sintética em $5635\,\angstrom$
 	utilizando o algoritmo DE. A imagem de resíduo é a diferença entre
-	observado e modelo, nos painéis superiores. O perfil radial de brilho, no
-	painel inferior, não está convoluído com a PSF, mas pode ser comparado com o
-	perfil da Figura \ref{fig:testInitmodel}.
-	Os parâmetros do modelo ajustados são muito próximos aos do original, as
-	diferenças nesta figura devem-se em sua maior parte à ausência de PSF. Este
-	modelo foi usado como chute inicial na decomposição morfológica espectral.}
+	observado e modelo, dividida pelo observado, nos painéis superiores. O perfil
+	radial de brilho, no painel inferior, pode ser comparado com o perfil da Figura
+	\ref{fig:testInitmodel}. Note que o perfil para o fluxo observado, aqui, está
+	convoluído com a PSF.}
 	\label{fig:testFitmodel}
 \end{figure}
 
-% TODO Rever residuo da figura acima. Dimensões espaciais?
-
 Como o objetivo é fazer a decomposição $\lambda$-a-$\lambda$, o algoritmo
 escolhido foi o de L-M (Seção \ref{sec:morph:comp:ajuste}). Ele pode ser
-extremamente rápido, mas requer um bom modelo inicial. Então, o primeiro passo
+extremamente rápido, mas requer um bom chute inicial. Então, o primeiro passo
 na decomposição é encontrar um modelo com valores aproximado das propriedades
 das componentes. Para tanto, pode-se utilizar um algoritmo mais complexo, como o
 DE, que requer apenas uma faixa de valores para os parâmetros do modelo.
@@ -300,7 +296,9 @@ ajustados.
 	espectros dos componentes originais são as linhas pontilhadas, praticamente
 	cobertas pelos ajustes. Os dois painéis superiores mostram a decomposição no
 	{\em spaxels} nuclear e em $r=r_e$. Os espectros integrados espacialmente são
-	mostrados no painel inferior.}
+	mostrados no painel inferior, com um {\em zoom} entre $6000$ e
+	$6200\,\angstrom$ para mostrar a anti-correlação entre os ajustes de bojo e
+	disco.}
 	\label{fig:testFitSpectra}
 \end{figure}
 
@@ -311,8 +309,8 @@ praticamente indistinguíveis dos espectros ajustados (linhas contínuas). No ca
 integrado, os espectros ajustados parecem ruidosos, mas o resíduo é praticamente
 nulo. Isto quer dizer que aquela dispersão, que parece ruído, é na verdade
 causada por degenerescência no ajuste. As variações nas duas componentes estão
-anti-correlacionadas. Esta degenerescência precisa ser estudada mais a fundo no
-futuro.
+anti-correlacionadas, conforme o painel de {\em zoom} nos espectros integrados.
+Esta degenerescência precisa ser estudada mais a fundo no futuro.
 
 \begin{figure}
 	\includegraphics{figuras/simulation_error}
@@ -327,11 +325,11 @@ futuro.
 
 Mesmo verificando visualmente que os espectros ajustados são parecidos com os
 originais, é preciso quantificar a qualidade do ajuste. Calculando a média da
-razão entre o ajuste e o original, obtém-se para o bojo um valor de $1,0021 \pm
-0,0297$. Ou seja, o ajuste tem um desvio médio de menos de $1\%$, e um desvio
-padrão da média de $3\%$. Para o disco a razão média é $0,9857 \pm 0.0466$, isto
-é, um desvio médio de $1,5\%$, e um desvio padrão da média de $4,5\%$. A ordem
-de magnitude destes desvios não é nenhuma surpresa, levando em conta que foram
+razão entre o ajuste e o original, obtém-se para o bojo um valor de $1,00 \pm
+0,03$. Ou seja, o ajuste tem um desvio médio de menos de $1\%$, e um desvio
+padrão da média de $3\%$. Para o disco a razão média é $0,99 \pm 0.05$, isto é,
+um desvio médio de $1\%$, e um desvio padrão da média de $5\%$. A ordem de
+magnitude destes desvios não é nenhuma surpresa, levando em conta que foram
 adicionados $5\%$ de ruído gaussiano aos dados. Mesmo assim, deve-se explorar
 melhor a razão ajuste--original, para determinar se existe algum efeito
 sistemático nestes desvios. A Figura \ref{fig:testFitError} mostra a razão média
@@ -499,13 +497,13 @@ Fazendo a razão ajuste--original (Figura \ref{fig:testFitError26}), percebe-se
 que espectro ajustado do bojo torna-se maior do que o original conforme se
 afasta do centro, enquanto o disco apresenta um gradiente espectral, ficando
 mais azul, quando se sobre-estima a FWHM. As ``linhas espectrais artificiais''
-neste caso são bem pronunciadas. A razão média para o bojo é de $1,0627 \pm
-0,0645$, e para o disco de $0,7721 \pm 0,0823$. Quando se subestima a FWHM
-(Figura \ref{fig:testFitError33}), o espectro ajustado do bojo é mais fraco e do
-que o original, e diminui com o raio. O disco não parece ter gradiente radial, e
-em ambos os casos, não há um gradiente espectral perceptível, com ``linhas
+neste caso são bem pronunciadas. A razão média para o bojo é de $1,06 \pm 0,06$,
+e para o disco de $0,77 \pm 0,08$. Quando se subestima a FWHM (Figura
+\ref{fig:testFitError33}), o espectro ajustado do bojo é mais fraco e do que o
+original, e diminui com o raio. O disco não parece ter gradiente radial, e em
+ambos os casos, não há um gradiente espectral perceptível, com ``linhas
 espectrais artificiais'' menos intensas do que no outro caso. A razão média
-neste caso é $0,9355 \pm 0,0532$ para o bojo e $1,1297 \pm 0.0413$ para o disco.
+neste caso é $0,94 \pm 0,05$ para o bojo e $1,13 \pm 0.04$ para o disco.
 
 Ao se utilizar, na decomposição morfológica, uma PSF com FWHM maior do que a
 real (superestimando), é impossível criar um modelo com um bojo tão concentrado
