@@ -359,7 +359,8 @@ quanto o N-M sofrem de um problema comum: é preciso especificar um valor
 inicial, e o algoritmo segue um ou mais caminhos até encontrar o mínimo. O
 algoritmo de Metropolis \citep{Metropolis1953, Saha1994} adota uma abordagem
 Bayesiana, e o problema de minimização se torna análogo a um problema de
-mecânica estatística, onde se vai baixando a temperatura até encontrar o
+mecânica estatística, onde, combinado com uma técnica de {\em Simulated
+Annealing} \citep{Kirkpatrick1983}, baixa-se a temperatura até encontrar o
 estado de menor energia. São necessários apenas os limites do espaço de
 parâmetros, uma grande vantagem em casos onde não se sabe de antemão o modelo
 aproximado. Novamente troca-se velocidade por robustez, este algoritmo é

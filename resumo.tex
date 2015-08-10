@@ -11,11 +11,48 @@
 
 \begin{abstract}[Resumo]
 
-A figura a seguir resume esta tese.
+Neste trabalho foram desenvolvidas ferramentas para trabalhar com espectros de
+campo integral (IFS) do {\em survey} CALIFA. Os espectros dos {\em spaxels} são
+preprocessados e em seguida analisados com o uso do programa \starlight. Uma das
+ferramentas principais discutidas aqui, PyCASSO, organiza os arquivos de saída
+do \starlight em cubos de dados de produtos da síntese de população estelar. Ele
+também permite uma programação interativa e exploratória, dando acesso de forma
+prática e simples aos dados multidimensionais.
 
-\begin{center}
-\includegraphics[width=0.7\textwidth]{figuras/lmp}
-\end{center}
+Através do uso destas ferramentas, foi desenvolvido um método que obtém e
+analisa as populações estelares das componentes morfológicas (bojo e disco) de
+galáxias, a partir de dados de IFS. A decomposição morfológica é feita
+utilizando o programa IMFIT, com um {\em wrapper} em Python. Uma amostra de 43
+galáxias classificadas com S0 e com baixa inclinação foi escolhida para
+aplicação do método. O modelo morfológico utilizado foi um bojo com perfil de
+Sérsic e um disco exponencial. A decomposição morfológica é feita a cada
+comprimento de onda, de tal forma que se obtém ao final um espectro para cada
+{\em pixel} do bojo e do disco. Uma boa medida da PSF é essencial neste
+procedimento, então foi feita a caracterização da PSF do CALIFA utilizando as
+estrelas de calibração do {\em survey}. Os parâmetros morfológicos ($r_e$, $n$,
+P.A. e $\epsilon$ para o bojo, $h$, P.A. e $\epsilon$ para o disco), na maioria
+dos casos, depende linearmente, em média, do comprimento de onda, mas o seu
+comportamento a cada $\lambda$ ainda não é bem compreendido. Foi feita a síntese
+espectral de populações estelares das componentes morfológicas de 9 galáxias da
+amostra, que tiveram um bom resultado na decomposição. Apenas duas destas
+produziram bons ajustes com o \starlight, CALIFA 0592 (NGC 4874) e CALIFA 0858
+(UGC 10905). Em ambos os casos se obtém um bojo mais velho e menos metálico e um
+disco mais jovem e mais metálico do que o resultado da síntese do espectro
+observado. A síntese de populações estelares utilizando os espectros integrados
+produziram resultados mais robustos. Os espectros espacialmente resolvidos do
+bojo e do disco parecem ter artefatos que interferem no ajuste do \starlight,
+sendo interpretados como poeira, entre outras coisas, levando a resultados
+equivocados.
+
+\clearpage
+
+% Ou\ldots
+% 
+% a figura a seguir resume esta tese.
+% 
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{figuras/lmp}
+% \end{center}
 
 \end{abstract}
 
