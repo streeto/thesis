@@ -28,7 +28,7 @@ diâmetro de abertura $D$, obtém-se uma imagem de diâmetro (em radianos) $\the
 \approx 1,22\frac{\lambda}{D}$. Esta imagem, conhecida como Disco de Airy, é a
 figura de interferência causada por uma abertura circular, e limita a resolução
 espacial teórica que se pode obter com um telescópio de uma dada abertura. Isto
-vale para desde telescópios e câmeras pequenos, até telescópios espaciais.
+vale para desde câmeras e pequenos telescópios, até telescópios espaciais.
 
 Para um telescópio suficientemente grande, na superfície terrestre, a figura de
 difração torna-se desprezível se comparada ao efeito causado pela turbulência
@@ -42,7 +42,7 @@ a passagem por células de turbulência atmosférica. Uma excelente revisão sob
 teoria da PSF é feita por \citet{Racine1996}. O perfil de Kolmogorov é dado pela
 transformada de Bessel da função de transferência de modulação atmosférica dado
 pelo modelo de Kolmogorov, e fica definido em função de uma integral sem forma
-fechada, devendo ser resolvida numericamente. Costuma-se utilizar formas
+fechada, devendo ser resolvida numericamente. Costumam-se utilizar formas
 funcionais que se aproximam do perfil de Kolmogorov. Gaussianas são usadas muito
 frequentemente, mesmo não sendo adequadas. O perfil de \citet{Moffat1969} se
 ajusta bem ao perfil de Kolmogorov numa faixa de $\sim\!7$ magnitudes em brilho
@@ -109,7 +109,7 @@ mesmas condições atmosféricas que as observações. Raramente estas condiçõ
 preenchidas, mesmo para fotometria CCD com campos muito grandes. Assim, conhecer
 a PSF em instrumentos IFU não é uma tarefa trivial. Ainda há o fato de que as
 imagens são reconstruídas através de técnicas de {\em dithering} (ver Seção
-\ref{sec:ifs:instrumentacao}), e dependendo o algoritmo utilizado, a PSF pode
+\ref{sec:ifs:instrumentacao}), e, dependendo o algoritmo utilizado, a PSF pode
 nem sequer ser analítica. Entretanto, é preciso de algum modo obter uma
 aproximação da forma da PSF para poder modelar a morfologia de uma galáxia
 (Capítulo \ref{sec:morph}), especialmente o seu bojo. O procedimento descrito a
@@ -122,14 +122,15 @@ restrições de tempo de telescópio e de significância estatística da amostra
 além do fato de a PSF não ser fundamental para os casos científicos alvo do {\em
 survey}, estas observações não foram realizadas. Porém, sendo um {\em survey}
 espectroscópico, o CALIFA necessita de observações de ``velas padrão'' para
-calibrar o fluxo das galáxias. Foram observadas 45 estrelas para este fim.
+calibrar o fluxo das galáxias. Foram observadas 45 estrelas para este fim, as
+quais foram reaproveitadas aqui para análise da PSF.
 Estas estrelas se encontram no centro no campo de observação do instrumento, com
 um tempo de exposição muito menor do que o das galáxias ($120\,\mathrm{s}$
 contra $900\,\mathrm{s}$). Esta amostra foi denominada ``estrelas de
 calibração''. Alternativamente, pode-se procurar estrelas que apareçam na frente
 das galáxias do {\em survey}. Neste caso a vantagem é que as estrelas têm o
 mesmo tempo de exposição das galáxias, e são observadas nas mesmas condições
-atmosféricas. Porém, não se encontra estas estrelas intrometidas em todos os
+atmosféricas. Porém, não se encontram estas estrelas intrometidas em todos os
 cubos, logo obter uma PSF para cada um deles está descartado. Outro problema em
 potencial é que elas em geral, por construção do {\em survey}, são fracas e se
 localizam na periferia do campo de observação. Esta amostra foi denominada
@@ -153,7 +154,7 @@ seguir.
 	\label{fig:PSFExemplo}
 \end{figure}
 
-O modelo utilizado foi um perfil de Moffat 2-d elipsoidal, com $\beta\!=\!4$,
+O modelo utilizado foi um perfil de Moffat 2-D elipsoidal, com $\beta\!=\!4$,
 conforme visto na Seção \ref{sec:psf:teoria}. Os cubos foram combinados em
 caixas de $400\,\angstrom$ de largura, gerando 10 imagens de fluxo e incerteza
 para cada estrela. Estas imagens foram ajustadas aos modelos através de um
@@ -164,6 +165,9 @@ utilizada no programa de decomposição morfológica, ver Seção
 perfil de Moffat e a estatística $\chi^2$ do melhor modelo. A Figura
 \ref{fig:PSFExemplo} ilustra o ajuste feito para uma estrela de calibração, numa
 faixa espectral próxima a $5000\,\angstrom$.
+
+% FIXME: A integral disso nao deveria ser =1? Entao essa escala y nao quer dizer
+% nada.
 
 \begin{figure}
 	\includegraphics{figuras/PSFMoffatBeta4_calib}
@@ -205,8 +209,8 @@ O mesmo procedimento foi realizado para as 9 estrelas de campo, presentes nos
 cubos de galáxias do {\em survey} e normalmente mascarados por não serem de
 interesse no estudo do espectro das galáxias. As estrelas desta amostra estão na
 frente de galáxias com simetria axial (elípticas e S0). Dado um cubo de uma
-galáxia, recortou-se 7 {\em spaxels} ao redor da estrela, gerando dois cubos: um
-da galáxia, com a estrela mascarada, e outro da estrela. Neste ponto o cubo da
+galáxia, recortaram-se 7 {\em spaxels} ao redor da estrela, gerando dois cubos:
+um da galáxia, com a estrela mascarada, e outro da estrela. Neste ponto o cubo da
 estrela ainda está contaminado pela luz da galáxia. Então, considerando que a
 galáxia tem simetria axial, calculou-se um perfil de brilho radial médio da
 galáxia (ver Seção \ref{sec:pycasso:Pycasso}, Figura \ref{fig:radprofIdade}),
@@ -220,6 +224,10 @@ cubos de estrelas de calibração, com os resultados mostrados na Figura
 \ref{fig:PSFField}. Da mesma forma, não há dependência da FWHM da PSF com o
 comprimento de onda, com $\mathrm{FWHM}=2,564 \pm 0,354\,\arcs$ e elipticidade
 $\epsilon=0,093 \pm 0,059$.
+
+% FIXME: Parece mais assimetrica que a outra. Nao seria melhor reportar mediana
+% e percentis para mostrar se eh muito assimetrica ou nao? E isso iria
+% influenciar todo o paragrafo segunte tambem.
 
 Há uma diferença considerável no valor obtido para a FWHM da PSF nos dois casos,
 embora eles estejam a cerca de $1\,\sigma$ de separação. Isto poderia indicar
@@ -235,7 +243,7 @@ amostra como a mais confiável.
 
 Já com os valores de elipticidade ($\epsilon$) obtidos nos dois casos, os
 semieixos maior e menor da FWHM estão dentro da faixa de $1\,\sigma$ um do
-outro. E em ambos os casos, $\epsilon$ é muito próximo a zero, dentro da
+outro. E, em ambos os casos, $\epsilon$ é muito próximo a zero, dentro da
 incerteza. Levar a elipticidade em conta seria adicionar uma complexidade
 desnecessária (e possivelmente artificial) ao modelo de PSF.
 
@@ -256,5 +264,7 @@ com peso menor.
 No caso do ajuste morfológico de uma galáxia, isto pode causar problemas na
 determinação dos parâmetros do bojo. Assim, optou-se por refazer a análise da
 PSF para esta tese com $\beta$ fixo.
+
+% FIXME: Em resumo, a PSF publicada estah errada, eh isso?
 
 % End of this chapter

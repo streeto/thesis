@@ -34,6 +34,11 @@ Em meados de 1940 já se havia descoberto a maioria dos tipos mais comuns das
 ``nebulosas extragaláticas'', termo que já começava a cair em desuso em favor do
 nome mais glamouroso, segundo o próprio \citet{hubble1936}: ``galáxias''.
 
+% FIXME: Acho que deveria seguir um pequeno paragrafo dizendo o que voce fez
+% sobre morfologia de galaxias e o que mais tem no capitulo, por dois motivos. O
+% primeiro eh que isso estah com cara de introducao, mas nao eh mais. E segundo
+% que estah desconectado do que veio antes.
+
 \begin{figure}
 	\includegraphics[width=0.7\textwidth]{figuras/WolfEarlyClass}
 	\caption[Classificação de Wolf.]
@@ -69,8 +74,8 @@ clássico {\em The Realm of the Nebulae} de \citet{hubble1936}, e atualizado
 	\caption[Classificação de Hubble.]
 	{Sistema de classificação de \citet{hubble1936}, também conhecido como
 	``diagrama diapasão de Hubble''. Foi atualizado por
-	\citet{Sandage1975} para incluir a classe S0 na intersecção dos
-	ramos das espirais.}
+	\citet{Sandage1975}, de onde se reproduz a figura, para incluir a classe S0 na
+	intersecção dos ramos das espirais.}
 	\label{fig:HubbleSequence}
 \end{figure}
 
@@ -101,8 +106,8 @@ deveriam ser tomadas com cautela.
 Os sistemas de classificação descritos na seção anterior são baseados em
 inspeção visual, com natureza evidentemente qualitativa. Levando tal forma de
 classificação a um extremo, como o projeto {\em GalaxyZoo} \citep{Lintott2008,
-Willett2013}, chega-se a conclusões estatísticas, mas ainda não se obtém medidas
-quantitativas de objetos individuais. Para descrever mais precisamente a
+Willett2013}, chegam-se a conclusões estatísticas, mas ainda não se obtêm
+medidas quantitativas de objetos individuais. Para descrever mais precisamente a
 estrutura de uma galáxia, normalmente é necessário decompô-la em subestruturas.
 Estas subestruturas são em geral modeladas como funções analíticas, as quais
 permitem derivar medidas quantitativas. De forma simplificada, podemos
@@ -155,6 +160,8 @@ I(r) = I_0 \exp\left(-\frac{r}{h}\right),
 \end{equation*}
 com $h$ sendo o parâmetro de escala radial, e $I_0$ o brilho em $r\!=\!0$.
 
+% TODO: desenhar também o perfil de Hubble-Reynolds.
+
 \begin{figure}
 	\includegraphics{figuras/morphModels}
 	\caption[Perfis empíricos de Sérsic.]
@@ -190,7 +197,7 @@ equivocadas, embora o ajuste possa parecer bem sucedido.
 \subsection{Dependência dos modelos com o comprimento de onda}
 \label{sec:morph:comp:depLambda}
 
-Tudo o que se discutiu sobre classificação de galáxias quanto a sua forma, até
+Tudo o que se discutiu sobre classificação de galáxias quanto à sua forma, até
 agora, levou em conta imagens feitas no banda óptica do espectro. Basta olhar
 umas poucas galáxias em infravermelho ou ultravioleta para verificar que a forma
 de uma galáxia pode mudar dramaticamente dependendo do comprimento de onda em
@@ -214,18 +221,19 @@ galáxias com o comprimento de onda.
 
 \citet{Kelvin2012} utilizou imagens de galáxias do projeto GAMA
 \citep{Driver2009} em 9 bandas espectrais, do óptico \citep[bandas $ugriz$ do
-DR7]{Abazajian2009} ao infravermelho \citep[bandas $YJHK$ do
-UKIDSS]{Lawrence2007}, para ajustar perfis de Sérsic a $>\!160.000$ galáxias,
-encontrando gradientes leves no índice de Sérsic em função do comprimento de
-onda. Os ajustes para cada comprimento de onda foram feitos individualmente. O
-projeto MegaMorph \citep{Haussler2013} faz o mesmo de uma forma um pouco mais
-refinada. Utilizando as bandas fotométricas do SDSS, eles ajustam a variação dos
-parâmetros morfológicos com o comprimento de onda através de um polinômio
-\citep[Figura \ref{fig:propertiesVika}]{Vika2013}. Todos os comprimentos de onda
-são ajustados de uma vez. Aí se pode ver que em grande escala (em comprimento de
-onda), há galáxias com um comportamento linear (ou até razoavelmente constante)
-em $r_e$. Nestes casos, utilizar um modelo linear em função do comprimento de
-onda, segundo os autores, melhora a qualidade do ajuste.
+SDSS DR7]{Abazajian2009} ao infravermelho \citep[bandas $YJHK$ do
+UKIDSS]{Lawrence2007}, para ajustar perfis de Sérsic a mais de $160.000$
+galáxias, encontrando gradientes leves no índice de Sérsic em função do
+comprimento de onda. Os ajustes para cada comprimento de onda foram feitos
+individualmente. O projeto MegaMorph \citep{Haussler2013} faz o mesmo de uma
+forma um pouco mais refinada. Utilizando as bandas fotométricas do SDSS, eles
+ajustam a variação dos parâmetros morfológicos com o comprimento de onda através
+de um polinômio \citep[Figura \ref{fig:propertiesVika}]{Vika2013}. Todos os
+comprimentos de onda são ajustados de uma vez. Aí se pode ver que em grande
+escala (em comprimento de onda), há galáxias com um comportamento linear (ou até
+razoavelmente constante) em $r_e$. Nestes casos, utilizar um modelo linear em
+função do comprimento de onda, segundo os autores, melhora a qualidade do
+ajuste.
 
 Além de efeitos causados pelo método de ajuste, como má escolha do modelo,
 mudança no sinal--ruído nas várias bandas espectrais, ou mínimos locais, parece
@@ -273,11 +281,12 @@ os discos (Figura \ref{fig:populationJohnston}). Inspirado neste estudo, o
 Capítulo \ref{sec:Decomp} descreve a decomposição de espectros de galáxias em
 espectros de bojos e discos, mas utilizando cubos de dados do CALIFA.
 
+% FIXME: Ficou confuso. Por que só no cap 7?
 
 \subsection{Ajuste de modelos}
 \label{sec:morph:comp:ajuste}
 
-Utiliza-se geralmente algoritmos de minimização para encontrar os modelos que
+Utilizam-se geralmente algoritmos de minimização para encontrar os modelos que
 melhor ajustam o perfil de brilho de uma galáxia. A abordagem usual é baseada no
 princípio de máxima verossimilhança ($\mathcal{L}$). Se a estatística das
 medidas é gaussiana (que é aproximadamente verdade na maioria das imagens
@@ -315,13 +324,13 @@ um perfil de brilho unidimensional. Pode-se fazer o ajuste diretamente na
 imagem, em duas dimensões (Figura \ref{fig:decompGalfit}), utilizando modelos
 com perfis elipsoidais. Independente da escolha do modelo, há um aspecto
 importante do ajuste da morfologia que foi negligenciado até agora: efeitos
-instrumentais e atmosféricos. Estes efeitos são representados pela figura da PSF
-({\em Point Spread Function}), tratada em detalhes no Capítulo \ref{sec:psf}. A
-grosso modo, levar em conta a PSF significa considerar que a luz que atinge
-determinada posição no detector não é proveniente apenas de uma região pontual
-no céu, e sim de uma região extensa que depende dos instrumentos e da
-turbulência atmosférica. Efetivamente, objetos pontuais tornam-se ``borrões'' na
-imagem observada.
+instrumentais e atmosféricos. Estes efeitos são representados pela figura da
+PSF\footnote{{\em Point Spread Function.}}, tratada em detalhes no Capítulo
+\ref{sec:psf}. A grosso modo, levar em conta a PSF significa considerar que a
+luz que atinge determinada posição no detector não é proveniente apenas de uma
+região pontual no céu, e sim de uma região extensa que depende dos instrumentos
+e da turbulência atmosférica. Efetivamente, objetos pontuais tornam-se
+``borrões'' na imagem observada.
 
 Pode-se evitar tocar neste ponto quando se faz o ajuste em uma dimensão.
 Se as dimensões da PSF forem muito menores do que as da galáxia, e esta tiver
@@ -337,7 +346,7 @@ considerável do bojo.
 
 Em duas dimensões o mais adequado é adotar a PSF como parte do problema. Uma boa
 caracterização da PSF é crucial para se obter resultados satisfatórios no
-ajuste. Mas, trabalhar com a PSF traz um custo computacional enorme, uma vez que
+ajuste. Mas trabalhar com a PSF traz um custo computacional enorme, uma vez que
 é preciso efetuar um cálculo de convolução (ver Seção \ref{sec:psf:teoria}) cada
 vez que se avalia o modelo para um determinado conjunto de parâmetros. O
 problema de minimização, que já é de natureza não linear para modelos de
@@ -348,11 +357,11 @@ componentes de galáxia, torna-se ainda mais complicado.
 Diversos algoritmos foram desenvolvidos para tratar do problema de minimização
 não linear. O método Levenberg-Marquardt \citep[daqui em diante
 L-M]{Levenberg1944, Marquardt1963}, com sua busca através do gradiente no espaço
-de parâmetros, tem a vantagem de ser muito rápido. Mas, sua própria natureza de
+de parâmetros, tem a vantagem de ser muito rápido. Mas sua própria natureza de
 gradiente faz com que seja necessário um bom ``chute inicial'', com a
 possibilidade de ficar preso em mínimos locais. Pode-se reduzir a chance de ser
-pêgo em mínimos locais utilizando algoritmos mais complexos, como o Nelder-Mead
-{\em simplex} \citep[daqui em diante N-M]{Nelder1965}. A desvantagem é que
+pego em mínimos locais utilizando algoritmos mais complexos, como o Nelder-Mead
+{\em simplex} \citep[daqui em diante N-M]{Nelder1965}. A desvantagem é que,
 conforme se vai aumentando a complexidade do algoritmo, o tempo necessário para
 encontrar o mínimo tende a crescer drasticamente. De qualquer modo, tanto o L-M
 quanto o N-M sofrem de um problema comum: é preciso especificar um valor
@@ -374,7 +383,7 @@ necessários os limites do espaço de parâmetros. Outra vantagem é que é muit
 mais improvável que este algoritmo fique preso num mínimo local do que o L-M, o
 N-M ou mesmo o de Metropolis. Tudo isto cobra um grande preço: ele é o algoritmo
 mais lento considerado aqui, cerca de duas ordens de magnitude mais lento do que
-o L-M.
+o L-M para este problema.
 
 Existem diversas ferramentas utilizadas em astrofísica que implementam algum
 destes algoritmos para fazer o ajuste de modelos em imagens. Vale citar, por

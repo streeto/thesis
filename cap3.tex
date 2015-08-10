@@ -18,6 +18,15 @@
 \chapter{PyCASSO}
 \label{sec:pycasso}
 
+% FIXME: Tens que destacar no inicio de cada capitulo o que *voce* fez. Aqui por
+% exemplo tens que colocar que o pycasso foi feito exclusivamente por vc.
+
+% FIXME: Outra coisa que acho que falta em todos os capitulos (voltando a este
+% comentario depois de comecar a ler o cap 4) eh um breve resumo do que o leitor
+% vai encontrar pela frente. Ajuda a costurar a historia. Nao tinha ideia do que
+% ia encontrar nesse capitulo e que ia ser um flash dos papers, ainda mais
+% porque ele nao foi descrito na introducao.
+
 A fim de agilizar o desenvolvimento de ferramentas de manipulação de cubos de
 dados do CALIFA, alguns programas de computador foram desenvolvidos. Este ``kit
 de ferramentas'' foi chamado de PyCASSO ({\em Python CALIFA} \starlight\ {\em
@@ -54,7 +63,8 @@ calculados dinamicamente, quer dizer, não ocupam memória do sistema até que
 sejam acessados. Existem outras rotinas para calcular geometria, perfis radiais
 e azimutais, e raio de escala. Outras rotinas podem ser adicionadas
 facilmente\footnote{Há um estudo de PCA (análise de componentes principais)
-sendo desenvolvido por outro estudante na UFSC, por exemplo.}.
+sendo desenvolvido pelo estudante da UFSC Eduardo A. D. Lacerda, por
+exemplo.}.
 
 \end{enumerate}
 
@@ -79,7 +89,7 @@ sem uma boa documentação. Aqui se apresenta de forma breve das capacidades do
 PyCASSO. A documentação completa se encontra no Apêndice \ref{apendice:manual}.
 
 O trabalho com a variedade e quantidade de dados gerados pela síntese espectral
-em 3-d tem em geral um caráter fortemente exploratório. Frequentemente não se
+em 3-D tem em geral um caráter fortemente exploratório. Frequentemente não se
 sabe exatamente o que se está buscando, e o trabalho do programador/cientista
 consiste em desenhar gráficos, realizar cálculos, determinar operações ou
 filtros nos dados com base nestes gráficos e cálculos, desenhar novamente, e
@@ -90,6 +100,8 @@ o \texttt{IPython}\footnote{\url{http://ipython.org/}} e o
 \texttt{matplotlib}\footnote{\url{http://matplotlib.org/}}. Foi feito um esforço
 para que o acesso aos dados de cada galáxia fosse feito de forma simples e
 direta. Um exemplo de código pode ser visto na Figura \ref{fig:dataAccess}.
+
+% FIXME: Transformar figuras em listings.
 
 \begin{figure}
 \begin{python}
@@ -114,8 +126,8 @@ print 'Idade media da galaxia: %.2f' % at_total
 Para algumas operações, como o cálculo da idade estelar média feito na Figura
 \ref{fig:dataAccess}, pode-se utilizar apenas o resultado para as zonas. Neste
 caso, a idade estelar média é calculada usando a expressão $\langle \log t
-\rangle^{gal}_L = \sum_z \langle \log t \rangle_{L,z} L_z / \sum_z L_z$, onde
-$L_z$ é a luminosidade de cada zona e $\langle \log t \rangle_{L,z}$ é a idade
+\rangle^{\mathrm{gal}}_L = \sum_z \langle \log t \rangle_{L,z} L_z / \sum_z
+L_z$, onde $L_z$ é a luminosidade de cada zona e $\langle \log t \rangle_{L,z}$ é a idade
 estelar média de cada zona. Entretanto, para tirar vantagem das informações
 espaciais, é preciso converter as propriedades da notação de zona para imagem.
 Por exemplo, o programa na Figura \ref{fig:programaMapaIdade} calcula a idade
@@ -207,14 +219,14 @@ manual do programa (Apêndice \ref{apendice:manual}).
 \section{Artigos publicados}
 \label{sec:pycasso:art}
 
-Nesta seção discute-se os artigos onde se utilizou PyCASSO, e o autor desta tese
-teve uma colaboração importante. Além destes artigos, \citet{Husemann2013}, no
-artigo apresentando o DR1 do CALIFA, utiliza as massas estelares determinadas
-pelo \starlight e disponibilizadas pelo PyCASSO para caracterizar a amostra do
-CALIFA. O artigo que apresenta o DR2, de \citet{GarciaBenito2015}, também
-utiliza as massas da mesma forma (ver Figura \ref{fig:DRMass}). O mesmo artigo
-inclui a medição da PSF do CALIFA (ver Figura \ref{fig:DR2PSF}), apresentado
-neste trabalho na Seção \ref{sec:psf:medida}.
+Nesta seção discutem-se os artigos onde se utilizou PyCASSO e nos quais o autor
+desta tese teve uma colaboração importante. Além destes artigos,
+\citet{Husemann2013}, no artigo apresentando o DR1 do CALIFA, utiliza as massas
+estelares determinadas pelo \starlight e disponibilizadas pelo PyCASSO para
+caracterizar a amostra do CALIFA. O artigo que apresenta o DR2, de
+\citet{GarciaBenito2015}, também utiliza as massas da mesma forma (ver Figura
+\ref{fig:DRMass}). O mesmo artigo inclui a medição da PSF do CALIFA (ver Figura
+\ref{fig:DR2PSF}), apresentado neste trabalho na Seção \ref{sec:psf:medida}.
 
 \citet{GonzalezDelgado2014b} explora a relação massa--metalicidade estelar em
 300 galáxias do CALIFA, utilizando PyCASSO. Em \citet{GonzalezDelgado2015} se
@@ -251,7 +263,7 @@ de estudo com a galáxia NGC 2916.
 	Luminosidade em $5635\,\angstrom$ por unidade de área. (b) Atenuação por
 	poeira na banda $V$. (c) Luminosidade em $5635\,\angstrom$ por unidade de área,
 	corrigido de extinção. (d) Densidade superficial de massa estelar. Retirado de
-	\cite[figura 4]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
+	\citet[figura 4]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
 	\label{fig:LMAVMap}
 \end{figure}
 
@@ -264,7 +276,7 @@ de estudo com a galáxia NGC 2916.
 	luminosidade. (b) metalicidade estelar média pesada pela luminosidade.
 	(c) Idade estelar média pesada pela massa. (d) metalicidade estelar
 	média pesada pela massa. Retirado de
-	\cite[figura 6]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
+	\citet[figura 6]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
 	\label{fig:ataZMap}
 \end{figure}
 
@@ -277,7 +289,7 @@ de estudo com a galáxia NGC 2916.
 	unidade de área. (c) Taxa de formação estelar por unidade de área. A linha
 	sólida representa o gráfico colapsado na direção vertical, apenas para ilustrar
 	a variação temporal das quantidades mapeadas. Retirado de
-	\cite[figura 12]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
+	\citet[figura 12]{CidFernandes2013}, Apêndice \ref{apendice:PaperResolving1}.}
 	\label{fig:LMSFR2D}
 \end{figure}
 
@@ -288,7 +300,7 @@ físicas obtidas pela síntese espectral. Propriedades como a massa (Figura
 a atenuação por poeira (Figura \ref{fig:LMAVMap}b), idade e metalicidade estelar
 são quantidades intensivas, independentes de escala. Na prática isto significa
 que as quantidades extensivas podem ser divididas entre os {\em pixels} que
-compõem uma zona, enquanto as intensivas são uma propriedade comum à todos os
+compõem uma zona, enquanto as intensivas são uma propriedade comum a todos os
 {\em pixels} desta zona. Esta diferença pode ser notada nas zonas mais externas
 dos mapas, onde aparecem platôs na quantidades intensivas. As quantidades
 extensivas passam por um processo apelidado de ``dezonificação'', onde uma
@@ -324,14 +336,14 @@ reproduzindo de forma realista os erros. Este artigo por
 discutido na seção anterior. O artigo está reproduzido na íntegra no Apêndice
 \ref{apendice:PaperResolving2}.
 
-Quando se injeta erros aleatórios, obtém-se incertezas de $\sim
+Quando se injetam erros aleatórios, obtém-se incertezas de $\sim
 0.08\,\mathrm{dex}$ em idades e metalicidades pesadas pela luminosidade, e de
 $\sim 0.15\,\mathrm{dex}$ quando pesadas pela massa. A massa estelar teve uma
 incerteza de $\sim 0.08\,\mathrm{dex}$, e $A_V$ de $\sim 0.06\,\mathrm{mag}$.
 Injetando erros sistemáticos em cor\footnote{Adicionando componentes lineares em
-comprimento de onda, a fim de emular uma má calibração de fluxo.} os erros são
-similares, exceto para $A_V$, que recebe um desvio sistemático de
-$+0.05\,\mathrm{mag}$ e um erro de $\sim 0.16\,\mathrm{mag}$.
+comprimento de onda, a fim de emular uma má calibração de fluxo.} as incertezas
+são similares, exceto para $A_V$, que recebe um desvio sistemático de
+$+0.05\,\mathrm{mag}$ e uma incerteza de $\sim 0.16\,\mathrm{mag}$.
 
 \begin{figure}
 	\includegraphics[width=1.0\columnwidth]{figuras/resolving2}
@@ -346,14 +358,14 @@ $+0.05\,\mathrm{mag}$ e um erro de $\sim 0.16\,\mathrm{mag}$.
 	distribuições das realizações com ruído aleatório, e sistemático em cor,
 	respectivamente. A diferença entre as simulações e o original está desenhada
 	abaixo de cada painel, com o zero marcado pela linha tracejada. Retirado de
-	\cite[figura 4]{CidFernandes2014}, Apêndice \ref{apendice:PaperResolving2}.}
+	\citet[figura 4]{CidFernandes2014}, Apêndice \ref{apendice:PaperResolving2}.}
 	\label{fig:incertRad}
 \end{figure}
 
 Embora haja uma incerteza considerável analisando-se as propriedades da galáxia
 pixel a pixel, os perfis radiais em geral são bastante robustos. Propriedades
 diretas como a luminosidade, massa, idade e metalicidade estelar, quando vistas
-em perfil radial (Figura \ref{fig:incertRad}) mantém o mesmo formato com pouca
+em perfil radial (Figura \ref{fig:incertRad}), mantêm o mesmo formato com pouca
 dispersão, exceto nas regiões mais afastadas do núcleo, onde há poucas zonas. Na
 verdade, qualquer forma de média espacial que envolva {\em pixels} (ou zonas)
 suficientes deverá levar a uma diminuição na incerteza.
@@ -369,7 +381,7 @@ suficientes deverá levar a uma diminuição na incerteza.
 	metalicidade estelar ponderada pela massa, atenuação na banda $V$, massa
 	estelar inicial. Os painéis inferiores mostram a distribuição das mesmas
 	propriedades, porém calculadas para o espectro integradas das galáxias.
-	Retirado de \cite[figura 9]{CidFernandes2014}, Apêndice
+	Retirado de \citet[figura 9]{CidFernandes2014}, Apêndice
 	\ref{apendice:PaperResolving2}.}
 	\label{fig:incertRad-base}
 \end{figure}
@@ -406,10 +418,10 @@ Apêndice \ref{apendice:InsideOut}.
 Galáxias vêm em todos os tamanhos. Para determinar o crescimento, as distâncias
 são normalizadas utilizando o raio onde a luminosidade cumulativa (em
 $5635\,\angstrom$) alcança $50\%$ da luminosidade total da galáxia, denominado
-$R_{50}$ (ou HLR, {\em Half Light Radius}). As galáxias da amostra são separadas
-em caixas com $15$ galáxias cada, segundo a sua massa. O crescimento em massa em
-função do tempo é calculado para cada pixel de cada galáxia e somado em cada
-caixa de massa.
+$R_{50}$ (ou HLR\footnote{{\em Half Light Radius}.}). As galáxias da amostra são
+separadas em caixas com $15$ galáxias cada, segundo a sua massa. O crescimento
+em massa em função do tempo é calculado para cada pixel de cada galáxia e somado
+em cada caixa de massa.
 
 \begin{figure}
 	\includegraphics{figuras/inside-out}
@@ -422,7 +434,7 @@ caixa de massa.
 	\leq 0,5\,R_{50}$, $0,5 < r \leq 1\,R_{50}$ e $r > 1\,R_{50}$. Para
 	facilitar a visualização da forma da variação temporal, as linhas azuis, verdes
 	e vermelhas em cada painel mostram um corte horizontal nas caixas inferior,
-	intermediário e superior, com escala de $0$ a $1$. Retirado de \cite[figura
+	intermediário e superior, com escala de $0$ a $1$. Retirado de \citet[figura
 	9]{Perez2013}, Apêndice \ref{apendice:InsideOut}.}
 	\label{fig:insideOut}
 \end{figure}
@@ -465,8 +477,8 @@ são representativos das médias da galáxia como um todo. A Figura
 \ref{fig:radStruct1} mostra a correlação entre os valores em três raios
 distintos e o global para a idade estelar média ponderada pela luminosidade
 (esquerda) e a densidade superficial de massa estelar (centro). Valores a
-$1\,R_{50}$, marcado como HLR ({\em Half Light Radius}) nas figuras, coincidem
-em geral com a média global da galáxia.
+$1\,R_{50}$, marcado como HLR nas figuras, coincidem em geral com a média global
+da galáxia.
 Ainda na mesma figura pode-se ver a correlação entre a densidade superficial de
 massa estelar média da galáxia e a massa estelar total da galáxia. Este
 resultado está de acordo com \citet{Kauffmann2003}, usando a amostra do SDSS.
@@ -474,24 +486,25 @@ resultado está de acordo com \citet{Kauffmann2003}, usando a amostra do SDSS.
 \begin{figure}
 	\includegraphics[width=1.0\columnwidth]{figuras/radstruct-01}
 	\caption[Correlação entre idade, desidade superficial e massa estelar total]
-	{(esquerda) Correlação entre a idade estelar média ponderada pela luminosidade
+	{Esquerda: correlação entre a idade estelar média ponderada pela luminosidade
 	em $1\,R_{50}$ (círculos cinza), $0,1\,R_{50}$ (cruzes azuis), $2\,R_{50}$
 	(cruzes vermelhas) e a média da galáxia. Pontos em preto marcam galáxias
-	esferoidais, com $C \geq 2,8$. (centro) O mesmo gráfico para a densidade
-	superficial de massa estelar. (direita) Correlação entre a densidade
+	esferoidais, com $C \geq 2,8$. Meio: o mesmo gráfico para a densidade
+	superficial de massa estelar. Direita: correlação entre a densidade
 	superficial de massa média da galáxia e a massa estelar total da galáxia. As
 	linhas tracejadas mostram o ajuste linear total (preto), apenas discos (azul),
-	e apenas para esferoidais (vermelho).  Retirado de \cite[figura
+	e apenas para esferoidais (vermelho).  Retirado de \citet[figura
 	6]{GonzalezDelgado2014a}, Apêndice \ref{apendice:RadStruct}.}
 	\label{fig:radStruct1}
 \end{figure}
 
-O raio contendo metade da massa estelar (HMR, {\em Half Mass Radius}) é em média
-20\% menor que $R_{50}$ (HLR). A razão entre HMR e HLR tem correlação com a
-massa total da galáxia e o tipo morfológico. Na Figura \ref{fig:radStruct2}
-pode-se ver que a relação HMR/HLR diminui com a massa estelar para galáxias com
-massa menor que $10^{11}\,M_\odot$, enquanto permanece constante para galáxias
-mais massivas. Um comportamento similar ocorre com o tipo morfológico:
+O raio contendo metade da massa estelar (HMR\footnote{{\em Half Mass Radius}.})
+é em média 20\% menor que $R_{50}$ (HLR). A razão entre HMR e HLR tem correlação
+com a massa total da galáxia e o tipo morfológico. Na Figura
+\ref{fig:radStruct2} pode-se ver que a relação HMR/HLR diminui com a massa
+estelar para galáxias com massa menor que $10^{11}\,M_\odot$, enquanto permanece
+constante para galáxias mais massivas. Um comportamento similar ocorre com o
+tipo morfológico:
 em galáxias com disco a relação HMR/HLR diminui com a massa, e em galáxias
 esferoidais a relação é aproximadamente constante.
 
@@ -520,9 +533,9 @@ importante para as galáxias com disco.
 	\caption[Perfis radiais para várias caixas de massa estelar.]
 	{Perfis radiais da densidade superficial de massa estelar (esquerda) e idade
 	estelar média ponderada pela luminosidade (direita), para caixas de
-	massa estelar contendo 15 galáxias cada. (cima) Todas as galáxias. As caixas em
-	massa estão codificados em cores. (meio) Galáxias dominadas por disco. (baixo)
-	Galáxias esferoidais ($C \geq 2,8$). Retirado de \cite[figura
+	massa estelar contendo 15 galáxias cada. Cima: todas as galáxias. As caixas
+	em massa estão codificados em cores. Meio: aláxias dominadas por disco.
+	Baixo: galáxias esferoidais ($C \geq 2,8$). Retirado de \citet[figura
 	13]{GonzalezDelgado2014a}, Apêndice \ref{apendice:RadStruct}.}
 	\label{fig:radStruct3}
 \end{figure}

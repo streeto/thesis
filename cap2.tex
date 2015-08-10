@@ -25,6 +25,7 @@
 %***************************************************************%
 
 \section{O {\em survey} CALIFA}
+\label{sec:ifs:califa}
 
 O {\em Centro Astronómico Hispano Alemán} (CAHA) se localiza na {\em Sierra de
 los Filabres}, na Comunidade Autônoma de Andaluzia, Espanha. Ele é operado pelo
@@ -33,7 +34,7 @@ los Filabres}, na Comunidade Autônoma de Andaluzia, Espanha. Ele é operado pel
 {\em survey} CALIFA foi agraciado com 210 noites pelo Comitê Executivo do Calar
 Alto, espalhadas por 6 semestres, iniciando em junho de 2010 (na prática, as
 observações se estenderam até o final de 2014). O instrumento utilizado foi a
-Unidade de Campo Integral PPAK\footnote{{\em PMAS fiber PAcK}.}
+unidade de campo integral PPAK\footnote{{\em PMAS fiber PAcK}.}
 \citep{Kelz2006}, do Espectrógrafo PMAS\footnote{{\em Potsdam Multi-Aperture
 Spectrophotometer.}} \citep{Roth2005, Roth2010}, no telescópio de
 $3,5\,\mathrm{m}$ do CAHA.
@@ -69,18 +70,20 @@ disponível. Ela está descrita nas seções a seguir.
 	\caption[Distribuição das fibras no instrumento PMAS/PPAK]
 	{Distribuição espacial das fibras e dimensões do IFU do instrumento PMAS/PPAK.
 	Círculos brancos representam fibras ativas, e círculos pretos fibras
-	espaçadoras. Os 6 conjuntos de fibras ao redor do IFU são utilizados
-	para medir o céu. O tamanho físico é de $4\,\mathrm{mm}$ e a largura
-	do campo é mair que $1\,\arcs$. Retirado de	\citet{Kelz2006}.}
+	espaçadoras, que têm apenas papel estrutural e não obtêm espectros. Os 6
+	conjuntos de fibras ao redor do IFU são utilizados para medir o céu. O tamanho
+	físico é de $4\,\mathrm{mm}$ e a largura do campo é maior que $1\,\arcs$.
+	Retirado de	\citet{Kelz2006}.}
 	\label{fig:PPAK}
 \end{figure}
 
 À época do início do CALIFA\footnote{Hoje em dia o MUSE
 (\url{https://www.eso.org/sci/facilities/develop/instruments/muse.html}) é o
-detentor do recorde.}, o PPAK/PMAS era o instrumento de sua classe com o tamanho
-de campo, $>1\,\mathrm{arcmin}^2$. Ele consiste em um maço de 331 fibras ópticas
-cobrindo o campo de observação, direcionado a um espectrógrafo de fenda longa
-que espalha a luz sobre um detector CCD\footnote{{\em Charge Coupled Device}.}.
+detentor do recorde.}, o PPAK/PMAS era o instrumento de sua classe com o maior
+tamanho de campo, $>1\,\mathrm{arcmin}^2$. Ele consiste em um maço de 331 fibras
+ópticas cobrindo o campo de observação, direcionado a um espectrógrafo de fenda
+longa que espalha a luz sobre um detector CCD\footnote{{\em Charge Coupled
+Device}.}.
 A Figura \ref{fig:PPAK} ilustra a montagem esquemática do instrumento. Desta
 forma, de cada fibra se obtém um espectro. Através de um programa de computador,
 os espectros podem ser reorganizados de modo a formar um cubo de dados, onde há
@@ -89,21 +92,24 @@ Todavia, pode-se notar na Figura \ref{fig:PPAK} que as fibras não cobrem
 totalmente o campo de observação. Na verdade, apenas em torno de 60\% da luz
 proveniente do campo cai dentro das fibras. O restante se perde nos espaços
 entre elas. Para mitigar este problema, observa-se o mesmo campo 3 vezes,
-deslocando o telescópio uma fração de {em spaxel} em direções diferentes
-formando um triângulo, tal que as 3 exposições cobrem toda a àrea a ser
-observada. O cubo de dados é reconstruído utilizando uma técnica chamada {\em
-dithering}.
+deslocando o telescópio uma fração do diâmetro de uma fibra em direções
+diferentes formando um triângulo, tal que as 3 exposições cobrem toda a àrea a
+ser observada. O cubo de dados é reconstruído utilizando uma técnica chamada
+{\em dithering}.
+
+% FIXME: greek letters shouldn't be in italic here.
 
 A estratégia inicial do {\em survey} foi observar todos os objetos utilizando
-duas configurações diferentes e complementares do instrumento. A primeira,
-utilizando a grade de difração V500, com resolução $\lambda / \Delta\lambda
-\approx 850$ em $\lambda = 5000\,\angstrom$ e uma largura a meia altura
-$\mathrm{FWHM} \approx 6\,\angstrom$, cobre a maior faixa espectral possível,
-tal que as linhas \OII e \SII sejam observadas para todos os objetos da amostra.
-A segunda, utilizando a grade de difração V1200, com resolução $\lambda /
+duas configurações diferentes e complementares do instrumento. A primeira
+utiliza a grade de difração V500, com resolução $\lambda / \Delta\lambda \approx
+850$ em $\lambda = 5000\,\angstrom$ e uma largura a meia altura $\mathrm{FWHM}
+\approx 6\,\angstrom$, cobrindo a maior faixa espectral possível, tal que as
+linhas \OII e \SII sejam observadas para todos os objetos da amostra.
+A segunda utiliza a grade de difração V1200, com resolução $\lambda /
 \Delta\lambda \approx 1650$ em $\lambda = 4500\,\angstrom$ e uma largura a meia
 altura $\mathrm{FWHM} \approx 2,7\,\angstrom$, cobrindo a faixa azul do
-espectro, incluindo a descontinuidade de Balmer, \Hdelta, \Hgamma e \OIII4363.
+espectro, para incluir a descontinuidade de Balmer, \Hdelta, \Hgamma e
+\OIII4363.
 Estas duas configurações são chamadas daqui em diante de V500 e V1200
 respectivamente. A principal motivação para as observações com a V1200 é medir a
 cinemática estelar, explorando a maior resolução espectral dessa grade
@@ -115,14 +121,14 @@ cinemática estelar, explorando a maior resolução espectral dessa grade
 A amostra obtida pelo CALIFA deve satisfazer os requerimentos científicos
 descritos anteriormente, levando em conta as limitações técnicas e
 instrumentais. Assim, uma amostra foi inicialmente selecionada a partir do
-catálogo DR7 do \SDSS \citep{Abazajian2009}, garantindo a disponibilidade de
-imagens de boa qualidade em bandas múltiplas bandas espectrais, e em muitos
-casos, espectros nucleares. Sobre esta amostra inicial foram feitos cortes
-referentes ao tamanho aparente e o {\em redshift} da galáxia. O tamanho aparente
-da galáxia deve ser compatível com o instrumento, escolheu-se limitar a amostra
-em diâmetro da isofota de brilho superficial
-$25\,\mathrm{mag}/\mathrm{arcsec}^2$ ($D_{25}$), tal que $45\,\arcs < D_{25} <
-80\,\arcs$ na banda $r$ do \SDSS. O {\em redshift} deve ser $0,005 < z < 0,03$.
+catálogo DR7 do SDSS \citep{Abazajian2009}, garantindo a disponibilidade de
+imagens de boa qualidade em múltiplas bandas espectrais, e, em muitos casos,
+espectros nucleares. Sobre esta amostra inicial foram feitos cortes referentes
+ao tamanho aparente e o {\em redshift} da galáxia. O tamanho aparente da galáxia
+deve ser compatível com o instrumento, por isso escolheu-se limitar a amostra em
+diâmetro da isofota de brilho superficial $25\,\mathrm{mag}/\mathrm{arcsec}^2$
+($D_{25}$), tal que $45\,\arcs < D_{25} < 80\,\arcs$ na banda $r$ do SDSS. O
+{\em redshift} deve ser $0,005 < z < 0,03$.
 O resultado é uma amostra de 939 galáxias, denominada {\em amostra mãe},
 descrita e estudada em detalhes por \citet{Walcher2014}. O conteúdo da amostra,
 junto com tabelas auxiliares, está disponível no {\em website} do
@@ -132,6 +138,8 @@ serem selecionadas conforme a visibilidade, num padrão quase aleatório. A Figu
 \ref{fig:CALIFASample} mostra a distribuição de magnitude aparente na banda $r$
 contra o {\em redshift} da amostra mãe. O diagrama cor--magnitude pode ser visto
 na Figura \ref{fig:CALIFACMD}.
+
+% TODO: explicar por que ciritérios em D25 e z. Não são redundantes?
 
 \begin{figure}
 	\includegraphics[width=0.7\textwidth]{figuras/CALIFASample}
@@ -201,12 +209,13 @@ está programado para o final de 2015.
 %                                                               %
 %***************************************************************%
 \section{Síntese de população estelar}
+\label{sec:ifs:sintese}
 
 \subsection{QBICK}
 \label{sec:ifs:qbick}
 
-O programa, desenvolvido por Rubén García Benito para fazer o mascaramento e
-tesselação dos cubos de dados descrito a seguir, foi chamado de QBICK. Para mais
+O programa QBICK foi desenvolvido por Rubén García Benito para fazer o
+mascaramento e tesselação dos cubos de dados descrito a seguir. Para mais
 detalhes sobre o processo completo, ver o artigo por \citet{CidFernandes2013},
 reproduzido no Apêndice \ref{apendice:PaperResolving1}.
 
@@ -223,7 +232,7 @@ as linhas espectrais causadas pela atmosfera terrestre. Os espectros foram em
 seguida postos no referencial de repouso utilizando o {\em redshift} obtido pela
 {\em pipeline}, medido nos $5\,\arcs$ centrais da galáxia. Foi escolhida uma
 janela espectral de $5590$ a $5680\,\angstrom$ para fazer a medida do
-sinal--ruído dos espectros. Espectros com sinal-ruído baixo, em geral nas
+sinal--ruído dos espectros. Espectros com sinal--ruído baixo, em geral nas
 regiões menos brilhantes da galáxia, podem gerar resultados espúrios no
 \starlight. Estes espectros foram combinados de modo a obter um melhor
 sinal--ruído utilizando uma técnica conhecida como de tesselação de Voronoi. Foi
@@ -235,7 +244,7 @@ Um exemplo de aplicação do QBICK é mostrado na Figura \ref{fig:QBICK}.
 \begin{figure}
 	\includegraphics[width=0.8\textwidth]{figuras/zones-K0277}
 	\caption[Exemplo processamento com QBICK, galáxia K0277]
-	{Exemplo processamento com QBICK, da galáxia NGC 2916 (CALIFA 0277). (a)
+	{Exemplo processamento com QBICK da galáxia NGC 2916 (CALIFA 0277). (a)
 	Imagem do SDSS na banda $r$. (b) Imagem do CALIFA em $5635\,\angstrom$ com máscara
 	espacial. (c) Mapa de sinal--ruído em $5635\,\angstrom$. (d) Sinal--ruído após
 	a segmentação em zonas de Voronoi. (e) Número de {\em spaxels} em cada zona.
@@ -259,20 +268,20 @@ quase 300 dimensões no caso do presente estudo) qual conjunto de frações de l
 atenuação e cinemática que melhor ajusta o espectro observado, que toma a forma
 \begin{equation*}
 F^{\mathrm{modelo}}_\lambda = \sum_{j=1}^{N_\star} F^\star_\lambda(t_j,Z_j)
-10^{ -0,4 A_\lambda}  \otimes G(v_\star,\sigma_\star)
+10^{ -0,4 A_\lambda}  \otimes G(v_\star,\sigma_\star).
 \end{equation*}	
 Nesta equação, $F^{\mathrm{modelo}}_\lambda$ é o fluxo em cada comprimento de
 onda. O termo $10^{ -0.4 A_\lambda}$ corrige o espectro pelo efeito de atenuação
 interestelar, que pode ser por exemplo do tipo CCM \citep*{Cardelli1989} ou
-CAL \citep{Calzetti1994}. $G(v_\star,\sigma_\star)$ denota uma função
-gaussiana (centrada em $v_\star$ e com dispersão $\sigma\star$) utilizada para
+CAL \citep*{Calzetti1994}. $G(v_\star,\sigma_\star)$ denota uma função
+gaussiana (centrada em $v_\star$ e com dispersão $\sigma_\star$) utilizada para
 modelar os efeitos da cinemática estelar. Na prática a equação acima é
 implementada após um procedimento de normalização a um comprimento de onda de
-referência $\lambda_N$:
+referência $\lambda_N$, isto é,
 \begin{equation*}
 F^{\mathrm{modelo}}_\lambda = F^{\mathrm{modelo}}_{\lambda_N} 
 \sum_{j=1}^{N_\star} x_j b^\star_\lambda(t_j,Z_j)
-10^{ -0,4 (A_\lambda - A_{\lambda_N}) } \otimes G(v_\star,\sigma_\star)
+10^{ -0,4 (A_\lambda - A_{\lambda_N}) } \otimes G(v_\star,\sigma_\star),
 \end{equation*}
 onde $b^\star_\lambda(t_j,Z_j) \equiv  F^\star_\lambda(t_j,Z_j) /
 F^\star_{\lambda_N}(t_j,Z_j)$ denota o espectro  do elemento $j$ da base
@@ -286,7 +295,7 @@ O melhor ajuste é escolhido minimizando
 F^{\mathrm{modelo}}_\lambda) w_\lambda\right]^2
 \end{equation*}
 onde o peso $w_\lambda$ é definido como o inverso do erro em
-$F_\lambda^{observado}$. 
+$F_\lambda^{\mathrm{observado}}$.
 
 Os espectros da base provêm de modelos de síntese evolutiva de populações
 estelares. A maior parte dos resultados publicados do \starlight usa os modelos
@@ -294,13 +303,14 @@ de \citet[BC03]{Bruzual2003}. Em particular, em seus estudos de galáxias do SDS
 o grupo da UFSC normalmente usa uma base composta de 150 SSPs cobrindo 25 idades
 (entre $0,001$ e $18\,\mathrm{Ga}$) e 6 metalicidades ($\log Z/Z_\odot$ entre
 $-2,3$ e $+0,4$; vide \citet{Mateus2006}). A Figura
-\ref{fig:StarlightSpectrumSample} mostra ajustes feito para 5 galáxias do \SDSS
+\ref{fig:StarlightSpectrumSample} mostra ajustes feito para 5 galáxias do SDSS
 utilizando esta base. A extinção é modelada com uma lei de avermelhamento de
 CCM. Neste trabalho usamos modelos mais atualizados de espectros de SSPs,
 extraídos dos modelos de Granada \citep[para idades até
-$63\,\mathrm{Ma}$]{GonzalezDelgado2005} e os do projeto MILES
-\citep{Vazdekis2010}. No total esta nova base contém 235 elementos cobrindo
-idades de  $0,001$ a $14\,\mathrm{Ga}$, e $\log Z/Z_\odot$ de $-2.3$ a $+0.33$.
+$63\,\mathrm{Ma}$]{GonzalezDelgado2005} e os do projeto MILES \citep[para idades
+maiores que $63\,\mathrm{Ma}$]{Vazdekis2010}. No total esta nova base contém 235
+elementos cobrindo idades de  $0,001$ a $14\,\mathrm{Ga}$, e $\log Z/Z_\odot$ de
+$-2.3$ a $+0.33$.
 Para mais detalhes ver \citet{GonzalezDelgado2014b, GonzalezDelgado2014a}.
 
 \begin{figure}
@@ -309,9 +319,9 @@ Para mais detalhes ver \citet{GonzalezDelgado2014b, GonzalezDelgado2014a}.
 	{Exemplos de ajuste de espectros de galáxias com o \starlight
 	\citep{Asari2007}. À esquerda, espectros observados (preto), espectros
 	modelados (vermelho), com regiões mascaradas em magenta. No meio, a fração da
-	luz associada à cada uma das 25 idades das SSPs usadas na síntese, com a curva
+	luz associada a cada uma das 25 idades das SSPs usadas na síntese, com a curva
 	representando a versão suavizada do histórico de formação estelar. À direita,
-	imagens do \SDSS correspondentes às galáxias.}
+	imagens do SDSS correspondentes às galáxias.}
 	\label{fig:StarlightSpectrumSample}
 \end{figure}
 
@@ -334,10 +344,10 @@ demonstrado por \citet{CidFernandes2014}, reproduzido no Apêndice
 
 Esta técnica foi utilizada em diversos artigos. Em particular a colaboração
 SEAGal ({\em Semi Empirical Analysis of Galaxies}), liderada pela UFSC, aplicou
-o \starlight a todos  926246 espectros de galáxias do DR7 do \SDSS. As
-propriedades físicas derivadas desta análise de populações estelares, junto com
-as medidas de linhas de emissão, foram disponibilizadas como um banco de dados
-no {\em website} \url{http://www.starlight.ufsc.br/}.
+o \starlight a 926246 espectros de galáxias do DR7 do SDSS. As propriedades
+físicas derivadas desta análise de populações estelares, junto com as medidas de
+linhas de emissão, foram disponibilizadas como um banco de dados no {\em
+website} \url{http://www.starlight.ufsc.br/}.
 
 Os resultados foram utilizados em estudos varrendo desde a história de formação
 estelar de galáxias \citep{Asari2007} a efeitos ambientais \citep{Mateus2007} e

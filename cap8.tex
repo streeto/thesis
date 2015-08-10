@@ -19,14 +19,14 @@
 \chapter{Conclusões e perspectivas}
 \label{sec:conclusao}
 
-O {\em survey} CALIFA observou cerca de 600 galáxias, nas configurações V500 e
+O {\em survey} CALIFA observou cerca de 600 galáxias nas configurações V500 e
 V1200. Foram publicados cubos de 100 galáxias no primeiro {\em data release}, e
 de 200 galáxias no segundo. Os cubos das galáxias restantes ainda estão em
 processo de controle de qualidade e embargo da colaboração. Através do programa
 \starlight, foram obtidos diversos parâmetros relacionados às populações
 estelares componentes de cada {\em spaxel}, formando cubos de dados adicionais
-ao observados, com a as propriedades físicas espacialmente resolvidas obtidas a
-partir da saída do \starlight.
+aos observados, com a as propriedades físicas espacialmente resolvidas obtidas a
+partir da saída do \starlight.	
 
 Neste trabalho, foi desenvolvido um programa chamado PyCASSO para organizar e
 analisar estes cubos de dados. Este programa é utilizado por cerca de 10 pessoas
@@ -50,9 +50,9 @@ PyCASSO já foi usado com sucesso com dados de outros {\em surveys} como o PINGS
 \citep{RosalesOrtega2010}, um precursor do CALIFA, porém com até $10$ vezes mais
 espectros por galáxia. MaNGA \citep{Bundy2015} está em andamento, e deverá obter
 IFS de $10.000$ galáxias. Muito embora tenha um número muito maior de galáxias
-do que o CALIFA, sua cobertura espacial será menor. Assim, estes {\em survey}
-deverá ser complementar ao CALIFA. Testes com dados preliminares do MaNGA foram
-feitos com PyCASSO, requerendo apenas pequenas modificações para que funcionem
+do que o CALIFA, sua cobertura espacial será menor. Assim, estes {\em surveys}
+deverão ser complementares ao CALIFA. Testes com dados preliminares do MaNGA
+foram feitos com PyCASSO, requerendo apenas pequenas modificações para que funcionem
 normalmente.
 
 É importante que PyCASSO se torne um programa modular, onde o usuário cria uma
@@ -61,7 +61,7 @@ Recentemente o autor deste trabalho, junto com pesquisadores do Grupo de
 Astrofísica da UFSC, começou a colaborar com um novo {\em survey} chamado
 Diving3D. Este {\em survey}, descrito em \citet{Ricci2014}, vai obter IFS de
 quase 200 núcleos de galáxias utilizando o Telescópio Gemini. Os cubos de dados
-espectrais são de uma qualidade excepcional, e já iniciamos o a adaptação de
+espectrais são de uma qualidade excepcional, e já iniciamos a adaptação de
 ferramentas como o PyCASSO e o \starlight para trabalhar com esses dados. O
 objetivo, do ponto de vista ferramental, é que se crie uma {\em pipeline} onde
 dados como populações estelares, morfologia, etc, vão sendo adicionados de forma
@@ -77,7 +77,7 @@ dos cubos de dados espectrais.
 
 Ao fazer a decomposição morfológica em janelas estreitas de comprimento de onda,
 os efeitos de cinemática precisaram ser levados em consideração. Em uma imagem
-de uma galáxia, em um determinado comprimento de onda, não se observa os mesmos
+de uma galáxia, em um determinado comprimento de onda, não se observam os mesmos
 processos físicos em todos os {\em pixels}. A luz de cada {\em pixel} é composta
 pela luz de diversas estrelas, cada uma com uma velocidade diferente em relação
 à linha de visada (e consequentemente um {\em redshift} ou {\em blueshift}
@@ -101,7 +101,7 @@ determinar o efeito que um erro na PSF causa no resultado da decomposição
 morfológica, apresentados na Seção \ref{sec:test:psf}. Em via de regra, a
 decomposição dos espectros em componentes morfológicas, quando se utiliza a PSF
 errada, apresenta artefatos como gradientes de cores e linhas espectrais
-artificiais. Estes problemas parecem ser atenuados quando se utiliza os
+artificiais. Estes problemas parecem ser atenuados quando se utilizam os
 espectros integrados das componentes morfológicas.
 
 No Capítulo \ref{sec:Decomp} foi escolhida, dentre as galáxias do CALIFA
@@ -113,10 +113,10 @@ poeira, uma das componentes muito fraca, ou problema nos dados, entre outras
 coisas. Outras 15 tiveram problema no ajuste do modelo inicial. Somente 9
 galáxias tiveram um relativo sucesso na decomposição morfológica espectral. O
 resultado da decomposição para todas as 9 galáxias da amostra final é mostrado
-nas figuras do Apêndice \ref{apendice:Decomp}. A galáxia K0858, classificada
-como S0a, foi escolhida para uma análise mais detalhada, em parte pela sua
-decomposição morfológica ter sido muito boa, e em parte por ter um bom ajuste
-com o \starlight.
+nas figuras do Apêndice \ref{apendice:Decomp}. A galáxia K0858 (UGC 10905),
+classificada como S0a, foi escolhida para uma análise mais detalhada, em parte
+pela sua decomposição morfológica ter sido muito boa, e em parte por ter um bom
+ajuste com o \starlight.
 
 Em K0858 verificou-se que há um gradiente espectral em alguns dos parâmetros
 morfológicos, que foram ajustados levando em conta apenas informações espaciais.
@@ -131,8 +131,8 @@ galáxia, e como estas populações se refletem nos espectro espacialmente
 resolvido da galáxia, é fundamental para poder fazer uma decomposição
 morfológica que leve em conta informações das regiões vizinhas no espectro.
 
-A síntese de populações estelares foi realizada com sucesso apenas em K0592
-(classificada como E0), e K0858. O ajuste dos espectros e as propriedades
+A síntese de populações estelares foi realizada com sucesso apenas em K0592 (NGC
+4874, classificada como E0), e K0858. O ajuste dos espectros e as propriedades
 físicas, para todas as 9 galáxias da amostra, estão disponíveis no Apêndice
 \ref{apendice:Decomp}. Apenas K0592 e K0858 tiveram um resíduo no ajuste do
 \starlight pequeno o bastante para poderem ter as propriedades físicas obtidas

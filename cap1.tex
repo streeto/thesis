@@ -35,20 +35,20 @@ Entretanto, da forma como estes {\em surveys} são executados, há sempre um
 compromisso entre a resolução espacial e a espectral. As imagens obtidas pelo
 SDSS têm um boa resolução espacial, mas mapeiam a SED de forma grosseira, com
 apenas $5$ filtros de banda larga ($ugriz$). Já os espectros obtidos pelo mesmo
-{\em survey} possuem uma excelente resolução e cobertura espectral, mas obtém o
-espectro integrado da região central das galáxias.
+{\em survey} possuem uma excelente resolução e cobertura espectral, mas apenas
+sobre a superfície integrada da região central das galáxias.
 
 O melhor dos dois mundos pode ser alcançado com instrumentos que fazem
 espectroscopia de campo integral (IFS\footnote{\em Integral Field
 Spectroscopy.}). Instrumentos que realizam este tipo de espectroscopia consistem
 em geral de um amontoado de fibras óticas, as quais alimentam um espectrógrafo
 comum. Assim, depois de um processo relativamente complicado de redução de
-dados, obtém-se espectros espacialmente resolvidos com uma boa resolução
+dados, obtêm-se espectros espacialmente resolvidos com uma boa resolução
 espectral e espacial. O {\em survey} CALIFA ({\em Calar Alto Legacy Integral
 Field Area survey\footnote{\url{http://www.caha.es/CALIFA/}}}) está utilizando o
 instrumento PMAS/PPAK do observatório Calar Alto para obter IFS de $600$
 galáxias \citep{Sanchez2012}. Destas, $100$ foram disponibilizadas no primeiro
-{\em Data Release} \citep[DR1]{Husemann2013}, e $200$ no primeiro segundo
+{\em Data Release} \citep[DR1]{Husemann2013}, e $200$ no segundo
 \citep{GarciaBenito2015}, afirmando o caráter de legado deste {\em survey}.
 
 Quando completado, o CALIFA terá obtido da ordem de $10^6$ espectros, quase o
@@ -56,9 +56,9 @@ mesmo que o SDSS. Porém, este não será apenas mais um {\em survey}
 espectroscópico. A riqueza do CALIFA está nas informações espacialmente
 resolvidas, em uma amostra representativa do universo local ($0.005 < z < 0.03$,
 limitada em diâmetro angular) cobrindo a distribuição de galáxias no diagrama
-cor--magnitude da nuvem azul à sequência vermelha, amostrando galáxias todos os
-tipos morfológicos (espirais, elípticas, irregulares e até mesmo alguns sistemas
-em interação).
+cor--magnitude da nuvem azul à sequência vermelha, amostrando galáxias de todos
+os tipos morfológicos (espirais, elípticas, irregulares e até mesmo alguns
+sistemas em interação).
 
 \begin{figure}
 	\includegraphics{figuras/surveysIFS}
@@ -81,7 +81,10 @@ MaNGA \citep{Bundy2015}. Estes também buscam obter uma amostra grande de
 galáxias, bem maior do que a do CALIFA. Entretanto, a vantagem do CALIFA está na
 cobertura e amostragem espacial, observando uma maior porção de cada galáxia com
 mais riqueza de detalhes. A Figura \ref{fig:surveysIFS}, mostra uma comparação
-simplificada do tamanho do campo e cobertura espectral destes {\em surveys}.
+simplificada do tamanho do campo e cobertura espectral destes {\em surveys}. A
+primeira Seção \ref{sec:ifs:califa} apresenta o {\em survey} CALIFA em mais
+detalhes.
+ 
 
 %***************************************************************%
 %                                                               %
@@ -96,11 +99,14 @@ Espectros espacialmente resolvidos podem ser descritos como um cubo de dados,
 com as duas primeiras dimensões sendo a posição $x$ e $y$ (ascensão reta e
 declinação) e a terceira sendo o comprimento de onda. Nestes cubos, planos com
 comprimento de onda constante são imagens, enquanto colunas definidas por um par
-$(x, y)$ constante são espectros. Pode-se tratar estes espectros
-individualmente, embora na verdade nos cubos do CALIFA os {\em spaxels}
-vizinhos estão correlacionados devido ao {\em seeing} do céu e ao processo de
-observação e redução. Há a queda na relação sinal/ruído (S/N) nas regiões mais
-afastadas do núcleo da galáxia, onde o brilho superficial é muito menor.
+$(x, y)$ constante são espectros. Podem-se tratar estes espectros
+individualmente, embora na verdade nos cubos do CALIFA os {\em
+spaxels}\footnote{A palavra {\em spaxel} é uma mistura de {\em space} e {\em
+pixel}, se referindo ao espectro proveniente da região espacial representada por
+um {\em pixel}.} vizinhos estejam correlacionados devido ao {\em seeing} do céu
+e ao processo de observação e redução. Há a queda na relação sinal/ruído (S/N)
+nas regiões mais afastadas do núcleo da galáxia, onde o brilho superficial é
+muito menor.
 Algumas galáxias possuem outros objetos ``intrometidos'' que precisam ser
 mascarados. Linhas telúricas\footnote{Linhas de absorção causadas pela
 atmosfera.} também precisam ser mascaradas. Assim, em geral, é necessário um
@@ -109,8 +115,8 @@ contaminação. Os detalhes sobre o preprocessamento utilizado neste trabalho
 estão descritos na seção 3 do Apêndice \ref{apendice:PaperResolving1}.
 
 Um aspecto importante do preprocessamento utilizado é que o cubo de dados é
-dividido em zonas de Voronoi, onde regiões com baixo S/N são combinadas formando
-efetivamente ``{\em spaxels} maiores''. Desta forma, o cubo original é
+dividido em zonas de Voronoi, onde regiões com baixo S/N são combinadas,
+formando efetivamente ``{\em spaxels} maiores''. Desta forma, o cubo original é
 transformado numa matriz de zonas e comprimento de onda, onde fatias de zona
 constante são espectros. Com isso, os espectros, e as máscaras e erros que os
 acompanham, estão prontos para serem usados pelo próximo passo.
@@ -119,15 +125,17 @@ A síntese de população estelar consiste em obter a história de formação es
 (SFH\footnote{\em Star Formation History.}) de uma galáxia utilizando modelos de
 população estelar simples (SSP\footnote{\em Simple Stellar Population.}).
 Ajusta-se o espectro de uma galáxia como a soma de espectros de SSPs com idades
-e composições químicas distintas (levando em conta a atenuação por poeira). O
-resultado é um vetor de frações de luz e massa destas SSPs, que podem ser
+e composições químicas distintas (levando em conta a atenuação por poeira e a
+cinemática).
+O resultado é um vetor de frações de luz e massa destas SSPs, que podem ser
 facilmente convertidos a uma SFH conforme a prescrição de \cite{Asari2007}.
 O programa utilizado é o \starlight, desenvolvido por \cite{CidFernandes2005}.
 
-Passamos todos os espectros das zonas pelo \starlight, obtendo o resultado da
-síntese como um arquivo de síntese separado para cada zona. Entretanto, para
-visualizar ou mesmo tentar entender estes resultados, é preciso organizar e
-converter estes arquivos para um formato mais adequado.
+Como apresentado na Seção \ref{sec:ifs}, todos os espectros das zonas foram
+passados pelo \starlight, obtendo-se o resultado da síntese como um arquivo de
+saída separado para cada zona. Entretanto, para visualizar ou mesmo tentar
+entender estes resultados, é preciso organizar e converter estes arquivos para
+um formato mais adequado.
 
 
 %***************************************************************%
@@ -138,8 +146,7 @@ converter estes arquivos para um formato mais adequado.
 
 \section{O nascimento do PyCASSO}
 
-Todo o descrito anteriormente forma o alicerce deste presente trabalho. Porém,
-dada a grande quantidade de dados espalhados em diversos formatos, a análise dos
+Dada a grande quantidade de dados espalhados em diversos formatos, a análise dos
 resultados da síntese de populações estelares para uma determinada galáxia pode
 se tornar um grande e complexo quebra-cabeças computacional. Trabalhar com todas
 as galáxias do {\em survey} fica virtualmente impossível desta forma. Assim, da
@@ -165,11 +172,12 @@ alguns dos artigos publicados que o utilizam intensivamente.
 
 Utilizando PyCASSO para trabalhar com cubos do CALIFA, buscou-se um problema
 onde se pudesse utilizar a natureza multidimensional dos dados. Com o \starlight
-se obtém informações sobre a história das populações estelares, ou seja,
-transforma-se comprimento de onda em tempo. Porém, isto é feito de forma
-individual, para cada {\em spaxel}. Adicionando uma análise na distribuição de
-brilho da galáxia, pode-se tentar decompor o seu espectro em componentes
-morfológicas, e em seguida estudar a história de suas populações estelares.
+se obtêm informações sobre a história das populações estelares, ou seja,
+transforma-se comprimento de onda em tempo e luminosidade em massa. Porém, isto
+é feito de forma individual, para cada {\em spaxel}. Adicionando uma análise na
+distribuição de brilho da galáxia, pode-se tentar decompor o seu espectro em
+componentes morfológicas, e em seguida estudar a história das populações
+estelares de cada componente.
 
 O processo de fazer a decomposição morfológica em cubos de dados espectrais de
 galáxias, tal que se toma imagens de fatias em comprimento de onda
@@ -191,19 +199,17 @@ capítulo, foi o efeito de usar uma PSF mal dimensionada na decomposição, com
 largura diferente da PSF do cubo de dados.
 
 O Capítulo \ref{sec:Decomp} descreve em detalhes o algoritmo de decomposição
-morfológica espectral. O pré processamento dos dados inclui regularizar a
-cinemática da galáxia, combinar espectros em imagens, calcular erros
-correlacionados, entre outras coisas. O ajuste das imagens ao modelo bojo--disco
-é feito utilizando o programa IMFIT \citep{Erwin2015}, descrito na seção
-\ref{sec:morph:comp:ajuste}. Foi escolhida uma amostra galáxias, que
-potencialmente podem ser decompostas em bojos e discos, para aplicar a
-decomposição, resultando num conjunto de cubos espectrais de componentes bojo e
-disco de cada galáxia desta amostra.
-
+morfológica espectral. O preprocessamento dos dados inclui (mas não se limita a)
+regularizar a cinemática da galáxia, combinar espectros em imagens, calcular
+erros correlacionados. O ajuste das imagens ao modelo bojo--disco é feito
+utilizando o programa IMFIT \citep{Erwin2015}, descrito na seção
+\ref{sec:morph:comp:ajuste}. Foi escolhida uma amostra de galáxias que
+potencialmente podem ser decompostas em bojos e discos, resultando num conjunto
+de cubos espectrais de componentes bojo e disco de cada galáxia desta amostra.
 Os cubos destas componentes são tratados exatamente da mesma forma que uma
-galáxia ao serem passados pelo \starlight. Utilizando PyCASSO, os
-resultados da síntese espectral foram analisados e comparados com a síntese da
-galáxia original.
+galáxia ao serem passados pelo \starlight. Utilizando PyCASSO, os resultados da
+síntese espectral foram analisados e comparados com a síntese da galáxia
+original.
 
 % TODO Falar do resultado da síntese.
 
