@@ -128,7 +128,9 @@ ao tamanho aparente e o {\em redshift} da galáxia. O tamanho aparente da galáx
 deve ser compatível com o instrumento, por isso escolheu-se limitar a amostra em
 diâmetro da isofota de brilho superficial $25\,\mathrm{mag}/\mathrm{arcsec}^2$
 ($D_{25}$), tal que $45\,\arcs < D_{25} < 80\,\arcs$ na banda $r$ do SDSS. O
-{\em redshift} deve ser $0,005 < z < 0,03$.
+{\em redshift} deve ser $0,005 < z < 0,03$, para manter a cobertura espectral
+consistente, e também descartar objetos do catálogo que são na verdade estrelas
+classificadas como galáxias de forma equivocada.
 O resultado é uma amostra de 939 galáxias, denominada {\em amostra mãe},
 descrita e estudada em detalhes por \citet{Walcher2014}. O conteúdo da amostra,
 junto com tabelas auxiliares, está disponível no {\em website} do
@@ -138,8 +140,6 @@ serem selecionadas conforme a visibilidade, num padrão quase aleatório. A Figu
 \ref{fig:CALIFASample} mostra a distribuição de magnitude aparente na banda $r$
 contra o {\em redshift} da amostra mãe. O diagrama cor--magnitude pode ser visto
 na Figura \ref{fig:CALIFACMD}.
-
-% TODO: explicar por que ciritérios em D25 e z. Não são redundantes?
 
 \begin{figure}
 	\includegraphics[width=0.7\textwidth]{figuras/CALIFASample}
@@ -172,7 +172,7 @@ que é esperado estatisticamente para uma amostra menor.
 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{figuras/CALIFAMass}
-	\caption[Distribuição de massa das galáxias no  DR2 do CALIFA.]
+	\caption[Distribuição de massa das galáxias no  DR2 do CALIFA]
 	{Distribuição de massa estelar das galáxias no DR2 do CALIFA. As massas
 	foram determinadas através de síntese espectral de populações estelares com o
 	\starlight. Retirado de \citet{GarciaBenito2015}.}
@@ -181,7 +181,7 @@ que é esperado estatisticamente para uma amostra menor.
 
 \begin{figure}
 	\includegraphics[width=0.8\textwidth]{figuras/DR2PSF}
-	\caption[Caracterização da PSF do CALIFA DR2.]
+	\caption[Caracterização da PSF do CALIFA DR2]
 	{Caracterização da PSF do CALIFA DR2. À esquerda, distribuição da largura a
 	meia altura ($\mathrm{FWHM}$), e à direita, de $\beta$ de um perfil de Moffat.
 	Ver mais detalhes na Seção \ref{sec:psf:medida}. Retirado de
@@ -315,7 +315,7 @@ Para mais detalhes ver \citet{GonzalezDelgado2014b, GonzalezDelgado2014a}.
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{figuras/starlight-fit}
-	\caption[Exemplos de ajuste de espectro com o \starlight.]
+	\caption[Exemplos de ajuste de espectro com o \starlight]
 	{Exemplos de ajuste de espectros de galáxias com o \starlight
 	\citep{Asari2007}. À esquerda, espectros observados (preto), espectros
 	modelados (vermelho), com regiões mascaradas em magenta. No meio, a fração da

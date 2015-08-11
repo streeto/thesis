@@ -18,20 +18,16 @@
 \chapter{PyCASSO}
 \label{sec:pycasso}
 
-% FIXME: Tens que destacar no inicio de cada capitulo o que *voce* fez. Aqui por
-% exemplo tens que colocar que o pycasso foi feito exclusivamente por vc.
-
-% FIXME: Outra coisa que acho que falta em todos os capitulos (voltando a este
-% comentario depois de comecar a ler o cap 4) eh um breve resumo do que o leitor
-% vai encontrar pela frente. Ajuda a costurar a historia. Nao tinha ideia do que
-% ia encontrar nesse capitulo e que ia ser um flash dos papers, ainda mais
-% porque ele nao foi descrito na introducao.
-
 A fim de agilizar o desenvolvimento de ferramentas de manipulação de cubos de
-dados do CALIFA, alguns programas de computador foram desenvolvidos. Este ``kit
-de ferramentas'' foi chamado de PyCASSO ({\em Python CALIFA} \starlight\ {\em
-Synthesis Organizer}). PyCASSO foi desenvolvido em Pyton e é, a grosso modo,
-composto de três partes.
+dados do CALIFA, alguns programas de computador foram desenvolvidos. Foi montado
+um ``kit de ferramentas'', chamado PyCASSO ({\em Python CALIFA} \starlight\ {\em
+Synthesis Organizer}), para organizar e analisar o resultado da síntese de
+populações sobre os dados do CALIFA. PyCASSO foi desenvolvido em sua maior parte
+pelo autor desta tese, utilizando a linguagem Python, e foi utilizado de forma
+extensiva pelo grupo de populações estelares (cerca de 10 pessoas), resultando
+em vários artigos, alguns deles descritos neste capítulo.
+
+A grosso modo, PyCASSO é composto de três partes:
 
 \begin{enumerate}
 
@@ -99,12 +95,12 @@ tornando uma espécie de {\em lingua franca} na Astrofísica computacional.}, co
 o \texttt{IPython}\footnote{\url{http://ipython.org/}} e o
 \texttt{matplotlib}\footnote{\url{http://matplotlib.org/}}. Foi feito um esforço
 para que o acesso aos dados de cada galáxia fosse feito de forma simples e
-direta. Um exemplo de código pode ser visto na Figura \ref{fig:dataAccess}.
+direta. Um exemplo de código pode ser visto na listagem de código fonte abaixo.
 
-% FIXME: Transformar figuras em listings.
-
-\begin{figure}
-\begin{python}
+\begin{lstlisting}[language=Python, label={lst:dataAccess}, caption={Exemplo de
+acesso aos dados. Todas as propriedades estão disponíveis diretamente pelo nome,
+inclusive utilizando a função autocompletar da maioria dos ambientes de
+desenvolvimento Python.}]
 # Carregar arquivo FITS com os dados.
 from pycasso import fitsQ3DataCube
 K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
@@ -115,30 +111,25 @@ at = K.at_flux__z
 # Calcular a idade media da galaxia.
 at_total = (at * K.Lobn__z).sum() / K.Lobn__z.sum()
 print 'Idade media da galaxia: %.2f' % at_total
-\end{python}
-	\caption[Exemplo de programa utilizando PyCASSO]
-	{Exemplo de acesso aos dados. Todas as propriedades estão disponíveis
-	diretamente pelo nome, inclusive utilizando a função autocompletar da maioria
-	dos ambientes de desenvolvimento Python.}
-	\label{fig:dataAccess}
-\end{figure}
+\end{lstlisting}
 
 Para algumas operações, como o cálculo da idade estelar média feito na Figura
-\ref{fig:dataAccess}, pode-se utilizar apenas o resultado para as zonas. Neste
+\ref{lst:dataAccess}, pode-se utilizar apenas o resultado para as zonas. Neste
 caso, a idade estelar média é calculada usando a expressão $\langle \log t
 \rangle^{\mathrm{gal}}_L = \sum_z \langle \log t \rangle_{L,z} L_z / \sum_z
-L_z$, onde $L_z$ é a luminosidade de cada zona e $\langle \log t \rangle_{L,z}$ é a idade
-estelar média de cada zona. Entretanto, para tirar vantagem das informações
-espaciais, é preciso converter as propriedades da notação de zona para imagem.
-Por exemplo, o programa na Figura \ref{fig:programaMapaIdade} calcula a idade
-estelar média espacialmente resolvida\footnote{O mapa de idade já está
-previamente calculado, disponível através da propriedade
-\texttt{at\_flux\_\_yx}. Esta conversão é feita explicitamente aqui para
-ilustrar como a conversão pode ser feita para qualquer propriedade.}, e em
-seguida desenha um gráfico da imagem gerada (Figura \ref{fig:mapaIdade}).
+L_z$, onde $L_z$ é a luminosidade de cada zona e $\langle \log t \rangle_{L,z}$
+é a idade estelar média de cada zona. Entretanto, para tirar vantagem das
+informações espaciais, é preciso converter as propriedades da notação de zona
+para imagem.
+Por exemplo, o programa a seguir calcula a idade estelar média espacialmente
+resolvida\footnote{O mapa de idade já está previamente calculado, disponível
+através da propriedade \texttt{at\_flux\_\_yx}. Esta conversão é feita
+explicitamente aqui para ilustrar como a conversão pode ser feita para qualquer
+propriedade.}, e em seguida desenha um gráfico da imagem gerada.
 
-\begin{figure}
-\begin{python}
+\begin{lstlisting}[language=Python, caption={Programa para desenhar o mapa de
+idade estelar média ponderada pela luminosidade. O gráfico resultante é mostrado
+na Figura \ref{fig:mapaIdade}.}, label={lst:mapaIdade}]
 # Carregar arquivo FITS com os dados.
 from pycasso import fitsQ3DataCube
 K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
@@ -150,17 +141,13 @@ at_image = K.zoneToYX(K.at_flux__z, extensive=False)
 import matplotlib.pyplot as plt
 plt.imshow(at_image)
 plt.colorbar()
-\end{python}
-	\caption[Programa para desenhar o mapa da idade estelar média] {Programa
-	para desenhar o mapa de idade estelar média ponderada pela luminosidade.}
-	\label{fig:programaMapaIdade}
-\end{figure}
+\end{lstlisting}
 
 \begin{figure}
 	\includegraphics{figuras/mapa-idade}
 	\caption[Mapa da idade estelar média da galáxia IC 5376] {Mapa de idade estelar
 	média ponderada pela luminosidade da galáxia IC 5376, desenhado pelo programa
-	da Figura \ref{fig:programaMapaIdade}.}
+	da Listagem de código fonte \ref{lst:mapaIdade}.}
 	\label{fig:mapaIdade}
 \end{figure}
 
@@ -168,12 +155,13 @@ Enquanto um mapa é uma forma muito boa de visualizar informações em duas
 dimensões, há vezes em que uma visualização resumida é mais adequada. Galáxias
 em geral têm simetria aproximadamente axial, logo poder medir perfil radial das
 propriedades das galáxias é fundamental para estudá-las. Com o PyCASSO, o
-cálculo do perfil radial é bastante simples, como pode ser visto no programa na
-Figura \ref{fig:programaRadprofIdade}, que calcula o perfil radial da idade
+cálculo do perfil radial é bastante simples, como pode ser visto na Listagem de
+código fonte \ref{lst:radprofIdade}, que calcula o perfil radial da idade
 estelar média. O resultado está na Figura \ref{fig:radprofIdade}.
 
-\begin{figure}
-\begin{python}
+\begin{lstlisting}[language=Python, caption={Programa para desenhar o perfil
+radial da idade estelar média ponderada pela luminosidade.},
+label={lst:radprofIdade}]
 # Carregar arquivo FITS com os dados.
 from pycasso import fitsQ3DataCube
 K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
@@ -189,18 +177,14 @@ at_rad = K.radialProfile(at_image, bins, rad_scale=1.0)
 # Desenhar o perfil radial.
 import matplotlib.pyplot as plt
 plt.plot(bin_center, at_rad)
-\end{python}
-	\caption[Programa para desenhar o perfil radial da idade estelar] {Programa
-	para desenhar o perfil radial da idade estelar média ponderada pela
-	luminosidade.}
-	\label{fig:programaRadprofIdade}
-\end{figure}
+\end{lstlisting}
 
 \begin{figure}
 	\includegraphics{figuras/radprof-idade}
 	\caption[Perfil radial da idade estelar média da galáxia IC 5376] {Perfil
 	radial da idade estelar média ponderada pela luminosidade da galáxia IC
-	5376, desenhado pelo programa da Figura \ref{fig:programaRadprofIdade}.}
+	5376, desenhado pelo programa da Listagem de código fonte
+	\ref{lst:radprofIdade}.}
 	\label{fig:radprofIdade}
 \end{figure}
 
@@ -280,7 +264,6 @@ de estudo com a galáxia NGC 2916.
 	\label{fig:ataZMap}
 \end{figure}
 
-% TODO: corrigir largura
 \begin{figure}
 	\includegraphics[width=1.0\columnwidth]{figuras/L-M-SFR-K0277}
 	\caption[Diagramas $R \times t$ para luz, massa e SFR] {Diagramas $R \times t$
@@ -370,7 +353,6 @@ dispersão, exceto nas regiões mais afastadas do núcleo, onde há poucas zonas
 verdade, qualquer forma de média espacial que envolva {\em pixels} (ou zonas)
 suficientes deverá levar a uma diminuição na incerteza.
 
-% FIXME: corrigir largura da figura
 \begin{figure}
 	\includegraphics[width=1.0\columnwidth]{figuras/resolving2-base}
 	\caption[Comparação dos ajustes com bases de SSP diferentes]
@@ -530,7 +512,7 @@ importante para as galáxias com disco.
 
 \begin{figure}
 	\includegraphics[width=0.8\columnwidth]{figuras/radstruct-03}
-	\caption[Perfis radiais para várias caixas de massa estelar.]
+	\caption[Perfis radiais para várias caixas de massa estelar]
 	{Perfis radiais da densidade superficial de massa estelar (esquerda) e idade
 	estelar média ponderada pela luminosidade (direita), para caixas de
 	massa estelar contendo 15 galáxias cada. Cima: todas as galáxias. As caixas

@@ -58,7 +58,7 @@ $\mathrm{FWHM}=2,9\,\arcs$. Possíveis efeitos causados por uma PSF mal
 dimensionada foram vistos na Seção \ref{sec:test:psf}. Esta é uma preocupação
 muito relevante no caso do CALIFA, pois em geral os bojos estão mal resolvidos.
 
-% TODO: repensar esta seção
+% TODO: repensar esta seção sobre python-imfit.
 %\subsection{A biblioteca python-imfit}
 
 %\TODO vender o jabá - mini-tutorial do python-imfit?
@@ -408,8 +408,6 @@ qualidade do ajuste é através do perfil de brilho radial, no painel inferior. 
 perfil é calculado utilizando anéis elípticos, com a elipticidade calculada a
 partir da imagem observada.
 
-% FIXME: Está explicado em algum lugar como as regiões em rosa foram mascaradas?
-
 \begin{figure}
 	\includegraphics[page=2]{figuras-decomp/K0858_sample006a}
 	\caption[Parâmetros morfológicos em função do comprimento de onda para K0858
@@ -428,7 +426,8 @@ decomposição final, feita $\lambda$-a-$\lambda$, e os pontos azuis a
 decomposição feita no primeiro passo da decomposição, em caixas de
 $100\,\angstrom$. Regiões espectrais mascaradas antes de iniciar a decomposição
 (onde pode haver emissão de gás) estão marcadas em cinza. Marcadas em rosa estão
-regiões espectrais onde a decomposição falhou.
+regiões espectrais onde a decomposição falhou, quando o algoritmo não convergiu
+ou ficou preso nos limites dos parâmetros.
 
 A primeira coisa que chama a atenção na Figura \ref{fig:decompParams} é a
 diferença entre as parâmetros morfológicos obtidos em caixas de $100\,\angstrom$
@@ -557,6 +556,9 @@ morfológicas é maior do que a calculada com o espectro observado. Estes
 problemas com a idade estelar e a atenuação por poeira, nos espectros
 espacialmente resolvidos, aparecem também nas outras galáxias da amostra, mesmo
 na outra galáxia com um bom ajuste de populações estelares, a K0592.
+
+% TODO: inserir um parágrafo especulativo sobre poeira / idade, a pedido da
+% Natalia.
 
 \begin{figure}
 	\includegraphics{figuras/sample006a_synthesis_all2}

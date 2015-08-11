@@ -56,6 +56,7 @@
 \usepackage{color}
 \usepackage{listings}
 \usepackage{setspace}
+\renewcommand*{\lstlistingname}{Código fonte}
 
 \definecolor{Code}{rgb}{0,0,0}
 \definecolor{Decorators}{rgb}{0.5,0.5,0.5}
@@ -71,7 +72,6 @@
 \definecolor{Operators}{rgb}{0,0,0}
 \definecolor{Background}{rgb}{0.98,0.98,0.98}
 
-\lstnewenvironment{python}[1][]{
 \lstset{
 numbers=left,
 numberstyle=\footnotesize,
@@ -103,6 +103,6 @@ keywordstyle={[2]\color{Decorators}\slshape},
 emph={self},
 emphstyle={\color{self}\slshape},
 %
-}}{}
+}
 
 %%%%% END Python environment

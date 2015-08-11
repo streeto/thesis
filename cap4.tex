@@ -34,14 +34,17 @@ Em meados de 1940 já se havia descoberto a maioria dos tipos mais comuns das
 ``nebulosas extragaláticas'', termo que já começava a cair em desuso em favor do
 nome mais glamouroso, segundo o próprio \citet{hubble1936}: ``galáxias''.
 
-% FIXME: Acho que deveria seguir um pequeno paragrafo dizendo o que voce fez
-% sobre morfologia de galaxias e o que mais tem no capitulo, por dois motivos. O
-% primeiro eh que isso estah com cara de introducao, mas nao eh mais. E segundo
-% que estah desconectado do que veio antes.
+Neste capítulo é feita uma breve introdução sobre a morfologia de galáxias. O
+objetivo é compreender e descrever quantitativamente uma galáxia segundo a sua
+forma. Daqui saem as ferramentas e a motivação para a decomposição morfológica
+espectral, estudada nos Capítulos \ref{sec:test} e \ref{sec:Decomp}. A
+decomposição, conforme será visto na Seção \ref{sec:morph:comp:ajuste}, requer
+uma boa PSF\footnote{{\em Point Spread Function.}}. Por isso, é feito pequeno
+desvio no Capítulo \ref{sec:psf} para caracterizar a PSF do CALIFA.
 
 \begin{figure}
 	\includegraphics[width=0.7\textwidth]{figuras/WolfEarlyClass}
-	\caption[Classificação de Wolf.]
+	\caption[Classificação de Wolf]
 	{Sistema de classificação descritivo de nebulosas por \citet{Wolf1908},
 	apresentava também nebulosas galáticas (na primeira linha, que foi removida).
 	Reproduzido de \citet{Sandage1975}.}
@@ -71,7 +74,7 @@ clássico {\em The Realm of the Nebulae} de \citet{hubble1936}, e atualizado
 
 \begin{figure}
 	\includegraphics[width=1.0\textwidth]{figuras/HubbleSequence}
-	\caption[Classificação de Hubble.]
+	\caption[Classificação de Hubble]
 	{Sistema de classificação de \citet{hubble1936}, também conhecido como
 	``diagrama diapasão de Hubble''. Foi atualizado por
 	\citet{Sandage1975}, de onde se reproduz a figura, para incluir a classe S0 na
@@ -164,7 +167,7 @@ com $h$ sendo o parâmetro de escala radial, e $I_0$ o brilho em $r\!=\!0$.
 
 \begin{figure}
 	\includegraphics{figuras/morphModels}
-	\caption[Perfis empíricos de Sérsic.]
+	\caption[Perfis empíricos de Sérsic]
 	{Perfis empíricos de Sérsic. O índice $n$ controla a concentração do perfil.
 	Com $n\!=\!1$ obtém-se um perfil exponencial (azul), e com $n\!=\!4$ um perfil
 	de de Vaucoulerus (vermelho). Outros valores de $n$ são mostrados em
@@ -249,7 +252,7 @@ global sobre o seu efeito nos parâmetros morfológicos.
 
 \begin{figure}
 	\includegraphics{figuras/johnston-spectra}
-	\caption[Espectros das componentes morfológicas.] {Espectros unidimensionais de
+	\caption[Espectros das componentes morfológicas] {Espectros unidimensionais de
 	bojo (acima) e disco (abaixo) de NGC 1375. É possível reconhecer a
 	linha espectral \Hbeta e o tripleto de magnésio, em absorção. Retirado de
 	\citet{Johnston2012}.}
@@ -258,7 +261,7 @@ global sobre o seu efeito nos parâmetros morfológicos.
 
 \begin{figure}
 	\includegraphics{figuras/johnston-pop}
-	\caption[Idade e metalicidade de bojos e discos de galáxias S0.] {Idade (eixo
+	\caption[Idade e metalicidade de bojos e discos de galáxias S0] {Idade (eixo
 	vertical) e metalicidade (eixo horizontal) estelares de bojos (marcadores
 	redondos) e discos (marcadores retangulares) de uma amostra de galáxias S0
 	observadas com espectrógrafo de fenda longa. As linhas pontilhadas ligam
@@ -277,11 +280,10 @@ galáxias. Os autores estimam a idade e a metalicidade estelar das componentes
 utilizando a intensidade da linha \Hbeta e do tripleto de magnésio, comparando
 com uma grade de modelos sintéticos de populações estelares. A conclusão que
 chegam é que os bojos são sistematicamente mais jovens e mais metálicos do que
-os discos (Figura \ref{fig:populationJohnston}). Inspirado neste estudo, o
-Capítulo \ref{sec:Decomp} descreve a decomposição de espectros de galáxias em
-espectros de bojos e discos, mas utilizando cubos de dados do CALIFA.
-
-% FIXME: Ficou confuso. Por que só no cap 7?
+os discos (Figura \ref{fig:populationJohnston}). Inspirado neste estudo, os
+Capítulos \ref{sec:test} e \ref{sec:Decomp} descrevem a decomposição de
+espectros de galáxias em espectros de bojos e discos, mas utilizando cubos de
+dados do CALIFA.
 
 \subsection{Ajuste de modelos}
 \label{sec:morph:comp:ajuste}
@@ -325,12 +327,11 @@ imagem, em duas dimensões (Figura \ref{fig:decompGalfit}), utilizando modelos
 com perfis elipsoidais. Independente da escolha do modelo, há um aspecto
 importante do ajuste da morfologia que foi negligenciado até agora: efeitos
 instrumentais e atmosféricos. Estes efeitos são representados pela figura da
-PSF\footnote{{\em Point Spread Function.}}, tratada em detalhes no Capítulo
-\ref{sec:psf}. A grosso modo, levar em conta a PSF significa considerar que a
-luz que atinge determinada posição no detector não é proveniente apenas de uma
-região pontual no céu, e sim de uma região extensa que depende dos instrumentos
-e da turbulência atmosférica. Efetivamente, objetos pontuais tornam-se
-``borrões'' na imagem observada.
+PSF, tratada em detalhes no Capítulo \ref{sec:psf}. A grosso modo, levar em
+conta a PSF significa considerar que a luz que atinge determinada posição no
+detector não é proveniente apenas de uma região pontual no céu, e sim de uma
+região extensa que depende dos instrumentos e da turbulência atmosférica.
+Efetivamente, objetos pontuais tornam-se ``borrões'' na imagem observada.
 
 Pode-se evitar tocar neste ponto quando se faz o ajuste em uma dimensão.
 Se as dimensões da PSF forem muito menores do que as da galáxia, e esta tiver
@@ -351,8 +352,6 @@ ajuste. Mas trabalhar com a PSF traz um custo computacional enorme, uma vez que
 vez que se avalia o modelo para um determinado conjunto de parâmetros. O
 problema de minimização, que já é de natureza não linear para modelos de
 componentes de galáxia, torna-se ainda mais complicado.
-
-% FIXME: Comentário sobre algoritmo de Metropolis.
 
 Diversos algoritmos foram desenvolvidos para tratar do problema de minimização
 não linear. O método Levenberg-Marquardt \citep[daqui em diante
