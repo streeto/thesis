@@ -39,8 +39,8 @@ I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{r}{r_e} \right)^{1/n}
 I(r) = I_0 \exp\left(- \frac{r}{h}\right).
 \end{equation*}
 
-Diferente do método de \citeauthor{Johnston2012}, os perfis do bojo e do disco
-são tratados em duas dimensões como elipsoides, cada qual com uma elipticidade
+Diferente do método de \citet{Johnston2012}, os perfis do bojo e do disco são
+tratados em duas dimensões como elipsoides, cada qual com uma elipticidade
 ($\epsilon$) e um ângulo de posição (P.A.) independentes. O ângulo de posição é
 medido em sentido anti-horário a partir do eixo horizontal positivo. Estes
 modelos são ajustados a imagens em cada comprimento de onda, utilizando o
@@ -114,7 +114,7 @@ Quando se convolui duas gaussianas, suas dispersões se somam em
 quadratura. Portanto, $v_{d,\ast}$ deve ser tal que o fluxo final tenha a
 dispersão alvo $v_{d,\mathrm{alvo}}$:
 \begin{equation*}
-v_{d,\ast} = \sqrt{v_{d,\mathrm{alvo}} - v^2_d}.
+v_{d,\ast} = \sqrt{v^2_{d,\mathrm{alvo}} - v^2_d}.
 \end{equation*}
 
 \begin{figure}
@@ -183,6 +183,8 @@ covariância é dada por $\mathrm{FWHM} = 2 \sqrt{2 \ln 2}\ c_\mathrm{FWHM}$. Se
 os erros não estiverem correlacionados (isto é, se $\mathrm{FWHM} \to 0$),
 $p(\Delta \lambda) = 0$, a segunda soma desaparece e o erro é dado pela soma
 ponderada usual.
+
+% FIXME: Rogério - definir melhor c_FWHM.
 
 A segunda alternativa é estimar o erro a partir dos dados. Isto só funciona
 quando a soma é feita sobre uma caixa espectral com um grande número de medidas.
@@ -316,6 +318,8 @@ Sa tiver uma classificação mínima E7, também entra na amostra.
 As galáxias também têm que ser sem barra (A), e sem características de {\em
 merger}.
 
+% FIXME: Rogério - Não ficou claro, faz uma tabela.
+
 Adicionalmente, as galáxias precisam ter uma elipticidade máxima $\epsilon<0,5$,
 medida nas imagens do SDSS na banda $r$. Isto é necessário para evitar problemas
 na decomposição morfológica, pois o modelo bojo--disco não funciona bem em
@@ -329,6 +333,8 @@ poeira ou disco muito fraco. Outras 15 apresentam problemas no ajuste, como
 mínimos locais intermitentes ou ausência de alguma componente. A coluna de
 observações na Tabela \ref{tab:DecompSample} informa os problemas encontrados em
 cada caso. O sumário dos descartes é o seguinte:
+
+% FIXME: Rogério - Sugiro fazer umas figuras mostrando estas galáxias aqui.
 
 \begin{itemize}
   \item Ajuste ruim: 15
@@ -369,6 +375,7 @@ $\chi^2$). Esta seleção foi feita de forma fortemente conservadora. A amostra
 final deste trabalho (listada na Tabela \ref{tab:DecompSampleFinal}) consiste em
 9 galáxias que tiveram uma decomposição boa segundo estes critérios.
 
+% FIXME: Rogério - Mostrar ajustes bons, ruins e péssimos como exemplo.
 
 %***************************************************************%
 %                                                               %
@@ -498,6 +505,8 @@ espectros ajustados e as propriedades obtidas para toda a amostra estão no
 Apêndice \ref{apendice:Decomp}. A seguir uma discussão sobre o resultado para
 K0858.
 
+% FIXME: Rogério - Por que somente estas duas? Especulas algo?
+
 \begin{figure}
 	\includegraphics[page=15,width=\textwidth]{figuras/sample006a_synthesis}
 	\caption[Espectros ajustados com \starlight das componentes morfológicas de
@@ -509,6 +518,8 @@ K0858.
 	menos sintético, divididos pelo observado).}
 	\label{fig:decompSinteseSpec}
 \end{figure}
+
+% FIXME: Rogério - Mostrar frações de idade para este exemplo.
 
 A Figura \ref{fig:decompSinteseSpec} mostra ajustes do \starlight para os
 espectros integrados observado, do bojo e do disco. As linhas mais claras
@@ -534,6 +545,8 @@ anti-correlacionados, devido à degenerescência do modelo.
 	painel inferior, à direita.}
 	\label{fig:decompSinteseRadprof}
 \end{figure}
+
+% FIXME: Rogério - Qual a lei de extinção utilizada? Testou outras?
 
 As propriedades físicas derivadas da síntese de populações estelares é mostrada
 na Figura \ref{fig:decompSinteseRadprof}. Ali, pode-se ver um perfil radial das
@@ -564,7 +577,7 @@ na outra galáxia com um bom ajuste de populações estelares, a K0592.
 	\includegraphics{figuras/sample006a_synthesis_all2}
 	\caption[Idade e metalicidade médios das componentes morfológicas]
 	{Idade estelar média ponderada pela luminosidade contra metalicidade estelar
-	média ponderada pela massa, para as componentes duas morfológicas de
+	média ponderada pela massa, para as componentes morfológicas de
 	duas galáxias do CALIFA: K0592 (NGC 4874, E0) e K0858 (UGC10905, S0a). Idades
 	e metalicidades foram obtidas pelo \starlight. Pontos em preto são referentes
 	ao espectro observado, total da galáxia. Pontos em vermelho são referentes
@@ -585,6 +598,8 @@ observado. Também é interessante notar que os pontos para uma mesma galáxia
 estão alinhados. Isto pode acontecer devido à degenerescência entre idade e
 metalicidade, comumente vista em sínteses de população estelar.
 
+% FIXME: Rogério - Tentar usar as mesmas linhas de Johnston.
+
 \begin{figure}
 	\includegraphics[width=0.9\textwidth]{figuras/johnston-pop}
 	\caption[A mesma Figura que \ref{fig:populationJohnston}] {A mesma Figura que
@@ -592,6 +607,10 @@ metalicidade, comumente vista em sínteses de população estelar.
 	\ref{fig:decompSintese}.}
 	\label{fig:populationJohnston2}
 \end{figure}
+
+% FIXME: Rogério - Acima diz que os resultados para as componentes é estranho e
+% que o integrado é melhor. Mas tu confias nos teus ajustes? Se não, não dá pra
+% comparar.
 
 É interessante comparar a Figura \ref{fig:decompSintese} com o resultado de
 \citet{Johnston2012}, reproduzido na Figura \ref{fig:populationJohnston2}.
@@ -616,5 +635,6 @@ trabalho com aqueles do artigo que inspirou todo esse estudo. De qualquer modo,
 os experimentos aqui reportados mostram que a decomposição morfológica espectral
 é um problema bastante mais delicado do que se imaginava anteriormente.
 
+% FIXME: Rogério - Qual a conclusão? O método pode ser aplicado ao califa?
 
 %% End of this chapter

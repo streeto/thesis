@@ -38,6 +38,8 @@ apenas $5$ filtros de banda larga ($ugriz$). Já os espectros obtidos pelo mesmo
 {\em survey} possuem uma excelente resolução e cobertura espectral, mas apenas
 sobre a superfície integrada da região central das galáxias.
 
+% FIXME: Rogério - da região central das galáxias e com tamanho fixo no céu.
+
 O melhor dos dois mundos pode ser alcançado com instrumentos que fazem
 espectroscopia de campo integral (IFS\footnote{\em Integral Field
 Spectroscopy.}). Instrumentos que realizam este tipo de espectroscopia consistem
@@ -84,7 +86,9 @@ mais riqueza de detalhes. A Figura \ref{fig:surveysIFS}, mostra uma comparação
 simplificada do tamanho do campo e cobertura espectral destes {\em surveys}. A
 primeira Seção \ref{sec:ifs:califa} apresenta o {\em survey} CALIFA em mais
 detalhes.
- 
+
+% FIXME: Rogério - Tabela mostrando as propriedades de cada survey seria de
+% grande valia.
 
 %***************************************************************%
 %                                                               %
@@ -94,6 +98,9 @@ detalhes.
 
 \section{Síntese de população estelar espacialmente resolvida}
 \label{sec:Intro:Sintese}
+
+% FIXME: Rogério - Sugiro expandir esta seção para umas 2 ou 3 páginas. Está
+% sucinto demais.
 
 Espectros espacialmente resolvidos podem ser descritos como um cubo de dados,
 com as duas primeiras dimensões sendo a posição $x$ e $y$ (ascensão reta e
@@ -114,12 +121,17 @@ preprocessamento visando manter um S/N mínimo e garantir um espectro livre de
 contaminação. Os detalhes sobre o preprocessamento utilizado neste trabalho
 estão descritos na seção 3 do Apêndice \ref{apendice:PaperResolving1}.
 
+% FIXME: Rogério - Falar de trabalhos prévios (NIR) e das vantagens de fazer IFU
+% no quesito stellar populations.
+
 Um aspecto importante do preprocessamento utilizado é que o cubo de dados é
 dividido em zonas de Voronoi, onde regiões com baixo S/N são combinadas,
 formando efetivamente ``{\em spaxels} maiores''. Desta forma, o cubo original é
 transformado numa matriz de zonas e comprimento de onda, onde fatias de zona
 constante são espectros. Com isso, os espectros, e as máscaras e erros que os
 acompanham, estão prontos para serem usados pelo próximo passo.
+
+% FIXME: Rogério - Adicionar uma seção para explicar o starlight.
 
 A síntese de população estelar consiste em obter a história de formação estelar
 (SFH\footnote{\em Star Formation History.}) de uma galáxia utilizando modelos de
@@ -131,11 +143,14 @@ O resultado é um vetor de frações de luz e massa destas SSPs, que podem ser
 facilmente convertidos a uma SFH conforme a prescrição de \cite{Asari2007}.
 O programa utilizado é o \starlight, desenvolvido por \cite{CidFernandes2005}.
 
-Como apresentado na Seção \ref{sec:ifs}, todos os espectros das zonas foram
+Como apresentado na Seção \ref{sec:ifs:qbick}, todos os espectros das zonas foram
 passados pelo \starlight, obtendo-se o resultado da síntese como um arquivo de
 saída separado para cada zona. Entretanto, para visualizar ou mesmo tentar
 entender estes resultados, é preciso organizar e converter estes arquivos para
 um formato mais adequado.
+
+% FIXME: Rogério - Estas zonas são os ``pixels'' da tesselação de voronoi?
+% deixar mais claro.
 
 
 %***************************************************************%
@@ -154,8 +169,8 @@ necessidade de manipular os resultados da síntese dos cubos de dados das
 galáxias do CALIFA, nasceu o software PyCASSO.
 
 PyCASSO ({\em Python CALIFA \starlight Synthesis Organizer}) é um software
-desenvolvido em Python com o objetivo de organizar gerenciar os dados produzidos
-pelo \starlight com base nos dados do CALIFA. O {\em survey} CALIFA é
+desenvolvido em Python com o objetivo de organizar e gerenciar os dados
+produzidos pelo \starlight com base nos dados do CALIFA. O {\em survey} CALIFA é
 apresentado no Capítulo \ref{sec:ifs}, que também discute os softwares QBICK e
 \starlight, ferramentas básicas em nossa análise de cubos de dados. O Capítulo
 \ref{sec:pycasso} apresenta a documentação do PyCASSO, e em seguida discute
@@ -210,5 +225,17 @@ Os cubos destas componentes são tratados exatamente da mesma forma que uma
 galáxia ao serem passados pelo \starlight. Utilizando PyCASSO, os resultados da
 síntese espectral foram analisados e comparados com a síntese da galáxia
 original.
+
+% FIXME: Rogério - Sugestões:
+%
+% * Fazer uma revisão sobre estudos de pop. estelares e morfologia em galáxias.
+% * Contextualizar qual o ganho de fazer isso em 3d.
+% * Já tem algum resultado de síntese ou análise de morfologia em 3d publicado?
+% Qual a diferença entre estes e o que tu  propões aqui?
+% * Qual a dificuldade de manipular os dados de IFU em um survey?
+% * Qual o objetivo do teu trabalho? Qual é o passo científico que a tua tese
+% vai dar?
+% 
+% Em resumo, faltou deixar claro qual o problema!
 
 % End of this chapter

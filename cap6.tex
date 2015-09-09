@@ -67,8 +67,8 @@ horizontal. Os parâmetros do modelo original não listados na Tabela
   \multicolumn{4}{c}{\textbf{Modelo original}} \\
   \multicolumn{2}{c}{\textbf{Bojo}} & \multicolumn{2}{c}{\textbf{Disco}} \\
   \hline
-  $I_e$ & $2,0$ & $I_0$ & $1.0$ \\
-  $r_e$ & $5,0\,\arcs$ & $h$ & $15.0\,\arcs$ \\
+  $I_e$ & $2,0$ & $I_0$ & $1,0$ \\
+  $r_e$ & $5,0\,\arcs$ & $h$ & $15,0\,\arcs$ \\
   $n$ & $4$ & & \\
   $\mathrm{P.A.}$ & $60^\circ$ & $\mathrm{P.A.}$ & $45^\circ$ \\
   $\epsilon$ & $0,1$ & $\epsilon$ & $0,1$ \\
@@ -152,6 +152,9 @@ cinemática não é uma tarefa trivial, já que bojos e discos têm cinemáticas
 completamente distintas. Este é certamente um problema que deve ser visitado no
 futuro.
 
+% FIXME: Rogério - Poeira e metalicidade variável podem afetar muito os
+% resultados, seria um bom teste.
+
 Multiplicando a imagem do modelo pelo conjunto de espectros de cada componente,
 obteve-se um cubo de dados espectral para bojo e disco. Para obter o cubo da
 galáxia sintética, somaram-se as duas componentes, convoluiu-se com a PSF de
@@ -159,6 +162,8 @@ $\mathrm{FWHM} = 2,9\,\arcs$, e adicionou-se ruído gaussiano de $5\%$ (para um
 sinal--ruído de $20$). Para deixar o cubo em dimensões parecidas à do CALIFA, os
 {\em spaxels} a uma distância $r > 32\,\arcs$ foram mascarados, como aparece nos
 painéis superiores da Figura \ref{fig:testFitmodel}, descrita na próxima seção.
+
+% FIXME: Rogério - Não ficou claro, uma sequência de passos ajudaria.
 
 %***************************************************************%
 %                                                               %
@@ -169,6 +174,9 @@ painéis superiores da Figura \ref{fig:testFitmodel}, descrita na próxima seç�
 
 O algoritmo da decomposição morfológica espectral é tratado em detalhes no
 Capítulo \ref{sec:Decomp}, sendo descrito apenas superficialmente nesta seção.
+
+% FIXME: Rogério - Parece um exercício de vidência! Todos os capítulos se
+% referem a coisas que vão acontecer.
 
 \begin{figure}
 	\includegraphics{figuras/simulation_fitmodel}
@@ -245,9 +253,6 @@ $\lambda$-a-$\lambda$ do cubo de dados espectral da galáxia sintética.
 	\label{fig:testFitParams}
 \end{figure}
 
-os params morf ajustados sao mostrados em funcao do comprimento de onda  na fig
-6.4
-
 Os parâmetros morfológicos ajustados são mostrados em função do comprimento de
 onda na Figura \ref{fig:testFitParams}. Os ajustes individuais dos parâmetros,
 $\lambda$-a-$\lambda$ (linhas pretas), não se afastam muito dos parâmetros
@@ -257,7 +262,7 @@ gráficos. Os parâmetros $r_e$ e $n$, do bojo, parecem crescer um pouco na regi
 abaixo de $4000\,\angstrom$, o que pode indicar uma dependência destes valores
 com as características da população estelar do bojo. O ajuste do disco, por
 outro lado, é praticamente constante em comprimento de onda.
-os parâmetros morfológicos médios, ponderados pela verossimilhança do ajuste,
+Os parâmetros morfológicos médios, ponderados pela verossimilhança do ajuste,
 são listados na Tabela \ref{tab:testeModeloAjuste}.
 
 \begin{table}
@@ -431,12 +436,12 @@ Os parâmetros médios das duas decomposições são listados na Tabela
   & $\mathrm{FWHM} = 2,6\,\arcs$ & $\mathrm{FWHM} = 3,3\,\arcs$ & &
   $\mathrm{FWHM} = 2,6\,\arcs$ & $\mathrm{FWHM} = 3,3\,\arcs$ \\
   \hline
-  $r_e$ & $13,64 \pm 5.22\,\arcs$ & $3,83 \pm 0,22\,\arcs$ & $h$ & $14,40
-  \pm 0.38\,\arcs$ & $14,47 \pm 0,27\,\arcs$ \\
+  $r_e$ & $13,64 \pm 5,22\,\arcs$ & $3,83 \pm 0,22\,\arcs$ & $h$ & $14,40
+  \pm 0,38\,\arcs$ & $14,47 \pm 0,27\,\arcs$ \\
   $n$ & $7,38 \pm 1,25$ & $2,51 \pm 0,13$ & & & \\
   $\mathrm{P.A.}$ & $60,7 \pm 2,6^\circ$ & $60,5 \pm
-  2,6^\circ$ & $\mathrm{P.A.}$ & $40,2 \pm 3.6^\circ$ & $47.4 \pm
-  1.7^\circ$ \\
+  2,6^\circ$ & $\mathrm{P.A.}$ & $40,2 \pm 3,6^\circ$ & $47,4 \pm
+  1,7^\circ$ \\
   $\epsilon$ & $0,11 \pm 0,01$ & $0,09 \pm 0,01$ & $\epsilon$ & $0,10 \pm
   0,01$ & $0,099 \pm 0,01$ \\
   \hline
@@ -527,5 +532,9 @@ distribuição, de $\mathrm{FWHM} = 2,9\,\arcs$, e selecionar somente as galáxi
 onde a decomposição parece ter um menor espalhamento no ajuste dos parâmetros em
 função do comprimento de onda. A decomposição é, provavelmente, mais confiável
 nestes casos.
+
+% FIXME: Rogério - Sugestões:
+% * Qual a conclusão do capítulo?
+% * O método retorna resultados confiáveis?
 
 %% End of this chapter
