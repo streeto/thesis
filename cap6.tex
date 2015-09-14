@@ -58,7 +58,7 @@ disco com uma lei exponencial (ver Seção \ref{sec:morph:comp:bd}), cada
 componente com um perfil elipsoidal distinto dado por uma elipticidade
 ($\epsilon = 1 - b/a$, onde $a$ e $b$ são os semieixos maior e menor) e um
 ângulo de posição (P.A.) medido em sentido anti-horário a partir do eixo
-horizontal. Os parâmetros do modelo original não listados na Tabela
+horizontal. Os parâmetros do modelo original são listados na Tabela
 \ref{tab:testeModeloOriginal}.
 
 \begin{table}
@@ -89,6 +89,8 @@ horizontal. Os parâmetros do modelo original não listados na Tabela
 	total.}
 	\label{fig:testInitmodel}
 \end{figure}
+
+% FIXME: Abilio - Colocar o fluxo original na figura.
 
 Este modelo original, mostrado na Figura \ref{fig:testInitmodel}, descreve o
 brilho superficial da galáxia no comprimento de onda de normalização escolhido,
@@ -334,7 +336,7 @@ Mesmo verificando visualmente que os espectros ajustados são parecidos com os
 originais, é preciso quantificar a qualidade do ajuste. Calculando a média da
 razão entre o ajuste e o original, obtém-se para o bojo um valor de $1,00 \pm
 0,03$. Ou seja, o ajuste tem um desvio médio de menos de $1\%$, e um desvio
-padrão de $3\%$. Para o disco a razão média é $0,99 \pm 0.05$, isto é, um desvio
+padrão de $3\%$. Para o disco a razão média é $0,99 \pm 0,05$, isto é, um desvio
 médio de $1\%$, e um desvio padrão de $5\%$. A ordem de magnitude destes desvios
 não é nenhuma surpresa, levando em conta que foram adicionados $5\%$ de ruído
 gaussiano aos dados. Mesmo assim, deve-se explorar melhor a razão
@@ -476,7 +478,7 @@ tanto nos espectros, como mostra a Figura \ref{fig:testFitSpectra26}. Os
 espectros são parecidos com os originais, com diferenças sistemáticas e um
 ``ruído'' maior do que o ajuste com a PSF correta. No caso subestimado, os
 espectros parecem melhor ajustados (Figura \ref{fig:testFitSpectra33}), mas
-também com com diferenças sistemáticas.
+também com diferenças sistemáticas.
 
 \begin{figure}
 	\includegraphics{figuras/simulation_error_psf26}
@@ -508,7 +510,7 @@ e para o disco de $0,77 \pm 0,08$. Quando se subestima a FWHM (Figura
 original, e diminui com o raio. O disco não parece ter gradiente radial, e, em
 ambos os casos, não há um gradiente espectral perceptível, com ``linhas
 espectrais artificiais'' menos intensas do que no outro caso. A razão média
-neste caso é $0,94 \pm 0,05$ para o bojo e $1,13 \pm 0.04$ para o disco.
+neste caso é $0,94 \pm 0,05$ para o bojo e $1,13 \pm 0,04$ para o disco.
 
 Ao se utilizar, na decomposição morfológica, uma PSF com FWHM maior do que a
 real (superestimando), é impossível criar um modelo com um bojo tão concentrado
@@ -521,7 +523,7 @@ concentrado ($r_e$ e/ou $n$ menor). Pelo teste, este caso é mais estável, isto
 % FIXME: Natalia - ainda é biased, o espectro que sai não é legal.
 
 Assim, pode-se ficar tentado a utilizar a PSF com FWHM menor na decomposição
-morfológica espectral das as galáxias do CALIFA, a fim de evitar os caso onde se
+morfológica espectral das galáxias do CALIFA, a fim de evitar os caso onde se
 superestima a PSF. Utilizando uma PSF menor pode-se ter a ilusão de obter o
 resultado da decomposição para mais galáxias. Entretanto, deve-se lembrar que o
 ajuste é significativamente melhor quando se usa a PSF correta, e apresentando

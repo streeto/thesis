@@ -278,7 +278,7 @@ comprimento de onda. Ajustando um perfil de de Vaucouleurs e um exponencial ao
 perfil de brilho de cada uma das galáxias (em ambos os lados do núcleo), eles
 obtêm os espectros separados de cada um dos seus dois componentes morfológicos,
 como mostrado na Figura \ref{fig:spectraJohnston}. Com os espectros, pode-se
-tentar entender que populações estelares compõe o bojo e o disco destes
+tentar entender que populações estelares compõe o bojo e o disco destas
 galáxias. Os autores estimam a idade e a metalicidade estelar das componentes
 utilizando a intensidade da linha \Hbeta e do tripleto de magnésio, comparando
 com uma grade de modelos sintéticos de populações estelares. A conclusão que
@@ -289,6 +289,8 @@ espectros de galáxias em espectros de bojos e discos, mas utilizando cubos de
 dados do CALIFA.
 
 % FIXME: Natalia - ``em ambos os lados do núcleo''?
+% FIXME: Abilio - Comentário sobre o trabalho de johnston pode aparecer também
+% na discussão no final.
 
 
 \subsection{Ajuste de modelos}
@@ -392,22 +394,25 @@ o L-M para este problema.
 
 Existem diversas ferramentas utilizadas em astrofísica que implementam algum
 destes algoritmos para fazer o ajuste de modelos em imagens. Vale citar, por
-exemplo, GALFIT3 \citep{Peng2010} e GASP2D \citep{MendezAbreu2008} utilizando
-L-M, BUDDA \citep{DeSouza2004} utilizando N-M, GIM2D \citep{Simard2002}
-utilizando o algoritmo de Metropolis, e
-IMFIT\footnote{\url{http://www.mpe.mpg.de/~erwin/code/imfit/index.html}}
+exemplo, \textsc{galfit3} \citep{Peng2010} e \textsc{gasp2d}
+\citep{MendezAbreu2008} utilizando L-M, \textsc{budda} \citep{DeSouza2004}
+utilizando N-M, \textsc{gim2d} \citep{Simard2002} utilizando o algoritmo de
+Metropolis, e
+\textsc{imfit}\footnote{\url{http://www.mpe.mpg.de/~erwin/code/imfit/index.html}}
 \citet{Erwin2015}, que utiliza L-M, N-M ou DE. O programa escolhido para o
-presente trabalho foi o IMFIT, em grande parte por ter seu código livre, e
-também por ter sido desenvolvido tendo em mente a facilidade de modificação.
+presente trabalho foi o \textsc{imfit}, em grande parte por ter seu código
+livre, e também por ter sido desenvolvido tendo em mente a facilidade de modificação.
 Entretanto, como a versão original foi feita em forma de um programa executado
 em linha de comando, não é muito prático utilizá-la em seu formato original para
 implementar as tarefas deste trabalho.
 
-Foi feita uma versão modificada do IMFIT em forma de biblioteca dinâmica. Em
-seguida foi feito um código {\em wrapper}, em Python, que acessa todas as
-funções do IMFIT. Esta biblioteca, junto com o código {\em wrapper}. foi chamada
-python-imfit\footnote{\url{https://github.com/streeto/python-imfit}}. Com ela
-pode-se fazer tudo que o IMFIT permite, mas em {\em arrays} numéricos do Python.
+Foi feita uma versão modificada do \textsc{imfit} em forma de biblioteca
+dinâmica. Em seguida foi feito um código {\em wrapper}, em Python, que acessa
+todas as funções do \textsc{imfit}. Esta biblioteca, junto com o código {\em
+wrapper} foi chamada
+\textsc{python-imfit}\footnote{\url{https://github.com/streeto/python-imfit}}.
+Com ela pode-se fazer tudo que o \textsc{imfit} permite, mas em {\em arrays}
+numéricos do Python.
 Esta biblioteca é bastante genérica, e pode ser utilizada para qualquer
 aplicação de ajuste de imagem. Contudo, o mais importante é que a manipulação de
 modelos e o ajuste para múltiplas imagens deixa de ser um exercício tedioso de

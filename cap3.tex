@@ -15,19 +15,19 @@
 %                                                               %
 %***************************************************************%
 
-\chapter{PyCASSO}
+\chapter{\pycasso}
 \label{sec:pycasso}
 
 A fim de agilizar o desenvolvimento de ferramentas de manipulação de cubos de
 dados do CALIFA, alguns programas de computador foram desenvolvidos. Foi montado
-um ``kit de ferramentas'', chamado PyCASSO ({\em Python CALIFA} \starlight\ {\em
+um ``kit de ferramentas'', chamado \pycasso ({\em Python CALIFA} \starlight\ {\em
 Synthesis Organizer}), para organizar e analisar o resultado da síntese de
-populações sobre os dados do CALIFA. PyCASSO foi desenvolvido em sua maior parte
+populações sobre os dados do CALIFA. \pycasso foi desenvolvido em sua maior parte
 pelo autor desta tese, utilizando a linguagem Python, e foi utilizado de forma
 extensiva pelo grupo de populações estelares (cerca de 10 pessoas), resultando
 em vários artigos, alguns deles descritos neste capítulo.
 
-A grosso modo, PyCASSO é composto de três partes:
+A grosso modo, \pycasso é composto de três partes:
 
 \begin{enumerate}
 
@@ -67,7 +67,7 @@ exemplo.}.
 Este software está sendo utilizado pelo grupo de populações estelares da
 colaboração do CALIFA, do qual o autor faz parte. No total são aproximadamente
 10 pessoas utilizando este software. Foram publicados 6 artigos que utilizam
-extensivamente PyCASSO, e mais alguns que utilizaram algum dado resultante de
+extensivamente \pycasso, e mais alguns que utilizaram algum dado resultante de
 forma indireta, apresentados na Seção \ref{sec:pycasso:art}.
 
 
@@ -77,22 +77,22 @@ forma indireta, apresentados na Seção \ref{sec:pycasso:art}.
 %                                                               %
 %***************************************************************%
 
-\section{A ferramenta de manipulação de cubos de dados PyCASSO}
+\section{A ferramenta de manipulação de cubos de dados \pycasso}
 \label{sec:pycasso:Pycasso}
 
-PyCASSO é uma biblioteca desenvolvida em Python. Porém uma biblioteca não é nada
-sem uma boa documentação. Aqui se apresenta de forma breve das capacidades do
-PyCASSO. A documentação completa se encontra no Apêndice \ref{apendice:manual}.
+\pycasso é uma biblioteca desenvolvida em Python. Porém uma biblioteca não é nada
+sem uma boa documentação. Aqui se apresenta de forma breve as capacidades do
+\pycasso. A documentação completa se encontra no Apêndice \ref{apendice:manual}.
 
 O trabalho com a variedade e quantidade de dados gerados pela síntese espectral
 em 3-D tem em geral um caráter fortemente exploratório. Frequentemente não se
-sabe exatamente o que se está buscando, e o trabalho do programador/cientista
-consiste em desenhar gráficos, realizar cálculos, determinar operações ou
-filtros nos dados com base nestes gráficos e cálculos, desenhar novamente, e
-assim sucessivamente. Assim se escolheu a linguagem Python, que possui
-ferramentas adequadas à programação exploratória\footnote{Além de estar se
-tornando uma espécie de {\em lingua franca} na Astrofísica computacional.}, como
-o \texttt{IPython}\footnote{\url{http://ipython.org/}} e o
+sabe exatamente o que se está buscando, e o trabalho do pesquisador consiste em
+desenhar gráficos, realizar cálculos, determinar operações ou filtros nos dados
+com base nestes gráficos e cálculos, desenhar novamente, e assim sucessivamente.
+Assim se escolheu a linguagem Python, que possui ferramentas adequadas à
+programação exploratória\footnote{Além de estar se tornando uma espécie de {\em
+lingua franca} na Astrofísica computacional.}, como o
+\texttt{IPython}\footnote{\url{http://ipython.org/}} e o
 \texttt{matplotlib}\footnote{\url{http://matplotlib.org/}}. Foi feito um esforço
 para que o acesso aos dados de cada galáxia fosse feito de forma simples e
 direta. Um exemplo de código pode ser visto na listagem de código fonte abaixo.
@@ -157,7 +157,7 @@ plt.colorbar()
 Enquanto um mapa é uma forma muito boa de visualizar informações em duas
 dimensões, há vezes em que uma visualização resumida é mais adequada. Galáxias
 em geral têm simetria aproximadamente axial, logo poder medir perfil radial das
-propriedades das galáxias é fundamental para estudá-las. Com o PyCASSO, o
+propriedades das galáxias é fundamental para estudá-las. Com o \pycasso, o
 cálculo do perfil radial é bastante simples, como pode ser visto na Listagem de
 código fonte \ref{lst:radprofIdade}, que calcula o perfil radial da idade
 estelar média. O resultado está na Figura \ref{fig:radprofIdade}.
@@ -191,7 +191,7 @@ plt.plot(bin_center, at_rad)
 	\label{fig:radprofIdade}
 \end{figure}
 
-Esta é só uma pequena demonstração das ferramentas existentes no PyCASSO. Também
+Esta é só uma pequena demonstração das ferramentas existentes no \pycasso. Também
 é possível trabalhar com espectros, calcular perfis azimutais, lidar com {\em
 pixels} mascarados, entre outras coisas. Tudo isto está descrito em detalhes no
 manual do programa (Apêndice \ref{apendice:manual}).
@@ -206,18 +206,18 @@ manual do programa (Apêndice \ref{apendice:manual}).
 \section{Artigos publicados}
 \label{sec:pycasso:art}
 
-Nesta seção discutem-se os artigos onde se utilizou PyCASSO e nos quais o autor
+Nesta seção discutem-se os artigos onde se utilizou \pycasso e nos quais o autor
 desta tese teve uma colaboração importante. Além destes artigos,
 \citet{Husemann2013}, no artigo apresentando o DR1 do CALIFA, utiliza as massas
-estelares determinadas pelo \starlight e disponibilizadas pelo PyCASSO para
+estelares determinadas pelo \starlight e disponibilizadas pelo \pycasso para
 caracterizar a amostra do CALIFA. O artigo que apresenta o DR2, de
 \citet{GarciaBenito2015}, também utiliza as massas da mesma forma (ver Figura
 \ref{fig:DRMass}). O mesmo artigo inclui a medição da PSF do CALIFA (ver Figura
 \ref{fig:DR2PSF}), apresentado neste trabalho na Seção \ref{sec:psf:medida}.
 
 \citet{GonzalezDelgado2014b} explora a relação massa--metalicidade estelar em
-300 galáxias do CALIFA, utilizando PyCASSO. Em \citet{GonzalezDelgado2015} se
-utiliza, além do PyCASSO, a decomposição bojo--disco (ver Seção
+300 galáxias do CALIFA, utilizando \pycasso. Em \citet{GonzalezDelgado2015} se
+utiliza, além do \pycasso, a decomposição bojo--disco (ver Seção
 \ref{sec:morph:comp:bd}) em uma amostra de galáxias, realizada pelo autor desta
 tese, adaptando técnicas discutidas no Capítulo \ref{sec:Decomp}.
 
@@ -234,14 +234,14 @@ STARLIGHT to CALIFA datacubes}}
 
 Este artigo por \citet{CidFernandes2013} descreve todo o processo de síntese
 espectral dos cubos de dados do CALIFA, mencionados no Capítulo \ref{sec:intro},
-e serve como uma demonstração da capacidade do PyCASSO. O artigo está
+e serve como uma demonstração da capacidade do \pycasso. O artigo está
 reproduzido na íntegra no Apêndice \ref{apendice:PaperResolving1}. O
-preprocessamento dos cubos de espectros é feito através do programa QBICK,
-desenvolvido por Rubén García Benito especialmente para o CALIFA, mas é genérico
-o bastante para ser usado em outros cubos de dados. Após explicar em detalhes
-todos os passos envolvidos desde o preprocessamento, passando pela descrição do
-\starlight até a importação dos dados pelo PyCASSO, o artigo apresenta um caso
-de estudo com a galáxia NGC 2916.
+preprocessamento dos cubos de espectros é feito através do programa
+\textsc{qbick}, desenvolvido por Rubén García Benito especialmente para o
+CALIFA, mas é genérico o bastante para ser usado em outros cubos de dados. Após
+explicar em detalhes todos os passos envolvidos desde o preprocessamento,
+passando pela descrição do \starlight até a importação dos dados pelo \pycasso,
+o artigo apresenta um caso de estudo com a galáxia NGC 2916.
 
 \begin{figure}
 	\includegraphics{figuras/L-M-AV-K0277}
@@ -296,7 +296,7 @@ imagens não tenham um aspecto segmentado, com patamares nas zonas periféricas.
 
 Um dos desafios de se trabalhar com cubos multidimensionais é como visualizar
 esta informação. Uma alternativa é comprimir determinadas dimensões. Para
-ilustrar esta capacidade do PyCASSO, a Figura \ref{fig:LMSFR2D} mostra diagramas
+ilustrar esta capacidade do \pycasso, a Figura \ref{fig:LMSFR2D} mostra diagramas
 de luz, massa e taxa de formação estelar (SFR) em função do tempo, onde as
 dimensões $x$ e $y$ foram transformadas em distância radial. Diagramas como
 este, junto com perfis 1-D radiais e temporais ajudam a visualizar e interpretar
@@ -322,13 +322,13 @@ investiga a incerteza nos ajustes feitos no artigo discutido na seção anterior
 O artigo está reproduzido na íntegra no Apêndice \ref{apendice:PaperResolving2}.
 
 Quando se injetam erros aleatórios, obtém-se incertezas de $\sim
-0.08\,\mathrm{dex}$ em idades e metalicidades pesadas pela luminosidade, e de
-$\sim 0.15\,\mathrm{dex}$ quando pesadas pela massa. A massa estelar teve uma
-incerteza de $\sim 0.08\,\mathrm{dex}$, e $A_V$ de $\sim 0.06\,\mathrm{mag}$.
+0,08\,\mathrm{dex}$ em idades e metalicidades pesadas pela luminosidade, e de
+$\sim 0,15\,\mathrm{dex}$ quando pesadas pela massa. A massa estelar teve uma
+incerteza de $\sim 0,08\,\mathrm{dex}$, e $A_V$ de $\sim 0,06\,\mathrm{mag}$.
 Injetando erros sistemáticos em cor\footnote{Adicionando componentes lineares em
 comprimento de onda, a fim de emular uma má calibração de fluxo.} as incertezas
 são similares, exceto para $A_V$, que recebe um desvio sistemático de
-$+0.05\,\mathrm{mag}$ e uma incerteza de $\sim 0.16\,\mathrm{mag}$.
+$+0,05\,\mathrm{mag}$ e uma incerteza de $\sim 0,16\,\mathrm{mag}$.
 
 \begin{figure}
 	\includegraphics[width=1.0\columnwidth]{figuras/resolving2}
@@ -399,6 +399,8 @@ segue exatamente a mesma prescrição de \citet{CidFernandes2014}, descrita na
 Seção \ref{sec:pycasso:art:Resolving1}. O artigo está reproduzido na íntegra no
 Apêndice \ref{apendice:InsideOut}.
 
+% FIXME: Abilio - que tipo de galaxia?
+
 Galáxias vêm em todos os tamanhos. Para determinar o crescimento, as distâncias
 são normalizadas utilizando o raio onde a luminosidade cumulativa (em
 $5635\,\angstrom$) alcança $50\%$ da luminosidade total da galáxia, denominado
@@ -440,6 +442,8 @@ especial'', onde a taxa de formação estelar alcança valores altos muito
 rapidamente. De qualquer forma, esta é uma evidência observacional de algo que
 já se suspeita há muito tempo: que as galáxias massivas se formaram de dentro
 para fora.
+
+% FIXME: Abilio - explicar a última afirmação.
 
 
 %***************************************************************%

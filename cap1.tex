@@ -56,7 +56,7 @@ galáxias \citep{Sanchez2012}. Destas, $100$ foram disponibilizadas no primeiro
 Quando completado, o CALIFA terá obtido da ordem de $10^6$ espectros, quase o
 mesmo que o SDSS. Porém, este não será apenas mais um {\em survey}
 espectroscópico. A riqueza do CALIFA está nas informações espacialmente
-resolvidas, em uma amostra representativa do universo local ($0.005 < z < 0.03$,
+resolvidas, em uma amostra representativa do universo local ($0,005 < z < 0,03$,
 limitada em diâmetro angular) cobrindo a distribuição de galáxias no diagrama
 cor--magnitude da nuvem azul à sequência vermelha, amostrando galáxias de todos
 os tipos morfológicos (espirais, elípticas, irregulares e até mesmo alguns
@@ -75,7 +75,7 @@ sistemas em interação).
 	\label{fig:surveysIFS}
 \end{figure}
 
-Comparado a outros {\em surveys} já realizados, como o Altas3D
+Comparado a outros {\em surveys} já realizados, como o Atlas3D
 \citep{Cappellari2011} ou o {\em Disk Mass Survey} (DMS) \citep{Bershady2010}, o
 CALIFA cobre uma faixa muito maior de tipos morfológicos e massas. Outros {\em
 surveys} que estão em andamento são o SAMI \citep{Croom2012, Bryant2015} e o
@@ -84,8 +84,7 @@ galáxias, bem maior do que a do CALIFA. Entretanto, a vantagem do CALIFA está 
 cobertura e amostragem espacial, observando uma maior porção de cada galáxia com
 mais riqueza de detalhes. A Figura \ref{fig:surveysIFS}, mostra uma comparação
 simplificada do tamanho do campo e cobertura espectral destes {\em surveys}. A
-primeira Seção \ref{sec:ifs:califa} apresenta o {\em survey} CALIFA em mais
-detalhes.
+Seção \ref{sec:ifs:califa} apresenta o {\em survey} CALIFA em mais detalhes.
 
 % FIXME: Rogério - Tabela mostrando as propriedades de cada survey seria de
 % grande valia.
@@ -140,8 +139,8 @@ Ajusta-se o espectro de uma galáxia como a soma de espectros de SSPs com idades
 e composições químicas distintas (levando em conta a atenuação por poeira e a
 cinemática).
 O resultado é um vetor de frações de luz e massa destas SSPs, que podem ser
-facilmente convertidos a uma SFH conforme a prescrição de \cite{Asari2007}.
-O programa utilizado é o \starlight, desenvolvido por \cite{CidFernandes2005}.
+facilmente convertidos a uma SFH conforme a prescrição de \citet{Asari2007}.
+O programa utilizado é o \starlight, desenvolvido por \citet{CidFernandes2005}.
 
 Como apresentado na Seção \ref{sec:ifs:qbick}, todos os espectros das zonas foram
 passados pelo \starlight, obtendo-se o resultado da síntese como um arquivo de
@@ -159,22 +158,22 @@ um formato mais adequado.
 %                                                               %
 %***************************************************************%
 
-\section{O nascimento do PyCASSO}
+\section{O nascimento do \pycasso}
 
 Dada a grande quantidade de dados espalhados em diversos formatos, a análise dos
 resultados da síntese de populações estelares para uma determinada galáxia pode
 se tornar um grande e complexo quebra-cabeças computacional. Trabalhar com todas
 as galáxias do {\em survey} fica virtualmente impossível desta forma. Assim, da
 necessidade de manipular os resultados da síntese dos cubos de dados das
-galáxias do CALIFA, nasceu o software PyCASSO.
+galáxias do CALIFA, nasceu o software \pycasso.
 
-PyCASSO ({\em Python CALIFA \starlight Synthesis Organizer}) é um software
+\pycasso ({\em Python CALIFA \starlight Synthesis Organizer}) é um software
 desenvolvido em Python com o objetivo de organizar e gerenciar os dados
 produzidos pelo \starlight com base nos dados do CALIFA. O {\em survey} CALIFA é
-apresentado no Capítulo \ref{sec:ifs}, que também discute os softwares QBICK e
-\starlight, ferramentas básicas em nossa análise de cubos de dados. O Capítulo
-\ref{sec:pycasso} apresenta a documentação do PyCASSO, e em seguida discute
-alguns dos artigos publicados que o utilizam intensivamente.
+apresentado no Capítulo \ref{sec:ifs}, que também discute os softwares
+\textsc{qbick} e \starlight, ferramentas básicas em nossa análise de cubos de
+dados. O Capítulo \ref{sec:pycasso} apresenta a documentação do \pycasso, e em
+seguida discute alguns dos artigos publicados que o utilizam intensivamente.
 
 
 %***************************************************************%
@@ -185,7 +184,7 @@ alguns dos artigos publicados que o utilizam intensivamente.
 
 \section{Decomposição morfológica de galáxias}
 
-Utilizando PyCASSO para trabalhar com cubos do CALIFA, buscou-se um problema
+Utilizando \pycasso para trabalhar com cubos do CALIFA, buscou-se um problema
 onde se pudesse utilizar a natureza multidimensional dos dados. Com o \starlight
 se obtêm informações sobre a história das populações estelares, ou seja,
 transforma-se comprimento de onda em tempo e luminosidade em massa. Porém, isto
@@ -219,12 +218,12 @@ O Capítulo \ref{sec:Decomp} descreve em detalhes o algoritmo de decomposição
 morfológica espectral. O preprocessamento dos dados inclui (mas não se limita a)
 regularizar a cinemática da galáxia, combinar espectros em imagens, calcular
 erros correlacionados. O ajuste das imagens ao modelo bojo--disco é feito
-utilizando o programa IMFIT \citep{Erwin2015}, descrito na seção
+utilizando o programa \textsc{imfit} \citep{Erwin2015}, descrito na seção
 \ref{sec:morph:comp:ajuste}. Foi escolhida uma amostra de galáxias que
 potencialmente podem ser decompostas em bojos e discos, resultando num conjunto
 de cubos espectrais de componentes bojo e disco de cada galáxia desta amostra.
 Os cubos destas componentes são tratados exatamente da mesma forma que uma
-galáxia ao serem passados pelo \starlight. Utilizando PyCASSO, os resultados da
+galáxia ao serem passados pelo \starlight. Utilizando \pycasso, os resultados da
 síntese espectral foram analisados e comparados com a síntese da galáxia
 original.
 

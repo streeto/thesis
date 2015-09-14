@@ -44,9 +44,9 @@ tratados em duas dimensões como elipsoides, cada qual com uma elipticidade
 ($\epsilon$) e um ângulo de posição (P.A.) independentes. O ângulo de posição é
 medido em sentido anti-horário a partir do eixo horizontal positivo. Estes
 modelos são ajustados a imagens em cada comprimento de onda, utilizando o
-programa IMFIT, conforme descrito na seção a seguir. A decomposição é realizada
-sobre os espectros observados. As linhas de emissão são mascaradas, pois estamos
-interessados apenas na distribuição de populações estelares.
+programa \textsc{imfit}, conforme descrito na seção a seguir. A decomposição é
+realizada sobre os espectros observados. As linhas de emissão são mascaradas,
+pois estamos interessados apenas na distribuição de populações estelares.
 O ajuste morfológico é feito deixando livres todos os parâmetros das equações
 acima ($I_e$, $r_e$, $n$, $I_0$, $h$) e a geometria de cada componente (P.A. e
 $\epsilon$), sem fazer hipótese alguma sobre como os parâmetros morfológicos
@@ -55,6 +55,7 @@ variam a cada comprimento de onda.
 % FIXME: Natalia - Diferença entre fitar imagemil/fenda longa 1d? Deveria fazer
 % esses testes para ver se a resposta não são sair como a de Johnston.
 
+% FIXME: Abilio - uma breve descrição do metodo de johnston.
 
 Conforme descrito na Seção \ref{sec:psf:medida}, convoluem-se as imagens do
 modelo com uma PSF de perfil de Moffat com $\beta=4$ e
@@ -95,10 +96,10 @@ O que se faz aqui é obter uma medida aproximada da cinemática, medindo apenas
 uma velocidade sistêmica ($v_0$) e uma dispersão ($v_d$) assumindo uma
 distribuição de velocidades gaussiana para cada {\em spaxel}. Isto não é o
 ideal, pois bojos podem ter alguma rotação e discos podem ter alguma dispersão
-de velocidades. A cinemática pode até ser diferente para cada cada população
-estelar em uma mesma componente. Entretanto, isto é uma boa primeira
-aproximação. A medida de $v_0$ e $v_d$ foi obtida utilizando o \starlight, que
-ajusta a cinemática juntamente às populações estelares.
+de velocidades. A cinemática pode até ser diferente para cada população estelar
+em uma mesma componente. Entretanto, isto é uma boa primeira aproximação. A
+medida de $v_0$ e $v_d$ foi obtida utilizando o \starlight, que ajusta a
+cinemática juntamente às populações estelares.
 
 Corrigir efeitos de $v_0$ é simples, basta aplicar um {\em redshift} (ou {\em
 blueshift}) de mesma velocidade, na direção oposta, tal que os espectros fiquem
@@ -107,8 +108,8 @@ não é possível ``desalargar'' as linhas espectrais. O que se faz então é te
 deixar todos os {\em spaxels} com a mesma dispersão de velocidades, degradando a
 resolução do espectro. Se a distribuição de velocidades na linha de visada segue
 uma distribuição gaussiana, isto é obtido convoluindo (em espaço de velocidades)
-o fluxo cada {\em spaxel} com uma gaussiana de largura dada por um $v_{d,\ast}$
-adequado, isto é
+o fluxo de cada {\em spaxel} com uma gaussiana de largura dada por um
+$v_{d,\ast}$ adequado, isto é
 \begin{equation*}
 F_{\lambda,\ast} = \frac{1}{v_{d,\ast}\sqrt{2\pi}}\int_{-\infty}^{+\infty}
 F_\lambda \left(\lambda^\prime = \frac{\lambda}{1 + v/c}\right) \exp \left[ -\frac{1}{2}
@@ -215,11 +216,11 @@ A decomposição morfológica espectral requer, nesta implementação, um númer
 ajustes morfológicos igual ao número de amostras de comprimento de onda. Para
 cubos com a configuração V500, são 1600 amostras de largura $2\,\angstrom$. Isto
 requer que se utilize um algoritmo rápido para fazer o ajuste. Para o programa
-IMFIT \citep{Erwin2015}, este algoritmo é o L-M (ver a descrição dos algoritmos
-na Seção \ref{sec:morph:comp:ajuste}). Para fazer um ajuste utilizando L-M, é
-preciso ter um bom chute inicial, visto que este algoritmo é muito propenso a
-cair em mínimos locais. Este chute inicial é determinado utilizando os outros
-algoritmos mais lentos, N-M e DE.
+\textsc{imfit} \citep{Erwin2015}, este algoritmo é o L-M (ver a descrição dos
+algoritmos na Seção \ref{sec:morph:comp:ajuste}). Para fazer um ajuste
+utilizando L-M, é preciso ter um bom chute inicial, visto que este algoritmo é
+muito propenso a cair em mínimos locais. Este chute inicial é determinado
+utilizando os outros algoritmos mais lentos, N-M e DE.
 
 Como primeira aproximação, toma-se uma caixa de $100\,\angstrom$ ao redor de
 $5635\,\angstrom$ (comprimento de onda de normalização) e calculam-se as imagens
@@ -289,8 +290,9 @@ espectros.
 
 A amostra para candidatos à decomposição morfológica espectral foi selecionada a
 partir de 331 galáxias observadas com a configuração V500, as quais passaram
-pelo QBICK e tiveram os espectros passados pelo \starlight, sem segmentação em
-zonas de Voronoi (ver Seções \ref{sec:ifs:qbick} e \ref{sec:ifs:starlight}).
+pelo \textsc{qbick} e tiveram os espectros passados pelo \starlight, sem
+segmentação em zonas de Voronoi (ver Seções \ref{sec:ifs:qbick} e
+\ref{sec:ifs:starlight}).
 Isto é necessário para que se tenham medidas da cinemática da galáxia,
 utilizadas para preparar os dados antes da decomposição.
 
@@ -396,6 +398,8 @@ resultado apenas para a galáxia em que se obteve a melhor decomposição, K0858
 (UGC 10905). Recomenda-se comparar as figuras das outras galáxias com o que está
 exposto a seguir.
 
+% FIXME: Abilio - quais os critérios para ``melhor''? 
+
 \begin{figure}
 	\includegraphics[page=1]{figuras-decomp/K0858_sample006a}
 	\caption[Ajuste morfológico em $5635\,\angstrom$ para K0858 (UGC 10905)]
@@ -406,6 +410,8 @@ exposto a seguir.
 	disco que compõem o modelo são mostrados em vermelho e azul, respectivamente.}
 	\label{fig:decompRadprof}
 \end{figure}
+
+% FIXME: Abilio - Adicionar imagem do SDSS. 
 
 A Figura \ref{fig:decompRadprof} permite uma visualização bidimensional, nos
 painéis superiores, do fluxo observado, modelo e resíduo em $5635\,\angstrom$.
@@ -441,8 +447,8 @@ regiões espectrais onde a decomposição falhou, quando o algoritmo não conver
 ou ficou preso nos limites dos parâmetros.
 
 A primeira coisa que chama a atenção na Figura \ref{fig:decompParams} é a
-diferença entre as parâmetros morfológicos obtidos em caixas de $100\,\angstrom$
-e os obtidos em a cada comprimento de onda. Isto pode ser devido à correção da
+diferença entre os parâmetros morfológicos obtidos em caixas de $100\,\angstrom$
+e os obtidos a cada comprimento de onda. Isto pode ser devido à correção da
 cinemática (Seção \ref{sec:Decomp:cinematica}), que praticamente não tem efeito
 numa imagem de banda espectral larga. Pode também estar relacionado ao
 sinal--ruído das imagens, que aumenta quando se soma imagens. De qualquer forma,
@@ -627,6 +633,8 @@ S0, bojos mais jovens e mais metálicos que seus discos. Tanto a idade quanto a
 metalicidade que eles utilizam foram obtidos através do ajuste de duas linhas de
 absorção, enquanto neste trabalho o espectro inteiro foi utilizado no ajuste de
 populações estelares.
+
+% FIXME: Abilio - Qual o resultado de johnston? 
 
 Além disso, eles trabalham com perfis unidimensionais (espectros de fenda
 longa), enquanto análise feita aqui é toda em 2-D (imagens). Por fim, não é

@@ -99,6 +99,7 @@ diferentes formando um triângulo, tal que as 3 exposições cobrem toda a àrea
 ser observada. O cubo de dados é reconstruído utilizando uma técnica chamada
 {\em dithering}.
 
+% FIXME: Abilio - falar de dithering?
 % FIXME: greek letters shouldn't be in italic here.
 
 A estratégia inicial do {\em survey} foi observar todos os objetos utilizando
@@ -160,7 +161,7 @@ na Figura \ref{fig:CALIFACMD}.
 \begin{figure}
 	\includegraphics[width=0.7\textwidth]{figuras/CALIFACMD}
 	\caption[Diagrama cor--magnitude da amostra mãe do CALIFA]
-	{[Painel superior: diagrama cor--magnitude ($u-z$ contra $M_z$) da amostra mãe
+	{Painel superior: diagrama cor--magnitude ($u-z$ contra $M_z$) da amostra mãe
 	do CALIFA. Os círculos coloridos indicam galáxias publicadas no DR2 (ver Seção
 	\ref{sec:ifs:dr}), com a cor indicando o tipo morfológico. Painel inferior:
 	fração das galáxias publicadas no DR2 com respeito à amostra mãe. Retirado de
@@ -223,10 +224,10 @@ está programado para o final de 2015.
 
 % FIXME: Rogério - Esta seção deveria vir primeiro e iniciar pelo starlight.
 
-\subsection{QBICK}
+\subsection{\textsc{qbick}}
 \label{sec:ifs:qbick}
 
-O programa QBICK foi desenvolvido por Rubén García Benito para fazer o
+O programa \textsc{qbick} foi desenvolvido por Rubén García Benito para fazer o
 mascaramento e tesselação dos cubos de dados descrito a seguir. Para mais
 detalhes sobre o processo completo, ver o artigo por \citet{CidFernandes2013},
 reproduzido no Apêndice \ref{apendice:PaperResolving1}.
@@ -247,16 +248,16 @@ janela espectral de $5590$ a $5680\,\angstrom$ para fazer a medida do
 sinal--ruído dos espectros. Espectros com sinal--ruído baixo, em geral nas
 regiões menos brilhantes da galáxia, podem gerar resultados espúrios no
 \starlight. Estes espectros foram combinados de modo a obter um melhor
-sinal--ruído utilizando uma técnica conhecida como de tesselação de Voronoi. Foi
-escolhido um sinal--ruído de 20 como alvo para o agrupamento dos spaxels. O
-código utilizado para a tesselação de Voronoi foi implementado por
+sinal--ruído utilizando uma técnica conhecida como tesselação de Voronoi. Foi
+escolhido um sinal--ruído de 20 como alvo para o agrupamento dos {\em spaxels}.
+O código utilizado para a tesselação de Voronoi foi implementado por
 \citet{Cappellari2003} e modificado para levar em conta erros correlacionados.
-Um exemplo de aplicação do QBICK é mostrado na Figura \ref{fig:QBICK}.
+Um exemplo de aplicação do \textsc{qbick} é mostrado na Figura \ref{fig:QBICK}.
 
 \begin{figure}
 	\includegraphics[width=0.8\textwidth]{figuras/zones-K0277}
-	\caption[Exemplo processamento com QBICK, galáxia K0277]
-	{Exemplo processamento com QBICK da galáxia NGC 2916 (CALIFA 0277). (a)
+	\caption[Exemplo processamento com \textsc{qbick}, galáxia K0277]
+	{Exemplo processamento com \textsc{qbick} da galáxia NGC 2916 (CALIFA 0277). (a)
 	Imagem do SDSS na banda $r$. (b) Imagem do CALIFA em $5635\,\angstrom$ com máscara
 	espacial. (c) Mapa de sinal--ruído em $5635\,\angstrom$. (d) Sinal--ruído após
 	a segmentação em zonas de Voronoi. (e) Número de {\em spaxels} em cada zona.
@@ -306,7 +307,7 @@ O melhor ajuste é escolhido minimizando
 \chi^2 = \sum_\lambda \left[(F^{\mathrm{observado}}_\lambda -
 F^{\mathrm{modelo}}_\lambda) w_\lambda\right]^2
 \end{equation*}
-onde o peso $w_\lambda$ é definido como o inverso do erro em
+onde o peso $w_\lambda$ é definido como o inverso da incerteza na medida de
 $F_\lambda^{\mathrm{observado}}$.
 
 Os espectros da base provêm de modelos de síntese evolutiva de populações
@@ -314,15 +315,15 @@ estelares. A maior parte dos resultados publicados do \starlight usa os modelos
 de \citet[BC03]{Bruzual2003}. Em particular, em seus estudos de galáxias do SDSS
 o grupo da UFSC normalmente usa uma base composta de 150 SSPs cobrindo 25 idades
 (entre $0,001$ e $18\,\mathrm{Ga}$) e 6 metalicidades ($\log Z/Z_\odot$ entre
-$-2,3$ e $+0,4$; vide \citeal{Mateus2006}). A Figura
-\ref{fig:StarlightSpectrumSample} mostra ajustes feito para 5 galáxias do SDSS
+$-2,3$ e $+0,4$; vide \citet{Mateus2006}). A Figura
+\ref{fig:StarlightSpectrumSample} mostra ajustes feitos para 5 galáxias do SDSS
 utilizando esta base. A extinção é modelada com uma lei de avermelhamento de
 CCM. Neste trabalho usamos modelos mais atualizados de espectros de SSPs,
 extraídos dos modelos de Granada \citep[para idades até
 $63\,\mathrm{Ma}$]{GonzalezDelgado2005} e os do projeto MILES \citep[para idades
 maiores que $63\,\mathrm{Ma}$]{Vazdekis2010}. No total esta nova base contém 235
 elementos cobrindo idades de  $0,001$ a $14\,\mathrm{Ga}$, e $\log Z/Z_\odot$ de
-$-2.3$ a $+0.33$.
+$-2,3$ a $+0,33$.
 Para mais detalhes ver \citet{GonzalezDelgado2014b, GonzalezDelgado2014a}.
 
 \begin{figure}
@@ -379,7 +380,7 @@ se considerarmos o espectro de cada zona (ou {\em spaxel}) como o espectro de
 uma galáxia inteira. No entanto, para tirar máximo proveito da informação sobre
 populações estelares e sua distribuição espacial é necessária uma ferramenta que
 organize os resultados do \starlight para um dado cubo de dados. Dessa
-necessidade nasceu a plataforma PyCASSO, assunto do próximo capítulo.
+necessidade nasceu a plataforma \pycasso, assunto do próximo capítulo.
 
 % FIXME: Rogério - Sugestões:
 %
