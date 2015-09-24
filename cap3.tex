@@ -38,7 +38,8 @@ minutos para ser carregada em memória usando arquivos texto. Este tempo se redu
 para menos de um segundo usando arquivo FITS. Há outra otimização para acessar
 dados de várias galáxias simultaneamente, utilizando o formato HDF5. Neste caso
 a carga dos dados em disco para a memória é ``preguiçosa'', quer dizer, é feita
-somente quando os dados são efetivamente acessados.
+somente quando os dados são efetivamente acessados. O capítulo 3 do manual
+(Apêndice \ref{apendice:manual}) demonstra como fazer a conversão.
 
 \item Camada de entrada e saída. Os arquivos FITS e HDF5 foram montados de forma
 a serem facilmente acessados em qualquer ambiente. Ainda assim, há uma camada de
@@ -103,7 +104,7 @@ inclusive utilizando a função autocompletar da maioria dos ambientes de
 desenvolvimento Python.}]
 # Carregar arquivo FITS com os dados.
 from pycasso import fitsQ3DataCube
-K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
+K = fitsQ3DataCube('K0001_synthesis.fits')
 
 # Acessar a idade media ponderada pela luminosidade.
 at = K.at_flux__z
@@ -112,9 +113,6 @@ at = K.at_flux__z
 at_total = (at * K.Lobn__z).sum() / K.Lobn__z.sum()
 print 'Idade media da galaxia: %.2f' % at_total
 \end{lstlisting}
-
-% FIXME: Rogério - Como chegas ao cubo de síntese? o pycasso passa o cubo para o
-% starlight?
 
 Para algumas operações, como o cálculo da idade estelar média feito na Figura
 \ref{lst:dataAccess}, pode-se utilizar apenas o resultado para as zonas. Neste
@@ -135,7 +133,7 @@ idade estelar média ponderada pela luminosidade. O gráfico resultante é mostr
 na Figura \ref{fig:mapaIdade}.}, label={lst:mapaIdade}]
 # Carregar arquivo FITS com os dados.
 from pycasso import fitsQ3DataCube
-K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
+K = fitsQ3DataCube('K0001_synthesis.fits')
 
 # Converter zonas para imagem.
 at_image = K.zoneToYX(K.at_flux__z, extensive=False)
@@ -167,7 +165,7 @@ radial da idade estelar média ponderada pela luminosidade.},
 label={lst:radprofIdade}]
 # Carregar arquivo FITS com os dados.
 from pycasso import fitsQ3DataCube
-K = fitsQ3DataCube('K0001_synthesis_suffix.fits')
+K = fitsQ3DataCube('K0001_synthesis.fits')
 
 # Converter zonas para imagem.
 at_image = K.zoneToYX(K.at_flux__z, extensive=False)
@@ -229,7 +227,7 @@ tese, adaptando técnicas discutidas no Capítulo \ref{sec:Decomp}.
 %***************************************************************%
 
 \subsection{Artigo: {\em Resolving galaxies in time and space. I. Applying
-STARLIGHT to CALIFA datacubes}}
+\starlight to CALIFA datacubes}}
 \label{sec:pycasso:art:Resolving1}
 
 Este artigo por \citet{CidFernandes2013} descreve todo o processo de síntese

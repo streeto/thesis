@@ -93,14 +93,25 @@ duas dimensões espaciais e uma dimensão espectral.
 Todavia, pode-se notar na Figura \ref{fig:PPAK} que as fibras não cobrem
 totalmente o campo de observação. Na verdade, apenas em torno de 60\% da luz
 proveniente do campo cai dentro das fibras. O restante se perde nos espaços
-entre elas. Para mitigar este problema, observa-se o mesmo campo 3 vezes,
-deslocando o telescópio uma fração do diâmetro de uma fibra em direções
-diferentes formando um triângulo, tal que as 3 exposições cobrem toda a àrea a
-ser observada. O cubo de dados é reconstruído utilizando uma técnica chamada
-{\em dithering}.
+entre elas. Para mitigar este problema utiliza-se uma técnica chamada {\em
+dithering}, observando-se o mesmo campo 3 vezes, a cada vez deslocando o
+telescópio uma fração do diâmetro de uma fibra em direções diferentes formando
+um triângulo, tal que as 3 exposições cobrem toda a àrea a ser observada. O cubo
+de dados é reconstruído utilizando os programas de computador da {\em pipeline}
+de observação \citep{Sanchez2012}.
 
-% FIXME: Abilio - falar de dithering?
-% FIXME: greek letters shouldn't be in italic here.
+\begin{figure}
+	\includegraphics{figuras/DR2_sample_spectra}
+	\caption[Exemplos de espectros V500 e V1200 do CALIFA]
+	{Espectros V500 e V1200 da galáxia NGC 7625, publicada no DR2 do CALIFA
+	\citep{GarciaBenito2015}. Nos painéis superiores são mostradas imagens em
+	$4500\,\angstrom$ nas duas configurações. Os espectros referentes aos pontos
+	de cores violeta e vermelho, localizados no núcleo, e aos pontos de cores
+	verde e laranja, a $12\,\arcs$ do núcleo, são mostrados no painel inferior,
+	com as mesmas cores. A linha tracejada mostra o comprimento de onda utilizado
+	nas imagens.}
+	\label{fig:DR2ExampleSpectra}
+\end{figure}
 
 A estratégia inicial do {\em survey} foi observar todos os objetos utilizando
 duas configurações diferentes e complementares do instrumento. A primeira
@@ -116,16 +127,12 @@ espectro, para incluir a descontinuidade de Balmer, \Hdelta, \Hgamma e
 Estas duas configurações são chamadas daqui em diante de V500 e V1200
 respectivamente. A principal motivação para as observações com a V1200 é medir a
 cinemática estelar, explorando a maior resolução espectral dessa grade
-($\sigma_{\mathrm{instrumental}} \sim 78\, \mathrm{km}/\mathrm{s}$).
+($\sigma_{\mathrm{instrumental}} \sim 78\, \mathrm{km}/\mathrm{s}$). Exemplos de
+espectros obtidos com as duas configurações, para a galáxia NGC 7625, são
+mostrados na Figura \ref{fig:DR2ExampleSpectra}.
 
-% FIXME: Rogério - Exemplos de espectros de diferentes posições e com V500 e
-% V1200.
 
 \subsection{Amostra}
-
-% FIXME: Rogério - Colocar mais detalhes da amostra final. Por exemplo, quantas
-% têm espectro nuclear, tipos morfológicos, etc. Não quero ter que ler o paper
-% pra saber isso, um resumo seria bom.
 
 A amostra obtida pelo CALIFA deve satisfazer os requerimentos científicos
 descritos anteriormente, levando em conta as limitações técnicas e
@@ -143,12 +150,17 @@ classificadas como galáxias de forma equivocada.
 O resultado é uma amostra de 939 galáxias, denominada {\em amostra mãe},
 descrita e estudada em detalhes por \citet{Walcher2014}. O conteúdo da amostra,
 junto com tabelas auxiliares, está disponível no {\em website} do
-CALIFA\footnote{\url{http://www.caha.es/CALIFA/}}. A amostra final observada
-deve conter aproximadamente $2/3$ da amostra mãe, em torno de 600 galáxias, a
-serem selecionadas conforme a visibilidade, num padrão quase aleatório. A Figura
-\ref{fig:CALIFASample} mostra a distribuição de magnitude aparente na banda $r$
-contra o {\em redshift} da amostra mãe. O diagrama cor--magnitude pode ser visto
-na Figura \ref{fig:CALIFACMD}.
+CALIFA\footnote{\url{http://www.caha.es/CALIFA/}}. Todas as galáxias da amostra
+têm imagens obtidas nas bandas óptica (SDSS), infravermelha próxima (WISE) e
+rádio (NVSS); 655 delas têm fotometria em ultravioleta (GALEX) e 42 têm imagens
+em raios-X (Chandra). Espectros ópticos do SDSS DR7 (obtidos a menos de
+$15\,\arcs$ do núcleo) estão disponíveis para 622 galáxias da amostra.
+
+A amostra final observada deve conter aproximadamente $2/3$ da amostra mãe, em
+torno de 600 galáxias, a serem selecionadas conforme a visibilidade, num padrão
+quase aleatório. A Figura \ref{fig:CALIFASample} mostra a distribuição de
+magnitude aparente na banda $r$ contra o {\em redshift} da amostra mãe. O
+diagrama cor--magnitude pode ser visto na Figura \ref{fig:CALIFACMD}.
 
 \begin{figure}
 	\includegraphics[width=0.7\textwidth]{figuras/CALIFASample}
@@ -164,12 +176,14 @@ na Figura \ref{fig:CALIFACMD}.
 	{Painel superior: diagrama cor--magnitude ($u-z$ contra $M_z$) da amostra mãe
 	do CALIFA. Os círculos coloridos indicam galáxias publicadas no DR2 (ver Seção
 	\ref{sec:ifs:dr}), com a cor indicando o tipo morfológico. Painel inferior:
-	fração das galáxias publicadas no DR2 com respeito à amostra mãe. Retirado de
+	pecentual das galáxias publicadas no DR2 com respeito à amostra mãe. Os números
+	indicam a quantidade observada (cima) e a quantidade na amostra mãe (baixo) em
+	cada caixa. Caixas com contornos laranja contém poucas galáxias da
+	amostra. Retirado de
 	\citet{GarciaBenito2015}.}
 	\label{fig:CALIFACMD}
 \end{figure}
 
-% FIXME: Rogério - O que são os números? Dar uma boa explicação da figura.
 
 \subsection{{\em Data Releases}}
 \label{sec:ifs:dr}
@@ -350,15 +364,17 @@ vetor de fração de massa $\vec{\mu}$, que se relaciona ao $\vec{x}$ através d
 relação massa--luminosidade de cada elemento da base. Individualmente os
 componentes $x_j$ e $\mu_j$ dos vetores não são confiáveis, pois há muita
 degenerescência nos elementos da base \citep{CidFernandes2005}. Porém, a
-informação contida nos vetores pode ser condensada, gerando medidas físicas como
-a taxa de formação estelar, a idade estelar média e a metalicidade estelar
-média, os dois últimos ponderados por luminosidade ($\vec{x}$) ou massa
-($\vec{\mu}$), por exemplo. Estas medidas são muito mais robustas, como
-demonstrado por \citet{CidFernandes2014}, reproduzido no Apêndice
-\ref{apendice:PaperResolving1}.
-
-% FIXME: Rogério - Sugiro colocar alguns detalhes aqui (e.g. equações 9 e 10 do
-% paper do Cid).
+informação contida nos vetores pode ser condensada, gerando medidas físicas mais
+robustas. A idade estelar média ponderada pela luminosidade pode ser definida
+como $\langle \log t \rangle_{\mathrm{L}} = \sum_j x_j \log t_j$, onde $t_j$ é a
+idade de cada elemento da base.
+Pode-se substituir o vetor de população ($\vec{x}$) pelo vetor de fração de
+massa ($\vec{\mu}$) e assim obter a idade ponderada pela massa. Outra
+propriedade bastante utilizada é a metalicidade estelar média ponderada pela
+massa, definida como $\langle Z \rangle_{\mathrm{M}} = \sum_j \mu_j Z_j$, onde
+$Z_j$ é a metalicidade de cada elemento da base. Medidas como estas geram
+resultados muito mais confiáveis, como demonstrado por \citet{CidFernandes2014},
+reproduzido no Apêndice \ref{apendice:PaperResolving1}.
 
 Esta técnica foi utilizada em diversos artigos. Em particular a colaboração
 SEAGal ({\em Semi Empirical Analysis of Galaxies}), liderada pela UFSC, aplicou

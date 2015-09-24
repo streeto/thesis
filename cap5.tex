@@ -235,12 +235,13 @@ embora eles estejam a cerca de $1\,\sigma$ de separação. Isto poderia indicar
 uma diferença sistemática entre a PSF das estrelas de calibração e a PSF das
 estrelas de campo. Todavia, observando atentamente o histograma de FWHM das
 estrelas de campo (painel inferior da Figura \ref{fig:PSFField}), pode-se notar
-que a distribuição possui um excesso próximo a $2,8\,\arcs$. Isso parece indicar
-que a FWHM da PSF das estrelas de campo é em geral maior do que o estimado pela
-média ponderada, já que a distribuição se desvia de uma gaussiana. Isto, aliado
-ao fato de que o tamanho da amostra de estrelas de calibração (45) é maior do
-que o das estrelas de campo (9), fez com que se escolhesse a medida da primeira
-amostra como a mais confiável.
+que o valor mais frequente da distribuição (moda) é aproximadamente
+$2,8\,\arcs$, muito próximo do valor obtido para as estrelas de calibração. A
+distribuição se desvia de uma gaussiana, com a média ponderada da FWHM da PSF
+das estrelas de campo menor do que o valor mais frequente. Isto, aliado ao fato
+de que o tamanho da amostra de estrelas de calibração (45) é maior do que o das
+estrelas de campo (9), fez com que se escolhesse a medida da primeira amostra
+como a mais confiável.
 
 Já com os valores de elipticidade ($\epsilon$) obtidos nos dois casos, os
 semieixos maior e menor da FWHM estão dentro da faixa de $1\,\sigma$ um do
@@ -251,20 +252,23 @@ desnecessária (e possivelmente artificial) ao modelo de PSF.
 Assim, a PSF adotada neste trabalho é um perfil de Moffat com simetria axial,
 $\beta\!=\!4$ e $\mathrm{FWHM}=2,9 \pm 0,3\,\arcs$. Este foi o mesmo
 procedimento para fazer a caracterização da PSF publicada no DR2 do CALIFA
-\citep{GarciaBenito2015}, mas com uma diferença. Naquele caso, modelou-se tanto
-FWHM quanto $\beta$, obtendo-se $\mathrm{FWHM}=2,39 \pm 0,26\,\arcs$ e
+\citep{GarciaBenito2015}, mas com uma diferença. Naquele caso, ajustaram-se
+tanto FWHM quanto $\beta$, obtendo-se $\mathrm{FWHM}=2,39 \pm 0,26\,\arcs$ e
 $\beta=1,73 \pm 0,11$. A diferença está basicamente em qual região da PSF se
-está interessado. Por uma questão geométrica, há mais {\em pixels} longe do
-centro do perfil, o que acaba causando mais peso destas regiões periféricas no
-modelo escolhido pelo ajuste (ver as barras de erro cada vez menores com a
-distância, na Figura \ref{fig:PSFExemplo}, que são a grosso modo inversamente
-proporcionais ao peso). Porém, na maioria destes {\em pixels} periféricos o
-fluxo proveniente da estrela já está submerso no ruído, achatando o perfil (isto
-é, diminuindo $\beta$). O ajuste resultante é então pior nas regiões centrais,
-com peso menor.
-No caso do ajuste morfológico de uma galáxia, isto pode causar problemas na
-determinação dos parâmetros do bojo. Assim, optou-se por refazer a análise da
-PSF para esta tese com $\beta$ fixo.
+está interessado em modelar mais precisamente. Por uma questão geométrica, há
+mais {\em pixels} longe do centro do perfil, o que acaba causando mais peso
+destas regiões periféricas no modelo escolhido pelo ajuste (ver as barras de
+erro cada vez menores com a distância, na Figura \ref{fig:PSFExemplo}, que são a
+grosso modo inversamente proporcionais ao peso). Porém, na maioria destes {\em
+pixels} periféricos o fluxo proveniente da estrela já está submerso no ruído,
+achatando o perfil (isto é, diminuindo $\beta$). O ajuste resultante é então
+pior nas regiões centrais, com peso menor.
+No caso do ajuste morfológico de uma galáxia, em particular utilizando um perfil
+concentrado como o de Sérsic para o bojo, requer uma forma precisa da PSF nas
+regiões centrais. Qualquer erro sistemático na forma da PSF pode causar
+problemas na determinação dos parâmetros morfológicos do bojo.
+Desta forma, optou-se por refazer a análise da PSF para esta tese com $\beta$
+fixo.
 
 % FIXME: Rogério - Sugestões:
 %
