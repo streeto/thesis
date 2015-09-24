@@ -5,7 +5,7 @@
 \ProvidesClass{nathesis}
 
 % Standard printing
-\LoadClass[a4paper, 12pt]{memoir}
+\LoadClass[a5paper, 10pt]{memoir}
 % **************************************************************** %
 
 
@@ -40,7 +40,7 @@
 \else
   % Figure packages
   %\RequirePackage[dvips]{graphicx}
-  %\DeclareGraphicsRule{.eps}{eps}{.eps.bb}{}
+  \DeclareGraphicsRule{.eps}{eps}{.eps.bb}{}
 \fi
 % **************************************************************** %
 
@@ -73,21 +73,27 @@
 
 % UTF-8
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 %\usepackage{mathptmx}
 %\DeclareMathAlphabet{\mathptmx}
 
 % Bibtex
 \usepackage{natbib}
 \citestyle{aa}
-% count number of references:
-%\usepackage[super]{natbib}
-%%\citestyle{aa} (comment this line)
 
 % Journal abreviations
 \usepackage{aas_macros}
 
-% Portuguese hyphenation
-\usepackage[brazil]{babel}
+% Portuguese hyphenation and correct comma in float numbers.
+\def\magyarOptions{mathhucomma=fix,figurecaptions=unchanged,tablecaptions=unchanged,sectiondot=none}
+\usepackage[magyar,brazil]{babel}
+
+% Long tables
+\usepackage{longtable}
+
+% For equation arrays and better looking fractions.
+\usepackage{amsmath}
+\usepackage{xfrac}
 
 % Figs dir
 \graphicspath{{figuras/}}
@@ -95,6 +101,20 @@
 \renewcommand{\textfraction}{0.1}
 \renewcommand{\topfraction}{0.9}
 \setlength{\@fptop}{0pt}
+
+%% Figure environment
+\let\@oldfigure\figure
+\let\@oldendfigure\endfigure
+\renewenvironment{figure}{
+  \@oldfigure%
+  \begin{center}%
+}{%
+  \end{center}%
+  \@oldendfigure%
+  \ignorespacesafterend%
+}
+
+\usepackage{placeins}
 
 %******* % The packages below seem to make a pretty good pdf using ps2pdf
 %******* %\usepackage{ae,aecompl}
@@ -105,14 +125,64 @@
 % Bigger fonts
 \usepackage{fix-cm}
 
-% Used for code formatting.
+%******* % Fancy code listings
 \usepackage{fancyvrb}
 \usepackage[scaled]{beramono}
-\usepackage{listings}
-\usepackage{longtable}
 
-\usepackage{amsmath}
-\usepackage{xfrac}
+\usepackage{setspace}
+\usepackage{txfonts}
+
+%%%%% BEGIN Python environment
+\usepackage{color}
+\usepackage{listings}
+\renewcommand*{\lstlistingname}{Código fonte}
+
+\definecolor{Code}{rgb}{0,0,0}
+\definecolor{Decorators}{rgb}{0.5,0.5,0.5}
+\definecolor{Numbers}{rgb}{0.5,0,0}
+\definecolor{MatchingBrackets}{rgb}{0.25,0.5,0.5}
+\definecolor{Keywords}{rgb}{0,0,1}
+\definecolor{self}{rgb}{0,0,0}
+\definecolor{Strings}{rgb}{0,0.63,0}
+\definecolor{Comments}{rgb}{0,0.63,1}
+\definecolor{Backquotes}{rgb}{0,0,0}
+\definecolor{Classname}{rgb}{0,0,0}
+\definecolor{FunctionName}{rgb}{0,0,0}
+\definecolor{Operators}{rgb}{0,0,0}
+\definecolor{Background}{rgb}{0.98,0.98,0.98}
+
+\lstset{
+numbers=left,
+numberstyle=\footnotesize,
+numbersep=1em,
+xleftmargin=1em,
+framextopmargin=2em,
+framexbottommargin=2em,
+showspaces=false,
+showtabs=false,
+showstringspaces=false,
+frame=l,
+tabsize=4,
+% Basic
+basicstyle=\ttfamily \small,
+backgroundcolor=\color{Background},
+language=Python,
+% Comments
+commentstyle=\color{Comments}\slshape,
+% Strings
+stringstyle=\color{Strings},
+morecomment=[s][\color{Strings}]{"""}{"""},
+morecomment=[s][\color{Strings}]{'''}{'''},
+% keywords
+morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,True,False,None,access,as,,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+keywordstyle={\color{Keywords}\bfseries},
+% additional keywords
+morekeywords={[2]@invariant},
+keywordstyle={[2]\color{Decorators}\slshape},
+emph={self},
+emphstyle={\color{self}\slshape},
+%
+}
 
 % **************************************************************** %
 
@@ -131,11 +201,11 @@
 % ** Sizes, sizes
 
 % Margins - new UFSC rules
-\setlrmarginsandblock{36mm}{21mm}{*}
-\setulmarginsandblock{39mm}{31mm}{*}
-\setheadfoot{10mm}{10mm}
+\setlrmarginsandblock{25mm}{15mm}{*}
+\setulmarginsandblock{27mm}{22mm}{*}
+\setheadfoot{7mm}{7mm}
 \checkandfixthelayout
-\parindent 14mm
+\parindent 10mm
 
 % Size of epigraphs
 \epigraphwidth 0.7\textwidth
@@ -182,7 +252,7 @@
   \renewcommand*{\printchaptername}{%
     \chapnamefont\centering\@chapapp}
   \renewcommand*{\printchapternum}{\chapnumfont \thechapter}
-  \renewcommand*{\chaptitlefont}{\normalfont\Huge\sffamily}
+  \renewcommand*{\chaptitlefont}{\normalfont\Huge\sffamily}%\bfseries}
 %  \renewcommand*{\chaptitlefont}{\normalfont\normalsize\bfseries\scshape}
   \renewcommand*{\printchaptertitle}[1]{%
     \hrule\vskip\onelineskip \centering \chaptitlefont{##1}\par}
@@ -200,7 +270,7 @@
 % ** Dedicatoria
 \newcommand{\dedication}[1]{%
   \thispagestyle{empty}%
-  {\clearpage\mbox{}\vfill\hfill{\Large\fzapfit #1} \par\vspace*{4em}\clearpage}%
+  {\clearpage\mbox{}\vfill\hfill{\Large\fzapfit #1} \par\vspace*{4cm}\clearpage}%
 }
 % **************************************************************** %
 
@@ -216,39 +286,32 @@
 \newcommand{\comments}[1]{\def\comments{#1}}
 \newcommand{\place}[1]{\def\place{#1}}
 \newcommand{\thesisdate}[1]{\def\thesisdate{#1}}
-\newcommand{\jury}[1]{\def\jury{#1}}
 
 \newcommand{\titlepage}{{%
-    \fontfamily{pnc}\selectfont
-%    \newcommand*{\titlefont}{\HUGE\sffamily}
-    \newcommand*{\titlefont}{\fontsize{35}{42}\selectfont\sffamily}
+    \newcommand*{\titlefont}{\normalfont\HUGE\sffamily}%\bfseries}
     \thispagestyle{empty}
     \centering
-    %\sffamily
-    %\vspace{-5em}
+    \sffamily
     \institution \\
     \vspace*{1.5em}
     \institutionSDW \\
-    \vspace*{6em}
-    %\vfill
+    \vspace*{4em}
     \hrule\vskip\onelineskip
     {\titlefont
       \thesistitle \\
     }
     \vskip\onelineskip\hrule
     \vspace*{3em}
-    {%\Large
+    {\Large
       \thesisauthor \\
     }
-    \vspace*{1em}
-    \vfill
+    \vspace*{6em}
     \supervisor \\
+    \cosupervisor \\
     \vspace*{1em}
     \vfill
-    \cosupervisor \\
-    \vspace*{9em}
     \begin{minipage}[t]{0.9\textwidth}
-      {%\small
+      {\small
         \comments
       }
     \end{minipage}
@@ -257,53 +320,6 @@
     \place, \thesisdate
     \normalfont
     \clearpage}}
-
-% ** Page de titre - ObsPM
-\newcommand{\pagedetitre}{{%
-    \fontfamily{pnc}\selectfont
-    \newcommand*{\titlefont}{\fontsize{35}{42}\selectfont\sffamily}
-    \thispagestyle{empty}
-    \centering
-    \institution \\
-    \vspace*{1.5em}
-    \institutionSDW \\
-    \vspace*{5em}
-    %\vfill
-    {%\Large
-      \thesisauthor \\
-    }
-    \vspace*{2em}
-    \hrule\vskip\onelineskip
-    {\titlefont
-      \thesistitle \\
-    }
-    \vskip\onelineskip\hrule
-    \vspace*{2em}
-    \supervisor \\
-    \vspace*{2em}
-    \thesisdate \\
-    \vfill
-    \vspace*{1em}
-    \flushleft
-    {\bfseries Jury :}
-    \jury
-    \normalfont
-    \clearpage}}
-
-% List environment for jury in French version
-\newenvironment{xlist}[1][\rule{0.75cm}{0cm}]{%
-  \begin{list}{}{%
-    \settowidth{\labelwidth}{#1:}
-    \setlength{\labelsep}{0.5cm}
-    \setlength{\leftmargin}{\labelwidth}
-    \addtolength{\leftmargin}{\labelsep}
-    \setlength{\rightmargin}{0pt}
-    \setlength{\parsep}{0.5ex plus 0.2ex minus 0.1ex}
-    \setlength{\itemsep}{0 ex plus 0.2ex}
-    \renewcommand{\makelabel}[1]{##1\hfil}
-    }
-  }
-{\end{list}}
 % **************************************************************** %
 
 
@@ -312,19 +328,17 @@
 \setlength{\absleftindent}{0em}
 \setlength{\absrightindent}{0em}
 \renewcommand{\abstractnamefont}{\normalfont\sffamily}%\bfseries}
-%\renewcommand{\abstracttextfont}{\normalfont}
+\renewcommand{\abstracttextfont}{\normalfont}
 \renewenvironment{abstract}[1][\abstractname]{%
   \setup@bstract
   \if@bsrunin\else
     \ifnumber@bs \num@bs \else
-      \begin{\absnamepos}
-      \abstractnamefont#1
-      \end{\absnamepos}
-      \vspace{\abstitleskip}
+      \begin{\absnamepos}\abstractnamefont#1\end\absnamepos%
+      \vspace{\abstitleskip}%
     \fi
   \fi
   \put@bsintoc%
-  \begin{@bstr@ctlist}\if@bsrunin\@bsrunintitle\fi}%\abstracttextfont}%
+  \begin{@bstr@ctlist}\if@bsrunin\@bsrunintitle\fi\abstracttextfont}%
   {\par\end{@bstr@ctlist}}
 % **************************************************************** %
 

@@ -81,11 +81,11 @@ e $I^\mathrm{PSF}$ a imagem da PSF, a imagem final $I^\ast$ é dada por
 I^\ast = I \otimes I^\mathrm{PSF}.
 \end{equation*}
 Aplicando a transformada de Fourier,
-\begin{equation*}
+\begin{align*}
 \mathcal{F}\{I^\ast\} &= \mathcal{F}\{I \otimes
 I^\mathrm{PSF}\} \\
 &= \mathcal{F}\{I\} \cdot \mathcal{F}\{I^\mathrm{PSF}\},
-\end{equation*}
+\end{align*}
 ou seja, troca-se uma convolução por uma multiplicação. Para obter a imagem
 final, basta aplicar a transformada de Fourier inversa sobre o produto. A
 transformada de Fourier da PSF é sempre a mesma, logo a cada iteração apenas

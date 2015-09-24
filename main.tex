@@ -2,22 +2,22 @@
 % Tese de Doutorado / Dept Fisica, CFM, UFSC                    %
 % Andre@UFSC - 2014                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass{nathesis}
+\documentclass[final]{nathesis_A5}
 
 \begin{document}
 
-\begin{frontmatter}
-  \input{capa}
-  \input{dedicatoria}
-  \input{agradecimentos}
-  \input{resumo}
-  \input{abstract}
-  \tableofcontents
-  \listoffigures
-  \listoftables
-\end{frontmatter}
+\frontmatter
+  \pagenumbering{arabic}
+  \input{capa}\clearpage
+  \input{dedicatoria}\clearpage
+  \input{agradecimentos}\clearpage
+  \input{resumo}\clearpage
+  \input{abstract}\clearpage
+  \tableofcontents\clearpage
+  \listoffigures\clearpage
+  \listoftables\clearpage
 
-\begin{mainmatter}
+\mainmatter*
 
   % Introdução
   \input{cap1}
@@ -57,12 +57,9 @@
   % Artigos publicados
   \input{anexo_artigos}
   
-\end{mainmatter}
 
-\begin{backmatter}
-	\bibliographystyle{apj}
-	\bibliography{apj-jour,bibliografia}
-\end{backmatter}
+\backmatter
+  \input{bibliografia.tex}
 
 \end{document}
 

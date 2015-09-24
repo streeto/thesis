@@ -31,13 +31,11 @@ para trabalhar com galáxias lenticulares (S0), que podem ser decompostas em um
 bojo e um disco. Conforme a Seção \ref{sec:morph:comp:bd}, o perfil de brilho do
 bojo é modelado como uma lei de Sérsic, e o perfil do disco como uma lei
 exponencial, conforme as equações
-\begin{equation*}
-I(r) = I_e \exp \left\{- b_n \left[ \left( \frac{r}{r_e} \right)^{1/n}
-- 1 \right] \right\},
-\end{equation*}
-\begin{equation*}
-I(r) = I_0 \exp\left(- \frac{r}{h}\right).
-\end{equation*}
+\begin{eqnarray*}
+I_{\mathrm{bojo}}(r) &=& I_e \exp \left\{- b_n \left[ \left( \frac{r}{r_e}
+\right)^{1/n} - 1 \right] \right\},\\
+I_{\mathrm{disco}}(r) &=& I_0 \exp\left(- \frac{r}{h}\right).
+\end{eqnarray*}
 
 Diferente do método de \citet{Johnston2012}, os perfis do bojo e do disco são
 tratados em duas dimensões como elipsoides, cada qual com uma elipticidade
@@ -355,7 +353,10 @@ cada caso. O sumário dos descartes é o seguinte:
 \begin{table}
 \begin{tabular}{ l l r r r r l }
 \hline
-ID & Nome & Classe & Classe (mín.) & Classe (máx.) & $\epsilon$ \\
+\hline
+\textbf{ID} & \textbf{Nome} & \textbf{Classe} & \textbf{Classe (mín.)} &
+\textbf{Classe (máx.)} & \textbf{$\epsilon$}
+\\
 \hline
 K0018 & NGC 0155  &  1 (E1)  & 0 (E0) &  8 (S0)  & $0,22$ \\
 K0127 & NGC 1349  &  6 (E6)  & 0 (E0) & 10 (Sa)  & $0,11$ \\
@@ -366,6 +367,7 @@ K0846 & UGC 10695 &  5 (E5)  & 2 (E2) &  8 (S0)  & $0,33$ \\
 K0851 & NGC 6338  &  5 (E5)  & 1 (E1) &  8 (S0)  & $0,34$ \\
 K0858 & UGC 10905 &  9 (S0a) & 7 (E7) & 11 (Sab) & $0,47$ \\
 K0912 & NGC 7623  &  8 (S0)  & 8 (S0) &  8 (S0)  & $0,29$ \\
+\hline
 \hline
 \end{tabular}
 \caption[Amostra final para decomposição morfológica espectral]
@@ -518,7 +520,7 @@ K0858.
 % FIXME: Rogério - Por que somente estas duas? Especulas algo?
 
 \begin{figure}
-	\includegraphics[page=15,width=\textwidth]{figuras/sample006a_synthesis}
+	\includegraphics[page=15]{figuras/sample006a_synthesis}
 	\caption[Espectros ajustados com \starlight das componentes morfológicas de
 	K0858 (UGC 10905)]
 	{Acima: Espectros integrados das componentes morfológicas de

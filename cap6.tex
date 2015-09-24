@@ -62,7 +62,9 @@ horizontal. Os parâmetros do modelo original são listados na Tabela
 \ref{tab:testeModeloOriginal}.
 
 \begin{table}
+\begin{center}
 \begin{tabular}{ l  c | l  c }
+  \hline
   \hline
   \multicolumn{4}{c}{\textbf{Modelo original}} \\
   \multicolumn{2}{c}{\textbf{Bojo}} & \multicolumn{2}{c}{\textbf{Disco}} \\
@@ -73,10 +75,12 @@ horizontal. Os parâmetros do modelo original são listados na Tabela
   $\mathrm{P.A.}$ & $60^\circ$ & $\mathrm{P.A.}$ & $45^\circ$ \\
   $\epsilon$ & $0,1$ & $\epsilon$ & $0,1$ \\
   \hline
+  \hline
 \end{tabular}
 \caption[Modelo morfológico original da galáxia sintética]
 {Parâmetros do modelo morfológico original da galáxia sintética.}
 \label{tab:testeModeloOriginal}
+\end{center}
 \end{table}
 
 \begin{figure}
@@ -211,7 +215,9 @@ Figura \ref{fig:testInitmodel}). Os parâmetros do modelo inicial ajustado estã
 listados na Tabela \ref{tab:testeModeloInicial}.
 
 \begin{table}
+\begin{center}
 \begin{tabular}{ l c c l c c }
+  \hline
   \hline
   \multicolumn{6}{c}{\textbf{Modelo inicial}} \\
   & \multicolumn{2}{c}{\textbf{Bojo}} & & \multicolumn{2}{c}{\textbf{Disco}} \\
@@ -224,11 +230,13 @@ listados na Tabela \ref{tab:testeModeloInicial}.
   $45^\circ$ \\
   $\epsilon$ & $0,1$ & $0,1$ & $\epsilon$ & $0,1$ & $0,1$ \\
   \hline
+  \hline
 \end{tabular}
 \caption[Modelo inicial ajustado à galáxia sintética]
 {Parâmetros do modelo inicial ajustado à galáxia sintética, utilizando o
 algoritmo DE.}
 \label{tab:testeModeloInicial}
+\end{center}
 \end{table}
 
 
@@ -243,7 +251,7 @@ formam os modelos iniciais para o segundo passo, a decomposição
 $\lambda$-a-$\lambda$ do cubo de dados espectral da galáxia sintética.
 
 \begin{figure}
-	\includegraphics{figuras/simulation_fitparams}
+	\includegraphics[width=\textwidth]{figuras/simulation_fitparams}
 	\caption[Parâmetros morfológicos da galáxia sintética]
 	{Parâmetros morfológicos da galáxia sintética, em função do comprimento de
 	onda. Pontos vermelhos: ajuste feito em caixas de $200\,\angstrom$. Linhas
@@ -268,7 +276,9 @@ Os parâmetros morfológicos médios, ponderados pela verossimilhança do ajuste
 são listados na Tabela \ref{tab:testeModeloAjuste}.
 
 \begin{table}
+\begin{center}
 \begin{tabular}{ l c c l c c }
+  \hline
   \hline
   \multicolumn{6}{c}{\textbf{Média espectral dos modelos}} \\
   & \multicolumn{2}{c}{\textbf{Bojo}} & & \multicolumn{2}{c}{\textbf{Disco}} \\
@@ -282,11 +292,13 @@ são listados na Tabela \ref{tab:testeModeloAjuste}.
   $\epsilon$ & $0,10 \pm 0,01$ & $0,1$ & $\epsilon$ & $0,10 \pm 0,01$ &
   $0,1$ \\
   \hline
+  \hline
 \end{tabular}
 \caption[Ajuste morfológico espectral -- média dos parâmetros]
 {Média espectral dos parâmetros morfológicos ajustados à galáxia sintética,
 ponderada pela verossimilhança dos ajustes.}
 \label{tab:testeModeloAjuste}
+\end{center}
 \end{table}
 
 Estes valores não necessariamente precisam ser iguais aos do modelo original.
@@ -297,7 +309,7 @@ encontra os cubos espectrais do bojo e do disco. É preciso examinar os espectro
 ajustados.
 
 \begin{figure}
-	\includegraphics{figuras/simulation_spectra}
+	\includegraphics[width=\textwidth]{figuras/simulation_spectra}
 	\caption[Espectros ajustados à galáxia sintética]
 	{Espectros ajustados à galáxia sintética. Em preto o espectro observado, em
 	vermelho o bojo, em azul o disco, e em magenta o resíduo. Os
@@ -322,7 +334,7 @@ espectros integrados. Esta degenerescência precisa ser estudada mais a fundo no
 futuro.
 
 \begin{figure}
-	\includegraphics{figuras/simulation_error}
+	\includegraphics[width=\textwidth]{figuras/simulation_error}
 	\caption[Razão ajuste--original dos espectros ajustados à galáxia sintética]
 	{Razão ajuste--original média dos espectros ajustados à galáxia sintética, em
 	função do comprimento de onda e da distância ao centro da galáxia, tomada em
@@ -397,7 +409,7 @@ com a PSF de $2,6\,\arcs$, o ajuste está sobre-estimando o valor da FWHM real,
 enquanto no caso da galáxia com $3,3\,\arcs$ a FWHM é subestimada.
 
 \begin{figure}
-	\includegraphics{figuras/simulation_fitparams_psf26}
+	\includegraphics[width=\textwidth]{figuras/simulation_fitparams_psf26}
 	\caption[Parâmetros morfológicos (teste com PSF $\mathrm{FWHM} = 2,6\,\arcs$)]
 	{Parâmetros morfológicos da galáxia sintética, em função do comprimento de
 	onda. Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ sobre
@@ -407,7 +419,7 @@ enquanto no caso da galáxia com $3,3\,\arcs$ a FWHM é subestimada.
 \end{figure}
 
 \begin{figure}
-	\includegraphics{figuras/simulation_fitparams_psf33}
+	\includegraphics[width=\textwidth]{figuras/simulation_fitparams_psf33}
 	\caption[Parâmetros morfológicos (teste com PSF $\mathrm{FWHM} =
 	3,3\,\arcs$)] {Parâmetros morfológicos da galáxia sintética, em função do comprimento de
 	onda. Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ sobre
@@ -431,7 +443,10 @@ Os parâmetros médios das duas decomposições são listados na Tabela
 \ref{tab:testeAjustePSF}.
 
 \begin{table}
+\begin{center}
+\small
 \begin{tabular}{ l c c  l c c }
+  \hline
   \hline
   \multicolumn{6}{c}{\textbf{Média espectral dos modelos (PSF diferente)}} \\
   & \multicolumn{2}{c}{\textbf{Bojo}} & & \multicolumn{2}{c}{\textbf{Disco}} \\
@@ -447,16 +462,19 @@ Os parâmetros médios das duas decomposições são listados na Tabela
   $\epsilon$ & $0,11 \pm 0,01$ & $0,09 \pm 0,01$ & $\epsilon$ & $0,10 \pm
   0,01$ & $0,099 \pm 0,01$ \\
   \hline
+  \hline
 \end{tabular}
 \caption[Parâmetros do ajuste morfológico espectral com PSF diferente]
 {Média espectral dos parâmetros morfológicos ajustados à galáxia sintética,
 ponderada pela verossimilhança dos ajustes, com a PSF do ajuste ($\mathrm{FWHM}
 = 2,9\,\arcs$) diferente da PSF dos dados.}
 \label{tab:testeAjustePSF}
+\normalsize
+\end{center}
 \end{table}
 
 \begin{figure}
-	\includegraphics{figuras/simulation_spectra_psf26}
+	\includegraphics[width=\textwidth]{figuras/simulation_spectra_psf26}
 	\caption[Espectros ajustados (teste com PSF $\mathrm{FWHM} = 2,6\,\arcs$)]
 	{Espectros ajustados à galáxia sintética. Ajuste feito com uma PSF de
 	$\mathrm{FWHM} = 2,9\,\arcs$ sobre dados com $\mathrm{FWHM} = 2,6\,\arcs$. Ver
@@ -465,7 +483,7 @@ ponderada pela verossimilhança dos ajustes, com a PSF do ajuste ($\mathrm{FWHM}
 \end{figure}
 
 \begin{figure}
-	\includegraphics{figuras/simulation_spectra_psf33}
+	\includegraphics[width=\textwidth]{figuras/simulation_spectra_psf33}
 	\caption[Espectros ajustados (teste com PSF $\mathrm{FWHM} = 3,3\,\arcs$)]
 	{Espectros ajustados à galáxia sintética. Ajuste feito com uma PSF de
 	$\mathrm{FWHM} = 2,9\,\arcs$ sobre dados com $\mathrm{FWHM} = 3,3\,\arcs$. Ver
@@ -481,7 +499,7 @@ espectros parecem melhor ajustados (Figura \ref{fig:testFitSpectra33}), mas
 também com diferenças sistemáticas.
 
 \begin{figure}
-	\includegraphics{figuras/simulation_error_psf26}
+	\includegraphics[width=\textwidth]{figuras/simulation_error_psf26}
 	\caption[Razão ajuste--original (teste com PSF $\mathrm{FWHM} = 2,6\,\arcs$)]
 	{Razão ajuste--original média dos espectros ajustados à galáxia sintética.
 	Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ sobre
@@ -491,7 +509,7 @@ também com diferenças sistemáticas.
 \end{figure}
 
 \begin{figure}
-	\includegraphics{figuras/simulation_error_psf33}
+	\includegraphics[width=\textwidth]{figuras/simulation_error_psf33}
 	\caption[Razão ajuste--original (teste com PSF $\mathrm{FWHM} = 3,3\,\arcs$)]
 	{Razão ajuste--original média dos espectros ajustados à galáxia sintética.
 	Ajuste feito com uma PSF de $\mathrm{FWHM} = 2,9\,\arcs$ sobre
