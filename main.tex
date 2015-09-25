@@ -8,11 +8,15 @@
 
 \frontmatter
   \pagenumbering{arabic}
-  \input{capa}\clearpage
-  \input{dedicatoria}\clearpage
-  \input{agradecimentos}\clearpage
-  \input{resumo}\clearpage
-  \input{abstract}\clearpage
+  \input{rosto}
+  \includepdf[pages=1]{bib_ufsc/ficha_catalografica.pdf}
+  \includepdf[pages=1,trim=31mm 87mm 31mm 0mm,clip]{bib_ufsc/banca.pdf}\cleardoublepage
+
+  \input{dedicatoria}
+  \input{agradecimentos}
+  \input{resumo}
+  \input{abstract}
+  
   \tableofcontents\clearpage
   \listoffigures\clearpage
   \listoftables\clearpage
